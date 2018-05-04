@@ -39,6 +39,8 @@ import { AppRoutingModule } from './app.routing';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
+import { MycalendarComponent } from './views/mycalendar/mycalendar.component';
+import { DataStorageService } from "./shared/data-service";
 
 @NgModule({
   imports: [
@@ -52,7 +54,7 @@ import { ChartsModule } from 'ng2-charts/ng2-charts';
     PerfectScrollbarModule,
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
-    ChartsModule
+    ChartsModule  
   ],
   declarations: [
     AppComponent,
@@ -65,7 +67,9 @@ import { ChartsModule } from 'ng2-charts/ng2-charts';
   providers: [{
     provide: LocationStrategy,
     useClass: HashLocationStrategy
-  }],
+  },
+  DataStorageService],
+  
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

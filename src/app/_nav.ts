@@ -176,6 +176,14 @@ export const navItems = [
       text: 'NEW'
     }
   },
+   {
+    name: 'My Calendar',
+    url: '/mycalendar',
+    icon: 'icon-calculator',
+    badge: {
+      variant: 'info'
+    }
+  },
   {
     divider: true
   },
