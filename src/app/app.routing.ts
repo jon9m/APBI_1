@@ -85,6 +85,10 @@ export const routes: Routes = [
       {
         path: 'mycalendar',
         loadChildren: './views/mycalendar/mycalendar.module#MyCalendarModule'
+      },
+      {
+        path: 'inspectiondtlform',
+        loadChildren: './views/inspection-dtl-form/inspection-dtl-form.module#InspectionDtlFormModule'
       }
     ]
   }
