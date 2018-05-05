@@ -1,6 +1,7 @@
 import { Component, OnInit, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 import { ModalDirective } from 'ngx-bootstrap/modal';
 import { DataStorageService } from "../../../shared/data-service";
+import { Router } from "@angular/router";
 
 
 @Component({
@@ -13,7 +14,7 @@ export class InspectionDtlPopupComponent implements OnInit {
   summary: String = "Default Summary";
   public detailsModal;
 
-  constructor(private dataStorageService: DataStorageService) { }
+  constructor(private dataStorageService: DataStorageService, private router: Router) { }
 
   ngOnInit() {
     this.dataStorageService.dataChanged.subscribe(
@@ -31,5 +32,10 @@ export class InspectionDtlPopupComponent implements OnInit {
     }, 3000);
   }
 
+  loadForm() {
+    let element: HTMLElement = document.getElementById('modalclosebutton') as HTMLElement;
+    element.click();
+    this.router.navigate(['/inspectiondtlform']);
+  }
 
 }

@@ -30,8 +30,8 @@
         
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default pull-left" (click)="detailsModal.hide()">Cancel</button>
-       <button type="button" class="btn btn-outline" onclick="Reports.loadForm();">Complete the report form</button>
+        <button type="button" id="modalclosebutton" class="btn btn-default pull-left" (click)="detailsModal.hide()">Cancel</button>
+       <button type="button" class="btn btn-outline" onclick="Reports.loadForm();" (click)="loadForm()">Complete the report form</button>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->

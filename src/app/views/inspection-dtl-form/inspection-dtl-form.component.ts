@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup } from "@angular/forms";
 
 @Component({
   selector: 'app-inspection-dtl-form',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./inspection-dtl-form.component.scss']
 })
 export class InspectionDtlFormComponent implements OnInit {
+
+  inspectiondetailsform:FormGroup;
 
   constructor() { }
 
