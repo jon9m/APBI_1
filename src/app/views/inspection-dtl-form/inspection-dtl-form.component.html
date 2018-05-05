@@ -240,11 +240,11 @@
       </h4>
     </div>
     <div class="card-body">
-      <div class="row" style="padding: 0 15px 0 15px;">
-        <div class="col-xs-6">
+      <div class="row form-row" style="padding: 0 15px 0 15px;">
+        <div class="col">
           <label class="custom-radio"><input type="radio" name="weather" value="Fine" checked/><span class="radio"></span> &nbsp;Fine</label><br>
         </div>
-        <div class="col-xs-6">
+        <div class="col">
           <label class="custom-radio"><input type="radio" name="weather" value="Raining"/><span class="radio"></span> &nbsp;Raining</label><br>
         </div>
       </div>
@@ -257,13 +257,13 @@
       </h4>
     </div>
     <div class="card-body">
-      <div class="row" style="padding: 0 15px 0 15px;">
-        <div class="col-xs-6">
+      <div class="row form-row" style="padding: 0 15px 0 15px;">
+        <div class="col">
           <div>
             <label class="custom-radio"><input type="radio" name="furnished" value="Yes" checked><span class="radio"></span> &nbsp;Yes</label><br>
           </div>
         </div>
-        <div class="col-xs-6">
+        <div class="col">
           <div>
             <label class="custom-radio"><input type="radio" name="furnished" value="No"><span class="radio"></span> &nbsp;No</label><br>
           </div>
@@ -283,11 +283,11 @@
       </h4>
     </div>
     <div class="card-body">
-      <div class="row" style="padding: 0 15px 0 15px;">
-        <div class="col-xs-6">
+      <div class="row form-row" style="padding: 0 15px 0 15px;">
+        <div class="col">
           <label class="custom-radio"><input type="radio" name="smoke" value="Yes" checked><span class="radio"></span> &nbsp;Yes</label><br>
         </div>
-        <div class="col-xs-6">
+        <div class="col">
           <label class="custom-radio"><input type="radio" name="smoke" value="No"><span class="radio"></span> &nbsp;No</label><br>
         </div>
       </div>
@@ -299,13 +299,13 @@
       </h4>
     </div>
     <div class="card-body">
-      <div class="row" style="padding: 0 15px 0 15px;">
-        <div class="col-xs-6">
+      <div class="row form-row" style="padding: 0 15px 0 15px;">
+        <div class="col">
           <div>
             <label class="custom-radio"><input type="radio" name="extension" value="Yes" checked><span class="radio"></span> &nbsp;Yes</label><br>
           </div>
         </div>
-        <div class="col-xs-6">
+        <div class="col">
           <div>
             <label class="custom-radio"><input type="radio" name="extension" value="No"><span class="radio"></span> &nbsp;No</label><br>
           </div>
@@ -313,10 +313,10 @@
       </div>
     </div>
     <div class="row">
-      <div class="form-group" style="padding: 0 30px 10px 30px;">
+      <div class="form-group col" style="padding: 0 30px 10px 30px;">
         <label class="control-label" for="input-subject">Comment:</label>
         <div>
-          <textarea rows="4" max-rows="25" name="extension_comment" placeholder="Type here to expand"></textarea>
+          <textarea class="form-control" rows="4" max-rows="25" name="extension_comment" placeholder="Type here to expand"></textarea>
         </div>
       </div>
     </div>
@@ -328,22 +328,22 @@
       </h4>
     </div>
     <div class="card-body">
-      <div class="row" style="padding:0 15px 0 15px;">
-        <div class="col-xs-3">
+      <div class="row form-row" style="padding:0 15px 0 15px;">
+        <div class="col">
           <h4 class="card-title black" style="padding: 15px 0;"><strong>Electricity</strong>
           </h4>
         </div>
-        <div class="col-xs-3">
+        <div class="col">
           <div>
             <label class="custom-radio"><input type="radio" name="electricity" value="Yes" checked/><span class="radio"></span> &nbsp;Yes</label><br>
           </div>
         </div>
-        <div class="col-xs-3">
+        <div class="col">
           <div>
             <label class="custom-radio"><input type="radio" name="electricity" value="No"/><span class="radio"></span> &nbsp;No</label><br>
           </div>
         </div>
-        <div class="col-xs-3">
+        <div class="col">
           <div>
             <label class="custom-checkbox"><input type="checkbox" name="electricity-test" value="Not tested"/> <span class="checkbox" onclick="Controls.changeStatCheck(this);"></span>&nbsp;Not tested<br></label>
           </div>
@@ -351,160 +351,160 @@
       </div>
     </div>
     <div class="row">
-      <div class="form-group" style="padding: 0 30px 0px 30px;">
+      <div class="form-group col" style="padding: 0 30px 0px 30px;">
         <label class="control-label" for="input-subject">Comment:</label>
         <div>
-          <textarea rows="2" max-rows="10" name="electricity_comment" placeholder="Type here to expand"></textarea>
+          <textarea class="form-control" rows="2" max-rows="10" name="electricity_comment" placeholder="Type here to expand"></textarea>
         </div>
       </div>
     </div>
     <hr/>
-    <div class="row" style="padding:0 15px 0 15px;">
-      <div class="col-xs-3">
+    <div class="row form-row" style="padding:0 15px 0 15px;">
+      <div class="col">
         <h4 class="card-title black" style="padding: 15px 0;"><strong>Gas</strong>
         </h4>
       </div>
-      <div class="col-xs-3">
+      <div class="col">
         <div>
           <label class="custom-radio"><input type="radio" name="gas" value="Yes" checked/><span class="radio"></span> &nbsp;Yes</label><br>
         </div>
       </div>
-      <div class="col-xs-3">
+      <div class="col">
         <div>
           <label class="custom-radio"><input type="radio" name="gas" value="No"/><span class="radio"></span> &nbsp;No</label><br>
         </div>
       </div>
-      <div class="col-xs-3">
+      <div class="col">
         <div>
           <label class="custom-checkbox"><input type="checkbox" name="gas-test" value="Not tested"/> <span class="checkbox" onclick="Controls.changeStatCheck(this);"></span>&nbsp;Not tested<br></label>
         </div>
       </div>
     </div>
     <div class="row">
-      <div class="form-group" style="padding: 0 30px 0px 30px;">
+      <div class="form-group col" style="padding: 0 30px 0px 30px;">
         <label class="control-label" for="input-subject">Comment:</label>
         <div>
-          <textarea rows="2" max-rows="10" name="gas_comment" placeholder="Type here to expand"></textarea>
+          <textarea class="form-control" rows="2" max-rows="10" name="gas_comment" placeholder="Type here to expand"></textarea>
         </div>
       </div>
     </div>
     <hr/>
-    <div class="row" style="padding:0 15px 0 15px;">
-      <div class="col-xs-3">
+    <div class="row form-row" style="padding:0 15px 0 15px;">
+      <div class="col">
         <h4 class="card-title black" style="padding: 15px 0;"><strong>Water</strong>
         </h4>
       </div>
-      <div class="col-xs-3">
+      <div class="col">
         <div>
           <label class="custom-radio"><input type="radio" name="water" value="Yes" checked/><span class="radio"></span> &nbsp;Yes</label><br>
         </div>
       </div>
-      <div class="col-xs-3">
+      <div class="col">
         <div>
           <label class="custom-radio"><input type="radio" name="water" value="No"/><span class="radio"></span> &nbsp;No</label><br>
         </div>
       </div>
-      <div class="col-xs-3">
+      <div class="col">
         <div>
           <label class="custom-checkbox"><input type="checkbox" name="water-test" value="Not tested"/> <span class="checkbox" onclick="Controls.changeStatCheck(this);"></span>&nbsp;Not tested<br></label>
         </div>
       </div>
     </div>
     <div class="row">
-      <div class="form-group" style="padding: 0 30px 0px 30px;">
+      <div class="form-group col" style="padding: 0 30px 0px 30px;">
         <label class="control-label" for="input-subject">Comment:</label>
         <div>
-          <textarea rows="2" max-rows="10" name="water_comment" placeholder="Type here to expand"></textarea>
+          <textarea class="form-control" rows="2" max-rows="10" name="water_comment" placeholder="Type here to expand"></textarea>
         </div>
       </div>
     </div>
     <hr/>
-    <div class="row" style="padding:0 15px 0 15px;">
-      <div class="col-xs-3">
+    <div class="row form-row" style="padding:0 15px 0 15px;">
+      <div class="col">
         <h4 class="card-title black" style="padding: 15px 0;"><strong>Sewer</strong>
         </h4>
       </div>
-      <div class="col-xs-3">
+      <div class="col">
         <div>
           <label class="custom-radio"><input type="radio" name="sewer" value="Yes" checked/><span class="radio"></span> &nbsp;Yes</label><br>
         </div>
       </div>
-      <div class="col-xs-3">
+      <div class="col">
         <div>
           <label class="custom-radio"><input type="radio" name="sewer" value="No"/><span class="radio"></span>&nbsp;No</label><br>
         </div>
       </div>
-      <div class="col-xs-3">
+      <div class="col">
         <div>
           <label class="custom-checkbox"><input type="checkbox" name="sewer-test" value="Not tested"/> <span class="checkbox" onclick="Controls.changeStatCheck(this);"></span>&nbsp;Not tested<br></label>
         </div>
       </div>
     </div>
     <div class="row">
-      <div class="form-group" style="padding: 0 30px 0px 30px;">
+      <div class="form-group col" style="padding: 0 30px 0px 30px;">
         <label class="control-label" for="input-subject">Comment:</label>
         <div>
-          <textarea rows="2" max-rows="10" name="sewer_comment" placeholder="Type here to expand"></textarea>
+          <textarea class="form-control" rows="2" max-rows="10" name="sewer_comment" placeholder="Type here to expand"></textarea>
         </div>
       </div>
     </div>
     <hr/>
-    <div class="row" style="padding:0 15px 0 15px;">
-      <div class="col-xs-3">
+    <div class="row form-row" style="padding:0 15px 0 15px;">
+      <div class="col">
         <h4 class="card-title black" style="padding: 15px 0;"><strong>Drainage</strong>
         </h4>
       </div>
-      <div class="col-xs-3">
+      <div class="col">
         <div>
           <label class="custom-radio"><input type="radio" name="drainage" value="Yes" checked/><span class="radio"></span> &nbsp;Yes</label><br>
         </div>
       </div>
-      <div class="col-xs-3">
+      <div class="col">
         <div>
           <label class="custom-radio"><input type="radio" name="drainage" value="No"/><span class="radio"></span> &nbsp;No</label><br>
         </div>
       </div>
-      <div class="col-xs-3">
+      <div class="col">
         <div>
           <label class="custom-checkbox"><input type="checkbox" name="drainage-test" value="Not tested"/> <span class="checkbox" onclick="Controls.changeStatCheck(this);"></span>&nbsp;Not tested<br></label>
         </div>
       </div>
     </div>
     <div class="row">
-      <div class="form-group" style="padding: 0 30px 0px 30px;">
+      <div class="form-group col" style="padding: 0 30px 0px 30px;">
         <label class="control-label" for="input-subject">Comment:</label>
         <div>
-          <textarea rows="2" max-rows="10" name="drainage_comment" placeholder="Type here to expand"></textarea>
+          <textarea class="form-control" rows="2" max-rows="10" name="drainage_comment" placeholder="Type here to expand"></textarea>
         </div>
       </div>
     </div>
     <hr/>
-    <div class="row" style="padding:0 15px 0 15px;">
-      <div class="col-xs-3">
+    <div class="row form-row" style="padding:0 15px 0 15px;">
+      <div class="col">
         <h4 class="card-title black" style="padding: 15px 0;"><strong>Smoke Detectors</strong>
         </h4>
       </div>
-      <div class="col-xs-3">
+      <div class="col">
         <div>
           <label class="custom-radio"><input type="radio" name="smoke_detectors" value="Yes" checked/><span class="radio"></span> &nbsp;Yes</label><br>
         </div>
       </div>
-      <div class="col-xs-3">
+      <div class="col">
         <div>
           <label class="custom-radio"><input type="radio" name="smoke_detectors" value="No"/><span class="radio"></span> &nbsp;No</label><br>
         </div>
       </div>
-      <div class="col-xs-3">
+      <div class="col">
         <div>
           <label class="custom-checkbox"><input type="checkbox" name="smoke_detectors-test" value="Not tested"/> <span class="checkbox" onclick="Controls.changeStatCheck(this);"></span>&nbsp;Not tested<br></label>
         </div>
       </div>
     </div>
     <div class="row">
-      <div class="form-group" style="padding: 0 30px 0px 30px;">
+      <div class="form-group col" style="padding: 0 30px 0px 30px;">
         <label class="control-label" for="input-subject">Comment:</label>
         <div>
-          <textarea rows="2" max-rows="10" name="smoke_detectors_comment" placeholder="Type here to expand"></textarea>
+          <textarea class="form-control" rows="2" max-rows="10" name="smoke_detectors_comment" placeholder="Type here to expand"></textarea>
         </div>
       </div>
     </div>
@@ -516,13 +516,13 @@
       </h4>
     </div>
     <div class="card-body">
-      <div class="row" style="padding: 0 15px 0 15px;">
-        <div class="col-xs-6">
+      <div class="row form-row" style="padding: 0 15px 0 15px;">
+        <div class="col">
           <div>
             <label class="custom-radio"><input type="radio" name="access" value="Yes" checked/><span class="radio"></span> &nbsp;Yes</label><br>
           </div>
         </div>
-        <div class="col-xs-6">
+        <div class="col">
           <div>
             <label class="custom-radio"><input type="radio" name="access" value="No"/><span class="radio"></span> &nbsp;No</label><br>
           </div>
@@ -530,10 +530,10 @@
       </div>
     </div>
     <div class="row">
-      <div class="form-group" style="padding: 0 30px 10px 30px;">
+      <div class="form-group col" style="padding: 0 30px 10px 30px;">
         <label class="control-label" for="input-subject">Comment:</label>
         <div>
-          <textarea rows="4" max-rows="25" name="access_comment" placeholder="Type here to expand"></textarea>
+          <textarea class="form-control" rows="4" max-rows="25" name="access_comment" placeholder="Type here to expand"></textarea>
         </div>
       </div>
     </div>
@@ -872,10 +872,10 @@
                     </select>
                   </div>
                 </div>
-                <div class="form-group">
-                  <label class="col-xs-2 col-md-1 control-label">Comments:</label>
-                  <div class="col-xs-10 col-md-5">
-                    <textarea rows="4" max-rows="25" placeholder="Type here to expand" name="inspection-finding-comment-<%=recCounter%>"></textarea>
+                <div class="form-group col">
+                  <label for="hallwayrecomcomment">Comments:</label>
+                  <div>
+                    <textarea id="hallwayrecomcomment" class="form-control" rows="4" max-rows="25" placeholder="Type here to expand" name="inspection-finding-comment-<%=recCounter%>"></textarea>
                   </div>
                 </div>
                 <div class="col-xs-12 col-md-6">
@@ -1416,10 +1416,10 @@
                     </select>
                   </div>
                 </div>
-                <div class="form-group">
-                  <label class="col-xs-2 col-md-1 control-label">Comments:</label>
-                  <div class="col-xs-10 col-md-5">
-                    <textarea rows="4" max-rows="25" placeholder="Type here to expand" name="inspection-finding-comment-<%=recCounter%>"></textarea>
+                <div class="form-group col">
+                  <label for="kitchenrecomme">Comments:</label>
+                  <div>
+                    <textarea id="kitchenrecomme" class="form-control" rows="4" max-rows="25" placeholder="Type here to expand" name="inspection-finding-comment-<%=recCounter%>"></textarea>
                   </div>
                 </div>
                 <div class="col-xs-12 col-md-6">
@@ -1845,10 +1845,10 @@
                     </select>
                   </div>
                 </div>
-                <div class="form-group">
-                  <label class="col-xs-2 col-md-1 control-label">Comments:</label>
-                  <div class="col-xs-10 col-md-5">
-                    <textarea rows="4" max-rows="25" placeholder="Type here to expand" name="inspection-finding-comment-<%=recCounter%>"></textarea>
+                <div class="form-group col">
+                  <label for="laundryrecomme">Comments:</label>
+                  <div>
+                    <textarea id="laundryrecomme" class="form-control" rows="4" max-rows="25" placeholder="Type here to expand" name="inspection-finding-comment-<%=recCounter%>"></textarea>
                   </div>
                 </div>
                 <div class="col-xs-12 col-md-6">
@@ -2941,10 +2941,10 @@
                     </select>
                   </div>
                 </div>
-                <div class="form-group">
-                  <label class="col-xs-2 col-md-1 control-label">Comments:</label>
-                  <div class="col-xs-10 col-md-5">
-                    <textarea rows="4" max-rows="25" placeholder="Type here to expand" name="inspection-finding-comment-<%=recCounter%>"></textarea>
+                <div class="form-group col">
+                  <label for="bedroomrecomme">Comments:</label>
+                  <div>
+                    <textarea id="bedroomrecomme" class="form-control" rows="4" max-rows="25" placeholder="Type here to expand" name="inspection-finding-comment-<%=recCounter%>"></textarea>
                   </div>
                 </div>
                 <div class="col-xs-12 col-md-6">
@@ -3625,10 +3625,10 @@
                     </select>
                   </div>
                 </div>
-                <div class="form-group">
-                  <label class="col-xs-2 col-md-1 control-label">Comments:</label>
-                  <div class="col-xs-10 col-md-5">
-                    <textarea rows="4" max-rows="25" placeholder="Type here to expand" name="inspection-finding-comment-<%=recCounter%>"></textarea>
+                <div class="form-group col">
+                  <label for="bathroomrecomme">Comments:</label>
+                  <div>
+                    <textarea id="bathroomrecomme" class="form-control" rows="4" max-rows="25" placeholder="Type here to expand" name="inspection-finding-comment-<%=recCounter%>"></textarea>
                   </div>
                 </div>
                 <div class="col-xs-12 col-md-6">
@@ -4310,10 +4310,10 @@
                     </select>
                   </div>
                 </div>
-                <div class="form-group">
-                  <label class="col-xs-2 col-md-1 control-label">Comments:</label>
-                  <div class="col-xs-10 col-md-5">
-                    <textarea rows="4" max-rows="25" placeholder="Type here to expand" name="inspection-finding-comment-<%=recCounter%>"></textarea>
+                <div class="form-group col">
+                  <label for="ensuiterecomme">Comments:</label>
+                  <div>
+                    <textarea id="ensuiterecomme" class="form-control" rows="4" max-rows="25" placeholder="Type here to expand" name="inspection-finding-comment-<%=recCounter%>"></textarea>
                   </div>
                 </div>
                 <div class="col-xs-12 col-md-6">
@@ -5178,10 +5178,10 @@
                     </select>
                   </div>
                 </div>
-                <div class="form-group">
-                  <label class="col-xs-2 col-md-1 control-label">Comments:</label>
-                  <div class="col-xs-10 col-md-5">
-                    <textarea rows="4" max-rows="25" placeholder="Type here to expand" name="inspection-finding-comment-<%=recCounter%>"></textarea>
+                <div class="form-group col">
+                  <label for="externalrecomme">Comments:</label>
+                  <div>
+                    <textarea id="externalrecomme" class="form-control" rows="4" max-rows="25" placeholder="Type here to expand" name="inspection-finding-comment-<%=recCounter%>"></textarea>
                   </div>
                 </div>
                 <div class="col-xs-12 col-md-6">
@@ -5222,9 +5222,9 @@
     </div>
     <div class="card-body">
       <div class="row">
-        <div class="form-group">
+        <div class="form-group col">
           <div class="col-xs-12">
-            <textarea rows="4" max-rows="25" name="summary" placeholder="Type here to expand"></textarea>
+            <textarea class="form-control" rows="4" max-rows="25" name="summary" placeholder="Type here to expand"></textarea>
           </div>
         </div>
       </div>
@@ -5237,23 +5237,23 @@
       </h4>
     </div>
     <div class="card-body">
-      <div class="row" style="padding: 0 15px 0 15px;">
-        <div class="col-xs-6">
+      <div class="row form-row" style="padding: 0 15px 0 15px;">
+        <div class="col">
           <div>
             <label class="custom-radio"><input type="radio" name="major_defects" value="Yes" checked/><span class="radio"></span> &nbsp;Yes</label><br>
           </div>
         </div>
-        <div class="col-xs-6">
+        <div class="col">
           <div>
             <label class="custom-radio"><input type="radio" name="major_defects" value="No"/><span class="radio"></span> &nbsp;No</label><br>
           </div>
         </div>
       </div>
       <div class="row">
-        <div class="form-group" style="padding: 0px 15px 0px 15px;">
+        <div class="form-group col" style="padding: 0px 15px 0px 15px;">
           <label style="padding: 0px 15px 0px 15px;">A defect of sufficient magnitude where rectification has to be carried out without undue delay to avoid: unsafe conditions, posing a threat to life or serious injury; loss of utility, whereby the defect is such that the whole of the relevant part of the building can no longer serve its intended function; or further substantial deterioration of the building.</label>
           <div class="col-xs-12" style="padding-bottom:10px;">
-            <textarea rows="4" max-rows="25" name="major_defects_comment" placeholder="Type here to expand"></textarea>
+            <textarea class="form-control" rows="4" max-rows="25" name="major_defects_comment" placeholder="Type here to expand"></textarea>
           </div>
         </div>
       </div>
@@ -5265,23 +5265,23 @@
       </h4>
     </div>
     <div class="card-body">
-      <div class="row" style="padding: 0 15px 0 15px;">
-        <div class="col-xs-6">
+      <div class="row form-row" style="padding: 0 15px 0 15px;">
+        <div class="col">
           <div>
             <label class="custom-radio"><input type="radio" name="structural_defects" value="Yes" checked/><span class="radio"></span> &nbsp;Yes</label><br>
           </div>
         </div>
-        <div class="col-xs-6">
+        <div class="col">
           <div>
             <label class="custom-radio"><input type="radio" name="structural_defects" value="No"/><span class="radio"></span> &nbsp;No</label><br>
           </div>
         </div>
       </div>
       <div class="row">
-        <div class="form-group" style="padding: 0px 15px 0px 15px;">
+        <div class="form-group col" style="padding: 0px 15px 0px 15px;">
           <label style="padding: 0px 15px 0px 15px;">A major defect in any internal or external primary load bearing component of the building which seriously affects the structural integrity of the building requiring rectification to be carried out without undue delay to avoid: unsafe conditions, posing a threat to life or serious injury; loss of utility, whereby the defect is such that the whole of the relevant part of the building can no longer serve its intended function; or further substantial deterioration of the building. In the case of cracking, a serious structural defect denotes severe cracking as defined by Category 4, Appendix C â Australian Standard AS 2870-2011. Appendix C is attached for your reference.</label>
           <div class="col-xs-12" style="padding-bottom:10px;">
-            <textarea rows="4" max-rows="25" name="structural_defects_comment" placeholder="Type here to expand"></textarea>
+            <textarea class="form-control" rows="4" max-rows="25" name="structural_defects_comment" placeholder="Type here to expand"></textarea>
           </div>
         </div>
       </div>
@@ -5937,10 +5937,10 @@
                     </select>
                   </div>
                 </div>
-                <div class="form-group">
-                  <label class="col-xs-2 col-md-1 control-label">Comments:</label>
-                  <div class="col-xs-10 col-md-5">
-                    <textarea rows="4" max-rows="25" placeholder="Type here to expand" name="inspection-finding-comment-<%=recCounter%>"></textarea>
+                <div class="form-group col">
+                  <label for="timberrecomme">Comments:</label>
+                  <div>
+                    <textarea id="timberrecomme" class="form-control" rows="4" max-rows="25" placeholder="Type here to expand" name="inspection-finding-comment-<%=recCounter%>"></textarea>
                   </div>
                 </div>
                 <div class="col-xs-12 col-md-6">
@@ -6066,10 +6066,10 @@
         </div>
       </div>
       <div class="row">
-        <div class="form-group" style="padding: 0 30px 0px 30px;">
+        <div class="form-group col" style="padding: 0 30px 0px 30px;">
           <label class="control-label" for="input-subject">Note:</label>
           <div>
-            <textarea rows="2" max-rows="10" name="Areas_Conducive_note" placeholder="Type here to expand"></textarea>
+            <textarea class="form-control" rows="2" max-rows="10" name="Areas_Conducive_note" placeholder="Type here to expand"></textarea>
           </div>
         </div>
       </div>
@@ -6157,10 +6157,10 @@
 building expert should be consulted.</label>
       </div>
       <div class="row">
-        <div class="form-group" style="padding: 0 30px 0px 30px;">
+        <div class="form-group col" style="padding: 0 30px 0px 30px;">
           <label class="control-label" for="input-subject">Note:</label>
           <div>
-            <textarea rows="2" max-rows="10" name="Report_on_Drainage_note" placeholder="Type here to expand"></textarea>
+            <textarea class="form-control" rows="2" max-rows="10" name="Report_on_Drainage_note" placeholder="Type here to expand"></textarea>
           </div>
         </div>
       </div>
@@ -6244,10 +6244,10 @@ building expert should be consulted.</label>
         </p>
       </div>
       <div class="row">
-        <div class="form-group" style="padding: 0 30px 0px 30px;">
+        <div class="form-group col" style="padding: 0 30px 0px 30px;">
           <label class="control-label" for="input-subject">Note:</label>
           <div>
-            <textarea rows="2" max-rows="10" name="Report_on_Ventilation_note" placeholder="Type here to expand"></textarea>
+            <textarea class="form-control" rows="2" max-rows="10" name="Report_on_Ventilation_note" placeholder="Type here to expand"></textarea>
           </div>
         </div>
       </div>
@@ -6322,10 +6322,10 @@ building expert should be consulted.</label>
         </div>
       </div>
       <div class="row">
-        <div class="form-group" style="padding: 0 30px 0px 30px;">
+        <div class="form-group col" style="padding: 0 30px 0px 30px;">
           <label class="control-label" for="input-subject">Note:</label>
           <div>
-            <textarea rows="2" max-rows="10" name="Evidence_note" placeholder="Type here to expand"></textarea>
+            <textarea class="form-control" rows="2" max-rows="10" name="Evidence_note" placeholder="Type here to expand"></textarea>
           </div>
         </div>
       </div>
@@ -6339,7 +6339,7 @@ building expert should be consulted.</label>
       </h4>
     </div>
     <div class="card-body">
-      <div class="row">
+      <div>
         <div class="form-group">
           <div class="col-xs-12">
             <div class="form-group" style="padding: 0px 15px 0px 15px;">
@@ -6347,29 +6347,30 @@ building expert should be consulted.</label>
                 At the time of the inspection it is our opinion that the need for a treatment, in accordance with Australian Standard 3660.1
                 to control or prevent subterranean termites from infesting and causing damage to the property is:
             </div>
-            <div class="resp-table-row">
-              <div class="table-body-cell">
-                <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" name="2120" value="1" /><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
+            <div id="resp-table" style="padding:0;">
+              <div class="resp-table-row">
+                <div class="table-body-cell">
+                  <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" name="2120" value="1" /><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
+                </div>
+                <div class="table-body-cell" style="margin-left:-40px;">
+                  High
+                </div>
               </div>
-              <div class="table-body-cell" style="margin-left:-40px;">
-                High
+              <div class="resp-table-row">
+                <div class="table-body-cell">
+                  <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" name="2121" value="1" /><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  Moderate
+                </div>
               </div>
-            </div>
-            <div class="resp-table-row">
-
-              <div class="table-body-cell">
-                <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" name="2121" value="1" /><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
-              </div>
-              <div class="table-body-cell">
-                Moderate
-              </div>
-            </div>
-            <div class="resp-table-row">
-              <div class="table-body-cell">
-                <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" name="2122" value="1" /><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
-              </div>
-              <div class="table-body-cell">
-                Low
+              <div class="resp-table-row">
+                <div class="table-body-cell">
+                  <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" name="2122" value="1" /><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  Low
+                </div>
               </div>
             </div>
           </div>
@@ -6384,7 +6385,7 @@ building expert should be consulted.</label>
       </h4>
     </div>
     <div class="card-body">
-      <div class="row">
+      <div>
         <div class="form-group">
           <div class="form-group" style="padding: 0px 15px 0px 15px;">
             <p style="padding: 10px 0;">
@@ -6392,29 +6393,30 @@ building expert should be consulted.</label>
               property is:
             </p>
           </div>
-          <div class="resp-table-row">
-            <div class="table-body-cell">
-              <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" name="2123" value="1" /><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
+          <div id="resp-table" style="padding:0;">
+            <div class="resp-table-row">
+              <div class="table-body-cell">
+                <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" name="2123" value="1" /><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
+              </div>
+              <div class="table-body-cell" style="margin-left:-40px;">
+                High
+              </div>
             </div>
-            <div class="table-body-cell" style="margin-left:-40px;">
-              High
+            <div class="resp-table-row">
+              <div class="table-body-cell">
+                <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" name="2124" value="1" /><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
+              </div>
+              <div class="table-body-cell">
+                Moderate
+              </div>
             </div>
-          </div>
-          <div class="resp-table-row">
-
-            <div class="table-body-cell">
-              <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" name="2124" value="1" /><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
-            </div>
-            <div class="table-body-cell">
-              Moderate
-            </div>
-          </div>
-          <div class="resp-table-row">
-            <div class="table-body-cell">
-              <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" name="2125" value="1" /><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
-            </div>
-            <div class="table-body-cell">
-              Low
+            <div class="resp-table-row">
+              <div class="table-body-cell">
+                <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" name="2125" value="1" /><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
+              </div>
+              <div class="table-body-cell">
+                Low
+              </div>
             </div>
           </div>
         </div>
@@ -6430,9 +6432,9 @@ building expert should be consulted.</label>
     </div>
     <div class="card-body">
       <div class="row">
-        <div class="form-group">
+        <div class="form-group col">
           <div class="col-xs-12">
-            <textarea rows="10" max-rows="25" name="timber_summary" placeholder="Type here to expand"></textarea>
+            <textarea class="form-control" rows="10" max-rows="25" name="timber_summary" placeholder="Type here to expand"></textarea>
           </div>
         </div>
       </div>
