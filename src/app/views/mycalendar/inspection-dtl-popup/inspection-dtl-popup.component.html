@@ -9,7 +9,7 @@
       <div class="modal-body">
         <p>{{summary}}</p>
 
-            <div class="row bg-primary" style="padding-top:15px;padding-bottom:15px;">
+            <div class="row bg-primary modal-body" style="padding-top:15px;padding-bottom:15px;">
               <div class="col-xs-12">
                 <h3>Inspection Details</h3>
                 <p>Address: THE DOCKS UNIT 132 15 GOODWIN STREET KANGAROO POINT QLD 4169</p>
@@ -17,17 +17,14 @@
                 <p>Inspection Date/Time: 2018-05-01 14:00:00.0</p>
               </div>
             </div>
-            <div class="row bg-info" style="padding-top:15px;padding-bottom:15px;">
+            <div class="row bg-info modal-body" style="padding-top:15px;padding-bottom:15px;">
               <div class="col-xs-12">
                 <h3>Client Details</h3>
                 <p>Name: Enyaj Super Funds - Craig Lange</p>
                 <p>Phone: 0422254548</p>
                 <p>Email: super@enyaj.com</p>
               </div>
-            </div>
-                  
-
-        
+            </div>                      
       </div>
       <div class="modal-footer">
         <button type="button" id="modalclosebutton" class="btn btn-default pull-left" (click)="detailsModal.hide()">Cancel</button>
@@ -37,6 +34,6 @@
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
-<button id="modalbutton" type="button" class="btn btn-secondary" data-toggle="modal" (click)="detailsModal.show()">
+<button id="modalbutton" style="display:none;" type="button" class="btn btn-secondary" data-toggle="modal" (click)="detailsModal.show()">
         Launch large modal
 </button>

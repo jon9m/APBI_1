@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormArray } from "@angular/forms";
-import { DataStorageService } from "../../shared/data-storage.service";
+import { InspectionDetailsService } from "../../shared/inspection-detail.service";
 
 @Component({
   selector: 'app-inspection-dtl-form',
@@ -9,17 +9,15 @@ import { DataStorageService } from "../../shared/data-storage.service";
 })
 export class InspectionDtlFormComponent implements OnInit {
 
-  inspectiondetailsform: FormGroup;  
+  inspectiondetailsform: FormGroup;
 
-  constructor(private dataStorage: DataStorageService) {    
+  constructor(private inspectionDetailsService: InspectionDetailsService) {
   }
 
   ngOnInit() {
     this.initForm();
 
-    this.dataStorage.getInspectionDetails();
-
-    this.inspectiondetailsform.patchValue(this.dataStorage.responseJSON);
+    this.inspectiondetailsform.patchValue(this.inspectionDetailsService.getInspectionDetails());
   }
 
 
@@ -34,7 +32,7 @@ export class InspectionDtlFormComponent implements OnInit {
     let ensuite_recommendations = new FormArray([]);
     let timberpest_recommendations = new FormArray([]);
 
-    //Add in a loop - todo
+    //Add each array push in a loop through list of recomm for hallway from back end - todo
     hallways_recommendations.push(
       new FormGroup({
         'inspection_findings_and_recommendations-1': new FormControl(),
@@ -310,7 +308,7 @@ export class InspectionDtlFormComponent implements OnInit {
       // 'rec-file-<%=recCounter%>': new FormControl(),
       // 'typee-<%=recCounter++%>': new FormControl(),
 
-      'kitchen_recommendations_list': kitchen_recommendations,  
+      'kitchen_recommendations_list': kitchen_recommendations,
 
       '1169': new FormControl(),
       '1170': new FormControl(),
@@ -1215,6 +1213,10 @@ export class InspectionDtlFormComponent implements OnInit {
 
   onDeleteRecommendations(recommendationType, i) {
     (<FormArray>this.inspectiondetailsform.get(recommendationType)).removeAt(i);
+  }
+
+  onSave(){
+    console.log(this.inspectiondetailsform);
   }
 }
 

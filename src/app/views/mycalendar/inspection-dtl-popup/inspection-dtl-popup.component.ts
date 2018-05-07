@@ -1,7 +1,7 @@
 import { Component, OnInit, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 import { ModalDirective } from 'ngx-bootstrap/modal';
 import { Router } from "@angular/router";
-import { DataStorageService } from "../../../shared/data-storage.service";
+import { InspectionDetailsService } from "../../../shared/inspection-detail.service";
 
 
 @Component({
@@ -14,10 +14,10 @@ export class InspectionDtlPopupComponent implements OnInit {
   summary: String = "Default Summary";
   public detailsModal;
 
-  constructor(private dataStorageService: DataStorageService, private router: Router) { }
+  constructor(private inspectionDetailsService: InspectionDetailsService, private router: Router) { }
 
   ngOnInit() {
-    this.dataStorageService.dataChanged.subscribe(
+    this.inspectionDetailsService.dataChanged.subscribe(
       (nextsummary: String) => {
         this.summary = nextsummary;
       }
@@ -28,7 +28,7 @@ export class InspectionDtlPopupComponent implements OnInit {
 
   initLoadSummary() {
     setInterval(() => {
-      this.dataStorageService.getSummary();
+      this.inspectionDetailsService.getSummary();
     }, 3000);
   }
 
