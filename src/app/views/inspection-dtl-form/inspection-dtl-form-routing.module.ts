@@ -7,7 +7,7 @@ const routes: Routes = [
     path: '',
     component: InspectionDtlFormComponent,
     data: {
-      title: 'Inspection Dtl Form'
+      title: 'Building & Pest Inspection'
     }
   }
 ];

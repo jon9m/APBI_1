@@ -1,7 +1,7 @@
 import { Component, OnInit, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 import { ModalDirective } from 'ngx-bootstrap/modal';
-import { DataStorageService } from "../../../shared/data-service";
 import { Router } from "@angular/router";
+import { DataStorageService } from "../../../shared/data-storage.service";
 
 
 @Component({

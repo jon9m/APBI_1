@@ -826,10 +826,10 @@
           recCounter=Integer.parseInt(rb.getFilename().split("-")[2]);
       %>-->
         <div id="rec-container-<%=recCounter%>" formArrayName="hallways_recommendations_list">
-          <div class="card" *ngFor="let number of [0]; let i=index;" [formGroupName]="i">
+          <div class="card" *ngFor="let recomm of getRecommendationControls(inspectiondetailsform, 'hallways_recommendations_list'); let i=index;" [formGroupName]="i">
             <div class="card-body">
               <div class="pull-right"><a data-toggle="tooltip" title="" class="btn btn-default" data-original-title="Remove this recommendation"
-                  onclick="Recommendation.removeRecommendationBlock('rec-container-<%=recCounter%>');"><i class="fa fa-times"></i></a></div>
+                  (click)="onDeleteRecommendations('hallways_recommendations_list')"><i class="fa fa-times"></i></a></div>
               <div class="row">
                 <div class="col-sm-12">
                   <div class="form-group">
@@ -903,8 +903,7 @@
         <!--<%}}%>-->
       </div>
       <div>
-        <input type="button" class="pull-right" onclick="Recommendation.addRecommendationBlock('Hallways','recomendations-1');" value="Add More Recommendation"
-        />
+        <input type="button" (click)="onAddRecommendations('hallways_recommendations_list')" class="pull-right" value="Add More Recommendation"/>
       </div>
     </div>
   </div>
@@ -1372,10 +1371,10 @@
         recCounter=Integer.parseInt(rb.getFilename().split("-")[2]);
       %>-->
         <div id="rec-container-<%=recCounter%>" formArrayName="kitchen_recommendations_list">
-          <div class="card" *ngFor="let number of [0]; let i=index;" [formGroupName]="i">
+          <div class="card" *ngFor="let recomm of getRecommendationControls(inspectiondetailsform, 'kitchen_recommendations_list'); let i=index;" [formGroupName]="i">
             <div class="card-body">
               <div class="pull-right"><a data-toggle="tooltip" title="" class="btn btn-default" data-original-title="Remove this recommendation"
-                  onclick="Recommendation.removeRecommendationBlock('rec-container-<%=recCounter%>');"><i class="fa fa-times"></i></a></div>
+                  (click)="onDeleteRecommendations('kitchen_recommendations_list')"><i class="fa fa-times"></i></a></div>
               <div class="row">
                 <div class="col-sm-12">
                   <div class="form-group">
@@ -1447,7 +1446,7 @@
         <!--<%}}%>-->
       </div>
       <div>
-        <input type="button" class="pull-right" onclick="Recommendation.addRecommendationBlock('Kitchen','recomendations-2');" value="Add More Recommendation"
+        <input type="button" class="pull-right" (click)="onAddRecommendations('kitchen_recommendations_list')" value="Add More Recommendation"
         />
       </div>
     </div>
@@ -1801,10 +1800,10 @@
         recCounter=Integer.parseInt(rb.getFilename().split("-")[2]);
       %>-->
         <div id="rec-container-<%=recCounter%>"  formArrayName="laundry_recommendations_list">
-          <div class="card" *ngFor="let number of [0]; let i=index;" [formGroupName]="i">
+          <div class="card" *ngFor="let recomm of getRecommendationControls(inspectiondetailsform, 'laundry_recommendations_list'); let i=index;" [formGroupName]="i">
             <div class="card-body">
               <div class="pull-right"><a data-toggle="tooltip" title="" class="btn btn-default" data-original-title="Remove this recommendation"
-                  onclick="Recommendation.removeRecommendationBlock('rec-container-<%=recCounter%>');"><i class="fa fa-times"></i></a></div>
+                  (click)="onDeleteRecommendations('laundry_recommendations_list')"><i class="fa fa-times"></i></a></div>
               <div class="row">
                 <div class="col-sm-12">
                   <div class="form-group">
@@ -1876,7 +1875,7 @@
         <!--<%}}%>-->
       </div>
       <div>
-        <input type="button" class="pull-right" onclick="Recommendation.addRecommendationBlock('Laundry','recomendations-3');" value="Add More Recommendation"/>
+        <input type="button" class="pull-right" (click)="onAddRecommendations('laundry_recommendations_list')" value="Add More Recommendation"/>
       </div>
     </div>
   </div>
@@ -2897,10 +2896,10 @@
         recCounter=Integer.parseInt(rb.getFilename().split("-")[2]);
       %>-->
         <div id="rec-container-<%=recCounter%>" formArrayName="bedrooms_recommendations_list">
-          <div class="card" *ngFor="let number of [0]; let i=index;" [formGroupName]="i">
+          <div class="card" *ngFor="let recomm of getRecommendationControls(inspectiondetailsform, 'bedrooms_recommendations_list'); let i=index;" [formGroupName]="i">
             <div class="card-body">
               <div class="pull-right"><a data-toggle="tooltip" title="" class="btn btn-default" data-original-title="Remove this recommendation"
-                  onclick="Recommendation.removeRecommendationBlock('rec-container-<%=recCounter%>');"><i class="fa fa-times"></i></a></div>
+                  (click)="onDeleteRecommendations('bedrooms_recommendations_list')"><i class="fa fa-times"></i></a></div>
               <div class="row">
                 <div class="col-sm-12">
                   <div class="form-group">
@@ -2972,7 +2971,7 @@
         <!--<%}}%>-->
       </div>
       <div>
-        <input type="button" class="pull-right" onclick="Recommendation.addRecommendationBlock('Bedrooms','recomendations-4');" value="Add More Recommendation"
+        <input type="button" class="pull-right" (click)="onAddRecommendations('bedrooms_recommendations_list')" value="Add More Recommendation"
         />
       </div>
     </div>
@@ -3581,10 +3580,10 @@
           recCounter=Integer.parseInt(rb.getFilename().split("-")[2]);
       %>-->
         <div id="rec-container-<%=recCounter%>" formArrayName="bathrooms_recommendations_list">
-          <div class="card" *ngFor="let number of [0]; let i=index;" [formGroupName]="i">
+          <div class="card" *ngFor="let recomm of getRecommendationControls(inspectiondetailsform, 'bathrooms_recommendations_list'); let i=index;" [formGroupName]="i">
             <div class="card-body">
               <div class="pull-right"><a data-toggle="tooltip" title="" class="btn btn-default" data-original-title="Remove this recommendation"
-                  onclick="Recommendation.removeRecommendationBlock('rec-container-<%=recCounter%>');"><i class="fa fa-times"></i></a></div>
+                  (click)="onDeleteRecommendations('bathrooms_recommendations_list')"><i class="fa fa-times"></i></a></div>
               <div class="row">
                 <div class="col-sm-12">
                   <div class="form-group">
@@ -3656,8 +3655,7 @@
         <!--<%}}%>-->
       </div>
       <div>
-        <input type="button" class="pull-right" onclick="Recommendation.addRecommendationBlock('Bathrooms','recomendations-5');"
-          value="Add More Recommendation" />
+        <input type="button" class="pull-right" (click)="onAddRecommendations('bathrooms_recommendations_list')" value="Add More Recommendation" />
       </div>
     </div>
   </div>
@@ -4266,10 +4264,10 @@
       recCounter=Integer.parseInt(rb.getFilename().split("-")[2]);
     %>-->
         <div id="rec-container-<%=recCounter%>" formArrayName="ensuite_recommendations_list">
-          <div class="card" *ngFor="let number of [0]; let i=index;" [formGroupName]="i">
+          <div class="card" *ngFor="let recomm of getRecommendationControls(inspectiondetailsform, 'ensuite_recommendations_list'); let i=index;" [formGroupName]="i">
             <div class="card-body">
               <div class="pull-right"><a data-toggle="tooltip" title="" class="btn btn-default" data-original-title="Remove this recommendation"
-                  onclick="Recommendation.removeRecommendationBlock('rec-container-<%=recCounter%>');"><i class="fa fa-times"></i></a></div>
+                  (click)="onDeleteRecommendations('ensuite_recommendations_list')"><i class="fa fa-times"></i></a></div>
               <div class="row">
                 <div class="col-sm-12">
                   <div class="form-group">
@@ -4341,7 +4339,7 @@
         <!--<%}}%>-->
       </div>
       <div>
-        <input type="button" class="pull-right" onclick="Recommendation.addRecommendationBlock('Ensuite','recomendations-6');" value="Add More Recommendation"
+        <input type="button" class="pull-right" (click)="onAddRecommendations('ensuite_recommendations_list')" value="Add More Recommendation"
         />
       </div>
     </div>
@@ -5134,10 +5132,10 @@
       recCounter=Integer.parseInt(rb.getFilename().split("-")[2]);
     %>-->
         <div id="rec-container-<%=recCounter%>" formArrayName="external_recommendations_list">
-          <div class="card" *ngFor="let number of [0]; let i=index;" [formGroupName]="i">
+          <div class="card" *ngFor="let recomm of getRecommendationControls(inspectiondetailsform, 'external_recommendations_list'); let i=index;" [formGroupName]="i">
             <div class="card-body">
               <div class="pull-right"><a data-toggle="tooltip" title="" class="btn btn-default" data-original-title="Remove this recommendation"
-                  onclick="Recommendation.removeRecommendationBlock('rec-container-<%=recCounter%>');"><i class="fa fa-times"></i></a></div>
+                  (click)="onDeleteRecommendations('external_recommendations_list')"><i class="fa fa-times"></i></a></div>
               <div class="row">
                 <div class="col-sm-12">
                   <div class="form-group">
@@ -5209,7 +5207,7 @@
         <!--<%}}%>-->
       </div>
       <div>
-        <input type="button" class="pull-right" onclick="Recommendation.addRecommendationBlock('External','recomendations-7');" value="Add More Recommendation"
+        <input type="button" class="pull-right" (click)="onAddRecommendations('external_recommendations_list')" value="Add More Recommendation"
         />
       </div>
     </div>
@@ -5900,10 +5898,10 @@
       recCounter=Integer.parseInt(rb.getFilename().split("-")[2]);
     %>-->
         <div id="rec-container-<%=recCounter%>" formArrayName="timberpest_recommendations_list">
-          <div class="card" *ngFor="let number of [0]; let i=index;" [formGroupName]="i">
+          <div class="card" *ngFor="let recomm of getRecommendationControls(inspectiondetailsform, 'timberpest_recommendations_list'); let i=index;" [formGroupName]="i">
             <div class="card-body">
               <div class="pull-right"><a data-toggle="tooltip" title="" class="btn btn-default" data-original-title="Remove this recommendation"
-                  onclick="Recommendation.removeRecommendationBlock('rec-container-<%=recCounter%>');"><i class="fa fa-times"></i></a></div>
+                  (click)="onDeleteRecommendations('timberpest_recommendations_list')"><i class="fa fa-times"></i></a></div>
               <div class="row">
                 <div class="col-sm-12">
                   <div class="form-group">
@@ -5968,8 +5966,7 @@
         <!--<%}}%>-->
       </div>
       <div>
-        <input type="button" class="pull-right" onclick="Recommendation.addRecommendationBlock('TimberPest','recomendations-9',1);"
-          value="Add More Recommendation" />
+        <input type="button" class="pull-right" (click)="onAddRecommendations('timberpest_recommendations_list')" value="Add More Recommendation"/>
       </div>
     </div>
   </div>

@@ -40,7 +40,8 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
 import { MycalendarComponent } from './views/mycalendar/mycalendar.component';
-import { DataStorageService } from "./shared/data-service";
+import { DataStorageService } from "./shared/data-storage.service";
+import { InspectionDetailsService } from "./shared/inspection-detail.service";
 
 @NgModule({
   imports: [
@@ -68,7 +69,8 @@ import { DataStorageService } from "./shared/data-service";
     provide: LocationStrategy,
     useClass: HashLocationStrategy
   },
-  DataStorageService],
+  DataStorageService,
+  InspectionDetailsService],
   
   bootstrap: [ AppComponent ]
 })
