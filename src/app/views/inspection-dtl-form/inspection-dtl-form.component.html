@@ -6438,8 +6438,8 @@ building expert should be consulted.</label>
     </div>
   </div>
   <div class="pull-right">
-    <input type="submit" form="addReportForm" data-toggle="tooltip" title="" class="btn btn-primary" data-original-title="Save"
-      value="SAVE" onclick="Reports.submitForm();" />
+    <input (click)="onSave()" type="submit" form="addReportForm" data-toggle="tooltip" title="" class="btn btn-primary" data-original-title="Save"
+      value="SAVE"/>
     <a href="" data-toggle="tooltip" title="" class="btn btn-default" data-original-title="Cancel"><i class="fa fa-reply"></i></a>
   </div>
 </form>

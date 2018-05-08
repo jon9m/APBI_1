@@ -6,34 +6,27 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
-        <p>{{summary}}</p>
-
-            <div class="row bg-primary modal-body" style="padding-top:15px;padding-bottom:15px;">
-              <div class="col-xs-12">
-                <h3>Inspection Details</h3>
-                <p>Address: THE DOCKS UNIT 132 15 GOODWIN STREET KANGAROO POINT QLD 4169</p>
-                <p>Inspection Type: Pre-Purchase Building Inspection</p>
-                <p>Inspection Date/Time: 2018-05-01 14:00:00.0</p>
-              </div>
-            </div>
-            <div class="row bg-info modal-body" style="padding-top:15px;padding-bottom:15px;">
-              <div class="col-xs-12">
-                <h3>Client Details</h3>
-                <p>Name: Enyaj Super Funds - Craig Lange</p>
-                <p>Phone: 0422254548</p>
-                <p>Email: super@enyaj.com</p>
-              </div>
-            </div>                      
+      <div class="modal-body p-0">
+        <div class="col-xs-12 bg-primary p-3">
+          <h3>Inspection Details</h3>
+          <div>Address: THE DOCKS UNIT 132 15 GOODWIN STREET KANGAROO POINT QLD 4169</div>
+          <div>Inspection Type: Pre-Purchase Building Inspection</div>
+          <div>Inspection Date/Time: 2018-05-01 14:00:00.0</div>
+        </div>
+        <div class="col-xs-12 bg-info p-3">
+          <h3>Client Details</h3>
+          <div>Name: Enyaj Super Funds - Craig Lange</div>
+          <div>Phone: 0422254548</div>
+          <div>Email: super@enyaj.com</div>
+        </div>
       </div>
       <div class="modal-footer">
-        <button type="button" id="modalclosebutton" class="btn btn-default pull-left" (click)="detailsModal.hide()">Cancel</button>
-       <button type="button" class="btn btn-outline" onclick="Reports.loadForm();" (click)="loadForm()">Complete the report form</button>
+        <button type="button" id="modalclosebutton" class="btn btn-outline-primary mr-auto" (click)="detailsModal.hide()">Cancel</button>
+        <button type="button" class="btn btn-outline-info" onclick="Reports.loadForm();" (click)="loadForm()">Complete the report form</button>
       </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-
+    </div>
+  </div>
+</div>
 <button id="modalbutton" style="display:none;" type="button" class="btn btn-secondary" data-toggle="modal" (click)="detailsModal.show()">
-        Launch large modal
+  Launch large modal
 </button>

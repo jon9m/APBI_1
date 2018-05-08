@@ -677,7 +677,7 @@ export class InspectionDetailsService {
         let responseInspectionDetails = this.responseJSON2;
         console.log(Object.keys(responseInspectionDetails).filter((name) => /inspection_findings_and_recommendations/.test(name)));
 
-        
+        Object.assign(inspectionDetails, responseInspectionDetails);
 
         return inspectionDetails;
     }
