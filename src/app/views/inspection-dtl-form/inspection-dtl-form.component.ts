@@ -16,7 +16,8 @@ export class InspectionDtlFormComponent implements OnInit {
 
   ngOnInit() {
     this.initForm();
-
+    // this.initFileUpload();
+    
     this.inspectiondetailsform.patchValue(this.inspectionDetailsService.getInspectionDetails());
   }
 
@@ -38,7 +39,8 @@ export class InspectionDtlFormComponent implements OnInit {
         'inspection_findings_and_recommendations-1': new FormControl(),
         'inspection_findings_and_recommendations-2': new FormControl(),
         'inspection_findings_and_recommendations-3': new FormControl(),
-        'inspection-finding-comment': new FormControl()
+        'inspection-finding-comment': new FormControl(),
+        'rec-file-preview': new FormControl()
       })
     );
     kitchen_recommendations.push(
@@ -1198,6 +1200,63 @@ export class InspectionDtlFormComponent implements OnInit {
     });
   }
 
+  // image uploading and preview
+  readImgURL(index, rectype, event){
+    let reader = new FileReader();
+    if(event.target.files && event.target.files.length > 0) {
+      let file = event.target.files[0];
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        let recImgId = "rec-file-preview-" + rectype + "-" + index;
+        $(recImgId).attr('src', event.target.result);
+      };
+    }
+  }
+
+  onFileChange(event) {
+    let reader = new FileReader();
+    if (event.target.files && event.target.files.length > 0) {
+      let file = event.target.files[0];
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        // this.inspectiondetailsform.get('avatar').setValue({
+        //   filename: file.name,
+        //   filetype: file.type,
+        //   value: reader.result.split(',')[1]
+        // })
+
+        console.log(file.name);
+        console.log(file.type);
+        console.log(reader.result);
+      };
+    }
+  }
+
+  // initFileUpload(){
+  //   $(function() {
+  //     'use strict';
+  //     // Change this to the location of your server-side upload handler:
+  //     var url = 'https://apbi.com.au/inspector-app/cpUploadImageApp';
+  //     $('input:file').fileupload({
+  //       url: url,
+  //       dataType: 'json',
+  //       done: function (e, data) {
+  
+  //       },
+  //       progressall: function (e, data) {
+  //         // var progress = parseInt((data.loaded / data.total) * 100, 10);
+  //         var progress = (data.loaded / data.total) * 100;
+  //         $('#' + $(this).attr('name') + '-progress .progress-bar').css(
+  //           'width',
+  //           progress + '%'
+  //         );
+  //       }
+  //     }).prop('disabled', !$.support.fileInput)
+  //       .parent().addClass($.support.fileInput ? undefined : 'disabled');
+  //   });
+  // }
+  //image upload ends
+
   getRecommendationControls(inspectiondetailsform, recommendationType) {
     return inspectiondetailsform.get(recommendationType).controls;
   }
@@ -1207,7 +1266,8 @@ export class InspectionDtlFormComponent implements OnInit {
       'inspection_findings_and_recommendations-1': new FormControl(),
       'inspection_findings_and_recommendations-2': new FormControl(),
       'inspection_findings_and_recommendations-3': new FormControl(),
-      'inspection-finding-comment': new FormControl()
+      'inspection-finding-comment': new FormControl(),
+      'rec-file-preview': new FormControl()
     }));
   }
 

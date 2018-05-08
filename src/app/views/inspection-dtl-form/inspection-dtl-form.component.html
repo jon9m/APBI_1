@@ -882,14 +882,14 @@
                   <div class="form-group">
                     <div>
                       <span class="btn btn-success fileinput-button"><i class="glyphicon glyphicon-plus"></i><span>Select file...</span>
-                      <input type="file" name="rec-file-<%=recCounter%>" onchange="readURL(this,'#rec-file-<%=recCounter%>');" accept="image/*"
-                        capture="camera" />
+                      <!-- <input type="file" name="rec-file-<%=recCounter%>" (click)="readImgURL(i,'hallways',$event);" accept="image/*" capture="camera" /> -->
+                      <input type="file" formControlName="rec-file-preview" (change)="onFileChange($event)" accept="image/*" capture="camera" />
                       </span><br> <br>
                       <div id="rec-file-<%=recCounter%>-progress" class="progress">
                         <div class="progress-bar progress-bar-success"></div>
                       </div>
                       <div class="files">
-                        <img id="rec-file-<%=recCounter%>" src="cpRepImg?src=<%=rb.getFilename()%>&time=<%=java.util.Calendar.getInstance().getTimeInMillis()%>"
+                        <img id="{{'rec-file-preview-hallways-'+i}}" src="cpRepImg?src=<%=rb.getFilename()%>&time=<%=java.util.Calendar.getInstance().getTimeInMillis()%>"
                           alt="your image" height="160px;" />
                       </div>
                       <input type="hidden" name="typee-<%=recCounter++%>" value="Hallways" />
@@ -6438,8 +6438,7 @@ building expert should be consulted.</label>
     </div>
   </div>
   <div class="pull-right">
-    <input (click)="onSave()" type="submit" form="addReportForm" data-toggle="tooltip" title="" class="btn btn-primary" data-original-title="Save"
-      value="SAVE"/>
+    <input (click)="onSave()" type="submit" form="addReportForm" data-toggle="tooltip" title="" class="btn btn-primary" data-original-title="Save" value="SAVE"/>
     <a href="" data-toggle="tooltip" title="" class="btn btn-default" data-original-title="Cancel"><i class="fa fa-reply"></i></a>
   </div>
 </form>
