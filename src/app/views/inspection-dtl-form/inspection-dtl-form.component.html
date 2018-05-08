@@ -885,8 +885,8 @@
                       <!-- <input type="file" name="rec-file-<%=recCounter%>" (click)="readImgURL(i,'hallways',$event);" accept="image/*" capture="camera" /> -->
                       <input type="file" formControlName="rec-file-preview" (change)="onFileChange($event)" accept="image/*" capture="camera" />
                       </span><br> <br>
-                      <div id="rec-file-<%=recCounter%>-progress" class="progress">
-                        <div class="progress-bar progress-bar-success"></div>
+                      <div id="{{'rec-file-preview-hallways-progress-'+i}}" class="progress">
+                        <div class="progress-bar progress-bar-success" [style.width.%]="uploadProgress"></div>
                       </div>
                       <div class="files">
                         <img id="{{'rec-file-preview-hallways-'+i}}" src="cpRepImg?src=<%=rb.getFilename()%>&time=<%=java.util.Calendar.getInstance().getTimeInMillis()%>"

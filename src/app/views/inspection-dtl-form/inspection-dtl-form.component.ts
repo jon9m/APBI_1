@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormArray } from "@angular/forms";
 import { InspectionDetailsService } from "../../shared/inspection-detail.service";
+import { FileUploadService } from '../../shared/fileupload.service';
+import { HttpEventType } from '@angular/common/http';
 
 @Component({
   selector: 'app-inspection-dtl-form',
@@ -11,7 +13,7 @@ export class InspectionDtlFormComponent implements OnInit {
 
   inspectiondetailsform: FormGroup;
 
-  constructor(private inspectionDetailsService: InspectionDetailsService) {
+  constructor(private inspectionDetailsService: InspectionDetailsService, private fileUploadService: FileUploadService) {
   }
 
   ngOnInit() {
@@ -1213,22 +1215,52 @@ export class InspectionDtlFormComponent implements OnInit {
     }
   }
 
+  fileUploadSub: any;
+  uploadingProgressing:boolean = false;
+  uploadProgress:number = 0;
+  uploadComplete:boolean = false;
+  serverResponse: any;
+  
+
   onFileChange(event) {
+    let submittedData = {};
     let reader = new FileReader();
     if (event.target.files && event.target.files.length > 0) {
-      let file = event.target.files[0];
-      reader.readAsDataURL(file);
+      let fileToUpload = event.target.files[0];
+      reader.readAsDataURL(fileToUpload);
       reader.onload = () => {
-        // this.inspectiondetailsform.get('avatar').setValue({
-        //   filename: file.name,
-        //   filetype: file.type,
-        //   value: reader.result.split(',')[1]
-        // })
+        this.fileUploadSub = this.fileUploadService.fileUpload(fileToUpload, submittedData)
+          .subscribe(
+            event => this.handleProgress(event),
+            error => {
+              console.log("Server error")
+            });
 
-        console.log(file.name);
-        console.log(file.type);
+        console.log(fileToUpload.name);
+        console.log(fileToUpload.type);
         console.log(reader.result);
       };
+    }
+  }
+
+  handleProgress(event) {
+    if (event.type === HttpEventType.DownloadProgress) {
+      this.uploadingProgressing = true
+      this.uploadProgress = Math.round(100 * event.loaded / event.total);
+      console.log(this.uploadProgress);
+    }
+
+    if (event.type === HttpEventType.UploadProgress) {
+      this.uploadingProgressing = true
+      this.uploadProgress = Math.round(event.loaded / event.total * 100);
+      console.log(this.uploadProgress);
+    }
+
+    if (event.type === HttpEventType.Response) {
+      // console.log(event.body);
+      this.uploadComplete = true
+      this.serverResponse = event.body
+      console.log(event.body);
     }
   }
 

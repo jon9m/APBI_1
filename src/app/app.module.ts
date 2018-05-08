@@ -42,6 +42,7 @@ import { ChartsModule } from 'ng2-charts/ng2-charts';
 import { MycalendarComponent } from './views/mycalendar/mycalendar.component';
 import { DataStorageService } from "./shared/data-storage.service";
 import { InspectionDetailsService } from "./shared/inspection-detail.service";
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   imports: [
@@ -55,7 +56,8 @@ import { InspectionDetailsService } from "./shared/inspection-detail.service";
     PerfectScrollbarModule,
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
-    ChartsModule  
+    ChartsModule,
+    HttpClientModule
   ],
   declarations: [
     AppComponent,
