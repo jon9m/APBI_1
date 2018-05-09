@@ -22,9 +22,6 @@ export class FileUploadService {
         const req = new HttpRequest('POST', apiCreateEndpoint, formData, {
             reportProgress: true // for progress data
         });
-
-        console.log(formData.get('type'));
-
         return this.http.request(req);
     }
 }

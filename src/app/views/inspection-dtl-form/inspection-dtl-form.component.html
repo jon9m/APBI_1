@@ -220,13 +220,13 @@
           <div class="form-group">
             <div class="col-sm-12">
               <span class="btn btn-success fileinput-button"><i class="glyphicon glyphicon-plus"></i><span>Select file...</span>
-              <input type="file" name="file-01" onchange="readURL(this,'#file-01');" accept="image/*" capture="camera" />
+              <input type="file" name="file-01" (change)="readImgURL($event);" accept="image/*" capture="camera" />
               </span><br> <br>
               <div id="file-01-progress" class="progress">
                 <div class="progress-bar progress-bar-success"></div>
               </div>
               <div class="files">
-                <img id="file-01" src="cpRepImg?src=file-01&time=<%=java.util.Calendar.getInstance().getTimeInMillis()%>" alt="your image" height="160px;" />
+                <img id="file-01" [src]="url" alt="your image" height="160px;" />
               </div>
             </div>
           </div>

@@ -1241,15 +1241,14 @@ export class InspectionDtlFormComponent implements OnInit {
   }
 
   // image uploading and preview
-  readImgURL(index, rectype, event) {
-    let reader = new FileReader();
-    if (event.target.files && event.target.files.length > 0) {
-      let file = event.target.files[0];
-      reader.readAsDataURL(file);
-      reader.onload = () => {
-        let recImgId = "rec-file-preview-" + rectype + "-" + index;
-        $(recImgId).attr('src', event.target.result);
-      };
+  url: any;
+  readImgURL(event) {
+    if (event.target.files && event.target.files[0]) {
+      var reader = new FileReader();
+      reader.readAsDataURL(event.target.files[0]); // read file as data url
+      reader.onload = (event) => { // called once readAsDataURL is completed
+        this.url = (<FileReader>event.target).result;
+      }
     }
   }
 
@@ -1262,15 +1261,20 @@ export class InspectionDtlFormComponent implements OnInit {
   currInputElemProgress: any;
 
   onFileChange(event, index, recommendationType) {
-    let submittedData = {'index':index, 'type': recommendationType};
+    let submittedData = {'index':index, 'type': recommendationType};  //TODO add bookingid
     let reader = new FileReader();
     if (event.target.files && event.target.files.length > 0) {
       let fileToUpload = event.target.files[0];
       reader.readAsDataURL(fileToUpload);
-      reader.onload = () => {
+      reader.onload = (event) => {
+
+        (<HTMLImageElement>document.querySelector("#rec-file-preview-hallways-0")).src = (<FileReader>event.target).result;
+
         this.fileUploadSub = this.fileUploadService.fileUpload(fileToUpload, submittedData)
           .subscribe(
-            event => this.handleProgress(event, index, recommendationType),
+            event => {
+              this.handleProgress(event, index, recommendationType);
+            },
             error => {
               console.log("Server error")
             });
