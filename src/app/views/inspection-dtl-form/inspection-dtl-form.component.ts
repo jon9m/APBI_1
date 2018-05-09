@@ -9,6 +9,18 @@ import { HttpEventType } from '@angular/common/http';
   templateUrl: './inspection-dtl-form.component.html',
   styleUrls: ['./inspection-dtl-form.component.scss']
 })
+
+/***** keys
+'hallways_recommendations_list'
+'kitchen_recommendations_list'
+'laundry_recommendations_list'
+'bedrooms_recommendations_list'
+'bathrooms_recommendations_list'
+'ensuite_recommendations_list'
+'external_recommendations_list'
+'timberpest_recommendations_list'
+ */
+
 export class InspectionDtlFormComponent implements OnInit {
 
   inspectiondetailsform: FormGroup;
@@ -19,7 +31,7 @@ export class InspectionDtlFormComponent implements OnInit {
   ngOnInit() {
     this.initForm();
     // this.initFileUpload();
-    
+
     this.inspectiondetailsform.patchValue(this.inspectionDetailsService.getInspectionDetails());
   }
 
@@ -35,72 +47,98 @@ export class InspectionDtlFormComponent implements OnInit {
     let ensuite_recommendations = new FormArray([]);
     let timberpest_recommendations = new FormArray([]);
 
-    //Add each array push in a loop through list of recomm for hallway from back end - todo
-    hallways_recommendations.push(
-      new FormGroup({
-        'inspection_findings_and_recommendations-1': new FormControl(),
-        'inspection_findings_and_recommendations-2': new FormControl(),
-        'inspection_findings_and_recommendations-3': new FormControl(),
-        'inspection-finding-comment': new FormControl(),
-        'rec-file-preview': new FormControl()
-      })
-    );
-    kitchen_recommendations.push(
-      new FormGroup({
-        'inspection_findings_and_recommendations-1': new FormControl(),
-        'inspection_findings_and_recommendations-2': new FormControl(),
-        'inspection_findings_and_recommendations-3': new FormControl(),
-        'inspection-finding-comment': new FormControl()
-      })
-    );
-    laundry_recommendations.push(
-      new FormGroup({
-        'inspection_findings_and_recommendations-1': new FormControl(),
-        'inspection_findings_and_recommendations-2': new FormControl(),
-        'inspection_findings_and_recommendations-3': new FormControl(),
-        'inspection-finding-comment': new FormControl()
-      })
-    );
-    bedrooms_recommendations.push(
-      new FormGroup({
-        'inspection_findings_and_recommendations-1': new FormControl(),
-        'inspection_findings_and_recommendations-2': new FormControl(),
-        'inspection_findings_and_recommendations-3': new FormControl(),
-        'inspection-finding-comment': new FormControl()
-      })
-    );
-    bathrooms_recommendations.push(
-      new FormGroup({
-        'inspection_findings_and_recommendations-1': new FormControl(),
-        'inspection_findings_and_recommendations-2': new FormControl(),
-        'inspection_findings_and_recommendations-3': new FormControl(),
-        'inspection-finding-comment': new FormControl()
-      })
-    );
-    external_recommendations.push(
-      new FormGroup({
-        'inspection_findings_and_recommendations-1': new FormControl(),
-        'inspection_findings_and_recommendations-2': new FormControl(),
-        'inspection_findings_and_recommendations-3': new FormControl(),
-        'inspection-finding-comment': new FormControl()
-      })
-    );
-    ensuite_recommendations.push(
-      new FormGroup({
-        'inspection_findings_and_recommendations-1': new FormControl(),
-        'inspection_findings_and_recommendations-2': new FormControl(),
-        'inspection_findings_and_recommendations-3': new FormControl(),
-        'inspection-finding-comment': new FormControl()
-      })
-    );
-    timberpest_recommendations.push(
-      new FormGroup({
-        'inspection_findings_and_recommendations-1': new FormControl(),
-        'inspection_findings_and_recommendations-2': new FormControl(),
-        'inspection_findings_and_recommendations-3': new FormControl(),
-        'inspection-finding-comment': new FormControl()
-      })
-    );
+
+    //from back end - todo
+    let hallways_recommendations_array = [{}];
+    let kitchen_recommendations_array = [{}];
+    let laundry_recommendations_array = [{}];
+    let bedrooms_recommendations_array = [{}];
+    let bathrooms_recommendations_array = [{}];
+    let external_recommendations_array = [{}];
+    let ensuite_recommendations_array = [{}];
+    let timberpest_recommendations_array = [{}];
+
+
+    hallways_recommendations_array.forEach((item, index) => {
+      hallways_recommendations.push(
+        new FormGroup({
+          'inspection_findings_and_recommendations-1': new FormControl(),
+          'inspection_findings_and_recommendations-2': new FormControl(),
+          'inspection_findings_and_recommendations-3': new FormControl(),
+          'inspection-finding-comment': new FormControl()
+        })
+      );
+    });
+    kitchen_recommendations_array.forEach((item, index) => {
+      kitchen_recommendations.push(
+        new FormGroup({
+          'inspection_findings_and_recommendations-1': new FormControl(),
+          'inspection_findings_and_recommendations-2': new FormControl(),
+          'inspection_findings_and_recommendations-3': new FormControl(),
+          'inspection-finding-comment': new FormControl()
+        })
+      );
+    });
+    laundry_recommendations_array.forEach((item, index) => {
+      laundry_recommendations.push(
+        new FormGroup({
+          'inspection_findings_and_recommendations-1': new FormControl(),
+          'inspection_findings_and_recommendations-2': new FormControl(),
+          'inspection_findings_and_recommendations-3': new FormControl(),
+          'inspection-finding-comment': new FormControl()
+        })
+      );
+    });
+    bedrooms_recommendations_array.forEach((item, index) => {
+      bedrooms_recommendations.push(
+        new FormGroup({
+          'inspection_findings_and_recommendations-1': new FormControl(),
+          'inspection_findings_and_recommendations-2': new FormControl(),
+          'inspection_findings_and_recommendations-3': new FormControl(),
+          'inspection-finding-comment': new FormControl()
+        })
+      );
+    });
+    bathrooms_recommendations_array.forEach((item, index) => {
+      bathrooms_recommendations.push(
+        new FormGroup({
+          'inspection_findings_and_recommendations-1': new FormControl(),
+          'inspection_findings_and_recommendations-2': new FormControl(),
+          'inspection_findings_and_recommendations-3': new FormControl(),
+          'inspection-finding-comment': new FormControl()
+        })
+      );
+    });
+    external_recommendations_array.forEach((item, index) => {
+      external_recommendations.push(
+        new FormGroup({
+          'inspection_findings_and_recommendations-1': new FormControl(),
+          'inspection_findings_and_recommendations-2': new FormControl(),
+          'inspection_findings_and_recommendations-3': new FormControl(),
+          'inspection-finding-comment': new FormControl()
+        })
+      );
+    });
+    ensuite_recommendations_array.forEach((item, index) => {
+      ensuite_recommendations.push(
+        new FormGroup({
+          'inspection_findings_and_recommendations-1': new FormControl(),
+          'inspection_findings_and_recommendations-2': new FormControl(),
+          'inspection_findings_and_recommendations-3': new FormControl(),
+          'inspection-finding-comment': new FormControl()
+        })
+      );
+    });
+    timberpest_recommendations_array.forEach((item, index) => {
+      timberpest_recommendations.push(
+        new FormGroup({
+          'inspection_findings_and_recommendations-1': new FormControl(),
+          'inspection_findings_and_recommendations-2': new FormControl(),
+          'inspection_findings_and_recommendations-3': new FormControl(),
+          'inspection-finding-comment': new FormControl()
+        })
+      );
+    });
 
     this.inspectiondetailsform = new FormGroup({
       'bookingid': new FormControl(),
@@ -1203,9 +1241,9 @@ export class InspectionDtlFormComponent implements OnInit {
   }
 
   // image uploading and preview
-  readImgURL(index, rectype, event){
+  readImgURL(index, rectype, event) {
     let reader = new FileReader();
-    if(event.target.files && event.target.files.length > 0) {
+    if (event.target.files && event.target.files.length > 0) {
       let file = event.target.files[0];
       reader.readAsDataURL(file);
       reader.onload = () => {
@@ -1216,15 +1254,15 @@ export class InspectionDtlFormComponent implements OnInit {
   }
 
   fileUploadSub: any;
-  uploadingProgressing:boolean = false;
-  uploadProgress:number = 0;
-  uploadComplete:boolean = false;
+  uploadingProgressing: boolean = false;
+  uploadProgress: number = 0;
+  uploadComplete: boolean = false;
   serverResponse: any;
-  
+
   currInputElemProgress: any;
 
   onFileChange(event, index, recommendationType) {
-    let submittedData = {};
+    let submittedData = {'index':index, 'type': recommendationType};
     let reader = new FileReader();
     if (event.target.files && event.target.files.length > 0) {
       let fileToUpload = event.target.files[0];
@@ -1236,10 +1274,6 @@ export class InspectionDtlFormComponent implements OnInit {
             error => {
               console.log("Server error")
             });
-
-        console.log(fileToUpload.name);
-        console.log(fileToUpload.type);
-        console.log(reader.result);
       };
     }
   }
@@ -1251,7 +1285,7 @@ export class InspectionDtlFormComponent implements OnInit {
     }
 
     if (event.type === HttpEventType.UploadProgress) {
-      this.currInputElemProgress = recommendationType + "_progress_" +index;
+      this.currInputElemProgress = recommendationType + "_progress_" + index;
 
       this.uploadingProgressing = true
       this.uploadProgress = Math.round(event.loaded / event.total * 100);
@@ -1273,7 +1307,7 @@ export class InspectionDtlFormComponent implements OnInit {
   //       url: url,
   //       dataType: 'json',
   //       done: function (e, data) {
-  
+
   //       },
   //       progressall: function (e, data) {
   //         // var progress = parseInt((data.loaded / data.total) * 100, 10);
@@ -1298,8 +1332,7 @@ export class InspectionDtlFormComponent implements OnInit {
       'inspection_findings_and_recommendations-1': new FormControl(),
       'inspection_findings_and_recommendations-2': new FormControl(),
       'inspection_findings_and_recommendations-3': new FormControl(),
-      'inspection-finding-comment': new FormControl(),
-      'rec-file-preview': new FormControl()
+      'inspection-finding-comment': new FormControl()
     }));
   }
 
@@ -1307,7 +1340,7 @@ export class InspectionDtlFormComponent implements OnInit {
     (<FormArray>this.inspectiondetailsform.get(recommendationType)).removeAt(i);
   }
 
-  onSave(){
+  onSave() {
     console.log(this.inspectiondetailsform);
   }
 }

@@ -883,7 +883,7 @@
                     <div>
                       <span class="btn btn-success fileinput-button"><i class="glyphicon glyphicon-plus"></i><span>Select file...</span>
                       <!-- <input type="file" name="rec-file-<%=recCounter%>" (click)="readImgURL(i,'hallways',$event);" accept="image/*" capture="camera" /> -->
-                      <input type="file" formControlName="rec-file-preview" (change)="onFileChange($event, i, 'hallways_recommendations_list')" accept="image/*" capture="camera" />
+                      <input type="file" (change)="onFileChange($event, i, 'hallways_recommendations_list')" accept="image/*" capture="camera" />
                       </span><br><br>
                       <div class="progress">
                         <div *ngIf="currInputElemProgress==='hallways_recommendations_list_progress_'+i" class="progress-bar progress-bar-success" [style.width.%]="uploadProgress"></div>
@@ -892,7 +892,7 @@
                         <img id="{{'rec-file-preview-hallways-'+i}}" src="cpRepImg?src=<%=rb.getFilename()%>&time=<%=java.util.Calendar.getInstance().getTimeInMillis()%>"
                           alt="your image" height="160px;" />
                       </div>
-                      <input type="hidden" name="typee-<%=recCounter++%>" value="Hallways" />
+                      <input type="hidden" value="Hallways" />
                     </div>
                   </div>
                 </div>
@@ -1425,7 +1425,7 @@
                   <div class="form-group">
                     <div>
                       <span class="btn btn-success fileinput-button"><i class="glyphicon glyphicon-plus"></i><span>Select file...</span>
-                      <input type="file" name="rec-file-<%=recCounter%>" (change)="onFileChange($event, i, 'kitchen_recommendations_list')" accept="image/*"
+                      <input type="file" (change)="onFileChange($event, i, 'kitchen_recommendations_list')" accept="image/*"
                         capture="camera" />
                       </span><br> <br>
                       <div id="rec-file-<%=recCounter%>-progress" class="progress">
@@ -1854,7 +1854,7 @@
                   <div class="form-group">
                     <div>
                       <span class="btn btn-success fileinput-button"><i class="glyphicon glyphicon-plus"></i><span>Select file...</span>
-                      <input type="file" name="rec-file-<%=recCounter%>" (change)="onFileChange($event, i, 'laundry_recommendations_list')" accept="image/*"
+                      <input type="file" (change)="onFileChange($event, i, 'laundry_recommendations_list')" accept="image/*"
                         capture="camera" />
                       </span><br> <br>
                       <div id="rec-file-<%=recCounter%>-progress" class="progress">
@@ -2950,7 +2950,7 @@
                   <div class="form-group">
                     <div>
                       <span class="btn btn-success fileinput-button"><i class="glyphicon glyphicon-plus"></i><span>Select file...</span>
-                      <input type="file" name="rec-file-<%=recCounter%>" (change)="onFileChange($event, i, 'bedrooms_recommendations_list')" accept="image/*"
+                      <input type="file" (change)="onFileChange($event, i, 'bedrooms_recommendations_list')" accept="image/*"
                         capture="camera" />
                       </span><br> <br>
                       <div id="rec-file-<%=recCounter%>-progress" class="progress">
@@ -3634,7 +3634,7 @@
                   <div class="form-group">
                     <div>
                       <span class="btn btn-success fileinput-button"><i class="glyphicon glyphicon-plus"></i><span>Select file...</span>
-                      <input type="file" name="rec-file-<%=recCounter%>" (change)="onFileChange($event, i, 'bathrooms_recommendations_list')" accept="image/*"
+                      <input type="file" (change)="onFileChange($event, i, 'bathrooms_recommendations_list')" accept="image/*"
                         capture="camera" />
                       </span><br> <br>
                       <div id="rec-file-<%=recCounter%>-progress" class="progress">
@@ -4318,7 +4318,7 @@
                   <div class="form-group">
                     <div>
                       <span class="btn btn-success fileinput-button"><i class="glyphicon glyphicon-plus"></i><span>Select file...</span>
-                      <input type="file" name="rec-file-<%=recCounter%>" (change)="onFileChange($event, i, 'ensuite_recommendations_list')" accept="image/*"
+                      <input type="file" (change)="onFileChange($event, i, 'ensuite_recommendations_list')" accept="image/*"
                         capture="camera" />
                       </span><br> <br>
                       <div id="rec-file-<%=recCounter%>-progress" class="progress">
@@ -5186,7 +5186,7 @@
                   <div class="form-group">
                     <div>
                       <span class="btn btn-success fileinput-button"><i class="glyphicon glyphicon-plus"></i><span>Select file...</span>
-                      <input type="file" name="rec-file-<%=recCounter%>" (change)="onFileChange($event, i, 'external_recommendations_list')" accept="image/*"
+                      <input type="file" (change)="onFileChange($event, i, 'external_recommendations_list')" accept="image/*"
                         capture="camera" />
                       </span><br> <br>
                       <div id="rec-file-<%=recCounter%>-progress" class="progress">
@@ -5945,7 +5945,7 @@
                   <div class="form-group">
                     <div>
                       <span class="btn btn-success fileinput-button"><i class="glyphicon glyphicon-plus"></i><span>Select file...</span>
-                      <input type="file" name="rec-file-<%=recCounter%>" (change)="onFileChange($event, i, 'timberpest_recommendations_list')" accept="image/*"
+                      <input type="file" (change)="onFileChange($event, i, 'timberpest_recommendations_list')" accept="image/*"
                         capture="camera" />
                       </span><br> <br>
                       <div id="rec-file-<%=recCounter%>-progress" class="progress">
