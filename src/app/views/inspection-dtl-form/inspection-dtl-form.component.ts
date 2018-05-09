@@ -1221,8 +1221,9 @@ export class InspectionDtlFormComponent implements OnInit {
   uploadComplete:boolean = false;
   serverResponse: any;
   
+  currInputElemProgress: any;
 
-  onFileChange(event) {
+  onFileChange(event, index, recommendationType) {
     let submittedData = {};
     let reader = new FileReader();
     if (event.target.files && event.target.files.length > 0) {
@@ -1231,7 +1232,7 @@ export class InspectionDtlFormComponent implements OnInit {
       reader.onload = () => {
         this.fileUploadSub = this.fileUploadService.fileUpload(fileToUpload, submittedData)
           .subscribe(
-            event => this.handleProgress(event),
+            event => this.handleProgress(event, index, recommendationType),
             error => {
               console.log("Server error")
             });
@@ -1243,24 +1244,23 @@ export class InspectionDtlFormComponent implements OnInit {
     }
   }
 
-  handleProgress(event) {
+  handleProgress(event, index, recommendationType) {
     if (event.type === HttpEventType.DownloadProgress) {
       this.uploadingProgressing = true
       this.uploadProgress = Math.round(100 * event.loaded / event.total);
-      console.log(this.uploadProgress);
     }
 
     if (event.type === HttpEventType.UploadProgress) {
+      this.currInputElemProgress = recommendationType + "_progress_" +index;
+
       this.uploadingProgressing = true
       this.uploadProgress = Math.round(event.loaded / event.total * 100);
-      console.log(this.uploadProgress);
     }
 
     if (event.type === HttpEventType.Response) {
       // console.log(event.body);
       this.uploadComplete = true
       this.serverResponse = event.body
-      console.log(event.body);
     }
   }
 
