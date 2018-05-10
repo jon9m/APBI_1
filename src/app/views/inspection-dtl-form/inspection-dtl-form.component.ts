@@ -3,6 +3,7 @@ import { FormGroup, FormControl, FormArray } from "@angular/forms";
 import { InspectionDetailsService } from "../../shared/inspection-detail.service";
 import { FileUploadService } from '../../shared/fileupload.service';
 import { HttpEventType } from '@angular/common/http';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-inspection-dtl-form',
@@ -25,7 +26,7 @@ export class InspectionDtlFormComponent implements OnInit {
 
   inspectiondetailsform: FormGroup;
 
-  constructor(private inspectionDetailsService: InspectionDetailsService, private fileUploadService: FileUploadService) {
+  constructor(private inspectionDetailsService: InspectionDetailsService, private fileUploadService: FileUploadService, private router:Router) {
   }
 
   ngOnInit() {
@@ -1241,13 +1242,13 @@ export class InspectionDtlFormComponent implements OnInit {
   }
 
   // image uploading and preview
-  url: any;
+  // url: any;
   readImgURL(event) {
     if (event.target.files && event.target.files[0]) {
       var reader = new FileReader();
       reader.readAsDataURL(event.target.files[0]); // read file as data url
       reader.onload = (event) => { // called once readAsDataURL is completed
-        this.url = (<FileReader>event.target).result;
+        // this.url = (<FileReader>event.target).result;
       }
     }
   }
@@ -1260,24 +1261,28 @@ export class InspectionDtlFormComponent implements OnInit {
 
   currInputElemProgress: any;
 
-  onFileChange(event, index, recommendationType) {
-    let submittedData = {'index':index, 'type': recommendationType};  //TODO add bookingid
+  onFileChange(event, index, recommendationType, progress) {
+    let bookingId = this.inspectiondetailsform.get('bookingid').value;
+    let submittedData = { 'index': index, 'type': recommendationType, 'bookingid': bookingId };
     let reader = new FileReader();
     if (event.target.files && event.target.files.length > 0) {
       let fileToUpload = event.target.files[0];
       reader.readAsDataURL(fileToUpload);
       reader.onload = (event) => {
-
-        (<HTMLImageElement>document.querySelector("#rec-file-preview-hallways-0")).src = (<FileReader>event.target).result;
+        let progressId = "#" + progress + "-" + index;
+        let elem = (<HTMLImageElement>document.querySelector(progressId));
+        if (elem) {
+          elem.src = (<FileReader>event.target).result;
+        }
 
         this.fileUploadSub = this.fileUploadService.fileUpload(fileToUpload, submittedData)
           .subscribe(
-            event => {
-              this.handleProgress(event, index, recommendationType);
-            },
-            error => {
-              console.log("Server error")
-            });
+          event => {
+            this.handleProgress(event, index, recommendationType);
+          },
+          error => {
+            console.log("Server error");
+          });
       };
     }
   }
@@ -1346,6 +1351,10 @@ export class InspectionDtlFormComponent implements OnInit {
 
   onSave() {
     console.log(this.inspectiondetailsform);
+  }
+
+   onCancel() {
+    this.router.navigate(['mycalendar']);
   }
 }
 

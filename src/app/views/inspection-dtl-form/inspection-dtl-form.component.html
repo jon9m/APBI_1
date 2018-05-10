@@ -5,7 +5,7 @@
     <div class="container-fluid">
       <div class="pull-right">
         <input type="submit" (click)="onSave()" form="addReportForm" data-toggle="tooltip" title="" class="btn btn-primary" data-original-title="Save" value="SAVE" />
-        <a href="" data-toggle="tooltip" title="" class="btn btn-default" data-original-title="Cancel"><i class="fa fa-reply"></i></a>
+        <a (click)="onCancel()" data-toggle="tooltip" title="" class="btn btn-outline-info" data-original-title="Cancel"><i class="fa fa-reply"></i></a>
       </div>
       <h1>is.getInpectiondates().getTariff().getInstype().getName()</h1><br/>
       <h1>is.getAddress()</h1>
@@ -220,13 +220,13 @@
           <div class="form-group">
             <div class="col-sm-12">
               <span class="btn btn-success fileinput-button"><i class="glyphicon glyphicon-plus"></i><span>Select file...</span>
-              <input type="file" name="file-01" (change)="readImgURL($event);" accept="image/*" capture="camera" />
+              <input type="file" name="file-01" (change)="onFileChange($event, 0, 'property', 'rec-file-property')" accept="image/*" capture="camera" />
               </span><br> <br>
               <div id="file-01-progress" class="progress">
-                <div class="progress-bar progress-bar-success"></div>
+                <div *ngIf="currInputElemProgress==='property_progress_0'" class="progress-bar progress-bar-success"></div>
               </div>
               <div class="files">
-                <img id="file-01" [src]="url" alt="your image" height="160px;" />
+                <img id="rec-file-property-0" src="cpRepImg?src=file-01&time=<%=java.util.Calendar.getInstance().getTimeInMillis()%>" alt="your image" height="160px;" />
               </div>
             </div>
           </div>
@@ -883,7 +883,7 @@
                     <div>
                       <span class="btn btn-success fileinput-button"><i class="glyphicon glyphicon-plus"></i><span>Select file...</span>
                       <!-- <input type="file" name="rec-file-<%=recCounter%>" (click)="readImgURL(i,'hallways',$event);" accept="image/*" capture="camera" /> -->
-                      <input type="file" (change)="onFileChange($event, i, 'hallways_recommendations_list')" accept="image/*" capture="camera" />
+                      <input type="file" (change)="onFileChange($event, i, 'hallways_recommendations_list', 'rec-file-preview-hallways')" accept="image/*" capture="camera" />
                       </span><br><br>
                       <div class="progress">
                         <div *ngIf="currInputElemProgress==='hallways_recommendations_list_progress_'+i" class="progress-bar progress-bar-success" [style.width.%]="uploadProgress"></div>
@@ -903,7 +903,7 @@
         <!--<%}}%>-->
       </div>
       <div>
-        <input type="button" (click)="onAddRecommendations('hallways_recommendations_list')" class="pull-right" value="Add More Recommendation"/>
+        <input type="button" (click)="onAddRecommendations('hallways_recommendations_list')" class="pull-right btn btn-secondary" value="Add More Recommendation"/>
       </div>
     </div>
   </div>
@@ -1425,14 +1425,14 @@
                   <div class="form-group">
                     <div>
                       <span class="btn btn-success fileinput-button"><i class="glyphicon glyphicon-plus"></i><span>Select file...</span>
-                      <input type="file" (change)="onFileChange($event, i, 'kitchen_recommendations_list')" accept="image/*"
+                      <input type="file" (change)="onFileChange($event, i, 'kitchen_recommendations_list','rec-file-preview-kitchen')" accept="image/*"
                         capture="camera" />
                       </span><br> <br>
                       <div id="rec-file-<%=recCounter%>-progress" class="progress">
                         <div *ngIf="currInputElemProgress==='kitchen_recommendations_list_progress_'+i" class="progress-bar progress-bar-success" [style.width.%]="uploadProgress"></div>
                       </div>
                       <div class="files">
-                        <img id="rec-file-<%=recCounter%>" src="cpRepImg?src=<%=rb.getFilename()%>&time=<%=java.util.Calendar.getInstance().getTimeInMillis()%>"
+                        <img id="{{'rec-file-preview-kitchen-'+i}}" src="cpRepImg?src=<%=rb.getFilename()%>&time=<%=java.util.Calendar.getInstance().getTimeInMillis()%>"
                           alt="your image" height="160px;" />
                       </div>
                       <input type="hidden" name="typee-<%=recCounter++%>" value="Kitchen" />
@@ -1446,12 +1446,11 @@
         <!--<%}}%>-->
       </div>
       <div>
-        <input type="button" class="pull-right" (click)="onAddRecommendations('kitchen_recommendations_list')" value="Add More Recommendation"
+        <input type="button" class="pull-right btn btn-secondary" (click)="onAddRecommendations('kitchen_recommendations_list')" value="Add More Recommendation"
         />
       </div>
     </div>
-  </div>
-  
+  </div>  
 
   <div class="card">
     <div class="card-header">
@@ -1854,14 +1853,14 @@
                   <div class="form-group">
                     <div>
                       <span class="btn btn-success fileinput-button"><i class="glyphicon glyphicon-plus"></i><span>Select file...</span>
-                      <input type="file" (change)="onFileChange($event, i, 'laundry_recommendations_list')" accept="image/*"
+                      <input type="file" (change)="onFileChange($event, i, 'laundry_recommendations_list','rec-file-preview-laundry')" accept="image/*"
                         capture="camera" />
                       </span><br> <br>
                       <div id="rec-file-<%=recCounter%>-progress" class="progress">
                         <div *ngIf="currInputElemProgress==='laundry_recommendations_list_progress_'+i" class="progress-bar progress-bar-success" [style.width.%]="uploadProgress"></div>
                       </div>
                       <div class="files">
-                        <img id="rec-file-<%=recCounter%>" src="cpRepImg?src=<%=rb.getFilename()%>&time=<%=java.util.Calendar.getInstance().getTimeInMillis()%>"
+                        <img id="{{'rec-file-preview-laundry-'+i}}" src="cpRepImg?src=<%=rb.getFilename()%>&time=<%=java.util.Calendar.getInstance().getTimeInMillis()%>"
                           alt="your image" height="160px;" />
                       </div>
                       <input type="hidden" name="typee-<%=recCounter++%>" value="Laundry" />
@@ -1875,7 +1874,7 @@
         <!--<%}}%>-->
       </div>
       <div>
-        <input type="button" class="pull-right" (click)="onAddRecommendations('laundry_recommendations_list')" value="Add More Recommendation"/>
+        <input type="button" class="pull-right btn btn-secondary" (click)="onAddRecommendations('laundry_recommendations_list')" value="Add More Recommendation"/>
       </div>
     </div>
   </div>
@@ -2950,14 +2949,14 @@
                   <div class="form-group">
                     <div>
                       <span class="btn btn-success fileinput-button"><i class="glyphicon glyphicon-plus"></i><span>Select file...</span>
-                      <input type="file" (change)="onFileChange($event, i, 'bedrooms_recommendations_list')" accept="image/*"
+                      <input type="file" (change)="onFileChange($event, i, 'bedrooms_recommendations_list','rec-file-preview-bedrooms')" accept="image/*"
                         capture="camera" />
                       </span><br> <br>
                       <div id="rec-file-<%=recCounter%>-progress" class="progress">
                         <div *ngIf="currInputElemProgress==='bedrooms_recommendations_list_progress_'+i" class="progress-bar progress-bar-success" [style.width.%]="uploadProgress"></div>
                       </div>
                       <div class="files">
-                        <img id="rec-file-<%=recCounter%>" src="cpRepImg?src=<%=rb.getFilename()%>&time=<%=java.util.Calendar.getInstance().getTimeInMillis()%>"
+                        <img id="{{'rec-file-preview-bedrooms-'+i}}" src="cpRepImg?src=<%=rb.getFilename()%>&time=<%=java.util.Calendar.getInstance().getTimeInMillis()%>"
                           alt="your image" height="160px;" />
                       </div>
                       <input type="hidden" name="typee-<%=recCounter++%>" value="Bedrooms" />
@@ -2971,7 +2970,7 @@
         <!--<%}}%>-->
       </div>
       <div>
-        <input type="button" class="pull-right" (click)="onAddRecommendations('bedrooms_recommendations_list')" value="Add More Recommendation"
+        <input type="button" class="pull-right btn btn-secondary" (click)="onAddRecommendations('bedrooms_recommendations_list')" value="Add More Recommendation"
         />
       </div>
     </div>
@@ -3634,14 +3633,14 @@
                   <div class="form-group">
                     <div>
                       <span class="btn btn-success fileinput-button"><i class="glyphicon glyphicon-plus"></i><span>Select file...</span>
-                      <input type="file" (change)="onFileChange($event, i, 'bathrooms_recommendations_list')" accept="image/*"
+                      <input type="file" (change)="onFileChange($event, i, 'bathrooms_recommendations_list','rec-file-preview-bathrooms')" accept="image/*"
                         capture="camera" />
                       </span><br> <br>
                       <div id="rec-file-<%=recCounter%>-progress" class="progress">
                         <div *ngIf="currInputElemProgress==='bathrooms_recommendations_list_progress_'+i" class="progress-bar progress-bar-success" [style.width.%]="uploadProgress"></div>
                       </div>
                       <div class="files">
-                        <img id="rec-file-<%=recCounter%>" src="cpRepImg?src=<%=rb.getFilename()%>&time=<%=java.util.Calendar.getInstance().getTimeInMillis()%>"
+                        <img id="{{'rec-file-preview-bathrooms-'+i}}" src="cpRepImg?src=<%=rb.getFilename()%>&time=<%=java.util.Calendar.getInstance().getTimeInMillis()%>"
                           alt="your image" height="160px;" />
                       </div>
                       <input type="hidden" name="typee-<%=recCounter++%>" value="Bathrooms" />
@@ -3655,7 +3654,7 @@
         <!--<%}}%>-->
       </div>
       <div>
-        <input type="button" class="pull-right" (click)="onAddRecommendations('bathrooms_recommendations_list')" value="Add More Recommendation" />
+        <input type="button" class="pull-right btn btn-secondary" (click)="onAddRecommendations('bathrooms_recommendations_list')" value="Add More Recommendation" />
       </div>
     </div>
   </div>
@@ -4318,14 +4317,14 @@
                   <div class="form-group">
                     <div>
                       <span class="btn btn-success fileinput-button"><i class="glyphicon glyphicon-plus"></i><span>Select file...</span>
-                      <input type="file" (change)="onFileChange($event, i, 'ensuite_recommendations_list')" accept="image/*"
+                      <input type="file" (change)="onFileChange($event, i, 'ensuite_recommendations_list','rec-file-preview-ensuite')" accept="image/*"
                         capture="camera" />
                       </span><br> <br>
                       <div id="rec-file-<%=recCounter%>-progress" class="progress">
                         <div *ngIf="currInputElemProgress==='ensuite_recommendations_list_progress_'+i" class="progress-bar progress-bar-success" [style.width.%]="uploadProgress"></div>
                       </div>
                       <div class="files">
-                        <img id="rec-file-<%=recCounter%>" src="cpRepImg?src=<%=rb.getFilename()%>&time=<%=java.util.Calendar.getInstance().getTimeInMillis()%>"
+                        <img id="{{'rec-file-preview-ensuite-'+i}}" src="cpRepImg?src=<%=rb.getFilename()%>&time=<%=java.util.Calendar.getInstance().getTimeInMillis()%>"
                           alt="your image" height="160px;" />
                       </div>
                       <input type="hidden" name="typee-<%=recCounter++%>" value="Ensuite" />
@@ -4339,7 +4338,7 @@
         <!--<%}}%>-->
       </div>
       <div>
-        <input type="button" class="pull-right" (click)="onAddRecommendations('ensuite_recommendations_list')" value="Add More Recommendation"
+        <input type="button" class="pull-right btn btn-secondary" (click)="onAddRecommendations('ensuite_recommendations_list')" value="Add More Recommendation"
         />
       </div>
     </div>
@@ -5186,14 +5185,14 @@
                   <div class="form-group">
                     <div>
                       <span class="btn btn-success fileinput-button"><i class="glyphicon glyphicon-plus"></i><span>Select file...</span>
-                      <input type="file" (change)="onFileChange($event, i, 'external_recommendations_list')" accept="image/*"
+                      <input type="file" (change)="onFileChange($event, i, 'external_recommendations_list','rec-file-preview-external')" accept="image/*"
                         capture="camera" />
                       </span><br> <br>
                       <div id="rec-file-<%=recCounter%>-progress" class="progress">
                         <div *ngIf="currInputElemProgress==='external_recommendations_list_progress_'+i" class="progress-bar progress-bar-success" [style.width.%]="uploadProgress"></div>
                       </div>
                       <div class="files">
-                        <img id="rec-file-<%=recCounter%>" src="cpRepImg?src=<%=rb.getFilename()%>&time=<%=java.util.Calendar.getInstance().getTimeInMillis()%>"
+                        <img id="{{'rec-file-preview-external-'+i}}" src="cpRepImg?src=<%=rb.getFilename()%>&time=<%=java.util.Calendar.getInstance().getTimeInMillis()%>"
                           alt="your image" height="160px;" />
                       </div>
                       <input type="hidden" name="typee-<%=recCounter++%>" value="External" />
@@ -5207,7 +5206,7 @@
         <!--<%}}%>-->
       </div>
       <div>
-        <input type="button" class="pull-right" (click)="onAddRecommendations('external_recommendations_list')" value="Add More Recommendation"
+        <input type="button" class="pull-right btn btn-secondary" (click)="onAddRecommendations('external_recommendations_list')" value="Add More Recommendation"
         />
       </div>
     </div>
@@ -5945,14 +5944,14 @@
                   <div class="form-group">
                     <div>
                       <span class="btn btn-success fileinput-button"><i class="glyphicon glyphicon-plus"></i><span>Select file...</span>
-                      <input type="file" (change)="onFileChange($event, i, 'timberpest_recommendations_list')" accept="image/*"
+                      <input type="file" (change)="onFileChange($event, i, 'timberpest_recommendations_list','rec-file-preview-timberpest')" accept="image/*"
                         capture="camera" />
                       </span><br> <br>
                       <div id="rec-file-<%=recCounter%>-progress" class="progress">
                         <div *ngIf="currInputElemProgress==='timberpest_recommendations_list_progress_'+i" class="progress-bar progress-bar-success" [style.width.%]="uploadProgress"></div>
                       </div>
                       <div class="files">
-                        <img id="rec-file-<%=recCounter%>" src="cpRepImg?src=<%=rb.getFilename()%>&time=<%=java.util.Calendar.getInstance().getTimeInMillis()%>"
+                        <img id="{{'rec-file-preview-timberpest-'+i}}" src="cpRepImg?src=<%=rb.getFilename()%>&time=<%=java.util.Calendar.getInstance().getTimeInMillis()%>"
                           alt="your image" height="160px;" />
                       </div>
                       <input type="hidden" name="typee-<%=recCounter++%>" value="TimberPest" />
@@ -5966,7 +5965,7 @@
         <!--<%}}%>-->
       </div>
       <div>
-        <input type="button" class="pull-right" (click)="onAddRecommendations('timberpest_recommendations_list')" value="Add More Recommendation"/>
+        <input type="button" class="pull-right btn btn-secondary" (click)="onAddRecommendations('timberpest_recommendations_list')" value="Add More Recommendation"/>
       </div>
     </div>
   </div>
@@ -6437,8 +6436,8 @@ building expert should be consulted.</label>
       </div>
     </div>
   </div>
-  <div class="pull-right">
+  <div class="pull-right py-4">
     <input (click)="onSave()" type="submit" form="addReportForm" data-toggle="tooltip" title="" class="btn btn-primary" data-original-title="Save" value="SAVE"/>
-    <a href="" data-toggle="tooltip" title="" class="btn btn-default" data-original-title="Cancel"><i class="fa fa-reply"></i></a>
+    <a (click)="onCancel()" data-toggle="tooltip" title="" class="btn btn-outline-info" data-original-title="Cancel"><i class="fa fa-reply"></i></a>
   </div>
 </form>
