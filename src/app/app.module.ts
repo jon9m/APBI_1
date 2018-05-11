@@ -37,9 +37,10 @@ import { AppRoutingModule } from './app.routing';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { MycalendarComponent } from './views/mycalendar/mycalendar.component';
-import { DataStorageService } from "./shared/data-storage.service";
 import { InspectionDetailsService } from "./shared/inspection-detail.service";
 import { HttpClientModule } from '@angular/common/http';
+import { HTTPService } from "./shared/http.service";
+import { CustomPreloadStrategy } from "./shared/customPreloadStrategy";
 
 @NgModule({
   imports: [
@@ -65,8 +66,9 @@ import { HttpClientModule } from '@angular/common/http';
     provide: LocationStrategy,
     useClass: HashLocationStrategy
   },
-  DataStorageService,
-  InspectionDetailsService],
+  HTTPService,
+  InspectionDetailsService,
+  CustomPreloadStrategy],
   
   bootstrap: [ AppComponent ]
 })

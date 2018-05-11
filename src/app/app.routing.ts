@@ -6,6 +6,7 @@ import { DefaultLayoutComponent } from './containers';
 
 import { LoginComponent } from './views/login/login.component';
 import { RegisterComponent } from './views/register/register.component';
+import { CustomPreloadStrategy } from "./shared/customPreloadStrategy";
 
 export const routes: Routes = [
   {
@@ -44,14 +45,15 @@ export const routes: Routes = [
       },
       {
         path: 'inspectiondtlform',
-        loadChildren: './views/inspection-dtl-form/inspection-dtl-form.module#InspectionDtlFormModule'
+        loadChildren: './views/inspection-dtl-form/inspection-dtl-form.module#InspectionDtlFormModule',
+        data: { preload: true }
       }
     ]
   }
 ];
 
 @NgModule({
-  imports: [ RouterModule.forRoot(routes, {preloadingStrategy:PreloadAllModules})],
+  imports: [ RouterModule.forRoot(routes, {preloadingStrategy:CustomPreloadStrategy})],
   exports: [ RouterModule ]
 })
 export class AppRoutingModule {}
