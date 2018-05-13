@@ -6,7 +6,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body p-0">
+      <div class="modal-body p-0" id="inspectiondtlcontent">
         <div class="col-xs-12 bg-primary p-3">
           <h3>Inspection Details</h3>
           <div>Address: THE DOCKS UNIT 132 15 GOODWIN STREET KANGAROO POINT QLD 4169</div>
@@ -22,11 +22,11 @@
       </div>
       <div class="modal-footer">
         <button type="button" id="modalclosebutton" class="btn btn-outline-primary mr-auto" (click)="detailsModal.hide()">Cancel</button>
-        <button type="button" class="btn btn-outline-info" onclick="Reports.loadForm();" (click)="loadForm()">Complete the report form</button>
+        <button type="button" class="btn btn-outline-info" (click)="loadForm()">Complete the report form</button>
       </div>
     </div>
   </div>
 </div>
 <button id="modalbutton" style="display:none;" type="button" class="btn btn-secondary" data-toggle="modal" (click)="detailsModal.show()">
-  Launch large modal
+  m
 </button>

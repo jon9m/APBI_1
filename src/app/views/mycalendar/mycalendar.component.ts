@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, OnDestroy } from '@angular/core';
 import { CalendarComponent } from 'ng-fullcalendar';
 import { Options } from "fullcalendar";
 import { ModalDirective } from 'ngx-bootstrap/modal';
@@ -6,32 +6,45 @@ import { InspectionDtlPopupComponent } from "./inspection-dtl-popup/inspection-d
 
 import * as moment from 'moment';
 import { HTTPService } from "../../shared/http.service";
+import { HttpHeaders } from "@angular/common/http";
+import { Subscription } from "rxjs/Subscription";
 
 @Component({
   selector: 'app-mycalendar',
   templateUrl: './mycalendar.component.html',
   styleUrls: ['./mycalendar.component.scss']
 })
-export class MycalendarComponent implements OnInit {
+export class MycalendarComponent implements OnInit, OnDestroy {
+  
   calendarOptions: Options;
   @ViewChild(CalendarComponent) ucCalendar: CalendarComponent;
 
-  events:any = [];
+  events: any = [];
+  private eventSubscription: Subscription;
+  private calendarSubscription: Subscription;
+  private previewSubscription: Subscription;
 
-  constructor(private httpService:HTTPService) { }
+  constructor(private httpService: HTTPService) { }
+
+  ngOnDestroy(): void {
+    if (this.previewSubscription) { this.previewSubscription.unsubscribe(); }
+    if (this.calendarSubscription) { this.calendarSubscription.unsubscribe(); }
+    if (this.eventSubscription) { this.eventSubscription.unsubscribe(); }
+    this.events = [];
+  }
 
   ngOnInit() {
-    this.httpService.getEvents().subscribe(data => {
-    this.calendarOptions = {
-      editable: true,
-      eventLimit: false,      
-      header: {
-        left: 'prev,next today',
-        center: 'title',
-        right: 'month,agendaWeek,agendaDay,listMonth'
-      },
-      events: data
-    };
+    this.eventSubscription = this.httpService.getEvents().subscribe(data => {
+      this.calendarOptions = {
+        editable: true,
+        eventLimit: false,
+        header: {
+          left: 'prev,next today',
+          center: 'title',
+          right: 'month,agendaWeek,agendaDay,listMonth'
+        },
+        events: data
+      };
     });
 
     // [{
@@ -423,19 +436,19 @@ export class MycalendarComponent implements OnInit {
     var nextMonth;
 
     if (btnType === 'next') {
-      currMonth = (moment(mm).add(-10,'day')).format('YYYY-MM-DD');
+      currMonth = (moment(mm).add(-10, 'day')).format('YYYY-MM-DD');
       nextMonth = (moment(mm).add(1, 'month').add(10, 'day')).format('YYYY-MM-DD');
     } else if (btnType === 'prev') {
-      currMonth = (moment(mm).add(-10,'day')).format('YYYY-MM-DD');
+      currMonth = (moment(mm).add(-10, 'day')).format('YYYY-MM-DD');
       nextMonth = (moment(mm).add(1, 'month').add(10, 'day')).format('YYYY-MM-DD');
     } else if (btnType === 'today') {
-      currMonth = (moment(mm).set('date', 1).add(-10,'day')).format('YYYY-MM-DD');
+      currMonth = (moment(mm).set('date', 1).add(-10, 'day')).format('YYYY-MM-DD');
       nextMonth = (moment(mm).set('date', 1).add(1, 'month').add(10, 'day')).format('YYYY-MM-DD');
     }
 
-    console.log("currMonth "+ currMonth + " nextMonth "+ nextMonth);
+    console.log("currMonth " + currMonth + " nextMonth " + nextMonth);
 
-    this.httpService.loadCalendar({ 'start': currMonth, 'end': nextMonth }).subscribe(
+    this.calendarSubscription = this.httpService.loadCalendar({ 'start': currMonth, 'end': nextMonth }).subscribe(
       (response: Response) => {
         console.log(response);
         this.events = response;
@@ -444,16 +457,37 @@ export class MycalendarComponent implements OnInit {
         console.log(error);
       });
   }
+
+
   
 
-  eventClick(evt) {
-    console.log(evt);
+  eventClick(evt) {    
+    console.log(evt.detail.event.id);
+    let inspdtlpreviewcontent: HTMLElement = document.getElementById('inspectiondtlcontent') as HTMLElement;
     let element: HTMLElement = document.getElementById('modalbutton') as HTMLElement;
-    element.click();
+    
+    // this.previewSubscription = this.httpService.getPreview(evt.detail.event.id).subscribe(
+    //   (response: Response) => {
+    //     console.log(response);
+    //       this.inspdtlpreviewcontent.innerText = response.toString();       
+    //   },
+    //   (error) => {
+    //     console.log(error);
+    //   });
+    this.previewSubscription = this.httpService.getPreview(evt.detail.event.id).subscribe(  //TODO - 
+      (response) => {
+        console.log(response);
+          inspdtlpreviewcontent.innerHTML = response.toString();       
+      },
+      (error) => {
+        console.log(error);
+      });
+  
+      element.click();
   }
 
   updateEvent(evt) {
-    console.log(evt);    
+    console.log(evt);
   }
 
 }
