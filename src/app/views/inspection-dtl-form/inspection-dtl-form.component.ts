@@ -29,7 +29,7 @@ export class InspectionDtlFormComponent implements OnInit {
   inspectiondetails: InspectionDetails;
   inspectiondetailsform: FormGroup;
 
-  constructor(private fb: FormBuilder, private inspectionDetailsService: InspectionDetailsService, private fileUploadService: FileUploadService, private router: Router) {
+  constructor(private fb: FormBuilder, private inspectionDetailsService: InspectionDetailsService, private fileUploadService: FileUploadService, private router: Router, private httpService: HTTPService) {
   }
 
   ngOnInit() {
@@ -1203,12 +1203,12 @@ export class InspectionDtlFormComponent implements OnInit {
 
         this.fileUploadSub = this.fileUploadService.fileUpload(fileToUpload, submittedData)
           .subscribe(
-          event => {
-            this.handleProgress(event, index, recommendationType);
-          },
-          error => {
-            console.log("Server error");
-          });
+            event => {
+              this.handleProgress(event, index, recommendationType);
+            },
+            error => {
+              console.log("Server error");
+            });
       };
     }
   }
@@ -1251,7 +1251,17 @@ export class InspectionDtlFormComponent implements OnInit {
   }
 
   onSave() {
-    console.log(this.inspectiondetailsform);
+    console.log(this.inspectiondetailsform.value);
+
+    this.httpService.addReport(this.inspectiondetailsform.value).subscribe(
+      (response: Response) => {
+          console.log("success");
+          console.log(JSON.stringify(response));
+      },
+      (error) => {
+        console.log("error");
+        console.log(error);
+      });
   }
 
   onCancel() {

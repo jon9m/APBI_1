@@ -38,14 +38,15 @@ export class DefaultLayoutComponent implements OnInit, OnDestroy {
   ngOnInit() {
     let statusElem = this.serverStatusElem.nativeElement;
     let timer = TimerObservable.create(0, this.interval);
-    this.subscription = timer.takeWhile(() => this.alive).subscribe(() => {
-        this.httpService.getAppStatus().subscribe(
-          (response: Response) => {
+    timer.takeWhile(() => this.alive).subscribe(() => {
+      this.subscription = this.httpService.getAppStatus().subscribe(
+          (response) => {
             this.renderer.removeClass(statusElem, 'alert-danger');
             this.renderer.addClass(statusElem, 'alert-success');
             statusElem.textContent = "Successful connection to the server!";
           },
           (error) => {
+            console.log("CPLive error " + error.message);
             this.renderer.removeClass(statusElem, 'alert-success');
             this.renderer.addClass(statusElem, 'alert-danger');
             statusElem.textContent = "Unable to connect to the server! please check your network connection.";

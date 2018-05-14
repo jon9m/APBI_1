@@ -223,7 +223,7 @@
               <input type="file" name="file-01" (change)="onFileChange($event, 0, 'property', 'rec-file-property')" accept="image/*" capture="camera" />
               </span><br> <br>
               <div id="file-01-progress" class="progress">
-                <div *ngIf="currInputElemProgress==='property_progress_0'" class="progress-bar progress-bar-success"></div>
+                <div *ngIf="currInputElemProgress==='property_progress_0'" class="progress-bar progress-bar-success" [style.width.%]="uploadProgress"></div>
               </div>
               <div class="files">
                 <img id="rec-file-property-0" src="cpRepImg?src=file-01&time=<%=java.util.Calendar.getInstance().getTimeInMillis()%>" alt="your image" height="160px;" />

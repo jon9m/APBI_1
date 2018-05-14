@@ -15,15 +15,14 @@ export class InspectionDetailsService {
     populateInspectionDetailsModel(responseJSON) {
         //TODO - populate modal object from JSON
         let responseInspectionDetails = responseJSON;
-        console.log(Object.keys(responseInspectionDetails).filter((name) => /inspection_findings_and_recommendations/.test(name)));
-
 
         console.log("------------------------------------------------");
         console.log(responseInspectionDetails);
-        console.log("------------------------------------------------");
-        console.log(this.inspectionDetails);
 
         Object.assign(this.inspectionDetails, responseInspectionDetails);
+
+        console.log("------------------------------------------------");
+        console.log(this.inspectionDetails);
     }
 
     getInspectionDetailsModal() {

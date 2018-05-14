@@ -4,16 +4,18 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 @Injectable()
 export class HTTPService {
 
-    // appStatusUrl = 'https://apbi.com.au/inspector-app/cpLiveApp'; //TODO
-    appStatusUrl = 'http://localhost/static/json.json'; //TODO
-    // calendarFeedUrl = 'https://apbi.com.au/inspector-app/cpBookingCalendarFeedApp';
-    calendarFeedUrl = 'http://localhost/static/cpBookingCalendarFeedApp.json';
+    appStatusUrl = 'https://apbi.com.au/inspector-app/cpLiveApp';
+    calendarFeedUrl = 'https://apbi.com.au/inspector-app/cpBookingCalendarFeedApp';
+    inspDtlPreviewUrl = 'https://apbi.com.au/inspector-app/cpInspectionDetailsApp';
+    inspDtlFormUrl = 'https://apbi.com.au/inspector-app/cpLoadFormDataApp';
+    addReportUrl = 'https://apbi.com.au/inspector-app/cpAddReport';
 
-    // inspDtlPreviewUrl = 'https://apbi.com.au/inspector-app/cpInspectionDetailsApp';
-    inspDtlPreviewUrl = 'http://localhost/static/cpInspectionDetailsApp.html';
 
-    // inspDtlFormUrl = 'https://apbi.com.au/inspector-app/cpInspectionLoadFormApp'
-    inspDtlFormUrl = 'http://localhost/static/inspectionDetails.json'
+    httpOptions = {
+        headers: new HttpHeaders({
+            'Cache-Control': 'no-cache'
+        })
+    };
 
     constructor(private http: HttpClient) {
 
@@ -21,28 +23,25 @@ export class HTTPService {
 
     getAppStatus() {
         let currURL = this.appStatusUrl + "?time=" + new Date().getTime();
-        return this.http.get(currURL);
+        return this.http.post(currURL, {}, { responseType: 'text' });
     }
-
     loadCalendar(postObj) {
         let currURL = this.calendarFeedUrl + "?time=" + new Date().getTime();
-        // return this.http.post(currURL, postObj);
-        return this.http.get(currURL);
-    }
-
-    getEvents() { //TODO
-        let currURL = this.calendarFeedUrl + "?time=" + new Date().getTime();
-        return this.http.get(currURL);
+        return this.http.post(currURL, postObj);
     }
 
     getPreview(id) {
-        const headers = new HttpHeaders().set("content-type", "text/html");  //TEMP
-        let currURL = this.inspDtlPreviewUrl + "?id=" + id + "&time=" + new Date().getTime();
-        return this.http.get(currURL,{responseType: 'text'});
+        let currURL = this.inspDtlPreviewUrl + "?id=" + id + "&mhmajax=mhm_mallahzadeh_hosseini&time=" + new Date().getTime();
+        return this.http.get(currURL, { responseType: 'text' });
     }
 
-    loadInspectionDtlForm(){
+    loadInspectionDtlForm() {
         let currURL = this.inspDtlFormUrl + "?time=" + new Date().getTime();
-        return this.http.get(currURL);        
+        return this.http.get(currURL);
+    }
+
+    addReport(postObj) {
+        let currURL = this.addReportUrl + "?time=" + new Date().getTime();
+        return this.http.post(currURL, postObj, this.httpOptions);
     }
 }
