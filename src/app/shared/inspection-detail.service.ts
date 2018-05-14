@@ -16,12 +16,12 @@ export class InspectionDetailsService {
         //TODO - populate modal object from JSON
         let responseInspectionDetails = responseJSON;
 
-        console.log("------------------------------------------------");
+        console.log("--------------------response directly from API----------------------------");
         console.log(responseInspectionDetails);
 
-        Object.assign(this.inspectionDetails, responseInspectionDetails);
+        Object.assign(this.inspectionDetails, responseInspectionDetails[0]); //TODO - array - 0 index ?
 
-        console.log("------------------------------------------------");
+        console.log("--------------------After assign----------------------------");
         console.log(this.inspectionDetails);
     }
 
