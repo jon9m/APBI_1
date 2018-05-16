@@ -87,6 +87,8 @@ export class MycalendarComponent implements OnInit, OnDestroy {
     console.log(evt.detail.event.id);
     let inspdtlpreviewcontent: HTMLElement = document.getElementById('inspectiondtlcontent') as HTMLElement;
     let element: HTMLElement = document.getElementById('modalbutton') as HTMLElement;
+    let bookingidelement: HTMLInputElement = document.getElementById('previewbookingid') as HTMLInputElement;
+    bookingidelement.value = evt.detail.event.id;
 
     this.previewSubscription = this.httpService.getPreview(evt.detail.event.id).subscribe(
       (response) => {

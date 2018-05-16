@@ -4,11 +4,14 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 @Injectable()
 export class HTTPService {
 
-    appStatusUrl = 'https://apbi.com.au/inspector-app/cpLiveApp';
-    calendarFeedUrl = 'https://apbi.com.au/inspector-app/cpBookingCalendarFeedApp';
-    inspDtlPreviewUrl = 'https://apbi.com.au/inspector-app/cpInspectionDetailsApp';
-    inspDtlFormUrl = 'https://apbi.com.au/inspector-app/cpLoadFormDataApp';
-    addReportUrl = 'https://apbi.com.au/inspector-app/cpAddReport';
+    // rootContext = 'https://apbi.com.au/inspector-app/';
+    rootContext = 'http://34.251.200.88:8080/inspector-app/';
+
+    appStatusUrl = this.rootContext + 'cpLiveApp';
+    calendarFeedUrl = this.rootContext + 'cpBookingCalendarFeedApp';
+    inspDtlPreviewUrl = this.rootContext + 'cpInspectionDetailsApp';
+    inspDtlFormUrl = this.rootContext + 'cpLoadFormDataAppv2';
+    addReportUrl = this.rootContext + 'cpAddReportv2';
 
 
     httpOptions = {
@@ -41,10 +44,9 @@ export class HTTPService {
     }
 
     addReport(postObj) {
-
-        console.log("before post - postObj " + postObj);
+        console.log("before post - postObj " + JSON.stringify(postObj));
 
         let currURL = this.addReportUrl + "?time=" + new Date().getTime();
-        return this.http.post(currURL, postObj, this.httpOptions);
+        return this.http.post(currURL, JSON.stringify(postObj), this.httpOptions);
     }
 }

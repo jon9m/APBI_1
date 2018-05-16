@@ -23,11 +23,16 @@ export class InspectionDtlPopupComponent implements OnInit {
   loadForm() {
     this.httpSevice.loadInspectionDtlForm().subscribe(
       (response: Response) => {
-        this.inspectionDetailsService.populateInspectionDetailsModel(response);
+        //this.inspectionDetailsService.populateInspectionDetailsModel(response); - todo need a modal?
+
+        console.log(response);
+        console.log(JSON.stringify(response));
 
         let element: HTMLElement = document.getElementById('modalclosebutton') as HTMLElement;
+        let bookingidelement: HTMLInputElement = document.getElementById('previewbookingid') as HTMLInputElement;
+        
         element.click();
-        this.router.navigate(['/inspectiondtlform']);
+        this.router.navigate(['/inspectiondtlform', bookingidelement.value]);
       },
       (error) => {
         console.log(error);

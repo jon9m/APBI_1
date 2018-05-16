@@ -1,5 +1,5 @@
 <form [formGroup]="inspectiondetailsform">
-  <input id="bookingid" type="hidden" name="bookingid" formControlName="bookingid" value="is.getId" />
+  <input id="bookingid" type="hidden" name="bookingid" formControlName="bookingid" />
   <input id="rec_count" type="hidden" name="rec_count" formControlName="rec_count" value="max_rec" />
   <div class="page-header">
     <div class="container-fluid">
@@ -833,7 +833,7 @@
               <div class="row">
                 <div class="col-sm-12">
                   <div class="form-group">
-                    <select formControlName="inspection_findings_and_recommendations-1" id="input-order-status-1<%=recCounter%>" class="form-control"
+                    <select formControlName="item" id="input-order-status-1<%=recCounter%>" class="form-control"
                       onchange="Recommendation.changeSelect('input-order-status-3<%=recCounter%>','input-order-status-1<%=recCounter%>');">
                         <option value="-">-</option>
                         <option value="Hallways and General Living Spaces">Hallways and General Living Spaces</option>
@@ -848,7 +848,7 @@
                 </div>
                 <div class="col-sm-6">
                   <div class="form-group">
-                    <select formControlName="inspection_findings_and_recommendations-2" id="input-order-status<%=recCounter%>" class="form-control">
+                    <select formControlName="rectype" id="input-order-status<%=recCounter%>" class="form-control">
                         <option value="-">-</option>
                             <option value="General Advice on Item">General Advice on Item</option>
                             <option value="Repair Recommended">Repair Recommended</option>
@@ -859,7 +859,7 @@
                 </div>
                 <div class="col-sm-6">
                   <div class="form-group">
-                    <select formControlName="inspection_findings_and_recommendations-3" id="input-order-status-3<%=recCounter%>" class="form-control">
+                    <select formControlName="recdetail" id="input-order-status-3<%=recCounter%>" class="form-control">
                         <option value="-">-</option>
                           <!--<%
                           for(int j=0;j<ReportrecBean.Hallways.length;j++){
@@ -875,7 +875,7 @@
                 <div class="form-group col">
                   <label for="hallwayrecomcomment">Comments:</label>
                   <div>
-                    <textarea id="hallwayrecomcomment" class="form-control" rows="4" max-rows="25" placeholder="Type here to expand" formControlName="inspection-finding-comment"></textarea>
+                    <textarea id="hallwayrecomcomment" class="form-control" rows="4" max-rows="25" placeholder="Type here to expand" formControlName="comment"></textarea>
                   </div>
                 </div>
                 <div class="col-xs-12 col-md-6">
@@ -891,7 +891,7 @@
                         <img id="{{'rec-file-preview-hallways-'+i}}" src="cpRepImg?src=<%=rb.getFilename()%>&time=<%=java.util.Calendar.getInstance().getTimeInMillis()%>"
                           alt="your image" height="160px;" />
                       </div>
-                      <input type="hidden" value="Hallways" />
+                      <input type="hidden" value="Hallways" formControlName="typee"/>
                     </div>
                   </div>
                 </div>
@@ -1377,7 +1377,7 @@
               <div class="row">
                 <div class="col-sm-12">
                   <div class="form-group">
-                    <select formControlName="inspection_findings_and_recommendations-1" id="input-order-status-1<%=recCounter%>" class="form-control"
+                    <select formControlName="item" id="input-order-status-1<%=recCounter%>" class="form-control"
                       onchange="Recommendation.changeSelect('input-order-status-3<%=recCounter%>','input-order-status-1<%=recCounter%>');">
                         <option value="-">-</option>
                         <option value="Hallways and General Living Spaces">Hallways and General Living Spaces</option>
@@ -1392,7 +1392,7 @@
                 </div>
                 <div class="col-sm-6">
                   <div class="form-group">
-                    <select formControlName="inspection_findings_and_recommendations-2" id="input-order-status<%=recCounter%>" class="form-control">
+                    <select formControlName="rectype" id="input-order-status<%=recCounter%>" class="form-control">
                         <option value="-">-</option>
                             <option value="General Advice on Item">General Advice on Item</option>
                             <option value="Repair Recommended">Repair Recommended</option>
@@ -1403,7 +1403,7 @@
                 </div>
                 <div class="col-sm-6">
                   <div class="form-group">
-                    <select formControlName="inspection_findings_and_recommendations-3" id="input-order-status-3<%=recCounter%>" class="form-control">
+                    <select formControlName="recdetail" id="input-order-status-3<%=recCounter%>" class="form-control">
                         <option value="-">-</option>
                           <!--<%
                           for(int j=0;j<ReportrecBean.Kitchen.length;j++){
@@ -1417,7 +1417,7 @@
                 <div class="form-group col">
                   <label for="kitchenrecomme">Comments:</label>
                   <div>
-                    <textarea id="kitchenrecomme" class="form-control" rows="4" max-rows="25" placeholder="Type here to expand" formControlName="inspection-finding-comment"></textarea>
+                    <textarea id="kitchenrecomme" class="form-control" rows="4" max-rows="25" placeholder="Type here to expand" formControlName="comment"></textarea>
                   </div>
                 </div>
                 <div class="col-xs-12 col-md-6">
@@ -1434,7 +1434,7 @@
                         <img id="{{'rec-file-preview-kitchen-'+i}}" src="cpRepImg?src=<%=rb.getFilename()%>&time=<%=java.util.Calendar.getInstance().getTimeInMillis()%>"
                           alt="your image" height="160px;" />
                       </div>
-                      <input type="hidden" name="typee-<%=recCounter++%>" value="Kitchen" />
+                      <input type="hidden" formControlName="typee" value="Kitchen" />
                     </div>
                   </div>
                 </div>
@@ -1805,7 +1805,7 @@
               <div class="row">
                 <div class="col-sm-12">
                   <div class="form-group">
-                    <select formControlName="inspection_findings_and_recommendations-1" id="input-order-status-1<%=recCounter%>" class="form-control"
+                    <select formControlName="item" id="input-order-status-1<%=recCounter%>" class="form-control"
                       onchange="Recommendation.changeSelect('input-order-status-3<%=recCounter%>','input-order-status-1<%=recCounter%>');">
                         <option value="-">-</option>
                         <option value="Hallways and General Living Spaces">Hallways and General Living Spaces</option>
@@ -1820,7 +1820,7 @@
                 </div>
                 <div class="col-sm-6">
                   <div class="form-group">
-                    <select formControlName="inspection_findings_and_recommendations-2" id="input-order-status<%=recCounter%>" class="form-control">
+                    <select formControlName="rectype" id="input-order-status<%=recCounter%>" class="form-control">
                         <option value="-">-</option>
                             <option value="General Advice on Item">General Advice on Item</option>
                             <option value="Repair Recommended">Repair Recommended</option>
@@ -1831,7 +1831,7 @@
                 </div>
                 <div class="col-sm-6">
                   <div class="form-group">
-                    <select formControlName="inspection_findings_and_recommendations-3" id="input-order-status-3<%=recCounter%>" class="form-control">
+                    <select formControlName="recdetail" id="input-order-status-3<%=recCounter%>" class="form-control">
                         <option value="-">-</option>
                             <!--<%
                             for(int j=0;j<ReportrecBean.Laundry.length;j++){
@@ -1845,7 +1845,7 @@
                 <div class="form-group col">
                   <label for="laundryrecomme">Comments:</label>
                   <div>
-                    <textarea id="laundryrecomme" class="form-control" rows="4" max-rows="25" placeholder="Type here to expand" formControlName="inspection-finding-comment"></textarea>
+                    <textarea id="laundryrecomme" class="form-control" rows="4" max-rows="25" placeholder="Type here to expand" formControlName="comment"></textarea>
                   </div>
                 </div>
                 <div class="col-xs-12 col-md-6">
@@ -1862,7 +1862,7 @@
                         <img id="{{'rec-file-preview-laundry-'+i}}" src="cpRepImg?src=<%=rb.getFilename()%>&time=<%=java.util.Calendar.getInstance().getTimeInMillis()%>"
                           alt="your image" height="160px;" />
                       </div>
-                      <input type="hidden" name="typee-<%=recCounter++%>" value="Laundry" />
+                      <input type="hidden" formControlName="typee" value="Laundry" />
                     </div>
                   </div>
                 </div>
@@ -2901,7 +2901,7 @@
               <div class="row">
                 <div class="col-sm-12">
                   <div class="form-group">
-                    <select formControlName="inspection_findings_and_recommendations-1" id="input-order-status-1<%=recCounter%>" class="form-control"
+                    <select formControlName="item" id="input-order-status-1<%=recCounter%>" class="form-control"
                       onchange="Recommendation.changeSelect('input-order-status-3<%=recCounter%>','input-order-status-1<%=recCounter%>');">
                         <option value="-">-</option>
                         <option value="Hallways and General Living Spaces">Hallways and General Living Spaces</option>
@@ -2916,7 +2916,7 @@
                 </div>
                 <div class="col-sm-6">
                   <div class="form-group">
-                    <select formControlName="inspection_findings_and_recommendations-2" id="input-order-status<%=recCounter%>" class="form-control">
+                    <select formControlName="rectype" id="input-order-status<%=recCounter%>" class="form-control">
                         <option value="-">-</option>
                             <option value="General Advice on Item">General Advice on Item</option>
                             <option value="Repair Recommended">Repair Recommended</option>
@@ -2927,7 +2927,7 @@
                 </div>
                 <div class="col-sm-6">
                   <div class="form-group">
-                    <select formControlName="inspection_findings_and_recommendations-3" id="input-order-status-3<%=recCounter%>" class="form-control">
+                    <select formControlName="recdetail" id="input-order-status-3<%=recCounter%>" class="form-control">
                         <option value="-">-</option>
                             <!--<%
                               for(int j=0;j<ReportrecBean.Bedrooms.length;j++){
@@ -2941,7 +2941,7 @@
                 <div class="form-group col">
                   <label for="bedroomrecomme">Comments:</label>
                   <div>
-                    <textarea id="bedroomrecomme" class="form-control" rows="4" max-rows="25" placeholder="Type here to expand" formControlName="inspection-finding-comment"></textarea>
+                    <textarea id="bedroomrecomme" class="form-control" rows="4" max-rows="25" placeholder="Type here to expand" formControlName="comment"></textarea>
                   </div>
                 </div>
                 <div class="col-xs-12 col-md-6">
@@ -2958,7 +2958,7 @@
                         <img id="{{'rec-file-preview-bedrooms-'+i}}" src="cpRepImg?src=<%=rb.getFilename()%>&time=<%=java.util.Calendar.getInstance().getTimeInMillis()%>"
                           alt="your image" height="160px;" />
                       </div>
-                      <input type="hidden" name="typee-<%=recCounter++%>" value="Bedrooms" />
+                      <input type="hidden" formControlName="typee" value="Bedrooms" />
                     </div>
                   </div>
                 </div>
@@ -3585,7 +3585,7 @@
               <div class="row">
                 <div class="col-sm-12">
                   <div class="form-group">
-                    <select formControlName="inspection_findings_and_recommendations-1" id="input-order-status-1<%=recCounter%>" class="form-control"
+                    <select formControlName="item" id="input-order-status-1<%=recCounter%>" class="form-control"
                       onchange="Recommendation.changeSelect('input-order-status-3<%=recCounter%>','input-order-status-1<%=recCounter%>');">
                         <option value="-">-</option>
                         <option value="Hallways and General Living Spaces">Hallways and General Living Spaces</option>
@@ -3600,7 +3600,7 @@
                 </div>
                 <div class="col-sm-6">
                   <div class="form-group">
-                    <select formControlName="inspection_findings_and_recommendations-2" id="input-order-status<%=recCounter%>" class="form-control">
+                    <select formControlName="rectype" id="input-order-status<%=recCounter%>" class="form-control">
                         <option value="-">-</option>
                             <option value="General Advice on Item">General Advice on Item</option>
                             <option value="Repair Recommended">Repair Recommended</option>
@@ -3611,7 +3611,7 @@
                 </div>
                 <div class="col-sm-6">
                   <div class="form-group">
-                    <select formControlName="inspection_findings_and_recommendations-3" id="input-order-status-3<%=recCounter%>" class="form-control">
+                    <select formControlName="recdetail" id="input-order-status-3<%=recCounter%>" class="form-control">
                         <option value="-">-</option>
                             <!--<%
                           for(int j=0;j<ReportrecBean.Bathrooms.length;j++){
@@ -3625,7 +3625,7 @@
                 <div class="form-group col">
                   <label for="bathroomrecomme">Comments:</label>
                   <div>
-                    <textarea id="bathroomrecomme" class="form-control" rows="4" max-rows="25" placeholder="Type here to expand" formControlName="inspection-finding-comment"></textarea>
+                    <textarea id="bathroomrecomme" class="form-control" rows="4" max-rows="25" placeholder="Type here to expand" formControlName="comment"></textarea>
                   </div>
                 </div>
                 <div class="col-xs-12 col-md-6">
@@ -3642,7 +3642,7 @@
                         <img id="{{'rec-file-preview-bathrooms-'+i}}" src="cpRepImg?src=<%=rb.getFilename()%>&time=<%=java.util.Calendar.getInstance().getTimeInMillis()%>"
                           alt="your image" height="160px;" />
                       </div>
-                      <input type="hidden" name="typee-<%=recCounter++%>" value="Bathrooms" />
+                      <input type="hidden" formControlName="typee" value="Bathrooms" />
                     </div>
                   </div>
                 </div>
@@ -4269,7 +4269,7 @@
               <div class="row">
                 <div class="col-sm-12">
                   <div class="form-group">
-                    <select formControlName="inspection_findings_and_recommendations-1" id="input-order-status-1<%=recCounter%>" class="form-control"
+                    <select formControlName="item" id="input-order-status-1<%=recCounter%>" class="form-control"
                       onchange="Recommendation.changeSelect('input-order-status-3<%=recCounter%>','input-order-status-1<%=recCounter%>');">
                         <option value="-">-</option>
                         <option value="Hallways and General Living Spaces">Hallways and General Living Spaces</option>
@@ -4284,7 +4284,7 @@
                 </div>
                 <div class="col-sm-6">
                   <div class="form-group">
-                    <select formControlName="inspection_findings_and_recommendations-2" id="input-order-status<%=recCounter%>" class="form-control">
+                    <select formControlName="rectype" id="input-order-status<%=recCounter%>" class="form-control">
                         <option value="-">-</option>
                             <option value="General Advice on Item">General Advice on Item</option>
                             <option value="Repair Recommended">Repair Recommended</option>
@@ -4295,7 +4295,7 @@
                 </div>
                 <div class="col-sm-6">
                   <div class="form-group">
-                    <select formControlName="inspection_findings_and_recommendations-3" id="input-order-status-3<%=recCounter%>" class="form-control">
+                    <select formControlName="recdetail" id="input-order-status-3<%=recCounter%>" class="form-control">
                         <option value="-">-</option>
                             <!--<%
                           for(int j=0;j<ReportrecBean.Ensuite.length;j++){
@@ -4309,7 +4309,7 @@
                 <div class="form-group col">
                   <label for="ensuiterecomme">Comments:</label>
                   <div>
-                    <textarea id="ensuiterecomme" class="form-control" rows="4" max-rows="25" placeholder="Type here to expand" formControlName="inspection-finding-comment"></textarea>
+                    <textarea id="ensuiterecomme" class="form-control" rows="4" max-rows="25" placeholder="Type here to expand" formControlName="comment"></textarea>
                   </div>
                 </div>
                 <div class="col-xs-12 col-md-6">
@@ -4326,7 +4326,7 @@
                         <img id="{{'rec-file-preview-ensuite-'+i}}" src="cpRepImg?src=<%=rb.getFilename()%>&time=<%=java.util.Calendar.getInstance().getTimeInMillis()%>"
                           alt="your image" height="160px;" />
                       </div>
-                      <input type="hidden" name="typee-<%=recCounter++%>" value="Ensuite" />
+                      <input type="hidden" formControlName="typee" value="Ensuite" />
                     </div>
                   </div>
                 </div>
@@ -5137,7 +5137,7 @@
               <div class="row">
                 <div class="col-sm-12">
                   <div class="form-group">
-                    <select formControlName="inspection_findings_and_recommendations-1" id="input-order-status-1<%=recCounter%>" class="form-control"
+                    <select formControlName="item" id="input-order-status-1<%=recCounter%>" class="form-control"
                       onchange="Recommendation.changeSelect('input-order-status-3<%=recCounter%>','input-order-status-1<%=recCounter%>');">
                         <option value="-">-</option>
                         <option value="Hallways and General Living Spaces">Hallways and General Living Spaces</option>
@@ -5152,7 +5152,7 @@
                 </div>
                 <div class="col-sm-6">
                   <div class="form-group">
-                    <select formControlName="inspection_findings_and_recommendations-2" id="input-order-status<%=recCounter%>" class="form-control">
+                    <select formControlName="rectype" id="input-order-status<%=recCounter%>" class="form-control">
                         <option value="-">-</option>
                             <option value="General Advice on Item">General Advice on Item</option>
                             <option value="Repair Recommended">Repair Recommended</option>
@@ -5163,7 +5163,7 @@
                 </div>
                 <div class="col-sm-6">
                   <div class="form-group">
-                    <select formControlName="inspection_findings_and_recommendations-3" id="input-order-status-3<%=recCounter%>" class="form-control">
+                    <select formControlName="recdetail" id="input-order-status-3<%=recCounter%>" class="form-control">
                         <option value="-">-</option>
                             <!--<%
                           for(int j=0;j<ReportrecBean.External.length;j++){
@@ -5177,7 +5177,7 @@
                 <div class="form-group col">
                   <label for="externalrecomme">Comments:</label>
                   <div>
-                    <textarea id="externalrecomme" class="form-control" rows="4" max-rows="25" placeholder="Type here to expand" formControlName="inspection-finding-comment"></textarea>
+                    <textarea id="externalrecomme" class="form-control" rows="4" max-rows="25" placeholder="Type here to expand" formControlName="comment"></textarea>
                   </div>
                 </div>
                 <div class="col-xs-12 col-md-6">
@@ -5194,7 +5194,7 @@
                         <img id="{{'rec-file-preview-external-'+i}}" src="cpRepImg?src=<%=rb.getFilename()%>&time=<%=java.util.Calendar.getInstance().getTimeInMillis()%>"
                           alt="your image" height="160px;" />
                       </div>
-                      <input type="hidden" name="typee-<%=recCounter++%>" value="External" />
+                      <input type="hidden" formControlName="typee" value="External" />
                     </div>
                   </div>
                 </div>
@@ -5903,7 +5903,7 @@
               <div class="row">
                 <div class="col-sm-12">
                   <div class="form-group">
-                    <select formControlName="inspection_findings_and_recommendations-1" id="input-order-status-1<%=recCounter%>" class="form-control"
+                    <select formControlName="item" id="input-order-status-1<%=recCounter%>" class="form-control"
                       onchange="Recommendation.changeSelect('input-order-status-3<%=recCounter%>','input-order-status-1<%=recCounter%>',timberPestItems);">
                         <option value="Timber Pest - Findings and Recommendations">Timber Pest - Findings and Recommendations</option>
                     </select>
@@ -5911,7 +5911,7 @@
                 </div>
                 <div class="col-sm-6">
                   <div class="form-group">
-                    <select formControlName="inspection_findings_and_recommendations-2" id="input-order-status<%=recCounter%>" class="form-control">
+                    <select formControlName="rectype" id="input-order-status<%=recCounter%>" class="form-control">
                         <option value="-">-</option>
                             <option value="Activity or Damage Advice on Item">Activity or Damage Advice on Item</option>
                             <option value="Action Recommended">Action Recommended</option>
@@ -5922,7 +5922,7 @@
                 </div>
                 <div class="col-sm-6">
                   <div class="form-group">
-                    <select formControlName="inspection_findings_and_recommendations-3" id="input-order-status-3<%=recCounter%>" class="form-control">
+                    <select formControlName="recdetail" id="input-order-status-3<%=recCounter%>" class="form-control">
                         <option value="-">-</option>
                             <!--<%
                           for(int j=0;j<ReportrecBean.TimberPest.length;j++){
@@ -5936,7 +5936,7 @@
                 <div class="form-group col">
                   <label for="timberrecomme">Comments:</label>
                   <div>
-                    <textarea id="timberrecomme" class="form-control" rows="4" max-rows="25" placeholder="Type here to expand" formControlName="inspection-finding-comment"></textarea>
+                    <textarea id="timberrecomme" class="form-control" rows="4" max-rows="25" placeholder="Type here to expand" formControlName="comment"></textarea>
                   </div>
                 </div>
                 <div class="col-xs-12 col-md-6">
@@ -5953,7 +5953,7 @@
                         <img id="{{'rec-file-preview-timberpest-'+i}}" src="cpRepImg?src=<%=rb.getFilename()%>&time=<%=java.util.Calendar.getInstance().getTimeInMillis()%>"
                           alt="your image" height="160px;" />
                       </div>
-                      <input type="hidden" name="typee-<%=recCounter++%>" value="TimberPest" />
+                      <input type="hidden" formControlName="typee" value="TimberPest" />
                     </div>
                   </div>
                 </div>

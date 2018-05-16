@@ -19,7 +19,7 @@ export class InspectionDetailsService {
         console.log("--------------------response directly from API----------------------------");
         console.log(responseInspectionDetails);
 
-        Object.assign(this.inspectionDetails, responseInspectionDetails[0]); //TODO - array - 0 index ?
+        Object.assign(this.inspectionDetails, responseInspectionDetails); //TODO - array - 0 index ?
 
         console.log("--------------------After assign----------------------------");
         console.log(this.inspectionDetails);

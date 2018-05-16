@@ -44,7 +44,7 @@ export const routes: Routes = [
         loadChildren: './views/mycalendar/mycalendar.module#MyCalendarModule'
       },
       {
-        path: 'inspectiondtlform',
+        path: 'inspectiondtlform/:id',
         loadChildren: './views/inspection-dtl-form/inspection-dtl-form.module#InspectionDtlFormModule',
         data: { preload: true }
       }

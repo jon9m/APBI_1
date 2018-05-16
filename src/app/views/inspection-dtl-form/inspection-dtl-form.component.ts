@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl, FormArray, FormBuilder } from "@angular/forms";
 import { InspectionDetailsService } from "../../shared/inspection-detail.service";
 import { FileUploadService } from '../../shared/fileupload.service';
 import { HttpEventType } from '@angular/common/http';
-import { Router } from "@angular/router";
+import { Router, ActivatedRoute } from "@angular/router";
 import { HTTPService } from "../../shared/http.service";
 import { InspectionDetails } from "../../shared/inspection_details.model";
 
@@ -24,23 +24,38 @@ import { InspectionDetails } from "../../shared/inspection_details.model";
 'timberpest_recommendations_list'
  */
 
-export class InspectionDtlFormComponent implements OnInit {
+export class InspectionDtlFormComponent implements OnInit, OnDestroy {
 
   inspectiondetails: InspectionDetails;
   inspectiondetailsform: FormGroup;
 
-  constructor(private fb: FormBuilder, private inspectionDetailsService: InspectionDetailsService, private fileUploadService: FileUploadService, private router: Router, private httpService: HTTPService) {
+  private sub: any;
+  private id: number;
+
+  constructor(private route: ActivatedRoute, private fb: FormBuilder, private inspectionDetailsService: InspectionDetailsService, private fileUploadService: FileUploadService, private router: Router, private httpService: HTTPService) {
   }
 
   ngOnInit() {
     console.log("form ng on init called!");
 
-    this.initForm();
-    this.inspectiondetails = this.inspectionDetailsService.getInspectionDetailsModal();
-    this.loadRecommendations();
+    this.sub = this.route.params.subscribe(params => {
+      this.id = +params['id']; // (+) converts string 'id' to a number
 
-    //TODO
-    this.inspectiondetailsform.patchValue(this.inspectiondetails);
+      this.initForm();
+      this.inspectiondetails = this.inspectionDetailsService.getInspectionDetailsModal();
+      //this.loadRecommendations(); - todo uncomment!!! - TODO
+
+      //TODO
+      this.inspectiondetailsform.patchValue(this.inspectiondetails);
+
+
+      //Set booking id
+      this.inspectiondetailsform.get('bookingid').setValue(this.id.toString());
+    });
+  }
+
+  ngOnDestroy() {
+    this.sub.unsubscribe();
   }
 
   public loadRecommendations() {
@@ -57,80 +72,88 @@ export class InspectionDtlFormComponent implements OnInit {
     hallways_recommendations_array.forEach((item, index) => {
       (<FormArray>this.inspectiondetailsform.get('hallways_recommendations_list')).push(
         new FormGroup({
-          'inspection_findings_and_recommendations-1': new FormControl(),
-          'inspection_findings_and_recommendations-2': new FormControl(),
-          'inspection_findings_and_recommendations-3': new FormControl(),
-          'inspection-finding-comment': new FormControl()
+          'item': new FormControl(),
+          'rectype': new FormControl(),
+          'recdetail': new FormControl(),
+          'comment': new FormControl(),
+          'typee': new FormControl()
         })
       );
     });
     kitchen_recommendations_array.forEach((item, index) => {
       (<FormArray>this.inspectiondetailsform.get('kitchen_recommendations_list')).push(
         new FormGroup({
-          'inspection_findings_and_recommendations-1': new FormControl(),
-          'inspection_findings_and_recommendations-2': new FormControl(),
-          'inspection_findings_and_recommendations-3': new FormControl(),
-          'inspection-finding-comment': new FormControl()
+          'item': new FormControl(),
+          'rectype': new FormControl(),
+          'recdetail': new FormControl(),
+          'comment': new FormControl(),
+          'typee': new FormControl()
         })
       );
     });
     laundry_recommendations_array.forEach((item, index) => {
       (<FormArray>this.inspectiondetailsform.get('laundry_recommendations_list')).push(
         new FormGroup({
-          'inspection_findings_and_recommendations-1': new FormControl(),
-          'inspection_findings_and_recommendations-2': new FormControl(),
-          'inspection_findings_and_recommendations-3': new FormControl(),
-          'inspection-finding-comment': new FormControl()
+          'item': new FormControl(),
+          'rectype': new FormControl(),
+          'recdetail': new FormControl(),
+          'comment': new FormControl(),
+          'typee': new FormControl()
         })
       );
     });
     bedrooms_recommendations_array.forEach((item, index) => {
       (<FormArray>this.inspectiondetailsform.get('bedrooms_recommendations_list')).push(
         new FormGroup({
-          'inspection_findings_and_recommendations-1': new FormControl(),
-          'inspection_findings_and_recommendations-2': new FormControl(),
-          'inspection_findings_and_recommendations-3': new FormControl(),
-          'inspection-finding-comment': new FormControl()
+          'item': new FormControl(),
+          'rectype': new FormControl(),
+          'recdetail': new FormControl(),
+          'comment': new FormControl(),
+          'typee': new FormControl()
         })
       );
     });
     bathrooms_recommendations_array.forEach((item, index) => {
       (<FormArray>this.inspectiondetailsform.get('bathrooms_recommendations_list')).push(
         new FormGroup({
-          'inspection_findings_and_recommendations-1': new FormControl(),
-          'inspection_findings_and_recommendations-2': new FormControl(),
-          'inspection_findings_and_recommendations-3': new FormControl(),
-          'inspection-finding-comment': new FormControl()
+          'item': new FormControl(),
+          'rectype': new FormControl(),
+          'recdetail': new FormControl(),
+          'comment': new FormControl(),
+          'typee': new FormControl()
         })
       );
     });
     external_recommendations_array.forEach((item, index) => {
       (<FormArray>this.inspectiondetailsform.get('external_recommendations_list')).push(
         new FormGroup({
-          'inspection_findings_and_recommendations-1': new FormControl(),
-          'inspection_findings_and_recommendations-2': new FormControl(),
-          'inspection_findings_and_recommendations-3': new FormControl(),
-          'inspection-finding-comment': new FormControl()
+          'item': new FormControl(),
+          'rectype': new FormControl(),
+          'recdetail': new FormControl(),
+          'comment': new FormControl(),
+          'typee': new FormControl()
         })
       );
     });
     ensuite_recommendations_array.forEach((item, index) => {
       (<FormArray>this.inspectiondetailsform.get('ensuite_recommendations_list')).push(
         new FormGroup({
-          'inspection_findings_and_recommendations-1': new FormControl(),
-          'inspection_findings_and_recommendations-2': new FormControl(),
-          'inspection_findings_and_recommendations-3': new FormControl(),
-          'inspection-finding-comment': new FormControl()
+          'item': new FormControl(),
+          'rectype': new FormControl(),
+          'recdetail': new FormControl(),
+          'comment': new FormControl(),
+          'typee': new FormControl()
         })
       );
     });
     timberpest_recommendations_array.forEach((item, index) => {
       (<FormArray>this.inspectiondetailsform.get('timberpest_recommendations_list')).push(
         new FormGroup({
-          'inspection_findings_and_recommendations-1': new FormControl(),
-          'inspection_findings_and_recommendations-2': new FormControl(),
-          'inspection_findings_and_recommendations-3': new FormControl(),
-          'inspection-finding-comment': new FormControl()
+          'item': new FormControl(),
+          'rectype': new FormControl(),
+          'recdetail': new FormControl(),
+          'comment': new FormControl(),
+          'typee': new FormControl()
         })
       );
     });
@@ -1239,10 +1262,11 @@ export class InspectionDtlFormComponent implements OnInit {
 
   onAddRecommendations(recommendationType) {
     (<FormArray>this.inspectiondetailsform.get(recommendationType)).push(new FormGroup({
-      'inspection_findings_and_recommendations-1': new FormControl(),
-      'inspection_findings_and_recommendations-2': new FormControl(),
-      'inspection_findings_and_recommendations-3': new FormControl(),
-      'inspection-finding-comment': new FormControl()
+      'item': new FormControl(),
+      'rectype': new FormControl(),
+      'recdetail': new FormControl(),
+      'comment': new FormControl(),
+      'typee': new FormControl()
     }));
   }
 
@@ -1251,12 +1275,12 @@ export class InspectionDtlFormComponent implements OnInit {
   }
 
   onSave() {
+    console.log("this.inspectiondetailsform.value");
     console.log(this.inspectiondetailsform.value);
 
     this.httpService.addReport(this.inspectiondetailsform.value).subscribe(
       (response: Response) => {
-          console.log("success");
-          console.log(JSON.stringify(response));
+        console.log("success");
       },
       (error) => {
         console.log("error");
