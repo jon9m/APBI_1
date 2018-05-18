@@ -13,7 +13,7 @@ export class HTTPService {
     // calendarFeedUrl = this.rootContext + 'cpBookingCalendarFeedApp';
     calendarFeedUrl = this.rootContext + 'cpBookingCalendarFeedApp.json';
     // inspDtlPreviewUrl = this.rootContext + 'cpInspectionDetailsApp';
-    inspDtlPreviewUrl = this.rootContext + 'cpInspectionDetailsApp.html1';
+    inspDtlPreviewUrl = this.rootContext + 'cpInspectionDetailsApp.html';
     // inspDtlFormUrl = this.rootContext + 'cpLoadFormDataAppv2';
     inspDtlFormUrl = this.rootContext + 'cpLoadFormDataAppv2.json';
     addReportUrl = this.rootContext + 'cpAddReportv2';

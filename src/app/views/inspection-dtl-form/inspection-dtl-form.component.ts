@@ -61,10 +61,8 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
 
       this.initRecommendations();
 
-      //TODO
+      this.inspectiondetailsform.reset();
       this.inspectiondetailsform.patchValue(this.inspectiondetails);
-
-
       //Set booking id
       this.inspectiondetailsform.get('bookingid').setValue(this.id.toString());
     });

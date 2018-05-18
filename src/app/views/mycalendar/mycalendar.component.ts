@@ -38,7 +38,7 @@ export class MycalendarComponent implements OnInit, OnDestroy {
     let currMonth = (now.set('date', 1).add(-10, 'day')).format('YYYY-MM-DD');
     let nextMonth = (now.set('date', 1).add(1, 'month').add(10, 'day')).format('YYYY-MM-DD');
 
-    console.log("currMonth " + currMonth +" nextMonth " + nextMonth);
+    console.log("currMonth " + currMonth + " nextMonth " + nextMonth);
 
     this.eventSubscription = this.httpService.loadCalendar({ 'start': currMonth, 'end': nextMonth }).subscribe(data => {
       this.calendarOptions = {
@@ -97,7 +97,7 @@ export class MycalendarComponent implements OnInit, OnDestroy {
       },
       (error) => {
         console.log(error);
-        inspdtlpreviewcontent.innerHTML = 'Error during loading details!';
+        inspdtlpreviewcontent.innerHTML = '<div class="p-3 text-danger">Error during loading details!</div>';
       });
 
     element.click();

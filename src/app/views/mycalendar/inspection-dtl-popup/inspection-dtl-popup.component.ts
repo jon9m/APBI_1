@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Renderer2 } from '@angular/core';
 import { ModalDirective } from 'ngx-bootstrap/modal';
 import { Router } from "@angular/router";
 import { HTTPService } from "../../../shared/http.service";
@@ -14,21 +14,26 @@ import { InspectionDetailsService } from "../../../shared/inspection-detail.serv
 export class InspectionDtlPopupComponent implements OnInit {
 
   @ViewChild('modalclosebutton') closeButton: ElementRef;
+  @ViewChild('completereportmsg') completeMsg: ElementRef;
+  @ViewChild('completereportbutton') completeButton: ElementRef;
 
   public detailsModal: InspectionDetails;
+  isFormLoading: boolean = false;
 
-  constructor(private router: Router, private httpSevice: HTTPService, private inspectionDetailsService: InspectionDetailsService) { }
+  constructor(private renderer: Renderer2, private router: Router, private httpSevice: HTTPService, private inspectionDetailsService: InspectionDetailsService) { }
 
   ngOnInit() {
   }
 
   loadForm() {
+    this.beginFormLoading();
     this.httpSevice.loadInspectionDtlForm().subscribe(
       (response: Response) => {
         this.inspectionDetailsService.populateInspectionDetailsModel(response);
 
         let bookingidelement: HTMLInputElement = document.getElementById('previewbookingid') as HTMLInputElement;
         let btnElem = this.closeButton.nativeElement as HTMLElement;
+        this.doneFormLoading();
         btnElem.click();
 
         this.router.navigate(['/inspectiondtlform', bookingidelement.value]);
@@ -37,5 +42,21 @@ export class InspectionDtlPopupComponent implements OnInit {
         console.log(error);
       }
     );
+  }
+
+  beginFormLoading() {
+    this.isFormLoading = true;
+    let completeMsgElem = this.completeMsg.nativeElement;
+    this.renderer.addClass(completeMsgElem, 'fa');
+    this.renderer.addClass(completeMsgElem, 'fa-spinner');
+    this.renderer.addClass(completeMsgElem, 'fa-spin');
+  }
+
+  doneFormLoading() {
+    this.isFormLoading = false;
+    let completeMsgElem = this.completeMsg.nativeElement;
+    this.renderer.removeClass(completeMsgElem, 'fa');
+    this.renderer.removeClass(completeMsgElem, 'fa-spinner');
+    this.renderer.removeClass(completeMsgElem, 'fa-spin');
   }
 }
