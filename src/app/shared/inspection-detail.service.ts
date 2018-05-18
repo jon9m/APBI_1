@@ -13,13 +13,13 @@ export class InspectionDetailsService {
     }
 
     populateInspectionDetailsModel(responseJSON) {
-        //TODO - populate modal object from JSON
         let responseInspectionDetails = responseJSON;
 
         console.log("--------------------response directly from API----------------------------");
         console.log(responseInspectionDetails);
 
-        Object.assign(this.inspectionDetails, responseInspectionDetails); //TODO - array - 0 index ?
+        //Assign all values to the modal
+        Object.assign(this.inspectionDetails, responseInspectionDetails);
 
         console.log("--------------------After assign----------------------------");
         console.log(this.inspectionDetails);

@@ -5,12 +5,17 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 export class HTTPService {
 
     // rootContext = 'https://apbi.com.au/inspector-app/';
-    rootContext = 'http://34.251.200.88:8080/inspector-app/';
+    // rootContext = 'http://34.251.200.88:8080/inspector-app/';
+    rootContext = 'http://localhost/static/';
 
-    appStatusUrl = this.rootContext + 'cpLiveApp';
-    calendarFeedUrl = this.rootContext + 'cpBookingCalendarFeedApp';
-    inspDtlPreviewUrl = this.rootContext + 'cpInspectionDetailsApp';
-    inspDtlFormUrl = this.rootContext + 'cpLoadFormDataAppv2';
+    // appStatusUrl = this.rootContext + 'cpLiveApp';
+    appStatusUrl = this.rootContext + 'cpLiveApp.json';
+    // calendarFeedUrl = this.rootContext + 'cpBookingCalendarFeedApp';
+    calendarFeedUrl = this.rootContext + 'cpBookingCalendarFeedApp.json';
+    // inspDtlPreviewUrl = this.rootContext + 'cpInspectionDetailsApp';
+    inspDtlPreviewUrl = this.rootContext + 'cpInspectionDetailsApp.html1';
+    // inspDtlFormUrl = this.rootContext + 'cpLoadFormDataAppv2';
+    inspDtlFormUrl = this.rootContext + 'cpLoadFormDataAppv2.json';
     addReportUrl = this.rootContext + 'cpAddReportv2';
 
 
@@ -34,7 +39,7 @@ export class HTTPService {
     }
 
     getPreview(id) {
-        let currURL = this.inspDtlPreviewUrl + "?id=" + id + "&mhmajax=mhm_mallahzadeh_hosseini&time=" + new Date().getTime();
+        let currURL = this.inspDtlPreviewUrl + "?id=" + id + "&time=" + new Date().getTime();
         return this.http.get(currURL, { responseType: 'text' });
     }
 
@@ -47,6 +52,6 @@ export class HTTPService {
         console.log("before post - postObj " + JSON.stringify(postObj));
 
         let currURL = this.addReportUrl + "?time=" + new Date().getTime();
-        return this.http.post(currURL, JSON.stringify(postObj), this.httpOptions);
+        return this.http.post(currURL, postObj, this.httpOptions);
     }
 }

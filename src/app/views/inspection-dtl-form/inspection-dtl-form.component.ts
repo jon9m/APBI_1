@@ -38,12 +38,28 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
   ngOnInit() {
     console.log("form ng on init called!");
 
+    //TODO - subscribe to form load evants - second option
+    // this.inspectionDetailsService.subjectName.subscribe({
+    //    (dtlModel: DtlModel) => {
+    //      //reset modal and patch value;
+    //   }
+    // });
+
     this.sub = this.route.params.subscribe(params => {
       this.id = +params['id']; // (+) converts string 'id' to a number
 
       this.initForm();
       this.inspectiondetails = this.inspectionDetailsService.getInspectionDetailsModal();
-      //this.loadRecommendations(); - todo uncomment!!! - TODO
+
+      //------------------------------------------
+      //TODO - get a copy of JSON
+      //populate recommendations objects from JSON
+      //remove recommendations from JSON
+      //apply remainning JSON to form
+      //Add populated recommendation objects to the form
+      //------------------------------------------
+
+      this.initRecommendations();
 
       //TODO
       this.inspectiondetailsform.patchValue(this.inspectiondetails);
@@ -58,8 +74,7 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
     this.sub.unsubscribe();
   }
 
-  public loadRecommendations() {
-    //from back end - todo
+  public initRecommendations() {
     let hallways_recommendations_array = this.inspectiondetails.hallways_recommendations_list;
     let kitchen_recommendations_array = this.inspectiondetails.kitchen_recommendations_list;
     let laundry_recommendations_array = this.inspectiondetails.laundry_recommendations_list;
@@ -1226,12 +1241,12 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
 
         this.fileUploadSub = this.fileUploadService.fileUpload(fileToUpload, submittedData)
           .subscribe(
-            event => {
-              this.handleProgress(event, index, recommendationType);
-            },
-            error => {
-              console.log("Server error");
-            });
+          event => {
+            this.handleProgress(event, index, recommendationType);
+          },
+          error => {
+            console.log("Server error");
+          });
       };
     }
   }

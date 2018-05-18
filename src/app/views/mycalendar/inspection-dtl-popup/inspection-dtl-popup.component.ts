@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ModalDirective } from 'ngx-bootstrap/modal';
 import { Router } from "@angular/router";
 import { HTTPService } from "../../../shared/http.service";
@@ -13,6 +13,8 @@ import { InspectionDetailsService } from "../../../shared/inspection-detail.serv
 })
 export class InspectionDtlPopupComponent implements OnInit {
 
+  @ViewChild('modalclosebutton') closeButton: ElementRef;
+
   public detailsModal: InspectionDetails;
 
   constructor(private router: Router, private httpSevice: HTTPService, private inspectionDetailsService: InspectionDetailsService) { }
@@ -23,15 +25,12 @@ export class InspectionDtlPopupComponent implements OnInit {
   loadForm() {
     this.httpSevice.loadInspectionDtlForm().subscribe(
       (response: Response) => {
-        //this.inspectionDetailsService.populateInspectionDetailsModel(response); - todo need a modal?
+        this.inspectionDetailsService.populateInspectionDetailsModel(response);
 
-        console.log(response);
-        console.log(JSON.stringify(response));
-
-        let element: HTMLElement = document.getElementById('modalclosebutton') as HTMLElement;
         let bookingidelement: HTMLInputElement = document.getElementById('previewbookingid') as HTMLInputElement;
-        
-        element.click();
+        let btnElem = this.closeButton.nativeElement as HTMLElement;
+        btnElem.click();
+
         this.router.navigate(['/inspectiondtlform', bookingidelement.value]);
       },
       (error) => {
