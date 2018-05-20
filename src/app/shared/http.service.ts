@@ -6,16 +6,12 @@ export class HTTPService {
 
     // rootContext = 'https://apbi.com.au/inspector-app/';
     // rootContext = 'http://34.251.200.88:8080/inspector-app/';
-    rootContext = 'http://localhost/static/';
+    rootContext = 'http://localhost:8080/inspector-app/';
 
-    // appStatusUrl = this.rootContext + 'cpLiveApp';
-    appStatusUrl = this.rootContext + 'cpLiveApp.json';
-    // calendarFeedUrl = this.rootContext + 'cpBookingCalendarFeedApp';
-    calendarFeedUrl = this.rootContext + 'cpBookingCalendarFeedApp.json';
-    // inspDtlPreviewUrl = this.rootContext + 'cpInspectionDetailsApp';
-    inspDtlPreviewUrl = this.rootContext + 'cpInspectionDetailsApp.html';
-    // inspDtlFormUrl = this.rootContext + 'cpLoadFormDataAppv2';
-    inspDtlFormUrl = this.rootContext + 'cpLoadFormDataAppv2.json';
+    appStatusUrl = this.rootContext + 'cpLiveApp';
+    calendarFeedUrl = this.rootContext + 'cpBookingCalendarFeedApp';
+    inspDtlPreviewUrl = this.rootContext + 'cpInspectionDetailsApp';
+    inspDtlFormUrl = this.rootContext + 'cpLoadFormDataAppv2';
     addReportUrl = this.rootContext + 'cpAddReportv2';
 
 
