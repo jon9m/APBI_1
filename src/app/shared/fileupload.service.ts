@@ -1,10 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpEventType, HttpRequest, HttpErrorResponse, HttpEvent } from '@angular/common/http';
+import { AppSettings } from "./app-settings";
 
 
 @Injectable()
 export class FileUploadService {
-    baseURL = 'https://apbi.com.au/inspector-app/cpUploadImageApp';
+    rootContext = AppSettings.API_ENDPOINT;
+    baseURL = this.rootContext + 'cpUploadImageApp';
+
     constructor(private http: HttpClient) { }
 
     fileUpload(fileItem: File, extraData?: object): any {

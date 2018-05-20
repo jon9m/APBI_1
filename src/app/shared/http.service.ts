@@ -1,12 +1,10 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { AppSettings } from "./app-settings";
 
 @Injectable()
 export class HTTPService {
-
-    // rootContext = 'https://apbi.com.au/inspector-app/';
-    // rootContext = 'http://34.251.200.88:8080/inspector-app/';
-    rootContext = 'http://localhost:8080/inspector-app/';
+    rootContext = AppSettings.API_ENDPOINT;
 
     appStatusUrl = this.rootContext + 'cpLiveApp';
     calendarFeedUrl = this.rootContext + 'cpBookingCalendarFeedApp';
