@@ -8,7 +8,7 @@ export class HTTPService {
 
     appStatusUrl = this.rootContext + 'cpLiveApp';
     calendarFeedUrl = this.rootContext + 'cpBookingCalendarFeedApp';
-    inspDtlPreviewUrl = this.rootContext + 'cpInspectionDetailsApp';
+    inspDtlPreviewUrl = this.rootContext + 'cpInspectionDetailsAppv2';
     inspDtlFormUrl = this.rootContext + 'cpLoadFormDataAppv2';
     addReportUrl = this.rootContext + 'cpAddReportv2';
 

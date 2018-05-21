@@ -14,7 +14,7 @@ export class FileUploadService {
         let apiCreateEndpoint = this.baseURL;
         const formData: FormData = new FormData();
 
-        formData.append('fileItem', fileItem, fileItem.name);
+        formData.append('fileItem', fileItem, fileItem.name);  //TODO - 
         if (extraData) {
             for (let key in extraData) {
                 // iterate and set other form data

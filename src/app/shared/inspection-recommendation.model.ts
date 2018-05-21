@@ -4,6 +4,8 @@ export class InspectionRecommendation {
                 public recdetail: string, 
                 public comment: string, 
                 public typee: string) {
+
+                    //TODO -  new filed for file name - no extenstion
                     
     }
 }
