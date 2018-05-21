@@ -1,10 +1,10 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { AppSettings } from "./app-settings";
+import { AppGlobal } from "./app-global";
 
 @Injectable()
 export class HTTPService {
-    rootContext = AppSettings.API_ENDPOINT;
+    rootContext = AppGlobal.API_ENDPOINT;
 
     appStatusUrl = this.rootContext + 'cpLiveApp';
     calendarFeedUrl = this.rootContext + 'cpBookingCalendarFeedApp';

@@ -6,6 +6,8 @@ import { HttpEventType } from '@angular/common/http';
 import { Router, ActivatedRoute } from "@angular/router";
 import { HTTPService } from "../../shared/http.service";
 import { InspectionDetails } from "../../shared/inspection_details.model";
+import { AppGlobal } from '../../shared/app-global';
+import { InspectionProperty } from '../../shared/inspection-property.model';
 
 @Component({
   selector: 'app-inspection-dtl-form',
@@ -26,17 +28,38 @@ import { InspectionDetails } from "../../shared/inspection_details.model";
 
 export class InspectionDtlFormComponent implements OnInit, OnDestroy {
 
+  inspectionProperty: InspectionProperty;
   inspectiondetails: InspectionDetails;
   inspectiondetailsform: FormGroup;
 
   private sub: any;
   private id: number;
 
+  timberPest: string[] = [];
+  hallways: string[] = [];
+  kitchen: string[] = [];
+  laundry: string[] = [];
+  bedrooms: string[] = [];
+  bathrooms: string[] = [];
+  internal: string[] = [];
+  ensuite: string[] = [];
+  external: string[] = [];
+
   constructor(private route: ActivatedRoute, private fb: FormBuilder, private inspectionDetailsService: InspectionDetailsService, private fileUploadService: FileUploadService, private router: Router, private httpService: HTTPService) {
   }
 
   ngOnInit() {
     console.log("form ng on init called!");
+
+    this.timberPest = AppGlobal.TimberPest;
+    this.hallways = AppGlobal.Hallways;
+    this.kitchen = AppGlobal.Kitchen;
+    this.laundry = AppGlobal.Laundry;
+    this.bedrooms = AppGlobal.Bedrooms;
+    this.bathrooms = AppGlobal.Bathrooms;
+    this.internal = AppGlobal.Internal;
+    this.ensuite = AppGlobal.Ensuite;
+    this.external = AppGlobal.External;
 
     //TODO - subscribe to form load evants - second option
     // this.inspectionDetailsService.subjectName.subscribe({
@@ -50,6 +73,7 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
 
       this.initForm();
       this.inspectiondetails = this.inspectionDetailsService.getInspectionDetailsModal();
+      this.inspectionProperty = this.inspectionDetailsService.getInspectionPropertyModal();
       //if (this.inspectiondetails != null) {
       this.initRecommendations();
 
@@ -85,68 +109,30 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
     let ensuite_recommendations_array = [];
     let timberpest_recommendations_array = [];
 
-    //todo
-    if (this.inspectiondetails.hallways_recommendations_list) {
+    if (this.inspectiondetails && this.inspectiondetails.hallways_recommendations_list) {
       hallways_recommendations_array = this.inspectiondetails.hallways_recommendations_list;
-    } else {
-      hallways_recommendations_array = [];
     }
-
-    if (this.inspectiondetails.kitchen_recommendations_list) {
+    if (this.inspectiondetails && this.inspectiondetails.kitchen_recommendations_list) {
       kitchen_recommendations_array = this.inspectiondetails.kitchen_recommendations_list;
-    } else {
-      kitchen_recommendations_array = [];
     }
-
-    if (this.inspectiondetails.laundry_recommendations_list) {
+    if (this.inspectiondetails && this.inspectiondetails.laundry_recommendations_list) {
       laundry_recommendations_array = this.inspectiondetails.laundry_recommendations_list;
-    } else {
-      laundry_recommendations_array = [];
     }
-
-    if (this.inspectiondetails.bedrooms_recommendations_list) {
+    if (this.inspectiondetails && this.inspectiondetails.bedrooms_recommendations_list) {
       bedrooms_recommendations_array = this.inspectiondetails.bedrooms_recommendations_list;
-    } else {
-      bedrooms_recommendations_array = [];
     }
-
-    if (this.inspectiondetails.bathrooms_recommendations_list) {
+    if (this.inspectiondetails && this.inspectiondetails.bathrooms_recommendations_list) {
       bathrooms_recommendations_array = this.inspectiondetails.bathrooms_recommendations_list;
-    } else {
-      bathrooms_recommendations_array = [];
     }
-
-    if (this.inspectiondetails.external_recommendations_list) {
+    if (this.inspectiondetails && this.inspectiondetails.external_recommendations_list) {
       external_recommendations_array = this.inspectiondetails.external_recommendations_list;
-    } else {
-      external_recommendations_array = [];
     }
-
-    if (this.inspectiondetails.ensuite_recommendations_list) {
+    if (this.inspectiondetails && this.inspectiondetails.ensuite_recommendations_list) {
       ensuite_recommendations_array = this.inspectiondetails.ensuite_recommendations_list;
-    } else {
-      ensuite_recommendations_array = [];
     }
-
-    if (this.inspectiondetails.timberpest_recommendations_list) {
+    if (this.inspectiondetails && this.inspectiondetails.timberpest_recommendations_list) {
       timberpest_recommendations_array = this.inspectiondetails.timberpest_recommendations_list;
-    } else {
-      timberpest_recommendations_array = [];
     }
-
-
-
-    //todo -ends
-
-
-    // let hallways_recommendations_array = this.inspectiondetails.hallways_recommendations_list;
-    // let kitchen_recommendations_array = this.inspectiondetails.kitchen_recommendations_list;
-    // let laundry_recommendations_array = this.inspectiondetails.laundry_recommendations_list;
-    // let bedrooms_recommendations_array = this.inspectiondetails.bedrooms_recommendations_list;
-    // let bathrooms_recommendations_array = this.inspectiondetails.bathrooms_recommendations_list;
-    // let external_recommendations_array = this.inspectiondetails.external_recommendations_list;
-    // let ensuite_recommendations_array = this.inspectiondetails.ensuite_recommendations_list;
-    // let timberpest_recommendations_array = this.inspectiondetails.timberpest_recommendations_list;
 
     if (hallways_recommendations_array != null) {
       hallways_recommendations_array.forEach((item, index) => {

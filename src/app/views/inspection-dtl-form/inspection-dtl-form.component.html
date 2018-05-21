@@ -7,8 +7,8 @@
         <input type="submit" (click)="onSave()" form="addReportForm" data-toggle="tooltip" title="" class="btn btn-primary" data-original-title="Save" value="SAVE" />
         <a (click)="onCancel()" data-toggle="tooltip" title="" class="btn btn-outline-info" data-original-title="Cancel"><i class="fa fa-reply"></i></a>
       </div>
-      <h1>is.getInpectiondates().getTariff().getInstype().getName()</h1><br/>
-      <h1>is.getAddress()</h1>
+      <h1>{{inspectionProperty.inspectionType}}</h1><br/>
+      <h1>{{inspectionProperty.propertyAddress}}</h1>
     </div>
   </div>
   <div class="container-fluid">
@@ -861,14 +861,7 @@
                   <div class="form-group">
                     <select formControlName="recdetail" id="input-order-status-3<%=recCounter%>" class="form-control">
                         <option value="-">-</option>
-                          <!--<%
-                          for(int j=0;j<ReportrecBean.Hallways.length;j++){
-                            %>
-                              <option value="<%=ReportrecBean.Hallways[j]%>">
-                                <%=ReportrecBean.Hallways[j]%>
-                              </option>
-                            <%
-                          }%>-->
+                          <option *ngFor="let hallway of hallways">{{ hallway }}</option>
                     </select>
                   </div>
                 </div>
@@ -1405,12 +1398,7 @@
                   <div class="form-group">
                     <select formControlName="recdetail" id="input-order-status-3<%=recCounter%>" class="form-control">
                         <option value="-">-</option>
-                          <!--<%
-                          for(int j=0;j<ReportrecBean.Kitchen.length;j++){
-                          %>
-                          <option value="<%=ReportrecBean.Kitchen[j]%>"><%=ReportrecBean.Kitchen[j]%></option>
-                          <%
-                          }%>-->
+                          <option *ngFor="let kitchenitem of kitchen">{{ kitchenitem }}</option>
                     </select>
                   </div>
                 </div>
@@ -1833,12 +1821,7 @@
                   <div class="form-group">
                     <select formControlName="recdetail" id="input-order-status-3<%=recCounter%>" class="form-control">
                         <option value="-">-</option>
-                            <!--<%
-                            for(int j=0;j<ReportrecBean.Laundry.length;j++){
-                            %>
-                            <option value="<%=ReportrecBean.Laundry[j]%>"><%=ReportrecBean.Laundry[j]%></option>
-                            <%
-                            }%>-->
+                            <option *ngFor="let laundryitem of laundry">{{ laundryitem }}</option>
                     </select>
                   </div>
                 </div>
@@ -2929,12 +2912,7 @@
                   <div class="form-group">
                     <select formControlName="recdetail" id="input-order-status-3<%=recCounter%>" class="form-control">
                         <option value="-">-</option>
-                            <!--<%
-                              for(int j=0;j<ReportrecBean.Bedrooms.length;j++){
-                              %>
-                              <option value="<%=ReportrecBean.Bedrooms[j]%>"><%=ReportrecBean.Bedrooms[j]%></option>
-                            <%
-                            }%>-->
+                            <option *ngFor="let bedroom of bedrooms">{{ bedroom }}</option>
                     </select>
                   </div>
                 </div>
@@ -3613,12 +3591,7 @@
                   <div class="form-group">
                     <select formControlName="recdetail" id="input-order-status-3<%=recCounter%>" class="form-control">
                         <option value="-">-</option>
-                            <!--<%
-                          for(int j=0;j<ReportrecBean.Bathrooms.length;j++){
-                          %>
-                          <option value="<%=ReportrecBean.Bathrooms[j]%>"><%=ReportrecBean.Bathrooms[j]%></option>
-                          <%
-                        }%>-->
+                        <option *ngFor="let bathroom of bathrooms">{{ bathroom }}</option>
                     </select>
                   </div>
                 </div>
@@ -4297,12 +4270,7 @@
                   <div class="form-group">
                     <select formControlName="recdetail" id="input-order-status-3<%=recCounter%>" class="form-control">
                         <option value="-">-</option>
-                            <!--<%
-                          for(int j=0;j<ReportrecBean.Ensuite.length;j++){
-                          %>
-                          <option value="<%=ReportrecBean.Ensuite[j]%>"><%=ReportrecBean.Ensuite[j]%></option>
-                          <%
-                        }%>-->
+                        <option *ngFor="let ensuiteitem of ensuite">{{ ensuiteitem }}</option>
                     </select>
                   </div>
                 </div>
@@ -5165,12 +5133,7 @@
                   <div class="form-group">
                     <select formControlName="recdetail" id="input-order-status-3<%=recCounter%>" class="form-control">
                         <option value="-">-</option>
-                            <!--<%
-                          for(int j=0;j<ReportrecBean.External.length;j++){
-                          %>
-                          <option value="<%=ReportrecBean.External[j]%>"><%=ReportrecBean.External[j]%></option>
-                          <%
-                        }%>-->
+                        <option *ngFor="let externalitem of external">{{ externalitem }}</option>
                     </select>
                   </div>
                 </div>
@@ -5477,7 +5440,7 @@
   </div>
   </div>
   </div>
-  <!-- Inspection Report ------------------------------------------------------------------------------------------------------------------------>
+  <!-- Inspection Report -->
   <div class="card">
     <div class="card-header">
       <h4 class="card-title black"><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;<strong>Timber Pest Inspection Report</strong>
@@ -5924,12 +5887,7 @@
                   <div class="form-group">
                     <select formControlName="recdetail" id="input-order-status-3<%=recCounter%>" class="form-control">
                         <option value="-">-</option>
-                            <!--<%
-                          for(int j=0;j<ReportrecBean.TimberPest.length;j++){
-                          %>
-                          <option value="<%=ReportrecBean.TimberPest[j]%>"><%=ReportrecBean.TimberPest[j]%></option>
-                          <%
-                        }%>-->
+                        <option *ngFor="let timberPestitem of timberPest">{{ timberPestitem }}</option>
                     </select>
                   </div>
                 </div>

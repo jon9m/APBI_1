@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpEventType, HttpRequest, HttpErrorResponse, HttpEvent } from '@angular/common/http';
-import { AppSettings } from "./app-settings";
+import { AppGlobal } from './app-global';
 
 
 @Injectable()
 export class FileUploadService {
-    rootContext = AppSettings.API_ENDPOINT;
+    rootContext = AppGlobal.API_ENDPOINT;
     baseURL = this.rootContext + 'cpUploadImageApp';
 
     constructor(private http: HttpClient) { }
