@@ -2,7 +2,7 @@
   <input id="bookingid" type="hidden" name="bookingid" formControlName="bookingid" />
   <input id="rec_count" type="hidden" name="rec_count" formControlName="rec_count" value="max_rec" />
   <div class="page-header">
-    <div class="container-fluid">
+    <div class="container-fluid p-0">
       <div class="pull-right">
         <input type="submit" (click)="onSave()" form="addReportForm" data-toggle="tooltip" title="" class="btn btn-primary" data-original-title="Save" value="SAVE" />
         <a (click)="onCancel()" data-toggle="tooltip" title="" class="btn btn-outline-info" data-original-title="Cancel"><i class="fa fa-reply"></i></a>
@@ -11,8 +11,8 @@
       <h1>{{inspectionProperty.propertyAddress}}</h1>
     </div>
   </div>
-  <div class="container-fluid">
-    <div class="card">
+  <div class="container-fluid p-0">
+    <div class="card my-3">
       <div class="card-header">
         <h1 class="card-title"><strong><i class="fa fa-circle" aria-hidden="true" style="font-size: 11px;"></i>&nbsp;PROPERTY INSPECTION PARTICULARS</strong>
         </h1>
@@ -220,13 +220,13 @@
           <div class="form-group">
             <div class="col-sm-12">
               <span class="btn btn-success fileinput-button"><i class="glyphicon glyphicon-plus"></i><span>Select file...</span>
-              <input type="file" name="file-01" (change)="onFileChange($event, 0, 'property', 'rec-file-property')" accept="image/*" capture="camera" />
+              <input type="file" name="file-01" (change)="onFileChange($event, '01', 'file', 'file','file-01')" accept="image/*" capture="camera" />
               </span><br> <br>
               <div id="file-01-progress" class="progress">
-                <div *ngIf="currInputElemProgress==='property_progress_0'" class="progress-bar progress-bar-success" [style.width.%]="uploadProgress"></div>
+                <div *ngIf="currInputElemProgress==='file_progress_01'" class="progress-bar progress-bar-success" [style.width.%]="uploadProgress"></div>
               </div>
               <div class="files">
-                <img id="rec-file-property-0" src="cpRepImg?src=file-01&time=<%=java.util.Calendar.getInstance().getTimeInMillis()%>" alt="your image" height="160px;" />
+                <img id="file-01" src="cpRepImg?src=file-01&time=<%=java.util.Calendar.getInstance().getTimeInMillis()%>" alt="your image" height="160px;" />
               </div>
             </div>
           </div>
@@ -819,22 +819,15 @@
 
     <div class="card-body">
       <div id="recomendations-1">
-        <!--<%  
-        for(int i=0;i<recs.size();i++){
-          ReportrecBean rb=recs.get(i);
-          if(rb.getTypee().equals("Hallways")){ 
-          recCounter=Integer.parseInt(rb.getFilename().split("-")[2]);
-      %>-->
-        <div id="rec-container-<%=recCounter%>" formArrayName="hallways_recommendations_list">
+        <div formArrayName="hallways_recommendations_list">
           <div class="card" *ngFor="let recomm of getRecommendationControls(inspectiondetailsform, 'hallways_recommendations_list'); let i=index;" [formGroupName]="i">
             <div class="card-body">
               <div class="pull-right"><a data-toggle="tooltip" title="" class="btn btn-default" data-original-title="Remove this recommendation"
-                  (click)="onDeleteRecommendations('hallways_recommendations_list')"><i class="fa fa-times"></i></a></div>
+                  (click)="onDeleteRecommendations('hallways_recommendations_list', i)"><i class="fa fa-times"></i></a></div>
               <div class="row">
                 <div class="col-sm-12">
                   <div class="form-group">
-                    <select formControlName="item" id="input-order-status-1<%=recCounter%>" class="form-control"
-                      onchange="Recommendation.changeSelect('input-order-status-3<%=recCounter%>','input-order-status-1<%=recCounter%>');">
+                    <select formControlName="item" class="form-control">
                         <option value="-">-</option>
                         <option value="Hallways and General Living Spaces">Hallways and General Living Spaces</option>
                         <option value="Kitchen">Kitchen</option>
@@ -848,7 +841,7 @@
                 </div>
                 <div class="col-sm-6">
                   <div class="form-group">
-                    <select formControlName="rectype" id="input-order-status<%=recCounter%>" class="form-control">
+                    <select formControlName="rectype" class="form-control">
                         <option value="-">-</option>
                             <option value="General Advice on Item">General Advice on Item</option>
                             <option value="Repair Recommended">Repair Recommended</option>
@@ -859,9 +852,9 @@
                 </div>
                 <div class="col-sm-6">
                   <div class="form-group">
-                    <select formControlName="recdetail" id="input-order-status-3<%=recCounter%>" class="form-control">
+                    <select formControlName="recdetail" class="form-control">
                         <option value="-">-</option>
-                          <option *ngFor="let hallway of hallways">{{ hallway }}</option>
+                          <option *ngFor="let hallway of hallways" value="{{ hallway }}">{{ hallway }}</option>
                     </select>
                   </div>
                 </div>
@@ -884,7 +877,8 @@
                         <img id="{{'rec-file-preview-hallways-'+i}}" src="cpRepImg?src=<%=rb.getFilename()%>&time=<%=java.util.Calendar.getInstance().getTimeInMillis()%>"
                           alt="your image" height="160px;" />
                       </div>
-                      <input type="hidden" value="Hallways" formControlName="typee"/>
+                      <input type="hidden" formControlName="typee"/>
+                      <input type="hidden" formControlName="filename"/>
                     </div>
                   </div>
                 </div>
@@ -892,10 +886,9 @@
             </div>
           </div>
         </div>
-        <!--<%}}%>-->
       </div>
       <div>
-        <input type="button" (click)="onAddRecommendations('hallways_recommendations_list')" class="pull-right btn btn-secondary" value="Add More Recommendation"/>
+        <input type="button" (click)="onAddRecommendations('hallways_recommendations_list','Hallways')" class="pull-right btn btn-secondary" value="Add More Recommendation"/>
       </div>
     </div>
   </div>
@@ -1356,22 +1349,15 @@
     </div>
     <div class="card-body">
       <div id="recomendations-2">
-        <!--<%
-      for(int i=0;i<recs.size();i++){
-        ReportrecBean rb=recs.get(i);
-        if(rb.getTypee().equals("Kitchen")){ 
-        recCounter=Integer.parseInt(rb.getFilename().split("-")[2]);
-      %>-->
-        <div id="rec-container-<%=recCounter%>" formArrayName="kitchen_recommendations_list">
+        <div formArrayName="kitchen_recommendations_list">
           <div class="card" *ngFor="let recomm of getRecommendationControls(inspectiondetailsform, 'kitchen_recommendations_list'); let i=index;" [formGroupName]="i">
             <div class="card-body">
               <div class="pull-right"><a data-toggle="tooltip" title="" class="btn btn-default" data-original-title="Remove this recommendation"
-                  (click)="onDeleteRecommendations('kitchen_recommendations_list')"><i class="fa fa-times"></i></a></div>
+                  (click)="onDeleteRecommendations('kitchen_recommendations_list', i)"><i class="fa fa-times"></i></a></div>
               <div class="row">
                 <div class="col-sm-12">
                   <div class="form-group">
-                    <select formControlName="item" id="input-order-status-1<%=recCounter%>" class="form-control"
-                      onchange="Recommendation.changeSelect('input-order-status-3<%=recCounter%>','input-order-status-1<%=recCounter%>');">
+                    <select formControlName="item" class="form-control">
                         <option value="-">-</option>
                         <option value="Hallways and General Living Spaces">Hallways and General Living Spaces</option>
                         <option value="Kitchen">Kitchen</option>
@@ -1385,7 +1371,7 @@
                 </div>
                 <div class="col-sm-6">
                   <div class="form-group">
-                    <select formControlName="rectype" id="input-order-status<%=recCounter%>" class="form-control">
+                    <select formControlName="rectype" class="form-control">
                         <option value="-">-</option>
                             <option value="General Advice on Item">General Advice on Item</option>
                             <option value="Repair Recommended">Repair Recommended</option>
@@ -1396,9 +1382,9 @@
                 </div>
                 <div class="col-sm-6">
                   <div class="form-group">
-                    <select formControlName="recdetail" id="input-order-status-3<%=recCounter%>" class="form-control">
+                    <select formControlName="recdetail" class="form-control">
                         <option value="-">-</option>
-                          <option *ngFor="let kitchenitem of kitchen">{{ kitchenitem }}</option>
+                          <option *ngFor="let kitchenitem of kitchen" value="{{ kitchenitem }}">{{ kitchenitem }}</option>
                     </select>
                   </div>
                 </div>
@@ -1415,14 +1401,15 @@
                       <input type="file" (change)="onFileChange($event, i, 'kitchen_recommendations_list','rec-file-preview-kitchen')" accept="image/*"
                         capture="camera" />
                       </span><br> <br>
-                      <div id="rec-file-<%=recCounter%>-progress" class="progress">
+                      <div class="progress">
                         <div *ngIf="currInputElemProgress==='kitchen_recommendations_list_progress_'+i" class="progress-bar progress-bar-success" [style.width.%]="uploadProgress"></div>
                       </div>
                       <div class="files">
                         <img id="{{'rec-file-preview-kitchen-'+i}}" src="cpRepImg?src=<%=rb.getFilename()%>&time=<%=java.util.Calendar.getInstance().getTimeInMillis()%>"
                           alt="your image" height="160px;" />
                       </div>
-                      <input type="hidden" formControlName="typee" value="Kitchen" />
+                      <input type="hidden" formControlName="typee"/>
+                      <input type="hidden" formControlName="filename"/>
                     </div>
                   </div>
                 </div>
@@ -1430,10 +1417,9 @@
             </div>
           </div>
         </div>
-        <!--<%}}%>-->
       </div>
       <div>
-        <input type="button" class="pull-right btn btn-secondary" (click)="onAddRecommendations('kitchen_recommendations_list')" value="Add More Recommendation"
+        <input type="button" class="pull-right btn btn-secondary" (click)="onAddRecommendations('kitchen_recommendations_list','Kitchen')" value="Add More Recommendation"
         />
       </div>
     </div>
@@ -1779,22 +1765,15 @@
     </div>
     <div class="card-body">
       <div id="recomendations-3">
-        <!--<%  
-      for(int i=0;i<recs.size();i++){
-        ReportrecBean rb=recs.get(i);
-        if(rb.getTypee().equals("Laundry")){ 
-        recCounter=Integer.parseInt(rb.getFilename().split("-")[2]);
-      %>-->
-        <div id="rec-container-<%=recCounter%>"  formArrayName="laundry_recommendations_list">
+        <div  formArrayName="laundry_recommendations_list">
           <div class="card" *ngFor="let recomm of getRecommendationControls(inspectiondetailsform, 'laundry_recommendations_list'); let i=index;" [formGroupName]="i">
             <div class="card-body">
               <div class="pull-right"><a data-toggle="tooltip" title="" class="btn btn-default" data-original-title="Remove this recommendation"
-                  (click)="onDeleteRecommendations('laundry_recommendations_list')"><i class="fa fa-times"></i></a></div>
+                  (click)="onDeleteRecommendations('laundry_recommendations_list', i)"><i class="fa fa-times"></i></a></div>
               <div class="row">
                 <div class="col-sm-12">
                   <div class="form-group">
-                    <select formControlName="item" id="input-order-status-1<%=recCounter%>" class="form-control"
-                      onchange="Recommendation.changeSelect('input-order-status-3<%=recCounter%>','input-order-status-1<%=recCounter%>');">
+                    <select formControlName="item" class="form-control">
                         <option value="-">-</option>
                         <option value="Hallways and General Living Spaces">Hallways and General Living Spaces</option>
                         <option value="Kitchen">Kitchen</option>
@@ -1808,7 +1787,7 @@
                 </div>
                 <div class="col-sm-6">
                   <div class="form-group">
-                    <select formControlName="rectype" id="input-order-status<%=recCounter%>" class="form-control">
+                    <select formControlName="rectype" class="form-control">
                         <option value="-">-</option>
                             <option value="General Advice on Item">General Advice on Item</option>
                             <option value="Repair Recommended">Repair Recommended</option>
@@ -1819,9 +1798,9 @@
                 </div>
                 <div class="col-sm-6">
                   <div class="form-group">
-                    <select formControlName="recdetail" id="input-order-status-3<%=recCounter%>" class="form-control">
+                    <select formControlName="recdetail" class="form-control">
                         <option value="-">-</option>
-                            <option *ngFor="let laundryitem of laundry">{{ laundryitem }}</option>
+                            <option *ngFor="let laundryitem of laundry" value="{{ laundryitem }}">{{ laundryitem }}</option>
                     </select>
                   </div>
                 </div>
@@ -1838,14 +1817,15 @@
                       <input type="file" (change)="onFileChange($event, i, 'laundry_recommendations_list','rec-file-preview-laundry')" accept="image/*"
                         capture="camera" />
                       </span><br> <br>
-                      <div id="rec-file-<%=recCounter%>-progress" class="progress">
+                      <div class="progress">
                         <div *ngIf="currInputElemProgress==='laundry_recommendations_list_progress_'+i" class="progress-bar progress-bar-success" [style.width.%]="uploadProgress"></div>
                       </div>
                       <div class="files">
                         <img id="{{'rec-file-preview-laundry-'+i}}" src="cpRepImg?src=<%=rb.getFilename()%>&time=<%=java.util.Calendar.getInstance().getTimeInMillis()%>"
                           alt="your image" height="160px;" />
                       </div>
-                      <input type="hidden" formControlName="typee" value="Laundry" />
+                      <input type="hidden" formControlName="typee"/>
+                      <input type="hidden" formControlName="filename"/>
                     </div>
                   </div>
                 </div>
@@ -1853,10 +1833,9 @@
             </div>
           </div>
         </div>
-        <!--<%}}%>-->
       </div>
       <div>
-        <input type="button" class="pull-right btn btn-secondary" (click)="onAddRecommendations('laundry_recommendations_list')" value="Add More Recommendation"/>
+        <input type="button" class="pull-right btn btn-secondary" (click)="onAddRecommendations('laundry_recommendations_list','Laundry')" value="Add More Recommendation"/>
       </div>
     </div>
   </div>
@@ -2870,22 +2849,15 @@
     </div>
     <div class="card-body">
       <div id="recomendations-4">
-        <!--<%  
-      for(int i=0;i<recs.size();i++){
-        ReportrecBean rb=recs.get(i);
-        if(rb.getTypee().equals("Bedrooms")){ 
-        recCounter=Integer.parseInt(rb.getFilename().split("-")[2]);
-      %>-->
-        <div id="rec-container-<%=recCounter%>" formArrayName="bedrooms_recommendations_list">
+        <div formArrayName="bedrooms_recommendations_list">
           <div class="card" *ngFor="let recomm of getRecommendationControls(inspectiondetailsform, 'bedrooms_recommendations_list'); let i=index;" [formGroupName]="i">
             <div class="card-body">
               <div class="pull-right"><a data-toggle="tooltip" title="" class="btn btn-default" data-original-title="Remove this recommendation"
-                  (click)="onDeleteRecommendations('bedrooms_recommendations_list')"><i class="fa fa-times"></i></a></div>
+                  (click)="onDeleteRecommendations('bedrooms_recommendations_list', i)"><i class="fa fa-times"></i></a></div>
               <div class="row">
                 <div class="col-sm-12">
                   <div class="form-group">
-                    <select formControlName="item" id="input-order-status-1<%=recCounter%>" class="form-control"
-                      onchange="Recommendation.changeSelect('input-order-status-3<%=recCounter%>','input-order-status-1<%=recCounter%>');">
+                    <select formControlName="item" class="form-control">
                         <option value="-">-</option>
                         <option value="Hallways and General Living Spaces">Hallways and General Living Spaces</option>
                         <option value="Kitchen">Kitchen</option>
@@ -2899,7 +2871,7 @@
                 </div>
                 <div class="col-sm-6">
                   <div class="form-group">
-                    <select formControlName="rectype" id="input-order-status<%=recCounter%>" class="form-control">
+                    <select formControlName="rectype" class="form-control">
                         <option value="-">-</option>
                             <option value="General Advice on Item">General Advice on Item</option>
                             <option value="Repair Recommended">Repair Recommended</option>
@@ -2910,9 +2882,9 @@
                 </div>
                 <div class="col-sm-6">
                   <div class="form-group">
-                    <select formControlName="recdetail" id="input-order-status-3<%=recCounter%>" class="form-control">
+                    <select formControlName="recdetail" class="form-control">
                         <option value="-">-</option>
-                            <option *ngFor="let bedroom of bedrooms">{{ bedroom }}</option>
+                            <option *ngFor="let bedroom of bedrooms" value="{{ bedroom }}">{{ bedroom }}</option>
                     </select>
                   </div>
                 </div>
@@ -2929,14 +2901,15 @@
                       <input type="file" (change)="onFileChange($event, i, 'bedrooms_recommendations_list','rec-file-preview-bedrooms')" accept="image/*"
                         capture="camera" />
                       </span><br> <br>
-                      <div id="rec-file-<%=recCounter%>-progress" class="progress">
+                      <div class="progress">
                         <div *ngIf="currInputElemProgress==='bedrooms_recommendations_list_progress_'+i" class="progress-bar progress-bar-success" [style.width.%]="uploadProgress"></div>
                       </div>
                       <div class="files">
                         <img id="{{'rec-file-preview-bedrooms-'+i}}" src="cpRepImg?src=<%=rb.getFilename()%>&time=<%=java.util.Calendar.getInstance().getTimeInMillis()%>"
                           alt="your image" height="160px;" />
                       </div>
-                      <input type="hidden" formControlName="typee" value="Bedrooms" />
+                      <input type="hidden" formControlName="typee"/>
+                      <input type="hidden" formControlName="filename"/>
                     </div>
                   </div>
                 </div>
@@ -2944,10 +2917,9 @@
             </div>
           </div>
         </div>
-        <!--<%}}%>-->
       </div>
       <div>
-        <input type="button" class="pull-right btn btn-secondary" (click)="onAddRecommendations('bedrooms_recommendations_list')" value="Add More Recommendation"
+        <input type="button" class="pull-right btn btn-secondary" (click)="onAddRecommendations('bedrooms_recommendations_list','Bedrooms')" value="Add More Recommendation"
         />
       </div>
     </div>
@@ -3549,22 +3521,15 @@
     </div>
     <div class="card-body">
       <div id="recomendations-5">
-        <!--<%  
-        for(int i=0;i<recs.size();i++){
-          ReportrecBean rb=recs.get(i);
-          if(rb.getTypee().equals("Bathrooms")){ 
-          recCounter=Integer.parseInt(rb.getFilename().split("-")[2]);
-      %>-->
-        <div id="rec-container-<%=recCounter%>" formArrayName="bathrooms_recommendations_list">
+        <div formArrayName="bathrooms_recommendations_list">
           <div class="card" *ngFor="let recomm of getRecommendationControls(inspectiondetailsform, 'bathrooms_recommendations_list'); let i=index;" [formGroupName]="i">
             <div class="card-body">
               <div class="pull-right"><a data-toggle="tooltip" title="" class="btn btn-default" data-original-title="Remove this recommendation"
-                  (click)="onDeleteRecommendations('bathrooms_recommendations_list')"><i class="fa fa-times"></i></a></div>
+                  (click)="onDeleteRecommendations('bathrooms_recommendations_list', i)"><i class="fa fa-times"></i></a></div>
               <div class="row">
                 <div class="col-sm-12">
                   <div class="form-group">
-                    <select formControlName="item" id="input-order-status-1<%=recCounter%>" class="form-control"
-                      onchange="Recommendation.changeSelect('input-order-status-3<%=recCounter%>','input-order-status-1<%=recCounter%>');">
+                    <select formControlName="item" class="form-control">
                         <option value="-">-</option>
                         <option value="Hallways and General Living Spaces">Hallways and General Living Spaces</option>
                         <option value="Kitchen">Kitchen</option>
@@ -3578,7 +3543,7 @@
                 </div>
                 <div class="col-sm-6">
                   <div class="form-group">
-                    <select formControlName="rectype" id="input-order-status<%=recCounter%>" class="form-control">
+                    <select formControlName="rectype" class="form-control">
                         <option value="-">-</option>
                             <option value="General Advice on Item">General Advice on Item</option>
                             <option value="Repair Recommended">Repair Recommended</option>
@@ -3589,9 +3554,9 @@
                 </div>
                 <div class="col-sm-6">
                   <div class="form-group">
-                    <select formControlName="recdetail" id="input-order-status-3<%=recCounter%>" class="form-control">
+                    <select formControlName="recdetail" class="form-control">
                         <option value="-">-</option>
-                        <option *ngFor="let bathroom of bathrooms">{{ bathroom }}</option>
+                        <option *ngFor="let bathroom of bathrooms" value="{{ bathroom }}">{{ bathroom }}</option>
                     </select>
                   </div>
                 </div>
@@ -3608,14 +3573,15 @@
                       <input type="file" (change)="onFileChange($event, i, 'bathrooms_recommendations_list','rec-file-preview-bathrooms')" accept="image/*"
                         capture="camera" />
                       </span><br> <br>
-                      <div id="rec-file-<%=recCounter%>-progress" class="progress">
+                      <div class="progress">
                         <div *ngIf="currInputElemProgress==='bathrooms_recommendations_list_progress_'+i" class="progress-bar progress-bar-success" [style.width.%]="uploadProgress"></div>
                       </div>
                       <div class="files">
                         <img id="{{'rec-file-preview-bathrooms-'+i}}" src="cpRepImg?src=<%=rb.getFilename()%>&time=<%=java.util.Calendar.getInstance().getTimeInMillis()%>"
                           alt="your image" height="160px;" />
                       </div>
-                      <input type="hidden" formControlName="typee" value="Bathrooms" />
+                      <input type="hidden" formControlName="typee"/>
+                      <input type="hidden" formControlName="filename"/>
                     </div>
                   </div>
                 </div>
@@ -3623,10 +3589,9 @@
             </div>
           </div>
         </div>
-        <!--<%}}%>-->
       </div>
       <div>
-        <input type="button" class="pull-right btn btn-secondary" (click)="onAddRecommendations('bathrooms_recommendations_list')" value="Add More Recommendation" />
+        <input type="button" class="pull-right btn btn-secondary" (click)="onAddRecommendations('bathrooms_recommendations_list','Bathrooms')" value="Add More Recommendation" />
       </div>
     </div>
   </div>
@@ -4227,23 +4192,15 @@
     </div>
     <div class="card-body">
       <div id="recomendations-6">
-        <!--<%
-  
-    for(int i=0;i<recs.size();i++){
-      ReportrecBean rb=recs.get(i);
-      if(rb.getTypee().equals("Ensuite")){ 
-      recCounter=Integer.parseInt(rb.getFilename().split("-")[2]);
-    %>-->
-        <div id="rec-container-<%=recCounter%>" formArrayName="ensuite_recommendations_list">
+        <div formArrayName="ensuite_recommendations_list">
           <div class="card" *ngFor="let recomm of getRecommendationControls(inspectiondetailsform, 'ensuite_recommendations_list'); let i=index;" [formGroupName]="i">
             <div class="card-body">
               <div class="pull-right"><a data-toggle="tooltip" title="" class="btn btn-default" data-original-title="Remove this recommendation"
-                  (click)="onDeleteRecommendations('ensuite_recommendations_list')"><i class="fa fa-times"></i></a></div>
+                  (click)="onDeleteRecommendations('ensuite_recommendations_list', i)"><i class="fa fa-times"></i></a></div>
               <div class="row">
                 <div class="col-sm-12">
                   <div class="form-group">
-                    <select formControlName="item" id="input-order-status-1<%=recCounter%>" class="form-control"
-                      onchange="Recommendation.changeSelect('input-order-status-3<%=recCounter%>','input-order-status-1<%=recCounter%>');">
+                    <select formControlName="item" class="form-control">
                         <option value="-">-</option>
                         <option value="Hallways and General Living Spaces">Hallways and General Living Spaces</option>
                         <option value="Kitchen">Kitchen</option>
@@ -4257,7 +4214,7 @@
                 </div>
                 <div class="col-sm-6">
                   <div class="form-group">
-                    <select formControlName="rectype" id="input-order-status<%=recCounter%>" class="form-control">
+                    <select formControlName="rectype" class="form-control">
                         <option value="-">-</option>
                             <option value="General Advice on Item">General Advice on Item</option>
                             <option value="Repair Recommended">Repair Recommended</option>
@@ -4268,9 +4225,9 @@
                 </div>
                 <div class="col-sm-6">
                   <div class="form-group">
-                    <select formControlName="recdetail" id="input-order-status-3<%=recCounter%>" class="form-control">
+                    <select formControlName="recdetail" class="form-control">
                         <option value="-">-</option>
-                        <option *ngFor="let ensuiteitem of ensuite">{{ ensuiteitem }}</option>
+                        <option *ngFor="let ensuiteitem of ensuite" value="{{ ensuiteitem }}">{{ ensuiteitem }}</option>
                     </select>
                   </div>
                 </div>
@@ -4287,14 +4244,15 @@
                       <input type="file" (change)="onFileChange($event, i, 'ensuite_recommendations_list','rec-file-preview-ensuite')" accept="image/*"
                         capture="camera" />
                       </span><br> <br>
-                      <div id="rec-file-<%=recCounter%>-progress" class="progress">
+                      <div class="progress">
                         <div *ngIf="currInputElemProgress==='ensuite_recommendations_list_progress_'+i" class="progress-bar progress-bar-success" [style.width.%]="uploadProgress"></div>
                       </div>
                       <div class="files">
                         <img id="{{'rec-file-preview-ensuite-'+i}}" src="cpRepImg?src=<%=rb.getFilename()%>&time=<%=java.util.Calendar.getInstance().getTimeInMillis()%>"
                           alt="your image" height="160px;" />
                       </div>
-                      <input type="hidden" formControlName="typee" value="Ensuite" />
+                      <input type="hidden" formControlName="typee"/>
+                      <input type="hidden" formControlName="filename"/>
                     </div>
                   </div>
                 </div>
@@ -4302,10 +4260,9 @@
             </div>
           </div>
         </div>
-        <!--<%}}%>-->
       </div>
       <div>
-        <input type="button" class="pull-right btn btn-secondary" (click)="onAddRecommendations('ensuite_recommendations_list')" value="Add More Recommendation"
+        <input type="button" class="pull-right btn btn-secondary" (click)="onAddRecommendations('ensuite_recommendations_list','Ensuite')" value="Add More Recommendation"
         />
       </div>
     </div>
@@ -5090,23 +5047,15 @@
     </div>
     <div class="card-body">
       <div id="recomendations-7">
-        <!--<%
-  
-    for(int i=0;i<recs.size();i++){
-      ReportrecBean rb=recs.get(i);
-      if(rb.getTypee().equals("External")){ 
-      recCounter=Integer.parseInt(rb.getFilename().split("-")[2]);
-    %>-->
-        <div id="rec-container-<%=recCounter%>" formArrayName="external_recommendations_list">
+        <div formArrayName="external_recommendations_list">
           <div class="card" *ngFor="let recomm of getRecommendationControls(inspectiondetailsform, 'external_recommendations_list'); let i=index;" [formGroupName]="i">
             <div class="card-body">
               <div class="pull-right"><a data-toggle="tooltip" title="" class="btn btn-default" data-original-title="Remove this recommendation"
-                  (click)="onDeleteRecommendations('external_recommendations_list')"><i class="fa fa-times"></i></a></div>
+                  (click)="onDeleteRecommendations('external_recommendations_list', i)"><i class="fa fa-times"></i></a></div>
               <div class="row">
                 <div class="col-sm-12">
                   <div class="form-group">
-                    <select formControlName="item" id="input-order-status-1<%=recCounter%>" class="form-control"
-                      onchange="Recommendation.changeSelect('input-order-status-3<%=recCounter%>','input-order-status-1<%=recCounter%>');">
+                    <select formControlName="item" class="form-control">
                         <option value="-">-</option>
                         <option value="Hallways and General Living Spaces">Hallways and General Living Spaces</option>
                         <option value="Kitchen">Kitchen</option>
@@ -5120,7 +5069,7 @@
                 </div>
                 <div class="col-sm-6">
                   <div class="form-group">
-                    <select formControlName="rectype" id="input-order-status<%=recCounter%>" class="form-control">
+                    <select formControlName="rectype" class="form-control">
                         <option value="-">-</option>
                             <option value="General Advice on Item">General Advice on Item</option>
                             <option value="Repair Recommended">Repair Recommended</option>
@@ -5131,9 +5080,9 @@
                 </div>
                 <div class="col-sm-6">
                   <div class="form-group">
-                    <select formControlName="recdetail" id="input-order-status-3<%=recCounter%>" class="form-control">
+                    <select formControlName="recdetail" class="form-control">
                         <option value="-">-</option>
-                        <option *ngFor="let externalitem of external">{{ externalitem }}</option>
+                        <option *ngFor="let externalitem of external" value="{{ externalitem }}">{{ externalitem }}</option>
                     </select>
                   </div>
                 </div>
@@ -5150,14 +5099,15 @@
                       <input type="file" (change)="onFileChange($event, i, 'external_recommendations_list','rec-file-preview-external')" accept="image/*"
                         capture="camera" />
                       </span><br> <br>
-                      <div id="rec-file-<%=recCounter%>-progress" class="progress">
+                      <div class="progress">
                         <div *ngIf="currInputElemProgress==='external_recommendations_list_progress_'+i" class="progress-bar progress-bar-success" [style.width.%]="uploadProgress"></div>
                       </div>
                       <div class="files">
                         <img id="{{'rec-file-preview-external-'+i}}" src="cpRepImg?src=<%=rb.getFilename()%>&time=<%=java.util.Calendar.getInstance().getTimeInMillis()%>"
                           alt="your image" height="160px;" />
                       </div>
-                      <input type="hidden" formControlName="typee" value="External" />
+                      <input type="hidden" formControlName="typee"/>
+                      <input type="hidden" formControlName="filename"/>
                     </div>
                   </div>
                 </div>
@@ -5165,11 +5115,9 @@
             </div>
           </div>
         </div>
-        <!--<%}}%>-->
       </div>
       <div>
-        <input type="button" class="pull-right btn btn-secondary" (click)="onAddRecommendations('external_recommendations_list')" value="Add More Recommendation"
-        />
+        <input type="button" class="pull-right btn btn-secondary" (click)="onAddRecommendations('external_recommendations_list','External')" value="Add More Recommendation"/>
       </div>
     </div>
   </div>
@@ -5851,30 +5799,22 @@
     </div>
     <div class="card-body">
       <div id="recomendations-9">
-        <!--<%
-  
-    for(int i=0;i<recs.size();i++){
-      ReportrecBean rb=recs.get(i);
-      if(rb.getTypee().equals("TimberPest")){ 
-      recCounter=Integer.parseInt(rb.getFilename().split("-")[2]);
-    %>-->
-        <div id="rec-container-<%=recCounter%>" formArrayName="timberpest_recommendations_list">
+        <div formArrayName="timberpest_recommendations_list">
           <div class="card" *ngFor="let recomm of getRecommendationControls(inspectiondetailsform, 'timberpest_recommendations_list'); let i=index;" [formGroupName]="i">
             <div class="card-body">
               <div class="pull-right"><a data-toggle="tooltip" title="" class="btn btn-default" data-original-title="Remove this recommendation"
-                  (click)="onDeleteRecommendations('timberpest_recommendations_list')"><i class="fa fa-times"></i></a></div>
+                  (click)="onDeleteRecommendations('timberpest_recommendations_list', i)"><i class="fa fa-times"></i></a></div>
               <div class="row">
                 <div class="col-sm-12">
                   <div class="form-group">
-                    <select formControlName="item" id="input-order-status-1<%=recCounter%>" class="form-control"
-                      onchange="Recommendation.changeSelect('input-order-status-3<%=recCounter%>','input-order-status-1<%=recCounter%>',timberPestItems);">
+                    <select formControlName="item" class="form-control">
                         <option value="Timber Pest - Findings and Recommendations">Timber Pest - Findings and Recommendations</option>
                     </select>
                   </div>
                 </div>
                 <div class="col-sm-6">
                   <div class="form-group">
-                    <select formControlName="rectype" id="input-order-status<%=recCounter%>" class="form-control">
+                    <select formControlName="rectype" class="form-control">
                         <option value="-">-</option>
                             <option value="Activity or Damage Advice on Item">Activity or Damage Advice on Item</option>
                             <option value="Action Recommended">Action Recommended</option>
@@ -5885,9 +5825,9 @@
                 </div>
                 <div class="col-sm-6">
                   <div class="form-group">
-                    <select formControlName="recdetail" id="input-order-status-3<%=recCounter%>" class="form-control">
+                    <select formControlName="recdetail" class="form-control">
                         <option value="-">-</option>
-                        <option *ngFor="let timberPestitem of timberPest">{{ timberPestitem }}</option>
+                        <option *ngFor="let timberPestitem of timberPest" value="{{ timberPestitem }}">{{ timberPestitem }}</option>
                     </select>
                   </div>
                 </div>
@@ -5904,14 +5844,15 @@
                       <input type="file" (change)="onFileChange($event, i, 'timberpest_recommendations_list','rec-file-preview-timberpest')" accept="image/*"
                         capture="camera" />
                       </span><br> <br>
-                      <div id="rec-file-<%=recCounter%>-progress" class="progress">
+                      <div class="progress">
                         <div *ngIf="currInputElemProgress==='timberpest_recommendations_list_progress_'+i" class="progress-bar progress-bar-success" [style.width.%]="uploadProgress"></div>
                       </div>
                       <div class="files">
                         <img id="{{'rec-file-preview-timberpest-'+i}}" src="cpRepImg?src=<%=rb.getFilename()%>&time=<%=java.util.Calendar.getInstance().getTimeInMillis()%>"
                           alt="your image" height="160px;" />
                       </div>
-                      <input type="hidden" formControlName="typee" value="TimberPest" />
+                      <input type="hidden" formControlName="typee"/>
+                      <input type="hidden" formControlName="filename"/>
                     </div>
                   </div>
                 </div>
@@ -5919,10 +5860,9 @@
             </div>
           </div>
         </div>
-        <!--<%}}%>-->
       </div>
       <div>
-        <input type="button" class="pull-right btn btn-secondary" (click)="onAddRecommendations('timberpest_recommendations_list')" value="Add More Recommendation"/>
+        <input type="button" class="pull-right btn btn-secondary" (click)="onAddRecommendations('timberpest_recommendations_list','TimberPest')" value="Add More Recommendation"/>
       </div>
     </div>
   </div>

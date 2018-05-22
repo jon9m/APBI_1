@@ -10,11 +10,12 @@ export class FileUploadService {
 
     constructor(private http: HttpClient) { }
 
-    fileUpload(fileItem: File, extraData?: object): any {
+    fileUpload(fileItem: File, filename: any, extraData?: object): any {
         let apiCreateEndpoint = this.baseURL;
         const formData: FormData = new FormData();
 
-        formData.append('fileItem', fileItem, fileItem.name);  //TODO - 
+        formData.append('fileItem', fileItem, fileItem.name);
+        formData.append('filename', filename);
         if (extraData) {
             for (let key in extraData) {
                 // iterate and set other form data

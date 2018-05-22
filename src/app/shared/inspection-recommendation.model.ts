@@ -1,11 +1,11 @@
 export class InspectionRecommendation {
-    constructor(public item: string, 
-                public rectype: string, 
-                public recdetail: string, 
-                public comment: string, 
-                public typee: string) {
+    constructor(
+        public item: string,
+        public rectype: string,
+        public recdetail: string,
+        public comment: string,
+        public typee: string,
+        public filename: string) {
 
-                    //TODO -  new filed for file name - no extenstion
-                    
     }
 }

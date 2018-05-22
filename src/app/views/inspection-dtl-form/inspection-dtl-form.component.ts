@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { FormGroup, FormControl, FormArray, FormBuilder } from "@angular/forms";
+import { FormGroup, FormControl, FormArray, FormBuilder, AbstractControl } from "@angular/forms";
 import { InspectionDetailsService } from "../../shared/inspection-detail.service";
 import { FileUploadService } from '../../shared/fileupload.service';
 import { HttpEventType } from '@angular/common/http';
@@ -79,15 +79,12 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
 
       //this.inspectiondetailsform.reset(); //todo
       this.inspectiondetailsform.patchValue(this.inspectiondetails);
+
       //Set booking id
-
-
       console.log("Setting booking id " + this.id.toString());
-
       // this.inspectiondetailsform.get('bookingid').setValue(this.id.toString());
       const value = { bookingid: this.id.toString() };
       this.inspectiondetailsform.patchValue(value);
-
       //}
     });
   }
@@ -142,7 +139,8 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
             'rectype': new FormControl(),
             'recdetail': new FormControl(),
             'comment': new FormControl(),
-            'typee': new FormControl()
+            'typee': new FormControl(),
+            'filename': new FormControl()
           })
         );
       });
@@ -155,7 +153,8 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
             'rectype': new FormControl(),
             'recdetail': new FormControl(),
             'comment': new FormControl(),
-            'typee': new FormControl()
+            'typee': new FormControl(),
+            'filename': new FormControl()
           })
         );
       });
@@ -168,7 +167,8 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
             'rectype': new FormControl(),
             'recdetail': new FormControl(),
             'comment': new FormControl(),
-            'typee': new FormControl()
+            'typee': new FormControl(),
+            'filename': new FormControl()
           })
         );
       });
@@ -181,7 +181,8 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
             'rectype': new FormControl(),
             'recdetail': new FormControl(),
             'comment': new FormControl(),
-            'typee': new FormControl()
+            'typee': new FormControl(),
+            'filename': new FormControl()
           })
         );
       });
@@ -194,7 +195,8 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
             'rectype': new FormControl(),
             'recdetail': new FormControl(),
             'comment': new FormControl(),
-            'typee': new FormControl()
+            'typee': new FormControl(),
+            'filename': new FormControl()
           })
         );
       });
@@ -207,7 +209,8 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
             'rectype': new FormControl(),
             'recdetail': new FormControl(),
             'comment': new FormControl(),
-            'typee': new FormControl()
+            'typee': new FormControl(),
+            'filename': new FormControl()
           })
         );
       });
@@ -220,7 +223,8 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
             'rectype': new FormControl(),
             'recdetail': new FormControl(),
             'comment': new FormControl(),
-            'typee': new FormControl()
+            'typee': new FormControl(),
+            'filename': new FormControl()
           })
         );
       });
@@ -233,7 +237,8 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
             'rectype': new FormControl(),
             'recdetail': new FormControl(),
             'comment': new FormControl(),
-            'typee': new FormControl()
+            'typee': new FormControl(),
+            'filename': new FormControl()
           })
         );
       });
@@ -1291,7 +1296,27 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
 
   currInputElemProgress: any;
 
-  onFileChange(event, index, recommendationType, progress) {
+  onFileChange(event, index, recommendationType, progress, fileName) {
+    let file_name = "";
+
+    //console.log((<FormGroup>(<FormArray>this.inspectiondetailsform.get(recommendationType)).at(index)).controls['filename'].value);  //controlName
+
+    if (fileName) {
+      file_name = fileName;
+    } else {
+      let currFormArr = (<FormArray>(this.inspectiondetailsform.get(recommendationType)));
+      if (currFormArr) {
+        let currFrmGrp = (<FormGroup>(currFormArr.at(index)));
+        if (currFrmGrp) {
+          let fileNameCtrl = (<AbstractControl>currFrmGrp.controls['filename']);
+          if (fileNameCtrl) {
+            file_name = fileNameCtrl.value;
+            console.log(fileNameCtrl.value);
+          }
+        }
+      }
+    }
+
     let bookingId = this.inspectiondetailsform.get('bookingid').value;
     let submittedData = { 'index': index, 'type': recommendationType, 'bookingid': bookingId };
     let reader = new FileReader();
@@ -1305,13 +1330,13 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
           elem.src = (<FileReader>event.target).result;
         }
 
-        this.fileUploadSub = this.fileUploadService.fileUpload(fileToUpload, submittedData)
+        this.fileUploadSub = this.fileUploadService.fileUpload(fileToUpload, file_name, submittedData)
           .subscribe(
             event => {
-              this.handleProgress(event, index, recommendationType);
+              this.handleProgress(event, index, recommendationType); //TODO - change color and show percentage
             },
             error => {
-              console.log("Server error");
+              console.log("Server error"); //TODO - error handle
             });
       };
     }
@@ -1341,17 +1366,24 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
     return inspectiondetailsform.get(recommendationType).controls;
   }
 
-  onAddRecommendations(recommendationType) {
+  onAddRecommendations(recommendationType, typee) {
+    let len = new Date().getTime();
+    let typeeLower = (<string>typee).toLowerCase();
+    let fileName = 'rec-file-' + typeeLower + '-' + len;
+
+    this.uploadProgress = 0;
     (<FormArray>this.inspectiondetailsform.get(recommendationType)).push(new FormGroup({
       'item': new FormControl(),
       'rectype': new FormControl(),
       'recdetail': new FormControl(),
       'comment': new FormControl(),
-      'typee': new FormControl()
+      'typee': new FormControl(typee),
+      'filename': new FormControl(fileName)
     }));
   }
 
   onDeleteRecommendations(recommendationType, i) {
+    this.uploadProgress = 0;
     (<FormArray>this.inspectiondetailsform.get(recommendationType)).removeAt(i);
   }
 
