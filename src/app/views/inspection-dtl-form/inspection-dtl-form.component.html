@@ -221,9 +221,11 @@
             <div class="col-sm-12">
               <span class="btn btn-success fileinput-button"><i class="glyphicon glyphicon-plus"></i><span>Select file...</span>
               <input type="file" name="file-01" (change)="onFileChange($event, '01', 'file', 'file','file-01')" accept="image/*" capture="camera" />
-              </span><br> <br>
-              <div id="file-01-progress" class="progress">
-                <div *ngIf="currInputElemProgress==='file_progress_01'" class="progress-bar progress-bar-success" [style.width.%]="uploadProgress"></div>
+              </span><br><br>
+              <div id="file-01-progress" class="progress mb-1">
+                <div *ngIf="currInputElemProgress==='file_progress_01'" class="progress-bar progress-bar-success" [style.width.%]="uploadProgress" [style.background-color]="rgbString">
+                  <div *ngIf="uploadProgress > 0" class="font-weight-bold">{{uploadProgress}}%</div>
+                </div>
               </div>
               <div class="files">
                 <img id="file-01" src="cpRepImg?src=file-01&time=<%=java.util.Calendar.getInstance().getTimeInMillis()%>" alt="your image" height="160px;" />
@@ -870,8 +872,10 @@
                       <span class="btn btn-success fileinput-button"><i class="glyphicon glyphicon-plus"></i><span>Select file...</span>                  
                       <input type="file" (change)="onFileChange($event, i, 'hallways_recommendations_list', 'rec-file-preview-hallways')" accept="image/*" capture="camera" />
                       </span><br><br>
-                      <div class="progress">
-                        <div *ngIf="currInputElemProgress==='hallways_recommendations_list_progress_'+i" class="progress-bar progress-bar-success" [style.width.%]="uploadProgress"></div>
+                      <div class="progress mb-1">
+                        <div *ngIf="currInputElemProgress==='hallways_recommendations_list_progress_'+i" class="progress-bar progress-bar-success" [style.width.%]="uploadProgress" [style.background-color]="rgbString">
+                          <div *ngIf="uploadProgress > 0" class="font-weight-bold">{{uploadProgress}}%</div>
+                        </div>
                       </div>
                       <div class="files">
                         <img id="{{'rec-file-preview-hallways-'+i}}" src="cpRepImg?src=<%=rb.getFilename()%>&time=<%=java.util.Calendar.getInstance().getTimeInMillis()%>"
@@ -1401,8 +1405,10 @@
                       <input type="file" (change)="onFileChange($event, i, 'kitchen_recommendations_list','rec-file-preview-kitchen')" accept="image/*"
                         capture="camera" />
                       </span><br> <br>
-                      <div class="progress">
-                        <div *ngIf="currInputElemProgress==='kitchen_recommendations_list_progress_'+i" class="progress-bar progress-bar-success" [style.width.%]="uploadProgress"></div>
+                      <div class="progress mb-1">
+                        <div *ngIf="currInputElemProgress==='kitchen_recommendations_list_progress_'+i" class="progress-bar progress-bar-success" [style.width.%]="uploadProgress" [style.background-color]="rgbString">
+                          <div *ngIf="uploadProgress > 0" class="font-weight-bold">{{uploadProgress}}%</div>
+                        </div>
                       </div>
                       <div class="files">
                         <img id="{{'rec-file-preview-kitchen-'+i}}" src="cpRepImg?src=<%=rb.getFilename()%>&time=<%=java.util.Calendar.getInstance().getTimeInMillis()%>"
@@ -1817,8 +1823,10 @@
                       <input type="file" (change)="onFileChange($event, i, 'laundry_recommendations_list','rec-file-preview-laundry')" accept="image/*"
                         capture="camera" />
                       </span><br> <br>
-                      <div class="progress">
-                        <div *ngIf="currInputElemProgress==='laundry_recommendations_list_progress_'+i" class="progress-bar progress-bar-success" [style.width.%]="uploadProgress"></div>
+                      <div class="progress mb-1">
+                        <div *ngIf="currInputElemProgress==='laundry_recommendations_list_progress_'+i" class="progress-bar progress-bar-success" [style.width.%]="uploadProgress" [style.background-color]="rgbString">
+                          <div *ngIf="uploadProgress > 0" class="font-weight-bold">{{uploadProgress}}%</div>
+                        </div>
                       </div>
                       <div class="files">
                         <img id="{{'rec-file-preview-laundry-'+i}}" src="cpRepImg?src=<%=rb.getFilename()%>&time=<%=java.util.Calendar.getInstance().getTimeInMillis()%>"
@@ -2901,8 +2909,10 @@
                       <input type="file" (change)="onFileChange($event, i, 'bedrooms_recommendations_list','rec-file-preview-bedrooms')" accept="image/*"
                         capture="camera" />
                       </span><br> <br>
-                      <div class="progress">
-                        <div *ngIf="currInputElemProgress==='bedrooms_recommendations_list_progress_'+i" class="progress-bar progress-bar-success" [style.width.%]="uploadProgress"></div>
+                      <div class="progress mb-1">
+                        <div *ngIf="currInputElemProgress==='bedrooms_recommendations_list_progress_'+i" class="progress-bar progress-bar-success" [style.width.%]="uploadProgress" [style.background-color]="rgbString">
+                          <div *ngIf="uploadProgress > 0" class="font-weight-bold">{{uploadProgress}}%</div>
+                        </div>
                       </div>
                       <div class="files">
                         <img id="{{'rec-file-preview-bedrooms-'+i}}" src="cpRepImg?src=<%=rb.getFilename()%>&time=<%=java.util.Calendar.getInstance().getTimeInMillis()%>"
@@ -3573,8 +3583,10 @@
                       <input type="file" (change)="onFileChange($event, i, 'bathrooms_recommendations_list','rec-file-preview-bathrooms')" accept="image/*"
                         capture="camera" />
                       </span><br> <br>
-                      <div class="progress">
-                        <div *ngIf="currInputElemProgress==='bathrooms_recommendations_list_progress_'+i" class="progress-bar progress-bar-success" [style.width.%]="uploadProgress"></div>
+                      <div class="progress mb-1">
+                        <div *ngIf="currInputElemProgress==='bathrooms_recommendations_list_progress_'+i" class="progress-bar progress-bar-success" [style.width.%]="uploadProgress" [style.background-color]="rgbString">
+                          <div *ngIf="uploadProgress > 0" class="font-weight-bold">{{uploadProgress}}%</div>
+                        </div>
                       </div>
                       <div class="files">
                         <img id="{{'rec-file-preview-bathrooms-'+i}}" src="cpRepImg?src=<%=rb.getFilename()%>&time=<%=java.util.Calendar.getInstance().getTimeInMillis()%>"
@@ -4244,8 +4256,10 @@
                       <input type="file" (change)="onFileChange($event, i, 'ensuite_recommendations_list','rec-file-preview-ensuite')" accept="image/*"
                         capture="camera" />
                       </span><br> <br>
-                      <div class="progress">
-                        <div *ngIf="currInputElemProgress==='ensuite_recommendations_list_progress_'+i" class="progress-bar progress-bar-success" [style.width.%]="uploadProgress"></div>
+                      <div class="progress mb-1">
+                        <div *ngIf="currInputElemProgress==='ensuite_recommendations_list_progress_'+i" class="progress-bar progress-bar-success" [style.width.%]="uploadProgress" [style.background-color]="rgbString">
+                          <div *ngIf="uploadProgress > 0" class="font-weight-bold">{{uploadProgress}}%</div>
+                        </div>
                       </div>
                       <div class="files">
                         <img id="{{'rec-file-preview-ensuite-'+i}}" src="cpRepImg?src=<%=rb.getFilename()%>&time=<%=java.util.Calendar.getInstance().getTimeInMillis()%>"
@@ -5099,8 +5113,10 @@
                       <input type="file" (change)="onFileChange($event, i, 'external_recommendations_list','rec-file-preview-external')" accept="image/*"
                         capture="camera" />
                       </span><br> <br>
-                      <div class="progress">
-                        <div *ngIf="currInputElemProgress==='external_recommendations_list_progress_'+i" class="progress-bar progress-bar-success" [style.width.%]="uploadProgress"></div>
+                      <div class="progress mb-1">
+                        <div *ngIf="currInputElemProgress==='external_recommendations_list_progress_'+i" class="progress-bar progress-bar-success" [style.width.%]="uploadProgress" [style.background-color]="rgbString">
+                          <div *ngIf="uploadProgress > 0" class="font-weight-bold">{{uploadProgress}}%</div>
+                        </div>
                       </div>
                       <div class="files">
                         <img id="{{'rec-file-preview-external-'+i}}" src="cpRepImg?src=<%=rb.getFilename()%>&time=<%=java.util.Calendar.getInstance().getTimeInMillis()%>"
@@ -5844,8 +5860,10 @@
                       <input type="file" (change)="onFileChange($event, i, 'timberpest_recommendations_list','rec-file-preview-timberpest')" accept="image/*"
                         capture="camera" />
                       </span><br> <br>
-                      <div class="progress">
-                        <div *ngIf="currInputElemProgress==='timberpest_recommendations_list_progress_'+i" class="progress-bar progress-bar-success" [style.width.%]="uploadProgress"></div>
+                      <div class="progress mb-1">
+                        <div *ngIf="currInputElemProgress==='timberpest_recommendations_list_progress_'+i" class="progress-bar progress-bar-success" [style.width.%]="uploadProgress" [style.background-color]="rgbString">
+                          <div *ngIf="uploadProgress > 0" class="font-weight-bold">{{uploadProgress}}%</div>
+                        </div>
                       </div>
                       <div class="files">
                         <img id="{{'rec-file-preview-timberpest-'+i}}" src="cpRepImg?src=<%=rb.getFilename()%>&time=<%=java.util.Calendar.getInstance().getTimeInMillis()%>"

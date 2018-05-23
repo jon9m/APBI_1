@@ -8,6 +8,7 @@ import { HTTPService } from "../../shared/http.service";
 import { InspectionDetails } from "../../shared/inspection_details.model";
 import { AppGlobal } from '../../shared/app-global';
 import { InspectionProperty } from '../../shared/inspection-property.model';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-inspection-dtl-form',
@@ -1293,6 +1294,7 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
   uploadProgress: number = 0;
   uploadComplete: boolean = false;
   serverResponse: any;
+  rgbString: string = '#20a8d8';
 
   currInputElemProgress: any;
 
@@ -1330,19 +1332,24 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
           elem.src = (<FileReader>event.target).result;
         }
 
-        this.fileUploadSub = this.fileUploadService.fileUpload(fileToUpload, file_name, submittedData)
-          .subscribe(
-            event => {
-              this.handleProgress(event, index, recommendationType); //TODO - change color and show percentage
-            },
-            error => {
-              console.log("Server error"); //TODO - error handle
-            });
+        this.fileUploadSub = this.fileUploadService.fileUpload(fileToUpload, file_name, submittedData).subscribe(
+          event => {
+            this.handleProgress(event, index, recommendationType); //TODO - change color and show percentage
+          },
+          error => {
+            console.log("Server error"); //TODO - error handle
+          });
       };
     }
   }
 
   handleProgress(event, index, recommendationType) {
+
+    if (event.type === HttpEventType.Sent) {
+      this.uploadProgress = 0;
+      this.rgbString = '#20a8d8';
+    }
+
     if (event.type === HttpEventType.DownloadProgress) {
       this.uploadingProgressing = true
       this.uploadProgress = Math.round(100 * event.loaded / event.total);
@@ -1353,6 +1360,10 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
 
       this.uploadingProgressing = true
       this.uploadProgress = Math.round(event.loaded / event.total * 100);
+
+      console.log("upload progress " + this.uploadProgress);
+
+      this.setRgbString();
     }
 
     if (event.type === HttpEventType.Response) {
@@ -1360,6 +1371,27 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
       this.uploadComplete = true
       this.serverResponse = event.body
     }
+  }
+
+  setRgbString() {
+    let colorMul = 255 / 100;
+    //#20a8d8 - 32, 168 , 216
+    let maxG = 168;
+    let maxGMul = maxG / 100;
+    let maxB = 216;
+    let maxBMul = maxB / 100;
+    let minR = 32;
+
+    let hexR = Math.round(colorMul * (100 - this.uploadProgress) + minR);
+    let hexG = Math.round(maxGMul * this.uploadProgress);
+    let hexB = Math.round(maxBMul * (this.uploadProgress));
+
+    let strR = hexR.toString(16);
+    let strG = hexG.toString(16);
+    let strB = hexB.toString(16);
+
+    this.rgbString = "#" + strR + strG + strB;
+    console.log(this.rgbString);
   }
 
   getRecommendationControls(inspectiondetailsform, recommendationType) {
