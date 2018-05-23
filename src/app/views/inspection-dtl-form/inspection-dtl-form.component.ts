@@ -47,6 +47,7 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
   external: string[] = [];
 
   constructor(private route: ActivatedRoute, private fb: FormBuilder, private inspectionDetailsService: InspectionDetailsService, private fileUploadService: FileUploadService, private router: Router, private httpService: HTTPService) {
+    
   }
 
   ngOnInit() {
@@ -1334,7 +1335,7 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
 
         this.fileUploadSub = this.fileUploadService.fileUpload(fileToUpload, file_name, submittedData).subscribe(
           event => {
-            this.handleProgress(event, index, recommendationType); //TODO - change color and show percentage
+            this.handleProgress(event, index, recommendationType);
           },
           error => {
             console.log("Server error"); //TODO - error handle
@@ -1360,8 +1361,6 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
 
       this.uploadingProgressing = true
       this.uploadProgress = Math.round(event.loaded / event.total * 100);
-
-      console.log("upload progress " + this.uploadProgress);
 
       this.setRgbString();
     }
@@ -1391,7 +1390,6 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
     let strB = hexB.toString(16);
 
     this.rgbString = "#" + strR + strG + strB;
-    console.log(this.rgbString);
   }
 
   getRecommendationControls(inspectiondetailsform, recommendationType) {

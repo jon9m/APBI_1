@@ -8,6 +8,7 @@ import * as moment from 'moment';
 import { HTTPService } from "../../shared/http.service";
 import { HttpHeaders } from "@angular/common/http";
 import { Subscription } from "rxjs/Subscription";
+import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-mycalendar',
@@ -24,7 +25,7 @@ export class MycalendarComponent implements OnInit, OnDestroy {
   private calendarSubscription: Subscription;
   private previewSubscription: Subscription;
 
-  constructor(private httpService: HTTPService) { }
+  constructor(private router: Router, private httpService: HTTPService) { }
 
   ngOnDestroy(): void {
     if (this.previewSubscription) { this.previewSubscription.unsubscribe(); }
@@ -34,6 +35,29 @@ export class MycalendarComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    //Router reuse strategy
+    this.router.routeReuseStrategy.shouldReuseRoute = function () {
+      console.log("should Reuse Route");
+      return false;
+    }
+    this.router.routeReuseStrategy.shouldDetach = function () {
+      console.log("should detach");
+      return true;
+    }
+    this.router.routeReuseStrategy.shouldAttach = function () {
+      console.log("should attach");
+      return false;
+    }
+    this.router.events.subscribe((evt) => {
+      if (evt instanceof NavigationEnd) {
+        console.log("router navigated");
+        this.router.navigated = false;
+        window.scrollTo(0, 0);
+      }
+    });
+    //Router reuse strategy - ends
+
+
     var now = moment();
     let currMonth = (now.set('date', 1).add(-10, 'day')).format('YYYY-MM-DD');
     let nextMonth = (now.set('date', 1).add(1, 'month').add(10, 'day')).format('YYYY-MM-DD');
