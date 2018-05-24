@@ -4,6 +4,7 @@ import { InspectionDtlFormComponent } from './inspection-dtl-form.component';
 import { InspectionDetailsFormRoutingModule } from "./inspection-dtl-form-routing.module";
 import { ReactiveFormsModule } from "@angular/forms";
 import { FileUploadService } from '../../shared/fileupload.service';
+import { FileUploadComponentComponent } from "../file-upload-component/file-upload-component.component";
 
 @NgModule({
   imports: [
@@ -11,7 +12,7 @@ import { FileUploadService } from '../../shared/fileupload.service';
     InspectionDetailsFormRoutingModule,
     ReactiveFormsModule
   ],
-  declarations: [InspectionDtlFormComponent],
+  declarations: [InspectionDtlFormComponent, FileUploadComponentComponent],
   providers: [FileUploadService]
 })
 export class InspectionDtlFormModule { }

@@ -41,6 +41,7 @@ import { InspectionDetailsService } from "./shared/inspection-detail.service";
 import { HttpClientModule } from '@angular/common/http';
 import { HTTPService } from "./shared/http.service";
 import { CustomPreloadStrategy } from "./shared/customPreloadStrategy";
+import { FileUploadComponentComponent } from './views/file-upload-component/file-upload-component.component';
 
 @NgModule({
   imports: [

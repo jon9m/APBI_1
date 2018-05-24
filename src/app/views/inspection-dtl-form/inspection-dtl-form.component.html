@@ -219,17 +219,7 @@
         <div class="col-sm-12">
           <div class="form-group">
             <div class="col-sm-12">
-              <span class="btn btn-success fileinput-button"><i class="glyphicon glyphicon-plus"></i><span>Select file...</span>
-              <input type="file" name="file-01" (change)="onFileChange($event, '01', 'file', 'file','file-01')" accept="image/*" capture="camera" />
-              </span><br><br>
-              <div id="file-01-progress" class="progress mb-1">
-                <div *ngIf="currInputElemProgress==='file_progress_01'" class="progress-bar progress-bar-success" [style.width.%]="uploadProgress" [style.background-color]="rgbString">
-                  <div *ngIf="uploadProgress > 0" class="font-weight-bold">{{uploadProgress}}%</div>
-                </div>
-              </div>
-              <div class="files">
-                <img id="file-01" src="cpRepImg?src=file-01&time=<%=java.util.Calendar.getInstance().getTimeInMillis()%>" alt="your image" height="160px;" />
-              </div>
+              <app-file-upload-component [index]="'01'" [fileName]="'file-01'" [progress]="'file'" [recommendationType]="'file'" [inspectiondetailsform]="inspectiondetailsform"></app-file-upload-component>              
             </div>
           </div>
         </div>
@@ -252,7 +242,6 @@
       </div>
     </div>
   </div>
-
   <div class="card">
     <div class="card-header">
       <h4 class="card-title black"><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;<strong>Was the property furnished at time of inspection?</strong>
@@ -323,7 +312,6 @@
       </div>
     </div>
   </div>
-
   <div class="card">
     <div class="card-header">
       <h4 class="card-title black"><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;<strong>Services connected to property</strong>
@@ -818,7 +806,6 @@
       <h4 class="card-title black"><strong>Hallways and General Living Spaces - Findings and Recommendations</strong>
       </h4>
     </div>
-
     <div class="card-body">
       <div id="recomendations-1">
         <div formArrayName="hallways_recommendations_list">
@@ -869,18 +856,7 @@
                 <div class="col-xs-12 col-md-6">
                   <div class="form-group">
                     <div>
-                      <span class="btn btn-success fileinput-button"><i class="glyphicon glyphicon-plus"></i><span>Select file...</span>                  
-                      <input type="file" (change)="onFileChange($event, i, 'hallways_recommendations_list', 'rec-file-preview-hallways')" accept="image/*" capture="camera" />
-                      </span><br><br>
-                      <div class="progress mb-1">
-                        <div *ngIf="currInputElemProgress==='hallways_recommendations_list_progress_'+i" class="progress-bar progress-bar-success" [style.width.%]="uploadProgress" [style.background-color]="rgbString">
-                          <div *ngIf="uploadProgress > 0" class="font-weight-bold">{{uploadProgress}}%</div>
-                        </div>
-                      </div>
-                      <div class="files">
-                        <img id="{{'rec-file-preview-hallways-'+i}}" src="cpRepImg?src=<%=rb.getFilename()%>&time=<%=java.util.Calendar.getInstance().getTimeInMillis()%>"
-                          alt="your image" height="160px;" />
-                      </div>
+                      <app-file-upload-component [index]="i" [recommendationType]="'hallways_recommendations_list'" [progress]="'rec-file-preview-hallways'" [inspectiondetailsform]="inspectiondetailsform"></app-file-upload-component>                      
                       <input type="hidden" formControlName="typee"/>
                       <input type="hidden" formControlName="filename"/>
                     </div>
@@ -1317,35 +1293,11 @@
             <div class="table-body-cell">
               <label class="custom-checkbox"><input type="checkbox" name="1162" formControlName="1162" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
             </div>
-          </div>
-          <!--    <div class="resp-table-row">
-      <div class="table-body-cell">
-        1
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox"><input type="checkbox" name="1163" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>        
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox"><input type="checkbox" name="1164" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox"><input type="checkbox" name="1165" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox"><input type="checkbox" name="1166" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox"><input type="checkbox" name="1167" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox"><input type="checkbox" name="1168" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
-      </div>
-    </div>  -->
+          </div>          
         </div>
       </div>
     </div>
-  </div>
-  
+  </div>  
   <div class="card">
     <div class="card-header">
       <h4 class="card-title black"><strong>Kitchen - Findings and Recommendations</strong>
@@ -1401,19 +1353,7 @@
                 <div class="col-xs-12 col-md-6">
                   <div class="form-group">
                     <div>
-                      <span class="btn btn-success fileinput-button"><i class="glyphicon glyphicon-plus"></i><span>Select file...</span>
-                      <input type="file" (change)="onFileChange($event, i, 'kitchen_recommendations_list','rec-file-preview-kitchen')" accept="image/*"
-                        capture="camera" />
-                      </span><br> <br>
-                      <div class="progress mb-1">
-                        <div *ngIf="currInputElemProgress==='kitchen_recommendations_list_progress_'+i" class="progress-bar progress-bar-success" [style.width.%]="uploadProgress" [style.background-color]="rgbString">
-                          <div *ngIf="uploadProgress > 0" class="font-weight-bold">{{uploadProgress}}%</div>
-                        </div>
-                      </div>
-                      <div class="files">
-                        <img id="{{'rec-file-preview-kitchen-'+i}}" src="cpRepImg?src=<%=rb.getFilename()%>&time=<%=java.util.Calendar.getInstance().getTimeInMillis()%>"
-                          alt="your image" height="160px;" />
-                      </div>
+                      <app-file-upload-component [index]="i" [recommendationType]="'kitchen_recommendations_list'" [progress]="'rec-file-preview-kitchen'" [inspectiondetailsform]="inspectiondetailsform"></app-file-upload-component>                      
                       <input type="hidden" formControlName="typee"/>
                       <input type="hidden" formControlName="filename"/>
                     </div>
@@ -1430,7 +1370,6 @@
       </div>
     </div>
   </div>  
-
   <div class="card">
     <div class="card-header">
       <h4 class="card-title black"><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;<strong>Laundry</strong>
@@ -1713,57 +1652,10 @@
           <div class="table-body-cell">
             <label class="custom-checkbox"><input type="checkbox" name="1234" formControlName="1234" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
           </div>
-        </div>
-        <!--    <div class="resp-table-row">
-      <div class="table-body-cell">
-        12
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox"><input type="checkbox" name="1235" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>        
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox"><input type="checkbox" name="1236" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox"><input type="checkbox" name="1237" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox"><input type="checkbox" name="1238" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox"><input type="checkbox" name="1239" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox"><input type="checkbox" name="1240" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
-      </div>
-    </div>  
-    <div class="resp-table-row">
-      <div class="table-body-cell">
-        13
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox"><input type="checkbox" name="1241" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>        
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox"><input type="checkbox" name="1242" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox"><input type="checkbox" name="1243" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox"><input type="checkbox" name="1244" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox"><input type="checkbox" name="1245" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox"><input type="checkbox" name="1246" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
-      </div>
-    </div>  -->
+        </div>        
       </div>
     </div>
-  </div>
-  
+  </div>  
   <div class="card">
     <div class="card-header">
       <h4 class="card-title black"><strong>Laundry - Findings and Recommendations</strong>
@@ -1818,20 +1710,8 @@
                 </div>
                 <div class="col-xs-12 col-md-6">
                   <div class="form-group">
-                    <div>
-                      <span class="btn btn-success fileinput-button"><i class="glyphicon glyphicon-plus"></i><span>Select file...</span>
-                      <input type="file" (change)="onFileChange($event, i, 'laundry_recommendations_list','rec-file-preview-laundry')" accept="image/*"
-                        capture="camera" />
-                      </span><br> <br>
-                      <div class="progress mb-1">
-                        <div *ngIf="currInputElemProgress==='laundry_recommendations_list_progress_'+i" class="progress-bar progress-bar-success" [style.width.%]="uploadProgress" [style.background-color]="rgbString">
-                          <div *ngIf="uploadProgress > 0" class="font-weight-bold">{{uploadProgress}}%</div>
-                        </div>
-                      </div>
-                      <div class="files">
-                        <img id="{{'rec-file-preview-laundry-'+i}}" src="cpRepImg?src=<%=rb.getFilename()%>&time=<%=java.util.Calendar.getInstance().getTimeInMillis()%>"
-                          alt="your image" height="160px;" />
-                      </div>
+                    <div>                      
+                      <app-file-upload-component [index]="i" [recommendationType]="'laundry_recommendations_list'" [progress]="'rec-file-preview-laundry'" [inspectiondetailsform]="inspectiondetailsform"></app-file-upload-component>                      
                       <input type="hidden" formControlName="typee"/>
                       <input type="hidden" formControlName="filename"/>
                     </div>
@@ -1846,8 +1726,7 @@
         <input type="button" class="pull-right btn btn-secondary" (click)="onAddRecommendations('laundry_recommendations_list','Laundry')" value="Add More Recommendation"/>
       </div>
     </div>
-  </div>
-  
+  </div>  
   <!-- BEDROOMS -->
   <div class="card">
     <div class="card-header">
@@ -1882,25 +1761,7 @@
         <div class="resp-table-row">
           <div class="table-body-cell">
             <strong>Bedroom1</strong>
-          </div>
-          <!--      <div class="table-body-cell">
-        <label class="custom-checkbox"><input type="checkbox" name="1247" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>        
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox"><input type="checkbox" name="1248" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox"><input type="checkbox" name="1249" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox"><input type="checkbox" name="1250" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox"><input type="checkbox" name="1251" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox"><input type="checkbox" name="1252" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
-      </div>  -->
+          </div>          
         </div>
         <div class="resp-table-row">
           <div class="table-body-cell">
@@ -2066,25 +1927,7 @@
         <div class="resp-table-row">
           <div class="table-body-cell">
             <strong>Bedroom2</strong>
-          </div>
-          <!--      <div class="table-body-cell">
-        <label class="custom-checkbox"><input type="checkbox" name="1295" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>        
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox"><input type="checkbox" name="1296" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox"><input type="checkbox" name="1297" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox"><input type="checkbox" name="1298" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox"><input type="checkbox" name="1299" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox"><input type="checkbox" name="1300" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
-      </div>-->
+          </div>          
         </div>
         <div class="resp-table-row">
           <div class="table-body-cell">
@@ -2250,27 +2093,8 @@
         <div class="resp-table-row">
           <div class="table-body-cell">
             <strong>Bedroom3</strong>
-          </div>
-          <!--      <div class="table-body-cell">
-        <label class="custom-checkbox"><input type="checkbox" name="1343" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>        
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox"><input type="checkbox" name="1344" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox"><input type="checkbox" name="1345" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox"><input type="checkbox" name="1346" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox"><input type="checkbox" name="1347" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox"><input type="checkbox" name="1348" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
-      </div>-->
+          </div>          
         </div>
-
         <div class="resp-table-row">
           <div class="table-body-cell">
             Floor
@@ -2435,25 +2259,7 @@
         <div class="resp-table-row">
           <div class="table-body-cell">
             <strong>Bedroom4</strong>
-          </div>
-          <!--      <div class="table-body-cell">
-        <label class="custom-checkbox"><input type="checkbox" name="1391" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>        
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox"><input type="checkbox" name="1392" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox"><input type="checkbox" name="1393" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox"><input type="checkbox" name="1394" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox"><input type="checkbox" name="1395" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox"><input type="checkbox" name="1396" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
-      </div>-->
+          </div>          
         </div>
         <div class="resp-table-row">
           <div class="table-body-cell">
@@ -2619,25 +2425,7 @@
         <div class="resp-table-row">
           <div class="table-body-cell">
             <strong>Bedroom5</strong>
-          </div>
-          <!--      <div class="table-body-cell">
-        <label class="custom-checkbox"><input type="checkbox" name="1439" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>        
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox"><input type="checkbox" name="1440" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox"><input type="checkbox" name="1441" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox"><input type="checkbox" name="1442" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox"><input type="checkbox" name="1443" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox"><input type="checkbox" name="1444" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
-      </div>  -->
+          </div>          
         </div>
         <div class="resp-table-row">
           <div class="table-body-cell">
@@ -2799,57 +2587,10 @@
           <div class="table-body-cell">
             <label class="custom-checkbox"><input type="checkbox" name="1486" formControlName="1486" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
           </div>
-        </div>
-        <!--    <div class="resp-table-row">
-      <div class="table-body-cell">
-        41
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox"><input type="checkbox" name="1487" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>        
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox"><input type="checkbox" name="1488" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox"><input type="checkbox" name="1489" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox"><input type="checkbox" name="1490" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox"><input type="checkbox" name="1491" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox"><input type="checkbox" name="1492" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
+        </div>        
       </div>
     </div>
-    <div class="resp-table-row">
-      <div class="table-body-cell">
-        42
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox"><input type="checkbox" name="1493" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>        
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox"><input type="checkbox" name="1494" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox"><input type="checkbox" name="1495" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox"><input type="checkbox" name="1496" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox"><input type="checkbox" name="1497" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox"><input type="checkbox" name="1498" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
-      </div>
-    </div>  -->
-      </div>
-    </div>
-  </div>
-  
+  </div>  
   <div class="card">
     <div class="card-header">
       <h4 class="card-title black"><strong>Bedrooms - Findings and Recommendations</strong>
@@ -2904,20 +2645,8 @@
                 </div>
                 <div class="col-xs-12 col-md-6">
                   <div class="form-group">
-                    <div>
-                      <span class="btn btn-success fileinput-button"><i class="glyphicon glyphicon-plus"></i><span>Select file...</span>
-                      <input type="file" (change)="onFileChange($event, i, 'bedrooms_recommendations_list','rec-file-preview-bedrooms')" accept="image/*"
-                        capture="camera" />
-                      </span><br> <br>
-                      <div class="progress mb-1">
-                        <div *ngIf="currInputElemProgress==='bedrooms_recommendations_list_progress_'+i" class="progress-bar progress-bar-success" [style.width.%]="uploadProgress" [style.background-color]="rgbString">
-                          <div *ngIf="uploadProgress > 0" class="font-weight-bold">{{uploadProgress}}%</div>
-                        </div>
-                      </div>
-                      <div class="files">
-                        <img id="{{'rec-file-preview-bedrooms-'+i}}" src="cpRepImg?src=<%=rb.getFilename()%>&time=<%=java.util.Calendar.getInstance().getTimeInMillis()%>"
-                          alt="your image" height="160px;" />
-                      </div>
+                    <div>                      
+                      <app-file-upload-component [index]="i" [recommendationType]="'bedrooms_recommendations_list'" [progress]="'rec-file-preview-bedrooms'" [inspectiondetailsform]="inspectiondetailsform"></app-file-upload-component>                      
                       <input type="hidden" formControlName="typee"/>
                       <input type="hidden" formControlName="filename"/>
                     </div>
@@ -2929,12 +2658,10 @@
         </div>
       </div>
       <div>
-        <input type="button" class="pull-right btn btn-secondary" (click)="onAddRecommendations('bedrooms_recommendations_list','Bedrooms')" value="Add More Recommendation"
-        />
+        <input type="button" class="pull-right btn btn-secondary" (click)="onAddRecommendations('bedrooms_recommendations_list','Bedrooms')" value="Add More Recommendation"/>
       </div>
     </div>
-  </div>
-  
+  </div>  
   <div class="card">
     <div class="card-header">
       <h4 class="card-title black"><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;<strong>Bathrooms</strong>
@@ -2966,7 +2693,6 @@
           </div>
         </div>
         <div id="resp-table-body">
-
           <div class="resp-table-row">
             <div class="table-body-cell">
               Shower Recess
@@ -3472,58 +3198,11 @@
             <div class="table-body-cell">
               <label class="custom-checkbox"><input type="checkbox" name="1630" formControlName="1630" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
             </div>
-          </div>
-          <!--    <div class="resp-table-row">
-      <div class="table-body-cell">
-        1
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox"><input type="checkbox" name="1631" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>        
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox"><input type="checkbox" name="1632" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox"><input type="checkbox" name="1633" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox"><input type="checkbox" name="1634" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox"><input type="checkbox" name="1635" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox"><input type="checkbox" name="1636" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
-      </div>
-    </div>
-    <div class="resp-table-row">
-      <div class="table-body-cell">
-        1
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox"><input type="checkbox" name="1637" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>        
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox"><input type="checkbox" name="1638" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox"><input type="checkbox" name="1639" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox"><input type="checkbox" name="1640" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox"><input type="checkbox" name="1641" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox"><input type="checkbox" name="1642" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
-      </div>
-    </div>-->
+          </div>          
         </div>
       </div>
     </div>
-  </div>
-  
+  </div>  
   <div class="card">
     <div class="card-header">
       <h4 class="card-title black"><strong>Bathrooms - Findings and Recommendations</strong>
@@ -3578,20 +3257,8 @@
                 </div>
                 <div class="col-xs-12 col-md-6">
                   <div class="form-group">
-                    <div>
-                      <span class="btn btn-success fileinput-button"><i class="glyphicon glyphicon-plus"></i><span>Select file...</span>
-                      <input type="file" (change)="onFileChange($event, i, 'bathrooms_recommendations_list','rec-file-preview-bathrooms')" accept="image/*"
-                        capture="camera" />
-                      </span><br> <br>
-                      <div class="progress mb-1">
-                        <div *ngIf="currInputElemProgress==='bathrooms_recommendations_list_progress_'+i" class="progress-bar progress-bar-success" [style.width.%]="uploadProgress" [style.background-color]="rgbString">
-                          <div *ngIf="uploadProgress > 0" class="font-weight-bold">{{uploadProgress}}%</div>
-                        </div>
-                      </div>
-                      <div class="files">
-                        <img id="{{'rec-file-preview-bathrooms-'+i}}" src="cpRepImg?src=<%=rb.getFilename()%>&time=<%=java.util.Calendar.getInstance().getTimeInMillis()%>"
-                          alt="your image" height="160px;" />
-                      </div>
+                    <div>                      
+                      <app-file-upload-component [index]="i" [recommendationType]="'bathrooms_recommendations_list'" [progress]="'rec-file-preview-bathrooms'" [inspectiondetailsform]="inspectiondetailsform"></app-file-upload-component>                      
                       <input type="hidden" formControlName="typee"/>
                       <input type="hidden" formControlName="filename"/>
                     </div>
@@ -3606,8 +3273,7 @@
         <input type="button" class="pull-right btn btn-secondary" (click)="onAddRecommendations('bathrooms_recommendations_list','Bathrooms')" value="Add More Recommendation" />
       </div>
     </div>
-  </div>
-  
+  </div>  
   <!-- ENSUITE -->
   <div class="card">
     <div class="card-header">
@@ -4146,58 +3812,10 @@
               <label class="custom-checkbox"><input type="checkbox" name="1774" formControlName="1774" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
             </div>
           </div>
-          <!--    <div class="resp-table-row">
-      <div class="table-body-cell">
-        1
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox"><input type="checkbox" name="1775" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>        
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox"><input type="checkbox" name="1776" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox"><input type="checkbox" name="1777" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox"><input type="checkbox" name="1778" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox"><input type="checkbox" name="1779" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox"><input type="checkbox" name="1780" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
-      </div>
-    </div>
-    <div class="resp-table-row">
-      <div class="table-body-cell">
-        1
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox"><input type="checkbox" name="1781" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>        
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox"><input type="checkbox" name="1782" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox"><input type="checkbox" name="1783" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox"><input type="checkbox" name="1784" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox"><input type="checkbox" name="1785" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox"><input type="checkbox" name="1786" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
-      </div>
-    </div>-->
-
         </div>
       </div>
     </div>
-  </div>
-  
+  </div>  
   <div class="card">
     <div class="card-header">
       <h4 class="card-title black"><strong>Ensuite - Findings and Recommendations</strong></h4>
@@ -4251,20 +3869,8 @@
                 </div>
                 <div class="col-xs-12 col-md-6">
                   <div class="form-group">
-                    <div>
-                      <span class="btn btn-success fileinput-button"><i class="glyphicon glyphicon-plus"></i><span>Select file...</span>
-                      <input type="file" (change)="onFileChange($event, i, 'ensuite_recommendations_list','rec-file-preview-ensuite')" accept="image/*"
-                        capture="camera" />
-                      </span><br> <br>
-                      <div class="progress mb-1">
-                        <div *ngIf="currInputElemProgress==='ensuite_recommendations_list_progress_'+i" class="progress-bar progress-bar-success" [style.width.%]="uploadProgress" [style.background-color]="rgbString">
-                          <div *ngIf="uploadProgress > 0" class="font-weight-bold">{{uploadProgress}}%</div>
-                        </div>
-                      </div>
-                      <div class="files">
-                        <img id="{{'rec-file-preview-ensuite-'+i}}" src="cpRepImg?src=<%=rb.getFilename()%>&time=<%=java.util.Calendar.getInstance().getTimeInMillis()%>"
-                          alt="your image" height="160px;" />
-                      </div>
+                    <div>                      
+                      <app-file-upload-component [index]="i" [recommendationType]="'ensuite_recommendations_list'" [progress]="'rec-file-preview-ensuite'" [inspectiondetailsform]="inspectiondetailsform"></app-file-upload-component>                      
                       <input type="hidden" formControlName="typee"/>
                       <input type="hidden" formControlName="filename"/>
                     </div>
@@ -4276,12 +3882,10 @@
         </div>
       </div>
       <div>
-        <input type="button" class="pull-right btn btn-secondary" (click)="onAddRecommendations('ensuite_recommendations_list','Ensuite')" value="Add More Recommendation"
-        />
+        <input type="button" class="pull-right btn btn-secondary" (click)="onAddRecommendations('ensuite_recommendations_list','Ensuite')" value="Add More Recommendation"/>
       </div>
     </div>
-  </div>  
-
+  </div>
   <div class="card">
     <div class="card-header">
       <h4 class="card-title black"><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;<strong>External</strong></h4>
@@ -4978,82 +4582,11 @@
             <div class="table-body-cell">
               <label class="custom-checkbox"><input type="checkbox" name="1960" formControlName="1960" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
             </div>
-          </div>
-          <!--    <div class="resp-table-row">
-      <div class="table-body-cell">
-        1
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox"><input type="checkbox" name="1961" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>        
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox"><input type="checkbox" name="1962" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox"><input type="checkbox" name="1963" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox"><input type="checkbox" name="1964" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox"><input type="checkbox" name="1965" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox"><input type="checkbox" name="1966" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
-      </div>
-    </div>
-    <div class="resp-table-row">
-      <div class="table-body-cell">
-        1
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox"><input type="checkbox" name="1967" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>        
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox"><input type="checkbox" name="1968" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox"><input type="checkbox" name="1969" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox"><input type="checkbox" name="1970" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox"><input type="checkbox" name="1971" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox"><input type="checkbox" name="1972" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
-      </div>
-    </div>  
-    <div class="resp-table-row">
-      <div class="table-body-cell">
-        1
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox"><input type="checkbox" name="1973" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>        
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox"><input type="checkbox" name="1974" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox"><input type="checkbox" name="1975" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox"><input type="checkbox" name="1976" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox"><input type="checkbox" name="1977" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox"><input type="checkbox" name="1978" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
-      </div>
-    </div>  
-      -->
+          </div>          
         </div>
       </div>
     </div>
-  </div>
-  
+  </div>  
   <div class="card">
     <div class="card-header">
       <h4 class="card-title black"><strong>External of House - Findings and Recommendations</strong>
@@ -5108,20 +4641,8 @@
                 </div>
                 <div class="col-xs-12 col-md-6">
                   <div class="form-group">
-                    <div>
-                      <span class="btn btn-success fileinput-button"><i class="glyphicon glyphicon-plus"></i><span>Select file...</span>
-                      <input type="file" (change)="onFileChange($event, i, 'external_recommendations_list','rec-file-preview-external')" accept="image/*"
-                        capture="camera" />
-                      </span><br> <br>
-                      <div class="progress mb-1">
-                        <div *ngIf="currInputElemProgress==='external_recommendations_list_progress_'+i" class="progress-bar progress-bar-success" [style.width.%]="uploadProgress" [style.background-color]="rgbString">
-                          <div *ngIf="uploadProgress > 0" class="font-weight-bold">{{uploadProgress}}%</div>
-                        </div>
-                      </div>
-                      <div class="files">
-                        <img id="{{'rec-file-preview-external-'+i}}" src="cpRepImg?src=<%=rb.getFilename()%>&time=<%=java.util.Calendar.getInstance().getTimeInMillis()%>"
-                          alt="your image" height="160px;" />
-                      </div>
+                    <div>                      
+                      <app-file-upload-component [index]="i" [recommendationType]="'external_recommendations_list'" [progress]="'rec-file-preview-external'" [inspectiondetailsform]="inspectiondetailsform"></app-file-upload-component>                      
                       <input type="hidden" formControlName="typee"/>
                       <input type="hidden" formControlName="filename"/>
                     </div>
@@ -5136,8 +4657,7 @@
         <input type="button" class="pull-right btn btn-secondary" (click)="onAddRecommendations('external_recommendations_list','External')" value="Add More Recommendation"/>
       </div>
     </div>
-  </div>
-  
+  </div>  
   <div class="card">
     <div class="card-header">
       <h4 class="card-title black"><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;<strong>Report Summary - Overall Condition of Property</strong>
@@ -5152,8 +4672,7 @@
         </div>
       </div>
     </div>
-  </div>
- 
+  </div> 
   <div class="card">
     <div class="card-header">
       <h4 class="card-title black"><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;<strong>Major Defects noted</strong>
@@ -5241,8 +4760,7 @@
           <div class="table-header-cell white">
           </div>
         </div>
-      </div>
-    
+      </div>    
   <div class="form-group" style="padding: 0px 15px 0px 15px;">
     <label style="padding: 10px 0;">Where applicable and where there is reasonable access, the following areas are examined during our inspection:</label>
   </div>
@@ -5257,7 +4775,6 @@
         </div>
       </div>
       <div class="resp-table-row">
-
         <div class="table-body-cell">
           <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" name="1986" formControlName="1986" value="1" /><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
         </div>
@@ -5312,25 +4829,7 @@
         <div class="table-body-cell">
           Pergolas and decks
         </div>
-      </div>
-      <!--
-    <div class="resp-table-row">
-      <div class="table-body-cell">
-        <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" name="1993" value="1" /><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>      
-      </div>
-      <div class="table-body-cell">
-        Extra1
-      </div>
-    </div>
-    <div class="resp-table-row">
-      <div class="table-body-cell">
-        <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" name="1994" value="1" /><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>      
-      </div>
-      <div class="table-body-cell">
-        Extra2
-      </div>
-    </div>
- -->
+      </div>      
     </div>
   </div>
   <div id="resp-table" style="padding:0;">
@@ -5381,25 +4880,7 @@
         <div class="table-body-cell">
           Wood decay (rot) fungi damage
         </div>
-      </div>
-      <!--
-    <div class="resp-table-row">
-      <div class="table-body-cell">
-        <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" name="1998" value="1" /><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>      
-      </div>
-      <div class="table-body-cell">
-        Extra1
-      </div>
-    </div>
-    <div class="resp-table-row">
-      <div class="table-body-cell">
-        <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" name="1999" value="1" /><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>      
-      </div>
-      <div class="table-body-cell">
-        Extra2
-      </div>
-    </div>
- -->
+      </div>      
     </div>
   </div>
   </div>
@@ -5756,58 +5237,10 @@
           <div class="table-body-cell">
             <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" name="2083" formControlName="2083" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
           </div>
-        </div>
-        <!--
-    <div class="resp-table-row">
-      <div class="table-body-cell">
-        Extra1
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" name="2084" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>       
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" name="2085" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" name="2086" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" name="2087" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" name="2088" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" name="2089" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
+        </div>        
       </div>
     </div>
-  <div class="resp-table-row">
-      <div class="table-body-cell">
-        Extra2
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" name="2090" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>       
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" name="2091" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" name="2092" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" name="2093" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" name="2094" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
-      </div>
-      <div class="table-body-cell">
-        <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" name="2095" value="1"/><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
-      </div>
-    </div>  -->
-      </div>
-    </div>
-  </div>
-  
+  </div>  
   <div class="card">
     <div class="card-header">
       <h4 class="card-title black"><strong>Timber Pest - Findings and Recommendations</strong>
@@ -5855,20 +5288,8 @@
                 </div>
                 <div class="col-xs-12 col-md-6">
                   <div class="form-group">
-                    <div>
-                      <span class="btn btn-success fileinput-button"><i class="glyphicon glyphicon-plus"></i><span>Select file...</span>
-                      <input type="file" (change)="onFileChange($event, i, 'timberpest_recommendations_list','rec-file-preview-timberpest')" accept="image/*"
-                        capture="camera" />
-                      </span><br> <br>
-                      <div class="progress mb-1">
-                        <div *ngIf="currInputElemProgress==='timberpest_recommendations_list_progress_'+i" class="progress-bar progress-bar-success" [style.width.%]="uploadProgress" [style.background-color]="rgbString">
-                          <div *ngIf="uploadProgress > 0" class="font-weight-bold">{{uploadProgress}}%</div>
-                        </div>
-                      </div>
-                      <div class="files">
-                        <img id="{{'rec-file-preview-timberpest-'+i}}" src="cpRepImg?src=<%=rb.getFilename()%>&time=<%=java.util.Calendar.getInstance().getTimeInMillis()%>"
-                          alt="your image" height="160px;" />
-                      </div>
+                    <div>                      
+                      <app-file-upload-component [index]="i" [recommendationType]="'timberpest_recommendations_list'" [progress]="'rec-file-preview-timberpest'" [inspectiondetailsform]="inspectiondetailsform"></app-file-upload-component>                      
                       <input type="hidden" formControlName="typee"/>
                       <input type="hidden" formControlName="filename"/>
                     </div>
@@ -5883,8 +5304,7 @@
         <input type="button" class="pull-right btn btn-secondary" (click)="onAddRecommendations('timberpest_recommendations_list','TimberPest')" value="Add More Recommendation"/>
       </div>
     </div>
-  </div>
-  
+  </div>  
   <div class="card">
     <div class="card-header">
       <h4 class="card-title black"><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;<strong>Areas Conducive to Timber Pest Attacks</strong>
@@ -5955,25 +5375,7 @@
             <div class="table-body-cell">
               Weepholes in brick work need to be free from soil
             </div>
-          </div>
-          <!--
-    <div class="resp-table-row">
-      <div class="table-body-cell">
-        <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" name="2101" value="1" /><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>      
-      </div>
-      <div class="table-body-cell">
-        Extra1
-      </div>
-    </div>
-    <div class="resp-table-row">
-      <div class="table-body-cell">
-        <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" name="2102" value="1" /><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>      
-      </div>
-      <div class="table-body-cell">
-        Extra2
-      </div>
-    </div>
- -->
+          </div>          
         </div>
       </div>
       <div class="row">
@@ -5985,8 +5387,7 @@
         </div>
       </div>
     </div>
-  </div>
-  
+  </div>  
   <hr/>
   <div class="card">
     <div class="card-header">
@@ -6042,25 +5443,7 @@
             <div class="table-body-cell">
               Other
             </div>
-          </div>
-          <!--
-    <div class="resp-table-row">
-      <div class="table-body-cell">
-        <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" name="2106" value="1" /><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>      
-      </div>
-      <div class="table-body-cell">
-        Extra1
-      </div>
-    </div>
-    <div class="resp-table-row">
-      <div class="table-body-cell">
-        <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" name="2107" value="1" /><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>      
-      </div>
-      <div class="table-body-cell">
-        Extra2
-      </div>
-    </div>
- -->
+          </div>          
         </div>
       </div>
       <div class="form-group" style="padding: 0px 15px 0px 15px;">
@@ -6124,25 +5507,7 @@ building expert should be consulted.</label>
             <div class="table-body-cell">
               Other
             </div>
-          </div>
-          <!--
-    <div class="resp-table-row">
-      <div class="table-body-cell">
-        <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" name="2111" value="1" /><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>      
-      </div>
-      <div class="table-body-cell">
-        Extra1
-      </div>
-    </div>
-    <div class="resp-table-row">
-      <div class="table-body-cell">
-        <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" name="2112" value="1" /><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>      
-      </div>
-      <div class="table-body-cell">
-        Extra2
-      </div>
-    </div>
- -->
+          </div>          
         </div>
       </div>
       <div class="form-group" style="padding: 0px 15px 0px 15px;">
@@ -6212,24 +5577,7 @@ building expert should be consulted.</label>
               Other
             </div>
           </div>
-          <!--
-    <div class="resp-table-row">
-      <div class="table-body-cell">
-        <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" name="2116" value="1" /><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>      
-      </div>
-      <div class="table-body-cell">
-        Extra1
-      </div>
-    </div>
-    <div class="resp-table-row">
-      <div class="table-body-cell">
-        <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" name="2117" value="1" /><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>      
-      </div>
-      <div class="table-body-cell">
-        Extra2
-      </div>
-    </div>
- -->Evidence_note
+          Evidence_note
         </div>
       </div>
       <div class="row">
@@ -6241,8 +5589,7 @@ building expert should be consulted.</label>
         </div>
       </div>
     </div>
-  </div>
- 
+  </div> 
   <hr/>
   <div class="card">
     <div class="card-header">
@@ -6289,7 +5636,6 @@ building expert should be consulted.</label>
       </div>
     </div>
   </div>
-
   <div class="card">
     <div class="card-header">
       <h4 class="card-title black"><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;<strong>Overall Degree of Risk of Timber Pest Infestation</strong>
@@ -6334,7 +5680,6 @@ building expert should be consulted.</label>
       </div>
     </div>
   </div>
-
   <!-- REPORT SUMMARY -->
   <div class="card">
     <div class="card-header">
