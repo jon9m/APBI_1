@@ -6,7 +6,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body p-0" id="inspectiondtlcontent" style="min-height: 200px;">
+      <div class="modal-body p-0" id="inspectiondtlcontent" style="min-height: 250px;">
         <div class="col-xs-12 bg-primary p-3">
           <h3>Inspection Details</h3>
           <div></div>        
@@ -18,7 +18,7 @@
       </div>
       <div class="modal-footer">
         <input id="previewbookingid" type="hidden" name="previewbookingid" value=""/>
-        <button type="button" #modalclosebutton class="btn btn-outline-primary mr-auto" (click)="detailsModal.hide()">Cancel</button>
+        <button type="button" #modalclosebutton class="btn btn-outline-primary mr-auto float-left" (click)="detailsModal.hide()">Cancel</button>
         <button type="button" [disabled]="isFormLoading" class="btn btn-outline-info" (click)="loadForm()"><i *ngIf="isFormLoading" class="fa fa-spinner fa-spin"></i>&nbsp;Complete the report form</button>
       </div>
     </div>
