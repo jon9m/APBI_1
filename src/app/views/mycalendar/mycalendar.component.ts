@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef, OnDestroy } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, OnDestroy, Renderer2 } from '@angular/core';
 import { CalendarComponent } from 'ng-fullcalendar';
 import { Options } from "fullcalendar";
 import { ModalDirective } from 'ngx-bootstrap/modal';
@@ -19,13 +19,14 @@ export class MycalendarComponent implements OnInit, OnDestroy {
 
   calendarOptions: Options;
   @ViewChild(CalendarComponent) ucCalendar: CalendarComponent;
+  isCalendarLoading: boolean = false;
 
   events: any = [];
   private eventSubscription: Subscription;
   private calendarSubscription: Subscription;
   private previewSubscription: Subscription;
 
-  constructor(private router: Router, private httpService: HTTPService) { }
+  constructor(private router: Router, private httpService: HTTPService, private renderer: Renderer2) { }
 
   ngOnDestroy(): void {
     if (this.previewSubscription) { this.previewSubscription.unsubscribe(); }
@@ -36,25 +37,25 @@ export class MycalendarComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     //Router reuse strategy
-    this.router.routeReuseStrategy.shouldReuseRoute = function () {
-      console.log("should Reuse Route");
-      return false;
-    }
-    this.router.routeReuseStrategy.shouldDetach = function () {
-      console.log("should detach");
-      return true;
-    }
-    this.router.routeReuseStrategy.shouldAttach = function () {
-      console.log("should attach");
-      return false;
-    }
-    this.router.events.subscribe((evt) => {
-      if (evt instanceof NavigationEnd) {
-        console.log("router navigated");
-        this.router.navigated = false;
-        window.scrollTo(0, 0);
-      }
-    });
+    // this.router.routeReuseStrategy.shouldReuseRoute = function () {
+    //   console.log("should Reuse Route");
+    //   return false;
+    // }
+    // this.router.routeReuseStrategy.shouldDetach = function () {
+    //   console.log("should detach");
+    //   return true;
+    // }
+    // this.router.routeReuseStrategy.shouldAttach = function () {
+    //   console.log("should attach");
+    //   return false;
+    // }
+    // this.router.events.subscribe((evt) => {
+    //   if (evt instanceof NavigationEnd) {
+    //     console.log("router navigated");
+    //     this.router.navigated = false;
+    //     window.scrollTo(0, 0);
+    //   }
+    // });
     //Router reuse strategy - ends
 
 
@@ -63,19 +64,25 @@ export class MycalendarComponent implements OnInit, OnDestroy {
     let nextMonth = (now.set('date', 1).add(1, 'month').add(10, 'day')).format('YYYY-MM-DD');
 
     console.log("currMonth " + currMonth + " nextMonth " + nextMonth);
+    this.isCalendarLoading = true;
 
-    this.eventSubscription = this.httpService.loadCalendar({ 'start': currMonth, 'end': nextMonth }).subscribe(data => {
-      this.calendarOptions = {
-        editable: true,
-        eventLimit: false,
-        header: {
-          left: 'prev,next today',
-          center: 'title',
-          right: 'month,agendaWeek,agendaDay,listMonth'
-        },
-        events: data
-      };
-    });
+    this.eventSubscription = this.httpService.loadCalendar({ 'start': currMonth, 'end': nextMonth }).subscribe(
+      (data) => {
+        this.calendarOptions = {
+          editable: true,
+          eventLimit: false,
+          header: {
+            left: 'prev,next today',
+            center: 'title',
+            right: 'month,agendaWeek,agendaDay,listMonth'
+          },
+          events: data
+        };
+        this.isCalendarLoading = false;
+      }, (error) => {
+        console.log(error);
+        this.isCalendarLoading = false;
+      });
   }
 
   clickButton(evt) {
@@ -113,6 +120,7 @@ export class MycalendarComponent implements OnInit, OnDestroy {
     let element: HTMLElement = document.getElementById('modalbutton') as HTMLElement;
     let bookingidelement: HTMLInputElement = document.getElementById('previewbookingid') as HTMLInputElement;
     bookingidelement.value = evt.detail.event.id;
+    inspdtlpreviewcontent.innerHTML = '<div class="p-3 alert alert-secondary">Loading...</div>';
 
     this.previewSubscription = this.httpService.getPreview(evt.detail.event.id).subscribe(
       (response) => {
@@ -121,7 +129,7 @@ export class MycalendarComponent implements OnInit, OnDestroy {
       },
       (error) => {
         console.log(error);
-        inspdtlpreviewcontent.innerHTML = '<div class="p-3 text-danger">Error during loading details!</div>';
+        inspdtlpreviewcontent.innerHTML = '<div class="p-3 alert alert-warning">Error during loading details!</div>';
       });
 
     element.click();
@@ -130,5 +138,4 @@ export class MycalendarComponent implements OnInit, OnDestroy {
   updateEvent(evt) {
     console.log(evt);
   }
-
 }

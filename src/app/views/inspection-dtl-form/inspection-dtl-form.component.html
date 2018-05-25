@@ -4,7 +4,9 @@
   <div class="page-header">
     <div class="container-fluid p-0">
       <div class="pull-right">
-        <input type="submit" (click)="onSave()" form="addReportForm" data-toggle="tooltip" title="" class="btn btn-primary" data-original-title="Save" value="SAVE" />
+        <button type="button" (click)="onSave()" form="addReportForm" data-toggle="tooltip" title="" class="btn btn-primary" data-original-title="Save" value="SAVE">
+          <i *ngIf="formSaving" class="fa fa-spinner fa-spin" style="font-size:1rem"></i>&nbsp;SAVE
+        </button>
         <a (click)="onCancel()" data-toggle="tooltip" title="" class="btn btn-outline-info" data-original-title="Cancel"><i class="fa fa-reply"></i></a>
       </div>
       <h1>{{inspectionProperty.inspectionType}}</h1><br/>
@@ -5696,8 +5698,10 @@ building expert should be consulted.</label>
       </div>
     </div>
   </div>
-  <div class="pull-right py-4">
-    <input (click)="onSave()" type="submit" form="addReportForm" data-toggle="tooltip" title="" class="btn btn-primary" data-original-title="Save" value="SAVE"/>
+  <div class="pull-right py-4">    
+    <button type="button" (click)="onSave()" form="addReportForm" data-toggle="tooltip" title="" class="btn btn-primary" data-original-title="Save" value="SAVE">
+      <i *ngIf="formSaving" class="fa fa-spinner fa-spin" style="font-size:1rem"></i>&nbsp;SAVE
+    </button>
     <a (click)="onCancel()" data-toggle="tooltip" title="" class="btn btn-outline-info" data-original-title="Cancel"><i class="fa fa-reply"></i></a>
   </div>
 </form>

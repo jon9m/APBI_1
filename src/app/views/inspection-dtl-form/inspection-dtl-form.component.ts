@@ -46,8 +46,10 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
   ensuite: string[] = [];
   external: string[] = [];
 
+  formSaving: boolean = false;
+
   constructor(private route: ActivatedRoute, private fb: FormBuilder, private inspectionDetailsService: InspectionDetailsService, private fileUploadService: FileUploadService, private router: Router, private httpService: HTTPService) {
-    
+
   }
 
   ngOnInit() {
@@ -1290,108 +1292,6 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
     });
   }
 
-  fileUploadSub: any;
-  uploadingProgressing: boolean = false;
-  uploadProgress: number = 0;
-  uploadComplete: boolean = false;
-  serverResponse: any;
-  rgbString: string = '#20a8d8';
-
-  currInputElemProgress: any;
-
-  onFileChange(event, index, recommendationType, progress, fileName) {
-    let file_name = "";
-
-    //console.log((<FormGroup>(<FormArray>this.inspectiondetailsform.get(recommendationType)).at(index)).controls['filename'].value);  //controlName
-
-    if (fileName) {
-      file_name = fileName;
-    } else {
-      let currFormArr = (<FormArray>(this.inspectiondetailsform.get(recommendationType)));
-      if (currFormArr) {
-        let currFrmGrp = (<FormGroup>(currFormArr.at(index)));
-        if (currFrmGrp) {
-          let fileNameCtrl = (<AbstractControl>currFrmGrp.controls['filename']);
-          if (fileNameCtrl) {
-            file_name = fileNameCtrl.value;
-            console.log(fileNameCtrl.value);
-          }
-        }
-      }
-    }
-
-    let bookingId = this.inspectiondetailsform.get('bookingid').value;
-    let submittedData = { 'index': index, 'type': recommendationType, 'bookingid': bookingId };
-    let reader = new FileReader();
-    if (event.target.files && event.target.files.length > 0) {
-      let fileToUpload = event.target.files[0];
-      reader.readAsDataURL(fileToUpload);
-      reader.onload = (event) => {
-        let progressId = "#" + progress + "-" + index;
-        let elem = (<HTMLImageElement>document.querySelector(progressId));
-        if (elem) {
-          elem.src = (<FileReader>event.target).result;
-        }
-
-        this.fileUploadSub = this.fileUploadService.fileUpload(fileToUpload, file_name, submittedData).subscribe(
-          event => {
-            this.handleProgress(event, index, recommendationType);
-          },
-          error => {
-            console.log("Server error"); //TODO - error handle
-          });
-      };
-    }
-  }
-
-  handleProgress(event, index, recommendationType) {
-
-    if (event.type === HttpEventType.Sent) {
-      this.uploadProgress = 0;
-      this.rgbString = '#20a8d8';
-    }
-
-    if (event.type === HttpEventType.DownloadProgress) {
-      this.uploadingProgressing = true
-      this.uploadProgress = Math.round(100 * event.loaded / event.total);
-    }
-
-    if (event.type === HttpEventType.UploadProgress) {
-      this.currInputElemProgress = recommendationType + "_progress_" + index;
-
-      this.uploadingProgressing = true
-      this.uploadProgress = Math.round(event.loaded / event.total * 100);
-
-      this.setRgbString();
-    }
-
-    if (event.type === HttpEventType.Response) {
-      // console.log(event.body);
-      this.uploadComplete = true
-      this.serverResponse = event.body
-    }
-  }
-
-  setRgbString() {
-    let colorMul = 255 / 100;
-    //#20a8d8 - 32, 168 , 216
-    let maxG = 168;
-    let maxGMul = maxG / 100;
-    let maxB = 216;
-    let maxBMul = maxB / 100;
-    let minR = 32;
-
-    let hexR = Math.round(colorMul * (100 - this.uploadProgress) + minR);
-    let hexG = Math.round(maxGMul * this.uploadProgress);
-    let hexB = Math.round(maxBMul * (this.uploadProgress));
-
-    let strR = hexR.toString(16);
-    let strG = hexG.toString(16);
-    let strB = hexB.toString(16);
-
-    this.rgbString = "#" + strR + strG + strB;
-  }
-
   getRecommendationControls(inspectiondetailsform, recommendationType) {
     return inspectiondetailsform.get(recommendationType).controls;
   }
@@ -1401,7 +1301,6 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
     let typeeLower = (<string>typee).toLowerCase();
     let fileName = 'rec-file-' + typeeLower + '-' + len;
 
-    this.uploadProgress = 0;
     (<FormArray>this.inspectiondetailsform.get(recommendationType)).push(new FormGroup({
       'item': new FormControl(),
       'rectype': new FormControl(),
@@ -1413,7 +1312,6 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
   }
 
   onDeleteRecommendations(recommendationType, i) {
-    this.uploadProgress = 0;
     (<FormArray>this.inspectiondetailsform.get(recommendationType)).removeAt(i);
   }
 
@@ -1421,13 +1319,16 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
     console.log("this.inspectiondetailsform.value");
     console.log(this.inspectiondetailsform.value);
 
+    this.formSaving = true;
     this.httpService.addReport(this.inspectiondetailsform.value).subscribe(
       (response: Response) => {
         console.log("success");  //TODO
+         this.formSaving = false;
       },
       (error) => {
         console.log("error");
         console.log(error);  //TODO
+        this.formSaving = false;
       });
   }
 

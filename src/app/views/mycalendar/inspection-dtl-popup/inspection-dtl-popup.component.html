@@ -19,7 +19,7 @@
       <div class="modal-footer">
         <input id="previewbookingid" type="hidden" name="previewbookingid" value=""/>
         <button type="button" #modalclosebutton class="btn btn-outline-primary mr-auto" (click)="detailsModal.hide()">Cancel</button>
-        <button type="button" [disabled]="isFormLoading" class="btn btn-outline-info" (click)="loadForm()"><i #completereportmsg></i> Complete the report form</button>
+        <button type="button" [disabled]="isFormLoading" class="btn btn-outline-info" (click)="loadForm()"><i *ngIf="isFormLoading" class="fa fa-spinner fa-spin"></i>&nbsp;Complete the report form</button>
       </div>
     </div>
   </div>
