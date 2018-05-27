@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { InspectionDtlFormComponent } from "./inspection-dtl-form.component";
+import { RefreshGuard } from "./refresh-guard.service";
 
 const routes: Routes = [
   {
-    path: '',
-    component: InspectionDtlFormComponent,
+    path: '', component: InspectionDtlFormComponent, canActivate: [RefreshGuard],
     data: {
       title: 'Building & Pest Inspection'
     }
@@ -16,4 +16,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class InspectionDetailsFormRoutingModule {}
+export class InspectionDetailsFormRoutingModule { }
