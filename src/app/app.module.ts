@@ -42,6 +42,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { HTTPService } from "./shared/http.service";
 import { CustomPreloadStrategy } from "./shared/customPreloadStrategy";
 import { FileUploadComponentComponent } from './views/file-upload-component/file-upload-component.component';
+import { RouteReuseStrategy } from "@angular/router";
+import { AppRouteReuseStrategy } from "./app.route.reuse.strategy";
 
 @NgModule({
   imports: [
@@ -63,14 +65,20 @@ import { FileUploadComponentComponent } from './views/file-upload-component/file
     LoginComponent,
     RegisterComponent
   ],
-  providers: [{
-    provide: LocationStrategy,
-    useClass: HashLocationStrategy
-  },
-  HTTPService,
-  InspectionDetailsService,
-  CustomPreloadStrategy],
-  
-  bootstrap: [ AppComponent ]
+  providers: [
+    {
+      provide: LocationStrategy,
+      useClass: HashLocationStrategy
+    },
+    {
+      provide: RouteReuseStrategy,
+      useClass: AppRouteReuseStrategy
+    },
+    HTTPService,
+    InspectionDetailsService,
+    CustomPreloadStrategy
+  ],
+
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -34,14 +34,15 @@ export const routes: Routes = [
     data: {
       title: 'Home'
     },
-    children: [      
+    children: [
       {
         path: 'dashboard',
         loadChildren: './views/dashboard/dashboard.module#DashboardModule'
-      },     
+      },
       {
         path: 'mycalendar',
-        loadChildren: './views/mycalendar/mycalendar.module#MyCalendarModule'
+        loadChildren: './views/mycalendar/mycalendar.module#MyCalendarModule',
+        data: { key: "mycalendar" }
       },
       {
         path: 'inspectiondtlform/:id',
@@ -53,7 +54,7 @@ export const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [ RouterModule.forRoot(routes, {preloadingStrategy:CustomPreloadStrategy})],
-  exports: [ RouterModule ]
+  imports: [RouterModule.forRoot(routes, { preloadingStrategy: CustomPreloadStrategy })],
+  exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

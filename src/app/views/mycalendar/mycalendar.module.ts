@@ -7,6 +7,7 @@ import { CommonModule } from "@angular/common";
 import { ModalModule } from "ngx-bootstrap/modal";
 
 import { InspectionDtlPopupComponent } from './inspection-dtl-popup/inspection-dtl-popup.component';
+import { RouteReuseStrategy } from "@angular/router";
 
 @NgModule({
     imports: [
@@ -16,9 +17,9 @@ import { InspectionDtlPopupComponent } from './inspection-dtl-popup/inspection-d
         ModalModule.forRoot()
     ],
     declarations: [
-        MycalendarComponent, 
+        MycalendarComponent,
         InspectionDtlPopupComponent
-        ]
+    ]
 })
 export class MyCalendarModule {
 
