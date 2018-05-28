@@ -6,7 +6,7 @@ import { AppGlobal } from './app-global';
 @Injectable()
 export class FileUploadService {
     rootContext = AppGlobal.API_ENDPOINT;
-    baseURL = this.rootContext + 'cpUploadImageApp';
+    baseURL = this.rootContext + AppGlobal.FILE_UPLOAD_ACTION;
 
     constructor(private http: HttpClient) { }
 
@@ -14,7 +14,7 @@ export class FileUploadService {
         let apiCreateEndpoint = this.baseURL;
         const formData: FormData = new FormData();
 
-        formData.append('fileItem', fileItem, fileItem.name);
+        formData.append('fileItem', fileItem, filename);
         formData.append('filename', filename);
         if (extraData) {
             for (let key in extraData) {

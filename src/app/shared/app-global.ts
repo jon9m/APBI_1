@@ -1,8 +1,16 @@
 export class AppGlobal {
     // public static API_ENDPOINT = 'https://apbi.com.au/inspector-app/';
-    // public static API_ENDPOINT = 'http://34.251.200.88:8080/inspector-app/';
-    public static API_ENDPOINT = 'http://localhost:8080/inspector-app/';
+    public static API_ENDPOINT = 'http://34.251.200.88:8080/inspector-app/';
+    // public static API_ENDPOINT = 'http://localhost:8080/inspector-app/';
 
+
+    public static FILE_UPLOAD_ACTION = 'cpUploadImageAppv2';
+    public static APP_STATUS_ACTION = 'cpLiveApp';
+    public static CALENDAR_FEED_ACTION = 'cpBookingCalendarFeedApp';
+    public static INSP_DTL_PREVIEW_ACTION = 'cpInspectionDetailsAppv2';
+    public static LOAD_FORMDATA_ACTION = 'cpLoadFormDataAppv2';
+    public static ADD_REPORT_ACTION = 'cpAddReportv2';
+    public static IMG_PREVIEW_ACTION = 'cpRepImgv2';
 
     
     //Recommendations Options

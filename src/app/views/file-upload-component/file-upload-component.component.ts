@@ -1,7 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
 import { FormGroup, FormArray, AbstractControl } from "@angular/forms";
 import { FileUploadService } from "../../shared/fileupload.service";
 import { HttpEventType } from "@angular/common/http";
+import { AppGlobal } from '../../shared/app-global';
 
 @Component({
   selector: 'app-file-upload-component',
@@ -11,13 +12,18 @@ import { HttpEventType } from "@angular/common/http";
 export class FileUploadComponentComponent implements OnInit {
 
   ngOnInit() {
+    let file_name = (this.fileName) ? this.fileName : this.getFileName();
+    this.imagePreview.nativeElement.src = AppGlobal.API_ENDPOINT + AppGlobal.IMG_PREVIEW_ACTION + "?src=" + file_name + "&reportId=" + this.reportId + "&" + new Date().getTime();
   }
 
   @Input() index: any;
   @Input() recommendationType: any;
   @Input() fileName: any;
+  @Input() reportId: any;
   @Input() progress: any;
   @Input() inspectiondetailsform: FormGroup;
+
+  @ViewChild("imgPreview") imagePreview: ElementRef;
 
   fileUploadSub: any;
   uploadingProgressing: boolean = false;
@@ -25,6 +31,7 @@ export class FileUploadComponentComponent implements OnInit {
   uploadComplete: boolean = false;
   serverResponse: any;
   rgbString: string = '#20a8d8';
+  file_name = "";
 
   currInputElemProgress: any;
 
@@ -32,29 +39,33 @@ export class FileUploadComponentComponent implements OnInit {
 
   }
 
+  getFileName() {
+    let file_name;
+    let currFormArr = (<FormArray>(this.inspectiondetailsform.get(this.recommendationType)));
+    if (currFormArr) {
+      let currFrmGrp = (<FormGroup>(currFormArr.at(this.index)));
+      if (currFrmGrp) {
+        let fileNameCtrl = (<AbstractControl>currFrmGrp.controls['filename']);
+        if (fileNameCtrl) {
+          file_name = fileNameCtrl.value;
+        }
+      }
+    }
+    return file_name;
+  }
+
   onFileChange(event) {
 
     console.log("On file change");
-
-    let file_name = "";
     this.uploadProgress = 0;
 
     //console.log((<FormGroup>(<FormArray>this.inspectiondetailsform.get(recommendationType)).at(index)).controls['filename'].value);  //controlName
 
     if (this.fileName) {
-      file_name = this.fileName;
+      this.file_name = this.fileName;
     } else {
-      let currFormArr = (<FormArray>(this.inspectiondetailsform.get(this.recommendationType)));
-      if (currFormArr) {
-        let currFrmGrp = (<FormGroup>(currFormArr.at(this.index)));
-        if (currFrmGrp) {
-          let fileNameCtrl = (<AbstractControl>currFrmGrp.controls['filename']);
-          if (fileNameCtrl) {
-            file_name = fileNameCtrl.value;
-            console.log(fileNameCtrl.value);
-          }
-        }
-      }
+      this.file_name = this.getFileName();
+      console.log(this.file_name);
     }
 
     let bookingId = this.inspectiondetailsform.get('bookingid').value;
@@ -70,7 +81,7 @@ export class FileUploadComponentComponent implements OnInit {
           elem.src = (<FileReader>event.target).result;
         }
 
-        this.fileUploadSub = this.fileUploadService.fileUpload(fileToUpload, file_name, submittedData).subscribe(
+        this.fileUploadSub = this.fileUploadService.fileUpload(fileToUpload, this.file_name, submittedData).subscribe(
           event => {
             this.handleProgress(event, this.index, this.recommendationType);
           },
@@ -122,8 +133,9 @@ export class FileUploadComponentComponent implements OnInit {
     let maxB = 216;
     let maxBMul = maxB / 100;
     let minR = 32;
+    let minRMul = minR / 100;
 
-    let hexR = Math.round(colorMul * (100 - this.uploadProgress) + minR);
+    let hexR = Math.round(colorMul * (100 - this.uploadProgress) + (this.uploadProgress * minRMul));
     let hexG = Math.round(maxGMul * this.uploadProgress);
     let hexB = Math.round(maxBMul * (this.uploadProgress));
 

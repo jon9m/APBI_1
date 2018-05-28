@@ -6,11 +6,11 @@ import { AppGlobal } from "./app-global";
 export class HTTPService {
     rootContext = AppGlobal.API_ENDPOINT;
 
-    appStatusUrl = this.rootContext + 'cpLiveApp';
-    calendarFeedUrl = this.rootContext + 'cpBookingCalendarFeedApp';
-    inspDtlPreviewUrl = this.rootContext + 'cpInspectionDetailsAppv2';
-    inspDtlFormUrl = this.rootContext + 'cpLoadFormDataAppv2';
-    addReportUrl = this.rootContext + 'cpAddReportv2';
+    appStatusUrl = this.rootContext + AppGlobal.APP_STATUS_ACTION;
+    calendarFeedUrl = this.rootContext + AppGlobal.CALENDAR_FEED_ACTION;
+    inspDtlPreviewUrl = this.rootContext + AppGlobal.INSP_DTL_PREVIEW_ACTION;
+    inspDtlFormUrl = this.rootContext + AppGlobal.LOAD_FORMDATA_ACTION;
+    addReportUrl = this.rootContext + AppGlobal.ADD_REPORT_ACTION;
 
 
     httpOptions = {

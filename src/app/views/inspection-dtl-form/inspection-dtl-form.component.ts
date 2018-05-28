@@ -47,6 +47,11 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
   external: string[] = [];
 
   formSaving: boolean = false;
+  formSaveMsg: string = '';
+  formSaveMsgType: string = 'success';
+  isFormSaveErr: boolean = false;
+
+  reportId: string;
 
   constructor(private route: ActivatedRoute, private fb: FormBuilder, private inspectionDetailsService: InspectionDetailsService, private fileUploadService: FileUploadService, private router: Router, private httpService: HTTPService) {
 
@@ -78,6 +83,10 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
       this.initForm();
       this.inspectiondetails = this.inspectionDetailsService.getInspectionDetailsModal();
       this.inspectionProperty = this.inspectionDetailsService.getInspectionPropertyModal();
+      this.reportId = this.inspectionProperty.reportId;
+
+      console.log("reportId " + this.reportId);
+
       //if (this.inspectiondetails != null) {
       this.initRecommendations();
 
@@ -1318,21 +1327,45 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
   onSave() {
     console.log("this.inspectiondetailsform.value");
     console.log(this.inspectiondetailsform.value);
+    this.formSaveMsg = '';
+    this.isFormSaveErr = false;
 
     this.formSaving = true;
     this.httpService.addReport(this.inspectiondetailsform.value).subscribe(
       (response: Response) => {
-        console.log("success");  //TODO
-         this.formSaving = false;
+        console.log(response);  //TODO
+        this.formSaveMsg = response['message'];
+        this.formSaveMsgType = response['type'];
+
+        this.formSaving = false;
+        if (this.formSaveMsgType == 'failure') {
+          this.isFormSaveErr = true;
+        } else {
+          this.isFormSaveErr = false;
+        }
+
+        setTimeout(() => {
+          this.formSaveMsg = '';
+          this.isFormSaveErr = false;
+        }, 5000);
       },
       (error) => {
-        console.log("error");
+        this.formSaveMsg = error['message'];
         console.log(error);  //TODO
         this.formSaving = false;
+        this.isFormSaveErr = true;
+        setTimeout(() => {
+          this.formSaveMsg = '';
+          this.isFormSaveErr = false;
+        }, 5000);
       });
   }
 
   onCancel() {
     this.router.navigate(['mycalendar']);
+  }
+
+  onCloseMsg() {
+    this.formSaveMsg = '';
   }
 }
