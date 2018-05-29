@@ -44,6 +44,9 @@ import { CustomPreloadStrategy } from "./shared/customPreloadStrategy";
 import { FileUploadComponentComponent } from './views/file-upload-component/file-upload-component.component';
 import { RouteReuseStrategy } from "@angular/router";
 import { AppRouteReuseStrategy } from "./app.route.reuse.strategy";
+import { ReactiveFormsModule } from '@angular/forms';
+import { LoginService } from './shared/login.service';
+import { UserdetailsComponent } from './views/userdetails/userdetails.component';
 
 @NgModule({
   imports: [
@@ -57,13 +60,15 @@ import { AppRouteReuseStrategy } from "./app.route.reuse.strategy";
     PerfectScrollbarModule,
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   declarations: [
     AppComponent,
     ...APP_CONTAINERS,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    UserdetailsComponent
   ],
   providers: [
     {
@@ -76,7 +81,8 @@ import { AppRouteReuseStrategy } from "./app.route.reuse.strategy";
     },
     HTTPService,
     InspectionDetailsService,
-    CustomPreloadStrategy
+    CustomPreloadStrategy,
+    LoginService
   ],
 
   bootstrap: [AppComponent]

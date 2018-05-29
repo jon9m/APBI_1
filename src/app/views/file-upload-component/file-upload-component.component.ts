@@ -135,7 +135,7 @@ export class FileUploadComponentComponent implements OnInit {
     let minR = 32;
     let minRMul = minR / 100;
 
-    let hexR = Math.round(colorMul * (100 - this.uploadProgress) + (this.uploadProgress * minRMul));
+    let hexR = Math.round(colorMul * (100 - this.uploadProgress) + ((this.uploadProgress > 68) ? this.uploadProgress * minRMul : 0));
     let hexG = Math.round(maxGMul * this.uploadProgress);
     let hexB = Math.round(maxBMul * (this.uploadProgress));
 

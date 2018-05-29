@@ -1,5 +1,8 @@
 export const navItems = [
   {
+    divider: true
+  },
+  {
     name: 'Login',
     url: '/login',
     icon: 'icon-star'

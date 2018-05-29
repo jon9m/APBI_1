@@ -52,6 +52,17 @@ export class DefaultLayoutComponent implements OnInit, OnDestroy {
             statusElem.textContent = "Unable to connect to the server! please check your network connection.";
           });
       });
+
+    //TODO - hide right pane toggle icon
+    try {
+      let appsidemenutoggler = document.querySelectorAll('[appasidemenutoggler]');
+      if ((appsidemenutoggler) && (appsidemenutoggler.length > 0)) {
+        (<HTMLElement>appsidemenutoggler[0]).style.display = 'none';
+      }
+    } catch (e) {
+      console.log(e);
+    }
+
   }
 
   ngOnDestroy() {

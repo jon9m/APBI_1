@@ -3,6 +3,8 @@ export class AppGlobal {
     public static API_ENDPOINT = 'http://34.251.200.88:8080/inspector-app/';
     // public static API_ENDPOINT = 'http://localhost:8080/inspector-app/';
 
+    public static DOMAIN_ENDPOINT = 'https://apbi.com.au/';
+
 
     public static FILE_UPLOAD_ACTION = 'cpUploadImageAppv2';
     public static APP_STATUS_ACTION = 'cpLiveApp';
@@ -11,6 +13,8 @@ export class AppGlobal {
     public static LOAD_FORMDATA_ACTION = 'cpLoadFormDataAppv2';
     public static ADD_REPORT_ACTION = 'cpAddReportv2';
     public static IMG_PREVIEW_ACTION = 'cpRepImgv2';
+    public static LOGIN_ACTION = 'appLogin';
+    public static USER_AVATAR_URL= AppGlobal.DOMAIN_ENDPOINT + "controlPanel/profileImage?image=";
 
     
     //Recommendations Options

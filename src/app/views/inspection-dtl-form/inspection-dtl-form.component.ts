@@ -60,6 +60,10 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
   ngOnInit() {
     console.log("form ng on init called!");
 
+    if(this.inspectiondetailsform != null){
+      this.inspectiondetailsform.reset(); //TODO
+    }
+
     this.timberPest = AppGlobal.TimberPest;
     this.hallways = AppGlobal.Hallways;
     this.kitchen = AppGlobal.Kitchen;

@@ -11,6 +11,7 @@ export class HTTPService {
     inspDtlPreviewUrl = this.rootContext + AppGlobal.INSP_DTL_PREVIEW_ACTION;
     inspDtlFormUrl = this.rootContext + AppGlobal.LOAD_FORMDATA_ACTION;
     addReportUrl = this.rootContext + AppGlobal.ADD_REPORT_ACTION;
+    loginURL = this.rootContext + AppGlobal.LOGIN_ACTION;
 
 
     httpOptions = {
@@ -47,5 +48,10 @@ export class HTTPService {
 
         let currURL = this.addReportUrl + "?time=" + new Date().getTime();
         return this.http.post(currURL, postObj, this.httpOptions);
+    }
+
+    login(postObj) {
+        let currURL = this.loginURL + "?time=" + new Date().getTime();
+        return this.http.post(currURL, { 'user': postObj['username'], 'pass': postObj['password'] }, this.httpOptions);
     }
 }
