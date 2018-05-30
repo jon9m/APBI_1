@@ -106,7 +106,7 @@ export class MycalendarComponent implements OnInit, OnDestroy {
       },
       (error) => {
         console.log(error);
-        inspdtlpreviewcontent.innerHTML = '<div class="p-3 alert alert-warning">Error during loading details!</div>';
+        inspdtlpreviewcontent.innerHTML = '<div class="p-3 alert alert-danger m-1">Error during loading details!</div>';
       });
 
     element.click();

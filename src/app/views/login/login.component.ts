@@ -35,16 +35,14 @@ export class LoginComponent implements OnInit {
 
     this.httpService.login(this.loginform.value).subscribe(
       (response: Response) => {
-        this.isSignningIn = false;
         Object.assign(this.loginResponse, response);
         this.loginService.setLoginResponse(this.loginResponse);
-
-        console.log(this.loginResponse); //TODO
         if (this.loginResponse.flag == true) {
           this.router.navigate(['/dashboard']);
         } else {
           this.loginError = this.loginResponse.message;
         }
+        this.isSignningIn = false;
       },
       (error) => {
         this.isSignningIn = false;
