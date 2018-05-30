@@ -12,8 +12,10 @@ import { LoginService } from '../../shared/login.service';
 })
 export class LoginComponent implements OnInit {
 
+  loginError: string = "";
   loginform: FormGroup;
   loginResponse: LoginResponse;
+  isSignningIn: boolean = false;
 
   constructor(private fb: FormBuilder, private httpService: HTTPService, private router: Router, private loginService: LoginService) { }
 
@@ -27,21 +29,27 @@ export class LoginComponent implements OnInit {
   }
 
   onLogin() {
-    console.log(this.loginform.value);
+    this.isSignningIn = true;
+    this.loginError = "";
+    this.loginResponse.flag = true;
+
     this.httpService.login(this.loginform.value).subscribe(
       (response: Response) => {
+        this.isSignningIn = false;
         Object.assign(this.loginResponse, response);
         this.loginService.setLoginResponse(this.loginResponse);
 
-        console.log(this.loginResponse);
+        console.log(this.loginResponse); //TODO
         if (this.loginResponse.flag == true) {
           this.router.navigate(['/dashboard']);
         } else {
-          console.log('Login unsuccessful!');
+          this.loginError = this.loginResponse.message;
         }
       },
       (error) => {
-        console.log(error);
+        this.isSignningIn = false;
+        this.loginResponse.flag = false;
+        this.loginError = error.message;
       }
     );
   }

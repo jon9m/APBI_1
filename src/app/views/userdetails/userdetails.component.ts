@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { LoginResponse } from '../../shared/login.response.model';
 import { LoginService } from '../../shared/login.service';
 import { AppGlobal } from '../../shared/app-global';
@@ -8,11 +8,11 @@ import { AppGlobal } from '../../shared/app-global';
   templateUrl: './userdetails.component.html',
   styleUrls: ['./userdetails.component.scss']
 })
-export class UserdetailsComponent implements OnInit {
+export class UserdetailsComponent implements OnInit, AfterViewInit {
 
+  isDisplayed: boolean = true;
   loginResponse: LoginResponse;
   avatarURL = AppGlobal.USER_AVATAR_URL;
-
 
   constructor(private loginService: LoginService) {
     this.loginResponse = new LoginResponse();
@@ -21,10 +21,16 @@ export class UserdetailsComponent implements OnInit {
   ngOnInit() {
     this.loginResponse = this.loginService.getLoginResponse();
 
-    //todo
-    // this.loginResponse.userId = 28;
-    // this.loginResponse.name = 'Daniel Leahy';
-    // this.loginResponse.role = 'Building Inspector';
-    // this.loginResponse.flag = true;
+    console.log("user details init");
+  }
+
+  ngAfterViewInit(): void {
+    //Show hide user details
+    var minimizerElem = <HTMLElement>document.querySelector("button[class='sidebar-minimizer']");
+    if (minimizerElem) {
+      minimizerElem.addEventListener("click", (event: Event) => {
+        this.isDisplayed = !this.isDisplayed;
+      });
+    }
   }
 }

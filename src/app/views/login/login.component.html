@@ -25,9 +25,10 @@
                     </div>
                     <input type="password" class="form-control" placeholder="Password" formControlName="password">
                   </div>
+                  <div *ngIf="loginResponse && !loginResponse.flag" class="alert alert-danger">{{loginError}}</div>
                   <div class="row">
                     <div class="col-6">
-                      <button type="button" class="btn btn-primary px-4" (click)="onLogin()">Login</button>
+                      <button type="button" class="btn btn-primary px-3" (click)="onLogin()"><i *ngIf="isSignningIn" class="fa fa-spinner fa-spin mr-1" style="font-size:1rem"></i>&nbsp;Login</button>
                     </div>
                     <div class="col-6 text-right">
                       <button type="button" class="btn btn-link px-0">Forgot password?</button>
