@@ -47,6 +47,7 @@ import { AppRouteReuseStrategy } from "./app.route.reuse.strategy";
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoginService } from './shared/login.service';
 import { UserdetailsComponent } from './views/userdetails/userdetails.component';
+import { AuthGuard } from './shared/auth-guard.service';
 
 @NgModule({
   imports: [
@@ -82,7 +83,8 @@ import { UserdetailsComponent } from './views/userdetails/userdetails.component'
     HTTPService,
     InspectionDetailsService,
     CustomPreloadStrategy,
-    LoginService
+    LoginService,
+    AuthGuard
   ],
 
   bootstrap: [AppComponent]

@@ -7,11 +7,12 @@ import { DefaultLayoutComponent } from './containers';
 import { LoginComponent } from './views/login/login.component';
 import { RegisterComponent } from './views/register/register.component';
 import { CustomPreloadStrategy } from "./shared/customPreloadStrategy";
+import { AuthGuard } from './shared/auth-guard.service';
 
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'dashboard',
+    redirectTo: 'login',
     pathMatch: 'full',
   },
   {
@@ -31,6 +32,7 @@ export const routes: Routes = [
   {
     path: '',
     component: DefaultLayoutComponent,
+    canActivate: [AuthGuard],
     data: {
       title: 'Home'
     },
@@ -42,12 +44,12 @@ export const routes: Routes = [
       {
         path: 'mycalendar',
         loadChildren: './views/mycalendar/mycalendar.module#MyCalendarModule',
-        data: { key: "mycalendar" }
+        data: { preload: true, key: "mycalendar" }
       },
       {
         path: 'inspectiondtlform/:id',
         loadChildren: './views/inspection-dtl-form/inspection-dtl-form.module#InspectionDtlFormModule',
-        data: { preload: true }
+        data: { preload: true, key: "inspectiondtlform" }
       }
     ]
   }

@@ -61,6 +61,7 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
     console.log("form ng on init called!");
 
     if(this.inspectiondetailsform != null){
+      console.log("resetting inspection details form");
       this.inspectiondetailsform.reset(); //TODO
     }
 
