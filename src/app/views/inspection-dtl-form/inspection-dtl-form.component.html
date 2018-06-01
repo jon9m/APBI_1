@@ -269,7 +269,7 @@
         </div>
       </div>
     </div>
-    <hr/>
+    <hr class="my-1"/>
     <div class="row">
       <div class="form-group" style="padding: 0px 15px 0px 15px;">
         <label style="padding: 0px 15px 0px 15px;">Please note: to conduct an inspection in accordance with AS 4349.3 the property would be vacant of all furnishing to enable a thorough visual inspection.</label>
@@ -1767,9 +1767,9 @@
           </div>
         </div><br/>
         <div class="resp-table-row">
-          <div class="table-body-cell">
-            <strong>Bedroom1</strong>
-          </div>          
+          <h4>
+            <span class="badge badge-light"> Bedroom1 </span>
+          </h4>
         </div>
         <div class="resp-table-row">
           <div class="table-body-cell">
@@ -1933,9 +1933,9 @@
           </div>
         </div><br/>
         <div class="resp-table-row">
-          <div class="table-body-cell">
-            <strong>Bedroom2</strong>
-          </div>          
+          <h4>
+            <span class="badge badge-light"> Bedroom2 </span>
+          </h4>          
         </div>
         <div class="resp-table-row">
           <div class="table-body-cell">
@@ -2099,9 +2099,9 @@
           </div>
         </div><br/>
         <div class="resp-table-row">
-          <div class="table-body-cell">
-            <strong>Bedroom3</strong>
-          </div>          
+          <h4>
+            <span class="badge badge-light"> Bedroom3 </span>
+          </h4>          
         </div>
         <div class="resp-table-row">
           <div class="table-body-cell">
@@ -2265,9 +2265,9 @@
           </div>
         </div><br/>
         <div class="resp-table-row">
-          <div class="table-body-cell">
-            <strong>Bedroom4</strong>
-          </div>          
+          <h4>
+            <span class="badge badge-light"> Bedroom4 </span>
+          </h4>          
         </div>
         <div class="resp-table-row">
           <div class="table-body-cell">
@@ -2431,9 +2431,9 @@
           </div>
         </div><br/>
         <div class="resp-table-row">
-          <div class="table-body-cell">
-            <strong>Bedroom5</strong>
-          </div>          
+          <h4>
+            <span class="badge badge-light"> Bedroom5 </span>
+          </h4>          
         </div>
         <div class="resp-table-row">
           <div class="table-body-cell">
@@ -5606,37 +5606,35 @@ building expert should be consulted.</label>
     </div>
     <div class="card-body">
       <div>
-        <div class="form-group">
-          <div class="col-xs-12">
-            <div class="form-group" style="padding: 0px 15px 0px 15px;">
-              <p style="padding: 10px 0;">
-                At the time of the inspection it is our opinion that the need for a treatment, in accordance with Australian Standard 3660.1
-                to control or prevent subterranean termites from infesting and causing damage to the property is:
+        <div class="col-xs-12">
+          <div class="form-group" style="padding: 0px 15px 0px 15px;">
+            <p style="padding: 10px 0;">
+              At the time of the inspection it is our opinion that the need for a treatment, in accordance with Australian Standard 3660.1
+              to control or prevent subterranean termites from infesting and causing damage to the property is:
+          </div>
+          <div id="resp-table" style="padding:0;">
+            <div class="resp-table-row">
+              <div class="table-body-cell">
+                <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" formControlName="2120" value="1" /><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
+              </div>
+              <div class="table-body-cell" style="margin-left:-40px;">
+                High
+              </div>
             </div>
-            <div id="resp-table" style="padding:0;">
-              <div class="resp-table-row">
-                <div class="table-body-cell">
-                  <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" formControlName="2120" value="1" /><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
-                </div>
-                <div class="table-body-cell" style="margin-left:-40px;">
-                  High
-                </div>
+            <div class="resp-table-row">
+              <div class="table-body-cell">
+                <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" formControlName="2121" value="1" /><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
               </div>
-              <div class="resp-table-row">
-                <div class="table-body-cell">
-                  <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" formControlName="2121" value="1" /><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
-                </div>
-                <div class="table-body-cell">
-                  Moderate
-                </div>
+              <div class="table-body-cell">
+                Moderate
               </div>
-              <div class="resp-table-row">
-                <div class="table-body-cell">
-                  <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" formControlName="2122" value="1" /><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
-                </div>
-                <div class="table-body-cell">
-                  Low
-                </div>
+            </div>
+            <div class="resp-table-row">
+              <div class="table-body-cell">
+                <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" formControlName="2122" value="1" /><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
+              </div>
+              <div class="table-body-cell">
+                Low
               </div>
             </div>
           </div>
@@ -5651,37 +5649,35 @@ building expert should be consulted.</label>
     </div>
     <div class="card-body">
       <div>
-        <div class="form-group">
-          <div class="form-group" style="padding: 0px 15px 0px 15px;">
-            <p style="padding: 10px 0;">
-              Considering all of the relevant factors, it is our opinion that the overall degree of risk of termite infestation to the
-              property is:
-            </p>
+        <div class="form-group" style="padding: 0px 15px 0px 15px;">
+          <p style="padding: 10px 0;">
+            Considering all of the relevant factors, it is our opinion that the overall degree of risk of termite infestation to the
+            property is:
+          </p>
+        </div>
+        <div id="resp-table" style="padding:0;">
+          <div class="resp-table-row">
+            <div class="table-body-cell">
+              <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" formControlName="2123" value="1" /><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
+            </div>
+            <div class="table-body-cell" style="margin-left:-40px;">
+              High
+            </div>
           </div>
-          <div id="resp-table" style="padding:0;">
-            <div class="resp-table-row">
-              <div class="table-body-cell">
-                <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" formControlName="2123" value="1" /><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
-              </div>
-              <div class="table-body-cell" style="margin-left:-40px;">
-                High
-              </div>
+          <div class="resp-table-row">
+            <div class="table-body-cell">
+              <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" formControlName="2124" value="1" /><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
             </div>
-            <div class="resp-table-row">
-              <div class="table-body-cell">
-                <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" formControlName="2124" value="1" /><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
-              </div>
-              <div class="table-body-cell">
-                Moderate
-              </div>
+            <div class="table-body-cell">
+              Moderate
             </div>
-            <div class="resp-table-row">
-              <div class="table-body-cell">
-                <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" formControlName="2125" value="1" /><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
-              </div>
-              <div class="table-body-cell">
-                Low
-              </div>
+          </div>
+          <div class="resp-table-row">
+            <div class="table-body-cell">
+              <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" formControlName="2125" value="1" /><span class="checkbox" onclick="Controls.changeStatCheck(this);"></span></label>
+            </div>
+            <div class="table-body-cell">
+              Low
             </div>
           </div>
         </div>
@@ -5704,7 +5700,7 @@ building expert should be consulted.</label>
       </div>
     </div>
   </div>
-  <div class="pull-right py-4">    
+  <div class="pull-right py-2">    
     <button type="button" (click)="onSave()" form="addReportForm" data-toggle="tooltip" title="" class="btn btn-primary" data-original-title="Save" value="SAVE">
       <i *ngIf="formSaving" class="fa fa-spinner fa-spin" style="font-size:1rem"></i>&nbsp;SAVE
     </button>
