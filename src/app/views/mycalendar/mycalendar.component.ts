@@ -9,6 +9,7 @@ import { HTTPService } from "../../shared/http.service";
 import { HttpHeaders } from "@angular/common/http";
 import { Subscription } from "rxjs/Subscription";
 import { Router, NavigationEnd, ActivatedRouteSnapshot } from '@angular/router';
+import { AppServeiceLoadStatusService } from "../../shared/app-service-load-status.service";
 
 @Component({
   selector: 'app-mycalendar',
@@ -26,7 +27,7 @@ export class MycalendarComponent implements OnInit, OnDestroy {
   private calendarSubscription: Subscription;
   private previewSubscription: Subscription;
 
-  constructor(private router: Router, private httpService: HTTPService, private renderer: Renderer2) { }
+  constructor(private router: Router, private httpService: HTTPService, private renderer: Renderer2, private appServeiceLoadStatusService: AppServeiceLoadStatusService) { }
 
   ngOnDestroy(): void {
     if (this.previewSubscription) { this.previewSubscription.unsubscribe(); }
@@ -55,9 +56,11 @@ export class MycalendarComponent implements OnInit, OnDestroy {
           },
           events: data
         };
+        this.appServeiceLoadStatusService.setCalendarLoadStatus();
         this.isCalendarLoading = false;
       }, (error) => {
         console.log(error);
+        this.appServeiceLoadStatusService.clearCalendarLoadStatus();
         this.isCalendarLoading = false;
       });
   }
@@ -84,9 +87,11 @@ export class MycalendarComponent implements OnInit, OnDestroy {
     this.calendarSubscription = this.httpService.loadCalendar({ 'start': currMonth, 'end': nextMonth }).subscribe(
       (response: Response) => {
         console.log(response);
+        this.appServeiceLoadStatusService.setCalendarLoadStatus();
         this.events = response;
       },
       (error) => {
+        this.appServeiceLoadStatusService.clearCalendarLoadStatus();
         console.log(error);
       });
   }

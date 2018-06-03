@@ -48,6 +48,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { LoginService } from './shared/login.service';
 import { UserdetailsComponent } from './views/userdetails/userdetails.component';
 import { AuthGuard } from './shared/auth-guard.service';
+import { AppServeiceLoadStatusService } from "./shared/app-service-load-status.service";
 
 @NgModule({
   imports: [
@@ -84,7 +85,8 @@ import { AuthGuard } from './shared/auth-guard.service';
     InspectionDetailsService,
     CustomPreloadStrategy,
     LoginService,
-    AuthGuard
+    AuthGuard,
+    AppServeiceLoadStatusService
   ],
 
   bootstrap: [AppComponent]

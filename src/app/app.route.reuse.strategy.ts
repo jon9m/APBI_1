@@ -1,9 +1,16 @@
 import { RouteReuseStrategy, ActivatedRouteSnapshot, DetachedRouteHandle } from "@angular/router";
+import { AppServeiceLoadStatusService } from "./shared/app-service-load-status.service";
+import { Injectable } from "@angular/core";
 
+@Injectable()
 export class AppRouteReuseStrategy extends RouteReuseStrategy {
 
     routesToCache: string[] = ["mycalendar"];
     storedRouteHandles = new Map<string, DetachedRouteHandle>();
+
+    constructor(private appServeiceLoadStatusService: AppServeiceLoadStatusService) {
+        super();
+    }
 
     // Decides if the route should be stored
     shouldDetach(route: ActivatedRouteSnapshot): boolean {
@@ -17,6 +24,9 @@ export class AppRouteReuseStrategy extends RouteReuseStrategy {
 
     //Return true if we have a stored route object for the next route
     shouldAttach(route: ActivatedRouteSnapshot): boolean {
+        if (!this.shouldAPIReload(route)) {
+            return false;
+        }
         return this.storedRouteHandles.has(route.data["key"]);
     }
 
@@ -28,5 +38,16 @@ export class AppRouteReuseStrategy extends RouteReuseStrategy {
     //Reuse the route if we're going to and from the same route
     shouldReuseRoute(future: ActivatedRouteSnapshot, curr: ActivatedRouteSnapshot): boolean {
         return future.routeConfig === curr.routeConfig;
+    }
+
+    //Check for API reloaded
+    private shouldAPIReload(route: ActivatedRouteSnapshot): boolean {
+        if (this.appServeiceLoadStatusService.getCalendarLoadStatus() == false) {
+            if ((route.data["key"] == 'mycalendar') && (this.storedRouteHandles.get(route.data["key"]) != null)) {
+                this.storedRouteHandles.set(route.data["key"], null);
+            }
+            return false;
+        }
+        return true;
     }
 }

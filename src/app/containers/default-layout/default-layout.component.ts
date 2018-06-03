@@ -4,6 +4,7 @@ import { HTTPService } from "../../shared/http.service";
 import { TimerObservable } from "rxjs/observable/TimerObservable";
 import 'rxjs/add/operator/takeWhile';
 import { Subscription } from "rxjs/Subscription";
+import { AppServeiceLoadStatusService } from "../../shared/app-service-load-status.service";
 
 @Component({
   selector: 'app-dashboard',
@@ -20,7 +21,7 @@ export class DefaultLayoutComponent implements OnInit, OnDestroy, AfterViewInit 
   public sidebarMinimized = true;
   private changes: MutationObserver;
   public element: HTMLElement = document.body;
-  constructor(private httpService: HTTPService, private renderer: Renderer2) {
+  constructor(private httpService: HTTPService, private renderer: Renderer2, private appServeiceLoadStatusService: AppServeiceLoadStatusService) {
     this.alive = true;
     this.interval = 5000;
 
@@ -47,6 +48,7 @@ export class DefaultLayoutComponent implements OnInit, OnDestroy, AfterViewInit 
           },
           (error) => {
             console.log("CPLive error " + error.message);
+            this.appServeiceLoadStatusService.clearCalendarLoadStatus();
             this.renderer.removeClass(statusElem, 'alert-success');
             this.renderer.addClass(statusElem, 'alert-danger');
             statusElem.textContent = "Unable to connect to the server! please check your network connection.";
