@@ -24,7 +24,7 @@ export class AppGlobal {
         "Windows",
         "Door Frames",
         "Roof Cavity",
-        "Sub Floor",
+        "Sub Floor", 
         "Garage/Carport",
         "Fence line",
         "Grounds",

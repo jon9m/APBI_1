@@ -50,6 +50,7 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
   formSaveMsg: string = '';
   formSaveMsgType: string = 'success';
   isFormSaveErr: boolean = false;
+  isFormQuickSave: boolean = false;
 
   reportId: string;
 
@@ -60,7 +61,7 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
   ngOnInit() {
     console.log("form ng on init called!");
 
-    if(this.inspectiondetailsform != null){
+    if (this.inspectiondetailsform != null) {
       console.log("resetting inspection details form");
       this.inspectiondetailsform.reset(); //TODO
     }
@@ -1329,11 +1330,12 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
     (<FormArray>this.inspectiondetailsform.get(recommendationType)).removeAt(i);
   }
 
-  onSave() {
+  onSave(isExit, isQuickSave) {
     console.log("this.inspectiondetailsform.value");
     console.log(this.inspectiondetailsform.value);
     this.formSaveMsg = '';
     this.isFormSaveErr = false;
+    this.isFormQuickSave = isQuickSave;
 
     this.formSaving = true;
     this.httpService.addReport(this.inspectiondetailsform.value).subscribe(
@@ -1349,25 +1351,39 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
           this.isFormSaveErr = false;
         }
 
-        setTimeout(() => {
+        if (isExit) {
           this.formSaveMsg = '';
           this.isFormSaveErr = false;
-        }, 5000);
+          this.router.navigate(['mycalendar']);
+        } else {
+          setTimeout(() => {
+            this.formSaveMsg = '';
+            this.isFormSaveErr = false;
+          }, 3000);
+        }
       },
       (error) => {
         this.formSaveMsg = error['message'];
         console.log(error);  //TODO
         this.formSaving = false;
         this.isFormSaveErr = true;
-        setTimeout(() => {
+
+        if (isExit) {
           this.formSaveMsg = '';
           this.isFormSaveErr = false;
-        }, 5000);
+          this.router.navigate(['mycalendar']);
+        } else {
+          setTimeout(() => {
+            this.formSaveMsg = '';
+            this.isFormSaveErr = false;
+          }, 3000);
+        }        
       });
   }
 
   onCancel() {
-    this.router.navigate(['mycalendar']);
+    this.onSave(true, false);
+    //this.router.navigate(['mycalendar']);
   }
 
   onCloseMsg() {
