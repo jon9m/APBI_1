@@ -20,14 +20,16 @@ export class UserdetailsComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.loginResponse = this.loginService.getLoginResponse();
-
-    console.log("user details init");
   }
 
   ngAfterViewInit(): void {
     //Show hide user details
     var minimizerElem = <HTMLElement>document.querySelector("button[class='sidebar-minimizer']");
     if (minimizerElem) {
+      let sidebarWidth = minimizerElem.offsetWidth;
+      console.log("sidebarWidth "+ sidebarWidth);
+      this.isDisplayed = ((sidebarWidth > 60) ? true : false);
+
       minimizerElem.addEventListener("click", (event: Event) => {
         this.isDisplayed = !this.isDisplayed;
       });

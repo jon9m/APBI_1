@@ -106,11 +106,9 @@ export class MycalendarComponent implements OnInit, OnDestroy {
 
     this.previewSubscription = this.httpService.getPreview(evt.detail.event.id).subscribe(
       (response) => {
-        console.log(response);
         inspdtlpreviewcontent.innerHTML = response.toString();
       },
       (error) => {
-        console.log(error);
         inspdtlpreviewcontent.innerHTML = '<div class="p-3 alert alert-danger m-1">Error during loading details!</div>';
       });
 

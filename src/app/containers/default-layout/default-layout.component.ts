@@ -59,7 +59,6 @@ export class DefaultLayoutComponent implements OnInit, OnDestroy, AfterViewInit 
   ngAfterViewInit(): void {
     try {
       let appsidemenutoggler = document.querySelectorAll('[appasidemenutoggler]');
-      console.log("Removing appside menu toggler" + appsidemenutoggler.length);
       if ((appsidemenutoggler) && (appsidemenutoggler.length > 0)) {        
         (<HTMLElement>appsidemenutoggler[0]).style.display = 'none';
       }
