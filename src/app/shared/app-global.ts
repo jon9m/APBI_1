@@ -8,7 +8,7 @@ export class AppGlobal {
 
     public static FILE_UPLOAD_ACTION = 'cpUploadImageAppv2';
     public static APP_STATUS_ACTION = 'cpLiveApp';
-    public static CALENDAR_FEED_ACTION = 'cpBookingCalendarFeedApp';
+    public static CALENDAR_FEED_ACTION = 'cpBookingCalendarFeedAppv2';
     public static INSP_DTL_PREVIEW_ACTION = 'cpInspectionDetailsAppv2';
     public static LOAD_FORMDATA_ACTION = 'cpLoadFormDataAppv2';
     public static ADD_REPORT_ACTION = 'cpAddReportv2';

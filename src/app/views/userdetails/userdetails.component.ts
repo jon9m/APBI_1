@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit, HostListener } from '@angular/core';
 import { LoginResponse } from '../../shared/login.response.model';
 import { LoginService } from '../../shared/login.service';
 import { AppGlobal } from '../../shared/app-global';
@@ -14,6 +14,11 @@ export class UserdetailsComponent implements OnInit, AfterViewInit {
   loginResponse: LoginResponse;
   avatarURL = AppGlobal.USER_AVATAR_URL;
 
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+    this.sidebarMinimizerHandler();
+  }
+
   constructor(private loginService: LoginService) {
     this.loginResponse = new LoginResponse();
   }
@@ -23,12 +28,15 @@ export class UserdetailsComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    //Show hide user details
+    this.sidebarMinimizerHandler();
+  }
+
+  private sidebarMinimizerHandler() {
     var minimizerElem = <HTMLElement>document.querySelector("button[class='sidebar-minimizer']");
     if (minimizerElem) {
       let sidebarWidth = minimizerElem.offsetWidth;
-      console.log("sidebarWidth "+ sidebarWidth);
-      this.isDisplayed = ((sidebarWidth > 60) ? true : false);
+      console.log("sidebarWidth " + sidebarWidth);
+      this.isDisplayed = ((sidebarWidth > 50) ? true : false);
 
       minimizerElem.addEventListener("click", (event: Event) => {
         this.isDisplayed = !this.isDisplayed;

@@ -189,7 +189,7 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
             'item': new FormControl(),
             'rectype': new FormControl(),
             'recdetail': new FormControl(),
-            'comment': new FormControl(),
+            'comment': new FormControl(''),
             'typee': new FormControl(),
             'filename': new FormControl()
           })
@@ -203,7 +203,7 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
             'item': new FormControl(),
             'rectype': new FormControl(),
             'recdetail': new FormControl(),
-            'comment': new FormControl(),
+            'comment': new FormControl(''),
             'typee': new FormControl(),
             'filename': new FormControl()
           })
@@ -217,7 +217,7 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
             'item': new FormControl(),
             'rectype': new FormControl(),
             'recdetail': new FormControl(),
-            'comment': new FormControl(),
+            'comment': new FormControl(''),
             'typee': new FormControl(),
             'filename': new FormControl()
           })
@@ -231,7 +231,7 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
             'item': new FormControl(),
             'rectype': new FormControl(),
             'recdetail': new FormControl(),
-            'comment': new FormControl(),
+            'comment': new FormControl(''),
             'typee': new FormControl(),
             'filename': new FormControl()
           })
@@ -245,7 +245,7 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
             'item': new FormControl(),
             'rectype': new FormControl(),
             'recdetail': new FormControl(),
-            'comment': new FormControl(),
+            'comment': new FormControl(''),
             'typee': new FormControl(),
             'filename': new FormControl()
           })
@@ -259,7 +259,7 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
             'item': new FormControl(),
             'rectype': new FormControl(),
             'recdetail': new FormControl(),
-            'comment': new FormControl(),
+            'comment': new FormControl(''),
             'typee': new FormControl(),
             'filename': new FormControl()
           })
@@ -273,7 +273,7 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
             'item': new FormControl(),
             'rectype': new FormControl(),
             'recdetail': new FormControl(),
-            'comment': new FormControl(),
+            'comment': new FormControl(''),
             'typee': new FormControl(),
             'filename': new FormControl()
           })
@@ -287,7 +287,7 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
             'item': new FormControl(),
             'rectype': new FormControl(),
             'recdetail': new FormControl(),
-            'comment': new FormControl(),
+            'comment': new FormControl(''),
             'typee': new FormControl(),
             'filename': new FormControl()
           })
@@ -1352,7 +1352,7 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
       'item': new FormControl(),
       'rectype': new FormControl(),
       'recdetail': new FormControl(),
-      'comment': new FormControl(),
+      'comment': new FormControl(''),
       'typee': new FormControl(typee),
       'filename': new FormControl(fileName)
     }));
