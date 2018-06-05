@@ -8,7 +8,7 @@ import { HTTPService } from "../../shared/http.service";
 import { InspectionDetails } from "../../shared/inspection_details.model";
 import { AppGlobal } from '../../shared/app-global';
 import { InspectionProperty } from '../../shared/inspection-property.model';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-inspection-dtl-form',
@@ -53,6 +53,9 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
   isFormQuickSave: boolean = false;
 
   reportId: string;
+  isFormDirty: boolean = false;
+  valueChangeCheckSub: Subscription;
+  addReportSub: Subscription;
 
   constructor(private route: ActivatedRoute, private fb: FormBuilder, private inspectionDetailsService: InspectionDetailsService, private fileUploadService: FileUploadService, private router: Router, private httpService: HTTPService) {
 
@@ -101,14 +104,45 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
       console.log("Setting booking id " + this.id.toString());
       // this.inspectiondetailsform.get('bookingid').setValue(this.id.toString());
       const value = { bookingid: this.id.toString() };
-      this.inspectiondetailsform.patchValue(value);
+      this.inspectiondetailsform.patchValue(value); //{ emitEvent: false } - todo
       //}
+
+      //TODO - overhead???
+      this.subscribeToFormChanges();
+      this.formChangeChecker();
+
     });
+  }
+
+  private subscribeToFormChanges() {
+    this.valueChangeCheckSub = this.inspectiondetailsform.valueChanges.subscribe(
+      (data) => {
+        this.isFormDirty = true;
+      },
+      (error) => {
+        this.isFormDirty = false;
+      }
+    );
+  }
+
+  private formChangeChecker() {
+    setInterval(() => {
+      if (this.isFormDirty) {
+        console.log("Form dirty and saving !!!!! ");
+        this.onSave(false, true);
+      }
+    }, 5000);
   }
 
   ngOnDestroy() {
     if (this.sub) {
       this.sub.unsubscribe();
+    }
+    if (this.valueChangeCheckSub) {
+      this.valueChangeCheckSub.unsubscribe();
+    }
+    if (this.addReportSub) {
+      this.addReportSub.unsubscribe();
     }
   }
 
@@ -1336,12 +1370,13 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
     this.isFormQuickSave = isQuickSave;
 
     this.formSaving = true;
-    this.httpService.addReport(this.inspectiondetailsform.value).subscribe(
+    this.addReportSub = this.httpService.addReport(this.inspectiondetailsform.value).subscribe(
       (response: Response) => {
         console.log(response);  //TODO
         this.formSaveMsg = response['message'];
         this.formSaveMsgType = response['type'];
 
+        this.isFormDirty = false;
         this.formSaving = false;
         if (this.formSaveMsgType == 'failure') {
           this.isFormSaveErr = true;
@@ -1363,6 +1398,7 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
       (error) => {
         this.formSaveMsg = error['message'];
         console.log(error);  //TODO
+        this.isFormDirty = false;
         this.formSaving = false;
         this.isFormSaveErr = true;
 
