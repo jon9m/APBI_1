@@ -56,10 +56,7 @@ export class FileUploadComponentComponent implements OnInit {
   }
 
   onFileChange(event) {
-
-    console.log("On file change");
     this.uploadProgress = 0;
-
     //console.log((<FormGroup>(<FormArray>this.inspectiondetailsform.get(recommendationType)).at(index)).controls['filename'].value);  //controlName
 
     if (this.fileName) {
@@ -86,7 +83,7 @@ export class FileUploadComponentComponent implements OnInit {
         this.ng2ImgMax.resizeImage(fileToUpload, AppGlobal.UPLOAD_IMG_WIDTH, AppGlobal.UPLOAD_IMG_HEIGHT).subscribe(
           (result) => {
             fileToUpload = new File([result], result.name);
-            console.log("Image resizing successful " + fileToUpload);
+            console.log("Image resizing successful");
             this.uploadCurrentFile(fileToUpload, submittedData);
           },
           (error) => {
@@ -131,7 +128,6 @@ export class FileUploadComponentComponent implements OnInit {
     }
 
     if (event.type === HttpEventType.Response) {
-      // console.log(event.body);
       this.uploadComplete = true
       this.serverResponse = event.body
       this.uploadProgress = 100;

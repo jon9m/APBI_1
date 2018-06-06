@@ -35,9 +35,7 @@ export class UserdetailsComponent implements OnInit, AfterViewInit {
     var minimizerElem = <HTMLElement>document.querySelector("button[class='sidebar-minimizer']");
     if (minimizerElem) {
       let sidebarWidth = minimizerElem.offsetWidth;
-      console.log("sidebarWidth " + sidebarWidth);
       this.isDisplayed = ((sidebarWidth > 50) ? true : false);
-
       minimizerElem.addEventListener("click", (event: Event) => {
         this.isDisplayed = !this.isDisplayed;
       });

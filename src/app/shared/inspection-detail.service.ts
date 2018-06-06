@@ -28,9 +28,6 @@ export class InspectionDetailsService {
 
         //Assign all values to the modal
         Object.assign(this.inspectionDetails, inspectionDetailsJson);
-
-        // console.log("--------------------After assign----------------------------");
-        // console.log(this.inspectionDetails);
     }
 
     getInspectionDetailsModal() {
