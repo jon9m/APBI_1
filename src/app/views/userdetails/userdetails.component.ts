@@ -14,12 +14,9 @@ export class UserdetailsComponent implements OnInit, AfterViewInit {
   loginResponse: LoginResponse;
   avatarURL = AppGlobal.USER_AVATAR_URL;
 
-  timeoutid:any;
   @HostListener('window:resize', ['$event'])
   onResize(event) {
-    clearTimeout(this.timeoutid);
-
-    this.timeoutid = setTimeout(() => {
+    setTimeout(() => {
       this.sidebarMinimizerHandler();
     }, 500);
   }
