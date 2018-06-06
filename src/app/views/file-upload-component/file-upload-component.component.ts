@@ -3,6 +3,7 @@ import { FormGroup, FormArray, AbstractControl } from "@angular/forms";
 import { FileUploadService } from "../../shared/fileupload.service";
 import { HttpEventType } from "@angular/common/http";
 import { AppGlobal } from '../../shared/app-global';
+import { Ng2ImgMaxService } from 'ng2-img-max';
 
 @Component({
   selector: 'app-file-upload-component',
@@ -35,7 +36,7 @@ export class FileUploadComponentComponent implements OnInit {
 
   currInputElemProgress: any;
 
-  constructor(private fileUploadService: FileUploadService) {
+  constructor(private fileUploadService: FileUploadService, private ng2ImgMax: Ng2ImgMaxService) {
 
   }
 
@@ -81,15 +82,31 @@ export class FileUploadComponentComponent implements OnInit {
           elem.src = (<FileReader>event.target).result;
         }
 
-        this.fileUploadSub = this.fileUploadService.fileUpload(fileToUpload, this.file_name, submittedData).subscribe(
-          event => {
-            this.handleProgress(event, this.index, this.recommendationType);
+        //file resizing
+        this.ng2ImgMax.resizeImage(fileToUpload, AppGlobal.UPLOAD_IMG_WIDTH, AppGlobal.UPLOAD_IMG_HEIGHT).subscribe(
+          (result) => {
+            fileToUpload = new File([result], result.name);
+            console.log("Image resizing successful " + fileToUpload);
+            this.uploadCurrentFile(fileToUpload, submittedData);
           },
-          error => {
-            console.log("Server error"); //TODO - error handle
-          });
+          (error) => {
+            console.log('Image resizing failed, using original image', error);
+            this.uploadCurrentFile(fileToUpload, submittedData);
+          }
+        );
+        //file resizing ends
       };
     }
+  }
+
+  private uploadCurrentFile(fileToUpload, submittedData) {
+    this.fileUploadSub = this.fileUploadService.fileUpload(fileToUpload, this.file_name, submittedData).subscribe(
+      event => {
+        this.handleProgress(event, this.index, this.recommendationType);
+      },
+      error => {
+        console.log("Server error"); //TODO - error handle
+      });
   }
 
   handleProgress(event, index, recommendationType) {

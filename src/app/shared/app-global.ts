@@ -16,6 +16,10 @@ export class AppGlobal {
     public static LOGIN_ACTION = 'appLogin';
     public static USER_AVATAR_URL= AppGlobal.DOMAIN_ENDPOINT + "controlPanel/profileImage?image=";
 
+    //Image upload width and height
+    public static UPLOAD_IMG_WIDTH = 400;
+    public static UPLOAD_IMG_HEIGHT = 10000; //Keep aspect ratio
+
     
     //Recommendations Options
     public static TimberPest: string[] = [

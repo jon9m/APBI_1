@@ -49,6 +49,7 @@ import { LoginService } from './shared/login.service';
 import { UserdetailsComponent } from './views/userdetails/userdetails.component';
 import { AuthGuard } from './shared/auth-guard.service';
 import { AppServeiceLoadStatusService } from "./shared/app-service-load-status.service";
+import { Ng2ImgMaxModule } from 'ng2-img-max';
 
 @NgModule({
   imports: [
@@ -63,7 +64,8 @@ import { AppServeiceLoadStatusService } from "./shared/app-service-load-status.s
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    Ng2ImgMaxModule
   ],
   declarations: [
     AppComponent,

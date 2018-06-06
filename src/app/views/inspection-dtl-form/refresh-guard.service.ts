@@ -6,9 +6,7 @@ export class RefreshGuard implements CanActivate {
     constructor(private router: Router) { }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-        console.log("------------------ call refresh guard ");
         if (this.isPageRefresh()) {
-            console.log("page refresh **************************");
             this.router.navigate(["/dashboard"]);
             return false;
         }
