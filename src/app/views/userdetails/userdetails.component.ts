@@ -14,8 +14,18 @@ export class UserdetailsComponent implements OnInit, AfterViewInit {
   loginResponse: LoginResponse;
   avatarURL = AppGlobal.USER_AVATAR_URL;
 
+  timeoutid:any;
   @HostListener('window:resize', ['$event'])
   onResize(event) {
+    clearTimeout(this.timeoutid);
+
+    this.timeoutid = setTimeout(() => {
+      this.sidebarMinimizerHandler();
+    }, 500);
+  }
+  @HostListener('window:orientationchange', ['$event'])
+  onorientationchange(event) {
+    console.log("orientation");
     this.sidebarMinimizerHandler();
   }
 
@@ -36,6 +46,9 @@ export class UserdetailsComponent implements OnInit, AfterViewInit {
     if (minimizerElem) {
       let sidebarWidth = minimizerElem.offsetWidth;
       this.isDisplayed = ((sidebarWidth > 50) ? true : false);
+
+      console.log(this.isDisplayed);
+
       minimizerElem.addEventListener("click", (event: Event) => {
         this.isDisplayed = !this.isDisplayed;
       });
