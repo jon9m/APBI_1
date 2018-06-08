@@ -1,20 +1,31 @@
-import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef, OnDestroy } from '@angular/core';
 import { FormGroup, FormArray, AbstractControl } from "@angular/forms";
 import { FileUploadService } from "../../shared/fileupload.service";
 import { HttpEventType } from "@angular/common/http";
 import { AppGlobal } from '../../shared/app-global';
 import { Ng2ImgMaxService } from 'ng2-img-max';
+import { Subscription } from "rxjs/Subscription";
+import { FileUploadProgressService } from "../../shared/fileupload-progress.service";
+import { FileUploadInfo } from "../../shared/fileupload-info.model";
 
 @Component({
   selector: 'app-file-upload-component',
   templateUrl: './file-upload-component.component.html',
   styleUrls: ['./file-upload-component.component.scss']
 })
-export class FileUploadComponentComponent implements OnInit {
+export class FileUploadComponentComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     let file_name = (this.fileName) ? this.fileName : this.getFileName();
     this.imagePreview.nativeElement.src = AppGlobal.API_ENDPOINT + AppGlobal.IMG_PREVIEW_ACTION + "?src=" + file_name + "&reportId=" + this.reportId + "&" + new Date().getTime();
+  }
+  ngOnDestroy(): void {
+    if (this.fileUploadSub) {
+      this.fileUploadSub.unsubscribe();
+    }
+    if (this.resizeImageSub) {
+      this.resizeImageSub.unsubscribe();
+    }
   }
 
   @Input() index: any;
@@ -26,7 +37,8 @@ export class FileUploadComponentComponent implements OnInit {
 
   @ViewChild("imgPreview") imagePreview: ElementRef;
 
-  fileUploadSub: any;
+  fileUploadSub: Subscription;
+  resizeImageSub: Subscription;
   uploadingProgressing: boolean = false;
   uploadProgress: number = 0;
   uploadComplete: boolean = false;
@@ -36,7 +48,7 @@ export class FileUploadComponentComponent implements OnInit {
 
   currInputElemProgress: any;
 
-  constructor(private fileUploadService: FileUploadService, private ng2ImgMax: Ng2ImgMaxService) {
+  constructor(private fileUploadService: FileUploadService, private ng2ImgMax: Ng2ImgMaxService, private fileUploadProgressService: FileUploadProgressService) {
 
   }
 
@@ -79,8 +91,11 @@ export class FileUploadComponentComponent implements OnInit {
           elem.src = (<FileReader>event.target).result;
         }
 
+        //For left nav - 1
+        this.fileUploadProgressService.addMapItem(this.file_name, fileToUpload.name);
+
         //file resizing
-        this.ng2ImgMax.resizeImage(fileToUpload, AppGlobal.UPLOAD_IMG_WIDTH, AppGlobal.UPLOAD_IMG_HEIGHT).subscribe(
+        this.resizeImageSub = this.ng2ImgMax.resizeImage(fileToUpload, AppGlobal.UPLOAD_IMG_WIDTH, AppGlobal.UPLOAD_IMG_HEIGHT).subscribe(
           (result) => {
             fileToUpload = new File([result], result.name);
             console.log("Image resizing successful");
@@ -107,7 +122,6 @@ export class FileUploadComponentComponent implements OnInit {
   }
 
   handleProgress(event, index, recommendationType) {
-
     if (event.type === HttpEventType.Sent) {
       this.uploadProgress = 0;
       this.rgbString = '#20a8d8';
@@ -120,9 +134,11 @@ export class FileUploadComponentComponent implements OnInit {
 
     if (event.type === HttpEventType.UploadProgress) {
       this.currInputElemProgress = recommendationType + "_progress_" + index;
-
       this.uploadingProgressing = true
       this.uploadProgress = Math.round(event.loaded / event.total * 100);
+
+      //For left nav - 2
+      this.fileUploadProgressService.updateProgress(this.file_name, this.uploadProgress, this.rgbString);
 
       this.setRgbString();
     }

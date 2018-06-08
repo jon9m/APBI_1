@@ -50,6 +50,7 @@ import { UserdetailsComponent } from './views/userdetails/userdetails.component'
 import { AuthGuard } from './shared/auth-guard.service';
 import { AppServeiceLoadStatusService } from "./shared/app-service-load-status.service";
 import { Ng2ImgMaxModule } from 'ng2-img-max';
+import { FileUploadProgressService } from "./shared/fileupload-progress.service";
 
 @NgModule({
   imports: [
@@ -88,7 +89,8 @@ import { Ng2ImgMaxModule } from 'ng2-img-max';
     CustomPreloadStrategy,
     LoginService,
     AuthGuard,
-    AppServeiceLoadStatusService
+    AppServeiceLoadStatusService,
+    FileUploadProgressService
   ],
 
   bootstrap: [AppComponent]

@@ -5,6 +5,7 @@ import { TimerObservable } from "rxjs/observable/TimerObservable";
 import 'rxjs/add/operator/takeWhile';
 import { Subscription } from "rxjs/Subscription";
 import { AppServeiceLoadStatusService } from "../../shared/app-service-load-status.service";
+import { FileUploadProgressService } from "../../shared/fileupload-progress.service";
 
 @Component({
   selector: 'app-dashboard',
@@ -22,7 +23,7 @@ export class DefaultLayoutComponent implements OnInit, OnDestroy, AfterViewInit 
   public sidebarMinimized = true;
   private changes: MutationObserver;
   public element: HTMLElement = document.body;
-  constructor(private httpService: HTTPService, private renderer: Renderer2, private appServeiceLoadStatusService: AppServeiceLoadStatusService) {
+  constructor(private httpService: HTTPService, private renderer: Renderer2, private appServeiceLoadStatusService: AppServeiceLoadStatusService, public fileUploadProgressService: FileUploadProgressService) {
     this.alive = true;
     this.interval = 5000;
 
@@ -42,25 +43,25 @@ export class DefaultLayoutComponent implements OnInit, OnDestroy, AfterViewInit 
     let timer = TimerObservable.create(0, this.interval);
     timer.takeWhile(() => this.alive).subscribe(() => {
       this.subscription = this.httpService.getAppStatus().subscribe(
-          (response) => {
-            this.renderer.removeClass(statusElem, 'alert-danger');
-            this.renderer.addClass(statusElem, 'alert-success');
-            statusElem.textContent = "Successful connection to the server!";
-          },
-          (error) => {
-            console.log("CPLive error " + error.message);
-            this.appServeiceLoadStatusService.clearCalendarLoadStatus();
-            this.renderer.removeClass(statusElem, 'alert-success');
-            this.renderer.addClass(statusElem, 'alert-danger');
-            statusElem.textContent = "Unable to connect to the server! please check your network connection.";
-          });
-      });
+        (response) => {
+          this.renderer.removeClass(statusElem, 'alert-danger');
+          this.renderer.addClass(statusElem, 'alert-success');
+          statusElem.textContent = "Successful connection to the server!";
+        },
+        (error) => {
+          console.log("CPLive error " + error.message);
+          this.appServeiceLoadStatusService.clearCalendarLoadStatus();
+          this.renderer.removeClass(statusElem, 'alert-success');
+          this.renderer.addClass(statusElem, 'alert-danger');
+          statusElem.textContent = "Unable to connect to the server! please check your network connection.";
+        });
+    });
   }
 
   ngAfterViewInit(): void {
     try {
       let appsidemenutoggler = document.querySelectorAll('[appasidemenutoggler]');
-      if ((appsidemenutoggler) && (appsidemenutoggler.length > 0)) {        
+      if ((appsidemenutoggler) && (appsidemenutoggler.length > 0)) {
         (<HTMLElement>appsidemenutoggler[0]).style.display = 'none';
       }
     } catch (e) {
