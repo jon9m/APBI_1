@@ -1,26 +1,31 @@
-import { Component, OnInit, ViewChild, AfterViewInit, HostListener } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit, HostListener, OnDestroy } from '@angular/core';
 import { LoginResponse } from '../../shared/login.response.model';
 import { LoginService } from '../../shared/login.service';
 import { AppGlobal } from '../../shared/app-global';
 import { AppUtils } from "../../shared/app-utils";
+import { Observable, Subscription } from "rxjs/Rx";
 
 @Component({
   selector: 'app-userdetails',
   templateUrl: './userdetails.component.html',
   styleUrls: ['./userdetails.component.scss']
 })
-export class UserdetailsComponent implements OnInit, AfterViewInit {
+export class UserdetailsComponent implements OnInit, AfterViewInit, OnDestroy {
 
   loginResponse: LoginResponse;
   avatarURL = AppGlobal.USER_AVATAR_URL;
   // isDisplayed: boolean = AppUtils.isDisplayed;
 
-  @HostListener('window:resize', ['$event'])
-  onResize(event) {
-    setTimeout(() => {
-      AppUtils.sidebarMinimizerHandler();
-    }, 500);
-  }
+  resizeId;
+  resizeSubscription: Subscription;
+
+  // @HostListener('window:resize', ['$event'])
+  // onResize(event) {
+  //   clearTimeout(this.resizeId);
+  //   this.resizeId = setTimeout(() => {
+  //     AppUtils.sidebarMinimizerHandler();
+  //   }, 500);
+  // }
   @HostListener('window:orientationchange', ['$event'])
   onorientationchange(event) {
     console.log("orientation");
@@ -29,10 +34,23 @@ export class UserdetailsComponent implements OnInit, AfterViewInit {
 
   constructor(private loginService: LoginService) {
     this.loginResponse = new LoginResponse();
+
+    this.resizeSubscription = Observable.fromEvent(window, 'resize')
+      .debounceTime(1000)
+      .subscribe((event) => {
+        console.log("resizing done !!!!!");
+        AppUtils.sidebarMinimizerHandler();
+      });
   }
 
   ngOnInit() {
     this.loginResponse = this.loginService.getLoginResponse();
+  }
+
+  ngOnDestroy(): void {
+    if (this.resizeSubscription) {
+      this.resizeSubscription.unsubscribe();
+    }
   }
 
   ngAfterViewInit(): void {
