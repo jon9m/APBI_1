@@ -820,7 +820,7 @@
           <div class="card" *ngFor="let recomm of getRecommendationControls(inspectiondetailsform, 'hallways_recommendations_list'); let i=index;" [formGroupName]="i">
             <div class="card-body">
               <div class="pull-right"><a data-toggle="tooltip" title="" class="btn btn-default" data-original-title="Remove this recommendation"
-                  (click)="onDeleteRecommendations('hallways_recommendations_list', i)"><i class="fa fa-times"></i></a></div>
+                  (click)="onDeleteRecommendations($event, 'hallways_recommendations_list', i)"><i class="fa fa-times"></i></a></div>
               <div class="row">
                 <div class="col-sm-12">
                   <div class="form-group">
@@ -1317,7 +1317,7 @@
           <div class="card" *ngFor="let recomm of getRecommendationControls(inspectiondetailsform, 'kitchen_recommendations_list'); let i=index;" [formGroupName]="i">
             <div class="card-body">
               <div class="pull-right"><a data-toggle="tooltip" title="" class="btn btn-default" data-original-title="Remove this recommendation"
-                  (click)="onDeleteRecommendations('kitchen_recommendations_list', i)"><i class="fa fa-times"></i></a></div>
+                  (click)="onDeleteRecommendations($event, 'kitchen_recommendations_list', i)"><i class="fa fa-times"></i></a></div>
               <div class="row">
                 <div class="col-sm-12">
                   <div class="form-group">
@@ -1675,7 +1675,7 @@
           <div class="card" *ngFor="let recomm of getRecommendationControls(inspectiondetailsform, 'laundry_recommendations_list'); let i=index;" [formGroupName]="i">
             <div class="card-body">
               <div class="pull-right"><a data-toggle="tooltip" title="" class="btn btn-default" data-original-title="Remove this recommendation"
-                  (click)="onDeleteRecommendations('laundry_recommendations_list', i)"><i class="fa fa-times"></i></a></div>
+                  (click)="onDeleteRecommendations($event, 'laundry_recommendations_list', i)"><i class="fa fa-times"></i></a></div>
               <div class="row">
                 <div class="col-sm-12">
                   <div class="form-group">
@@ -2610,7 +2610,7 @@
           <div class="card" *ngFor="let recomm of getRecommendationControls(inspectiondetailsform, 'bedrooms_recommendations_list'); let i=index;" [formGroupName]="i">
             <div class="card-body">
               <div class="pull-right"><a data-toggle="tooltip" title="" class="btn btn-default" data-original-title="Remove this recommendation"
-                  (click)="onDeleteRecommendations('bedrooms_recommendations_list', i)"><i class="fa fa-times"></i></a></div>
+                  (click)="onDeleteRecommendations($event, 'bedrooms_recommendations_list', i)"><i class="fa fa-times"></i></a></div>
               <div class="row">
                 <div class="col-sm-12">
                   <div class="form-group">
@@ -3222,7 +3222,7 @@
           <div class="card" *ngFor="let recomm of getRecommendationControls(inspectiondetailsform, 'bathrooms_recommendations_list'); let i=index;" [formGroupName]="i">
             <div class="card-body">
               <div class="pull-right"><a data-toggle="tooltip" title="" class="btn btn-default" data-original-title="Remove this recommendation"
-                  (click)="onDeleteRecommendations('bathrooms_recommendations_list', i)"><i class="fa fa-times"></i></a></div>
+                  (click)="onDeleteRecommendations($event, 'bathrooms_recommendations_list', i)"><i class="fa fa-times"></i></a></div>
               <div class="row">
                 <div class="col-sm-12">
                   <div class="form-group">
@@ -3834,7 +3834,7 @@
           <div class="card" *ngFor="let recomm of getRecommendationControls(inspectiondetailsform, 'ensuite_recommendations_list'); let i=index;" [formGroupName]="i">
             <div class="card-body">
               <div class="pull-right"><a data-toggle="tooltip" title="" class="btn btn-default" data-original-title="Remove this recommendation"
-                  (click)="onDeleteRecommendations('ensuite_recommendations_list', i)"><i class="fa fa-times"></i></a></div>
+                  (click)="onDeleteRecommendations($event, 'ensuite_recommendations_list', i)"><i class="fa fa-times"></i></a></div>
               <div class="row">
                 <div class="col-sm-12">
                   <div class="form-group">
@@ -4606,7 +4606,7 @@
           <div class="card" *ngFor="let recomm of getRecommendationControls(inspectiondetailsform, 'external_recommendations_list'); let i=index;" [formGroupName]="i">
             <div class="card-body">
               <div class="pull-right"><a data-toggle="tooltip" title="" class="btn btn-default" data-original-title="Remove this recommendation"
-                  (click)="onDeleteRecommendations('external_recommendations_list', i)"><i class="fa fa-times"></i></a></div>
+                  (click)="onDeleteRecommendations($event, 'external_recommendations_list', i)"><i class="fa fa-times"></i></a></div>
               <div class="row">
                 <div class="col-sm-12">
                   <div class="form-group">
@@ -5258,7 +5258,7 @@
           <div class="card" *ngFor="let recomm of getRecommendationControls(inspectiondetailsform, 'timberpest_recommendations_list'); let i=index;" [formGroupName]="i">
             <div class="card-body">
               <div class="pull-right"><a data-toggle="tooltip" title="" class="btn btn-default" data-original-title="Remove this recommendation"
-                  (click)="onDeleteRecommendations('timberpest_recommendations_list', i)"><i class="fa fa-times"></i></a></div>
+                  (click)="onDeleteRecommendations($event, 'timberpest_recommendations_list', i)"><i class="fa fa-times"></i></a></div>
               <div class="row">
                 <div class="col-sm-12">
                   <div class="form-group">

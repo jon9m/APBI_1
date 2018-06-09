@@ -10,6 +10,12 @@ export class FileUploadProgressService {
         this.fileProgressMap.set(key, currFileInfo);
         return currFileInfo;
     }
+    public removeMapItem(key: string) {
+        this.fileProgressMap.delete(key);
+    }
+    public clearMap() {
+        this.fileProgressMap.clear();
+    }
     public updateProgress(key: string, progress: number, progressColor: string) {
         console.log("Progress for key -" + key + "......" + progress);
         (this.fileProgressMap.get(key)).progress = progress;

@@ -1,4 +1,4 @@
-<div *ngIf="loginResponse && isDisplayed" id="profile">
+<div *ngIf="loginResponse && getDisplayed()" id="profile">
   <div>
     <img src="{{avatarURL}}{{loginResponse.userId}}" alt="" title="" width="150px" style="margin:25px;">
   </div>

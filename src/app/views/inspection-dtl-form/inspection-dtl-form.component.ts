@@ -9,6 +9,7 @@ import { InspectionDetails } from "../../shared/inspection_details.model";
 import { AppGlobal } from '../../shared/app-global';
 import { InspectionProperty } from '../../shared/inspection-property.model';
 import { Observable, Subscription } from 'rxjs';
+import { FileUploadProgressService } from "../../shared/fileupload-progress.service";
 
 @Component({
   selector: 'app-inspection-dtl-form',
@@ -57,7 +58,7 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
   valueChangeCheckSub: Subscription;
   addReportSub: Subscription;
 
-  constructor(private route: ActivatedRoute, private fb: FormBuilder, private inspectionDetailsService: InspectionDetailsService, private fileUploadService: FileUploadService, private router: Router, private httpService: HTTPService) {
+  constructor(private route: ActivatedRoute, private fb: FormBuilder, private inspectionDetailsService: InspectionDetailsService, private fileUploadService: FileUploadService, private router: Router, private httpService: HTTPService, private fileUploadProgressService: FileUploadProgressService) {
 
   }
 
@@ -112,6 +113,8 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
       this.formChangeChecker();
 
     });
+
+    this.fileUploadProgressService.clearMap();
   }
 
   private subscribeToFormChanges() {
@@ -144,10 +147,12 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
     if (this.addReportSub) {
       this.addReportSub.unsubscribe();
     }
+
+    this.fileUploadProgressService.clearMap();
   }
 
   public initRecommendations() {
-
+//TODO - check null for old profiles
     let hallways_recommendations_array = [];
     let kitchen_recommendations_array = [];
     let laundry_recommendations_array = [];
@@ -182,7 +187,7 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
       timberpest_recommendations_array = this.inspectiondetails.timberpest_recommendations_list;
     }
 
-    if (hallways_recommendations_array != null) {
+    if ((hallways_recommendations_array != null) && (typeof hallways_recommendations_array.forEach === 'function')) {
       hallways_recommendations_array.forEach((item, index) => {
         (<FormArray>this.inspectiondetailsform.get('hallways_recommendations_list')).push(
           new FormGroup({
@@ -196,7 +201,7 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
         );
       });
     }
-    if (kitchen_recommendations_array != null) {
+    if ((kitchen_recommendations_array != null) && (typeof kitchen_recommendations_array.forEach === 'function')) {
       kitchen_recommendations_array.forEach((item, index) => {
         (<FormArray>this.inspectiondetailsform.get('kitchen_recommendations_list')).push(
           new FormGroup({
@@ -210,7 +215,7 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
         );
       });
     }
-    if (laundry_recommendations_array != null) {
+    if ((laundry_recommendations_array != null) && (typeof laundry_recommendations_array.forEach === 'function')) {
       laundry_recommendations_array.forEach((item, index) => {
         (<FormArray>this.inspectiondetailsform.get('laundry_recommendations_list')).push(
           new FormGroup({
@@ -224,7 +229,7 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
         );
       });
     }
-    if (bedrooms_recommendations_array != null) {
+    if ((bedrooms_recommendations_array != null) && (typeof bedrooms_recommendations_array.forEach === 'function')) {
       bedrooms_recommendations_array.forEach((item, index) => {
         (<FormArray>this.inspectiondetailsform.get('bedrooms_recommendations_list')).push(
           new FormGroup({
@@ -238,7 +243,7 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
         );
       });
     }
-    if (bathrooms_recommendations_array != null) {
+    if ((bathrooms_recommendations_array != null) && (typeof bathrooms_recommendations_array.forEach === 'function')) {
       bathrooms_recommendations_array.forEach((item, index) => {
         (<FormArray>this.inspectiondetailsform.get('bathrooms_recommendations_list')).push(
           new FormGroup({
@@ -252,7 +257,7 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
         );
       });
     }
-    if (external_recommendations_array != null) {
+    if ((external_recommendations_array != null) && (typeof external_recommendations_array.forEach === 'function')) {
       external_recommendations_array.forEach((item, index) => {
         (<FormArray>this.inspectiondetailsform.get('external_recommendations_list')).push(
           new FormGroup({
@@ -266,7 +271,7 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
         );
       });
     }
-    if (ensuite_recommendations_array != null) {
+    if ((ensuite_recommendations_array != null) && (typeof ensuite_recommendations_array.forEach === 'function')) {
       ensuite_recommendations_array.forEach((item, index) => {
         (<FormArray>this.inspectiondetailsform.get('ensuite_recommendations_list')).push(
           new FormGroup({
@@ -280,7 +285,7 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
         );
       });
     }
-    if (timberpest_recommendations_array != null) {
+    if ((timberpest_recommendations_array != null) && (typeof timberpest_recommendations_array.forEach === 'function')) {
       timberpest_recommendations_array.forEach((item, index) => {
         (<FormArray>this.inspectiondetailsform.get('timberpest_recommendations_list')).push(
           new FormGroup({
@@ -1358,7 +1363,14 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
     }));
   }
 
-  onDeleteRecommendations(recommendationType, i) {
+  onDeleteRecommendations($event, recommendationType, i) {
+    let delKey = null;
+    if ($event.target.closest('.card-body')) {
+      if ($event.target.closest('.card-body').querySelector('input[formcontrolname="filename"]')) {
+        delKey = $event.target.closest('.card-body').querySelector('input[formcontrolname="filename"]').value;
+      }
+    }
+    this.fileUploadProgressService.removeMapItem(delKey);
     (<FormArray>this.inspectiondetailsform.get(recommendationType)).removeAt(i);
   }
 
