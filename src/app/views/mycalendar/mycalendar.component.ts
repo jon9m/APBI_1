@@ -33,7 +33,7 @@ export class MycalendarComponent implements OnInit, OnDestroy {
     if (this.previewSubscription) { this.previewSubscription.unsubscribe(); }
     if (this.calendarSubscription) { this.calendarSubscription.unsubscribe(); }
     if (this.eventSubscription) { this.eventSubscription.unsubscribe(); }
-    this.events = [];    
+    this.events = [];
   }
 
   ngOnInit() {
@@ -80,9 +80,13 @@ export class MycalendarComponent implements OnInit, OnDestroy {
     } else if (btnType === 'today') {
       currMonth = (moment(mm).set('date', 1).add(-10, 'day')).format('YYYY-MM-DD');
       nextMonth = (moment(mm).set('date', 1).add(1, 'month').add(10, 'day')).format('YYYY-MM-DD');
+    } else {
+      //btnType === 'month'
+      return;
     }
 
     console.log("currMonth " + currMonth + " nextMonth " + nextMonth);
+    //TODO - load calendar only if curr and next nboth exists
 
     this.calendarSubscription = this.httpService.loadCalendar({ 'start': currMonth, 'end': nextMonth }).subscribe(
       (response: Response) => {
