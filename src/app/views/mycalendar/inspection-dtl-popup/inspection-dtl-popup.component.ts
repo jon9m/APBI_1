@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewChild, ElementRef, Renderer2 } from '@angular/core';
-import { ModalDirective } from 'ngx-bootstrap/modal';
 import { Router } from "@angular/router";
 import { HTTPService } from "../../../shared/http.service";
 import { InspectionDetails } from "../../../shared/inspection_details.model";
@@ -18,7 +17,7 @@ export class InspectionDtlPopupComponent implements OnInit {
   public detailsModal: InspectionDetails;
   isFormLoading: boolean = false;
 
-  constructor(private renderer: Renderer2, private router: Router, private httpSevice: HTTPService, private inspectionDetailsService: InspectionDetailsService) { }
+  constructor(private router: Router, private httpSevice: HTTPService, private inspectionDetailsService: InspectionDetailsService) { }
 
   ngOnInit() {
   }

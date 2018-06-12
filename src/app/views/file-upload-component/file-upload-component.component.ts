@@ -6,7 +6,6 @@ import { AppGlobal } from '../../shared/app-global';
 import { Ng2ImgMaxService } from 'ng2-img-max';
 import { Subscription } from "rxjs/Subscription";
 import { FileUploadProgressService } from "../../shared/fileupload-progress.service";
-import { FileUploadInfo } from "../../shared/fileupload-info.model";
 
 @Component({
   selector: 'app-file-upload-component',
@@ -124,7 +123,7 @@ export class FileUploadComponentComponent implements OnInit, OnDestroy {
   handleProgress(event, index, recommendationType) {
     if (event.type === HttpEventType.Sent) {
       this.uploadProgress = 0;
-      this.rgbString = '#20a8d8';
+      this.rgbString = '#FF0000';
     }
 
     if (event.type === HttpEventType.DownloadProgress) {
@@ -137,10 +136,10 @@ export class FileUploadComponentComponent implements OnInit, OnDestroy {
       this.uploadingProgressing = true
       this.uploadProgress = Math.round(event.loaded / event.total * 100);
 
+      this.setRgbString();
+
       //For left nav - 2
       this.fileUploadProgressService.updateProgress(this.file_name, this.uploadProgress, this.rgbString);
-
-      this.setRgbString();
     }
 
     if (event.type === HttpEventType.Response) {
@@ -165,12 +164,27 @@ export class FileUploadComponentComponent implements OnInit, OnDestroy {
     let minRMul = minR / 100;
 
     let hexR = Math.round(colorMul * (100 - this.uploadProgress) + ((this.uploadProgress > 68) ? this.uploadProgress * minRMul : 0));
-    let hexG = Math.round(maxGMul * this.uploadProgress);
-    let hexB = Math.round(maxBMul * (this.uploadProgress));
+
+    let hexG = 0;
+    if (this.uploadProgress > 66) { //Math.round((168/255)*100)
+      hexG = Math.round(maxGMul * this.uploadProgress);
+    }
+
+    let hexB = 0;
+    if (this.uploadProgress > 85) { //Math.round((216/255)*100)
+      hexB = Math.round(maxBMul * (this.uploadProgress));
+    }
 
     let strR = hexR.toString(16);
     let strG = hexG.toString(16);
     let strB = hexB.toString(16);
+
+    if (strG.length == 1) {
+      strG = strG + "0";
+    }
+    if (strB.length == 1) {
+      strB = strB + "0";
+    }
 
     this.rgbString = "#" + strR + strG + strB;
   }

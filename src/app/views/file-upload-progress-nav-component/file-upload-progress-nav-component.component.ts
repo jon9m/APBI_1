@@ -21,4 +21,8 @@ export class FileUploadProgressNavComponentComponent implements OnInit {
     return AppUtils.isDisplayed;
   }
 
+  scrollToPosition(elem) {
+    let scrollElem = document.querySelector('input[value=' + elem + ']');  //TODO
+    scrollElem.scrollIntoView();
+  }
 }
