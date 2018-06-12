@@ -46,6 +46,7 @@ margin: 20px 0 20px !important;
   margin: 0;
   opacity: 0;
   -ms-filter: 'alpha(opacity=0)';
+  filter: 'alpha(opacity=0)';
   font-size: 200px !important;
   direction: ltr;
   cursor: pointer;
@@ -74,7 +75,8 @@ a:not([href]):not([tabindex]) {
   border-top: 0px;
 }
 
-#fileuploadstats {
+.fileuploadstats {
+  padding: 5px;
   -webkit-flex: 1; /* Safari 6.1+ */
   -ms-flex: 1; /* IE 10 */
   flex: 1;

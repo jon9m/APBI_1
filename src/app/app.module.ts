@@ -51,6 +51,7 @@ import { AuthGuard } from './shared/auth-guard.service';
 import { AppServeiceLoadStatusService } from "./shared/app-service-load-status.service";
 import { Ng2ImgMaxModule } from 'ng2-img-max';
 import { FileUploadProgressService } from "./shared/fileupload-progress.service";
+import { FileUploadProgressNavComponentComponent } from './views/file-upload-progress-nav-component/file-upload-progress-nav-component.component';
 
 @NgModule({
   imports: [
@@ -73,7 +74,8 @@ import { FileUploadProgressService } from "./shared/fileupload-progress.service"
     ...APP_CONTAINERS,
     LoginComponent,
     RegisterComponent,
-    UserdetailsComponent
+    UserdetailsComponent,
+    FileUploadProgressNavComponentComponent
   ],
   providers: [
     {

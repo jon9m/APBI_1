@@ -53,18 +53,10 @@
 <div class="app-body">
   <app-sidebar [fixed]="true" [display]="'lg'">  
     <app-userdetails></app-userdetails>
+    
     <app-sidebar-nav [navItems]="navItems" [perfectScrollbar] [disabled]="sidebarMinimized"></app-sidebar-nav>
-    <div *ngIf="getDisplayed()" id="fileuploadstats" style="padding: 5px;">
-      <ul style="font-size: 11px;color: #9d9d9d;padding: 7px 5px;border-bottom: 1px dotted #373737;">
-        <li *ngFor="let fileInfo of fileUploadProgressService.getValues()" style="list-style:none;">
-          <div><span>{{fileInfo.realName}}</span>&nbsp;<span class="pull-right">{{fileInfo.progress}}%</span></div>
-          <div class="progress" style="height:5px;">
-            <div class="progress-bar progress-bar-success" [style.width.%]="fileInfo.progress" [style.background-color]="fileInfo.progressColor">
-            </div>
-          </div>
-        </li>
-      </ul>
-    </div>
+
+    <app-file-upload-progress-nav-component></app-file-upload-progress-nav-component>
 
     <app-sidebar-minimizer></app-sidebar-minimizer>
   </app-sidebar>

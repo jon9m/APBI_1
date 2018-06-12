@@ -6,7 +6,6 @@ import 'rxjs/add/operator/takeWhile';
 import { Subscription } from "rxjs/Subscription";
 import { AppServeiceLoadStatusService } from "../../shared/app-service-load-status.service";
 import { FileUploadProgressService } from "../../shared/fileupload-progress.service";
-import { AppUtils } from "../../shared/app-utils";
 
 @Component({
   selector: 'app-dashboard',
@@ -19,24 +18,11 @@ export class DefaultLayoutComponent implements OnInit, OnDestroy, AfterViewInit 
 
   private alive: boolean;
   private interval: number;
-  private isDisplayed: boolean = AppUtils.isDisplayed;
 
   public navItems = navItems;
   public sidebarMinimized = true;
   private changes: MutationObserver;
   public element: HTMLElement = document.body;
-
-  // @HostListener('window:resize', ['$event'])
-  // onResize(event) {
-  //   setTimeout(() => {
-  //     AppUtils.sidebarMinimizerHandler(this.isDisplayed);
-  //   }, 500);
-  // }
-  // @HostListener('window:orientationchange', ['$event'])
-  // onorientationchange(event) {
-  //   console.log("orientation for progress summary");
-  //   AppUtils.sidebarMinimizerHandler(this.isDisplayed);
-  // }
 
   constructor(private httpService: HTTPService, private renderer: Renderer2, private appServeiceLoadStatusService: AppServeiceLoadStatusService, public fileUploadProgressService: FileUploadProgressService) {
     this.alive = true;
@@ -89,9 +75,5 @@ export class DefaultLayoutComponent implements OnInit, OnDestroy, AfterViewInit 
   ngOnDestroy() {
     this.alive = false; // switches your TimerObservable off
     this.subscription.unsubscribe();
-  }
-
-  getDisplayed() {
-    return AppUtils.isDisplayed;
   }
 }
