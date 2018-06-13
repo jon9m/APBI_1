@@ -1363,6 +1363,15 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
     }));
   }
 
+  //Save on file upload complete
+  onUploadComplete(event: string) {
+    if (!this.formSaving) {
+      this.onSave(false, true);
+    } else {
+      this.isFormDirty = true;
+    }
+  }
+
   onDeleteRecommendations($event, recommendationType, i) {
     let delKey = null;
     if ($event.target.closest('.card-body')) {

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild, ElementRef, OnDestroy } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef, OnDestroy, EventEmitter, Output } from '@angular/core';
 import { FormGroup, FormArray, AbstractControl } from "@angular/forms";
 import { FileUploadService } from "../../shared/fileupload.service";
 import { HttpEventType } from "@angular/common/http";
@@ -35,6 +35,8 @@ export class FileUploadComponentComponent implements OnInit, OnDestroy {
   @Input() inspectiondetailsform: FormGroup;
 
   @ViewChild("imgPreview") imagePreview: ElementRef;
+
+  @Output() uploadCompletedEmitter = new EventEmitter<string>();
 
   fileUploadSub: Subscription;
   resizeImageSub: Subscription;
@@ -153,6 +155,8 @@ export class FileUploadComponentComponent implements OnInit, OnDestroy {
       this.uploadComplete = true
       this.serverResponse = event.body
       this.uploadProgress = 100;
+
+      this.uploadCompletedEmitter.emit("true");
     }
   }
 

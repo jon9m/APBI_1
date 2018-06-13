@@ -227,7 +227,7 @@
         <div class="col-sm-12">
           <div class="form-group">
             <div class="col-sm-12">
-              <app-file-upload-component [index]="'01'" [fileName]="'file-01'" [reportId]="reportId" [progress]="'file'" [recommendationType]="'file'" [inspectiondetailsform]="inspectiondetailsform"></app-file-upload-component>              
+              <app-file-upload-component (uploadCompletedEmitter)="onUploadComplete($event)" [index]="'01'" [fileName]="'file-01'" [reportId]="reportId" [progress]="'file'" [recommendationType]="'file'" [inspectiondetailsform]="inspectiondetailsform"></app-file-upload-component>              
             </div>
           </div>
         </div>
@@ -864,7 +864,7 @@
                 <div class="col-xs-12 col-md-6">
                   <div class="form-group">
                     <div>
-                      <app-file-upload-component [index]="i" [reportId]="reportId" [recommendationType]="'hallways_recommendations_list'" [progress]="'rec-file-preview-hallways'" [inspectiondetailsform]="inspectiondetailsform"></app-file-upload-component>                      
+                      <app-file-upload-component (uploadCompletedEmitter)="onUploadComplete($event)" [index]="i" [reportId]="reportId" [recommendationType]="'hallways_recommendations_list'" [progress]="'rec-file-preview-hallways'" [inspectiondetailsform]="inspectiondetailsform"></app-file-upload-component>                      
                       <input type="hidden" formControlName="typee"/>
                       <input type="hidden" formControlName="filename"/>
                     </div>
@@ -1361,7 +1361,7 @@
                 <div class="col-xs-12 col-md-6">
                   <div class="form-group">
                     <div>
-                      <app-file-upload-component [index]="i" [reportId]="reportId" [recommendationType]="'kitchen_recommendations_list'" [progress]="'rec-file-preview-kitchen'" [inspectiondetailsform]="inspectiondetailsform"></app-file-upload-component>                      
+                      <app-file-upload-component (uploadCompletedEmitter)="onUploadComplete($event)" [index]="i" [reportId]="reportId" [recommendationType]="'kitchen_recommendations_list'" [progress]="'rec-file-preview-kitchen'" [inspectiondetailsform]="inspectiondetailsform"></app-file-upload-component>                      
                       <input type="hidden" formControlName="typee"/>
                       <input type="hidden" formControlName="filename"/>
                     </div>
@@ -1719,7 +1719,7 @@
                 <div class="col-xs-12 col-md-6">
                   <div class="form-group">
                     <div>                      
-                      <app-file-upload-component [index]="i" [reportId]="reportId" [recommendationType]="'laundry_recommendations_list'" [progress]="'rec-file-preview-laundry'" [inspectiondetailsform]="inspectiondetailsform"></app-file-upload-component>                      
+                      <app-file-upload-component (uploadCompletedEmitter)="onUploadComplete($event)" [index]="i" [reportId]="reportId" [recommendationType]="'laundry_recommendations_list'" [progress]="'rec-file-preview-laundry'" [inspectiondetailsform]="inspectiondetailsform"></app-file-upload-component>                      
                       <input type="hidden" formControlName="typee"/>
                       <input type="hidden" formControlName="filename"/>
                     </div>
@@ -2654,7 +2654,7 @@
                 <div class="col-xs-12 col-md-6">
                   <div class="form-group">
                     <div>                      
-                      <app-file-upload-component [index]="i" [reportId]="reportId" [recommendationType]="'bedrooms_recommendations_list'" [progress]="'rec-file-preview-bedrooms'" [inspectiondetailsform]="inspectiondetailsform"></app-file-upload-component>                      
+                      <app-file-upload-component (uploadCompletedEmitter)="onUploadComplete($event)" [index]="i" [reportId]="reportId" [recommendationType]="'bedrooms_recommendations_list'" [progress]="'rec-file-preview-bedrooms'" [inspectiondetailsform]="inspectiondetailsform"></app-file-upload-component>                      
                       <input type="hidden" formControlName="typee"/>
                       <input type="hidden" formControlName="filename"/>
                     </div>
@@ -3266,7 +3266,7 @@
                 <div class="col-xs-12 col-md-6">
                   <div class="form-group">
                     <div>                      
-                      <app-file-upload-component [index]="i" [reportId]="reportId" [recommendationType]="'bathrooms_recommendations_list'" [progress]="'rec-file-preview-bathrooms'" [inspectiondetailsform]="inspectiondetailsform"></app-file-upload-component>                      
+                      <app-file-upload-component (uploadCompletedEmitter)="onUploadComplete($event)" [index]="i" [reportId]="reportId" [recommendationType]="'bathrooms_recommendations_list'" [progress]="'rec-file-preview-bathrooms'" [inspectiondetailsform]="inspectiondetailsform"></app-file-upload-component>                      
                       <input type="hidden" formControlName="typee"/>
                       <input type="hidden" formControlName="filename"/>
                     </div>
@@ -3878,7 +3878,7 @@
                 <div class="col-xs-12 col-md-6">
                   <div class="form-group">
                     <div>                      
-                      <app-file-upload-component [index]="i" [reportId]="reportId" [recommendationType]="'ensuite_recommendations_list'" [progress]="'rec-file-preview-ensuite'" [inspectiondetailsform]="inspectiondetailsform"></app-file-upload-component>                      
+                      <app-file-upload-component (uploadCompletedEmitter)="onUploadComplete($event)" [index]="i" [reportId]="reportId" [recommendationType]="'ensuite_recommendations_list'" [progress]="'rec-file-preview-ensuite'" [inspectiondetailsform]="inspectiondetailsform"></app-file-upload-component>                      
                       <input type="hidden" formControlName="typee"/>
                       <input type="hidden" formControlName="filename"/>
                     </div>
@@ -4650,7 +4650,7 @@
                 <div class="col-xs-12 col-md-6">
                   <div class="form-group">
                     <div>                      
-                      <app-file-upload-component [index]="i" [reportId]="reportId" [recommendationType]="'external_recommendations_list'" [progress]="'rec-file-preview-external'" [inspectiondetailsform]="inspectiondetailsform"></app-file-upload-component>                      
+                      <app-file-upload-component (uploadCompletedEmitter)="onUploadComplete($event)" [index]="i" [reportId]="reportId" [recommendationType]="'external_recommendations_list'" [progress]="'rec-file-preview-external'" [inspectiondetailsform]="inspectiondetailsform"></app-file-upload-component>                      
                       <input type="hidden" formControlName="typee"/>
                       <input type="hidden" formControlName="filename"/>
                     </div>
@@ -5295,7 +5295,7 @@
                 <div class="col-xs-12 col-md-6">
                   <div class="form-group">
                     <div>                      
-                      <app-file-upload-component [index]="i" [reportId]="reportId" [recommendationType]="'timberpest_recommendations_list'" [progress]="'rec-file-preview-timberpest'" [inspectiondetailsform]="inspectiondetailsform"></app-file-upload-component>                      
+                      <app-file-upload-component (uploadCompletedEmitter)="onUploadComplete($event)" [index]="i" [reportId]="reportId" [recommendationType]="'timberpest_recommendations_list'" [progress]="'rec-file-preview-timberpest'" [inspectiondetailsform]="inspectiondetailsform"></app-file-upload-component>                      
                       <input type="hidden" formControlName="typee"/>
                       <input type="hidden" formControlName="filename"/>
                     </div>
