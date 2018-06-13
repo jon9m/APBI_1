@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { AppUtils } from '../../shared/app-utils';
 import { FileUploadProgressService } from '../../shared/fileupload-progress.service';
 
@@ -21,8 +21,7 @@ export class FileUploadProgressNavComponentComponent implements OnInit {
     return AppUtils.isDisplayed;
   }
 
-  scrollToPosition(elem) {
-    let scrollElem = document.querySelector('input[value=' + elem + ']');
-    scrollElem.scrollIntoView(); //TODO
+  scrollToPosition(elemName) {
+    console.log("scroll!!");
   }
 }
