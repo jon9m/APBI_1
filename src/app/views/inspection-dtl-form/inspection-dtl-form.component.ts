@@ -1390,6 +1390,10 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
     this.isFormSaveErr = false;
     this.isFormQuickSave = isQuickSave;
 
+    if (this.formSaving == true) {
+      return;
+    }
+
     this.formSaving = true;
     this.addReportSub = this.httpService.addReport(this.inspectiondetailsform.value).subscribe(
       (response: Response) => {
