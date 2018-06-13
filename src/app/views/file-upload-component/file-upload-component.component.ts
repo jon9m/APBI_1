@@ -96,9 +96,16 @@ export class FileUploadComponentComponent implements OnInit, OnDestroy {
         //file resizing
         this.resizeImageSub = this.ng2ImgMax.resizeImage(fileToUpload, AppGlobal.UPLOAD_IMG_WIDTH, AppGlobal.UPLOAD_IMG_HEIGHT).subscribe(
           (result) => {
-            fileToUpload = new File([result], result.name);
-            console.log("Image resizing successful");
-            this.uploadCurrentFile(fileToUpload, submittedData);
+            //For safari
+            if ("undefined" != typeof window.navigator && window.navigator.userAgent && window.navigator.userAgent.toLowerCase().includes('safari')) {
+              console.log("Image resizing successful for Browser " + window.navigator.userAgent);
+              var the_blob = new Blob([result]);
+              this.uploadCurrentFile(the_blob, submittedData);
+            } else {
+              fileToUpload = new File([result], result.name);
+              console.log("Image resizing successful");
+              this.uploadCurrentFile(fileToUpload, submittedData);
+            }
           },
           (error) => {
             console.log('Image resizing failed, using original image', error);

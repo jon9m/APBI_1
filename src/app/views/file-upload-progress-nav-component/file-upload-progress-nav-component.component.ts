@@ -22,7 +22,7 @@ export class FileUploadProgressNavComponentComponent implements OnInit {
   }
 
   scrollToPosition(elem) {
-    let scrollElem = document.querySelector('input[value=' + elem + ']');  //TODO
-    scrollElem.scrollIntoView();
+    let scrollElem = document.querySelector('input[value=' + elem + ']');
+    scrollElem.scrollIntoView(); //TODO
   }
 }
