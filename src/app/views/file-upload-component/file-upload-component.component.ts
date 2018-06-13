@@ -99,7 +99,7 @@ export class FileUploadComponentComponent implements OnInit, OnDestroy {
         this.resizeImageSub = this.ng2ImgMax.resizeImage(fileToUpload, AppGlobal.UPLOAD_IMG_WIDTH, AppGlobal.UPLOAD_IMG_HEIGHT).subscribe(
           (result) => {
             //For safari
-            if ("undefined" != typeof window.navigator && window.navigator.userAgent && window.navigator.userAgent.toLowerCase().includes('safari')) {
+            if (this.isSafari()) {
               console.log("Image resizing successful for Browser " + window.navigator.userAgent);
               var the_blob = new Blob([result]);
               this.uploadCurrentFile(the_blob, submittedData);
@@ -116,6 +116,23 @@ export class FileUploadComponentComponent implements OnInit, OnDestroy {
         );
         //file resizing ends
       };
+    }
+  }
+
+  isSafari() {
+    if ("undefined" != typeof window.navigator && window.navigator.userAgent) {
+      let name = window.navigator.userAgent.toLowerCase();
+      if (name && name.includes('safari') && 
+            !name.includes('chrome') && 
+            !name.includes('firefox') && 
+            !name.includes('msie') && 
+            !name.includes('opera')) {
+        return true;
+      } else {
+        return false;
+      }
+    } else {
+      return false;
     }
   }
 
