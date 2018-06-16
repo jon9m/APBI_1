@@ -56,7 +56,7 @@ export const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { preloadingStrategy: CustomPreloadStrategy })],
+  imports: [RouterModule.forRoot(routes, { preloadingStrategy: CustomPreloadStrategy, useHash: true })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
