@@ -1342,6 +1342,9 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
       '2125': '',
       'timber_summary': ''
     });
+
+    //TODO - add fields conditionally
+    //this.inspectiondetailsform.addControl('todofield', new FormControl());
   }
 
   getRecommendationControls(inspectiondetailsform, recommendationType) {
