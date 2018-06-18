@@ -1,7 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl, FormArray, FormBuilder } from "@angular/forms";
 import { InspectionDetailsService } from "../../shared/inspection-detail.service";
-import { FileUploadService } from '../../shared/fileupload.service';
 import { Router, ActivatedRoute } from "@angular/router";
 import { HTTPService } from "../../shared/http.service";
 import { InspectionDetails } from "../../shared/inspection_details.model";
@@ -70,7 +69,7 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
   insp_type_new_building_inspection_frame_stage;
   insp_type_new_building_inspection_lockup_stage;
   insp_type_new_building_inspection_completion_stage;
-  insp_type_new_building_inspection_4_stages_package;    
+  insp_type_new_building_inspection_4_stages_package;
 
   constructor(private route: ActivatedRoute, private fb: FormBuilder, private inspectionDetailsService: InspectionDetailsService, private router: Router, private httpService: HTTPService, private fileUploadProgressService: FileUploadProgressService) {
 
@@ -106,7 +105,7 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
     this.insp_type_new_building_inspection_frame_stage = AppGlobal.INSP_TYPE_NEW_BUILDING_INSPECTION_FRAME_STAGE;
     this.insp_type_new_building_inspection_lockup_stage = AppGlobal.INSP_TYPE_NEW_BUILDING_INSPECTION_LOCKUP_STAGE;
     this.insp_type_new_building_inspection_completion_stage = AppGlobal.INSP_TYPE_NEW_BUILDING_INSPECTION_COMPLETION_STAGE;
-    this.insp_type_new_building_inspection_4_stages_package = AppGlobal.INSP_TYPE_NEW_BUILDING_INSPECTION_4_STAGES_PACKAGE; 
+    this.insp_type_new_building_inspection_4_stages_package = AppGlobal.INSP_TYPE_NEW_BUILDING_INSPECTION_4_STAGES_PACKAGE;
 
     //TODO - subscribe to form load evants - second option
     // this.inspectionDetailsService.subjectName.subscribe({
@@ -186,7 +185,7 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
   }
 
   public initRecommendations() {
-//TODO - check null for old profiles
+    //TODO - check null for old profiles
     let hallways_recommendations_array = [];
     let kitchen_recommendations_array = [];
     let laundry_recommendations_array = [];
@@ -319,6 +318,7 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
         );
       });
     }
+    //Only for - type 6
     if (this.reportType == AppGlobal.INSP_TYPE_BUILDING_AND_PEST_INSPECTION) {
       if ((timberpest_recommendations_array != null) && (typeof timberpest_recommendations_array.forEach === 'function')) {
         timberpest_recommendations_array.forEach(() => {
@@ -463,6 +463,13 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
       'timber_summary': ''
     };
 
+    let completion_stages_form = {
+      'furnished': '',
+      'smoke': '',
+      'extension': '',
+      'extension_comment': ''
+    }
+
     this.inspectiondetailsform = this.fb.group({
       'bookingid': '',
       'rec_count': '',
@@ -478,10 +485,12 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
       'roof': '',
       'age': '',
       'weather': '',
-      'furnished': '',
-      'smoke': '',
-      'extension': '',
-      'extension_comment': '',
+
+      // 'furnished': '',
+      // 'smoke': '',
+      // 'extension': '',
+      // 'extension_comment': '',
+
       'electricity': '',
       'electricity-test': '',
       'electricity_comment': '',
@@ -1385,7 +1394,7 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
       'major_defects_comment': '',
       'structural_defects': '',
       'structural_defects_comment': ''
-      
+
       // ,
 
 
@@ -1512,12 +1521,23 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
       // 'timber_summary': ''
     });
 
-    //TODO - add fields conditionally
-    //this.inspectiondetailsform.addControl('todofield', new FormControl(''));
-    
+    //Append controls for form types
+    if (this.reportType == this.insp_type_building_and_pest_inspection) {                       //6
 
-    if (this.reportType == this.insp_type_building_and_pest_inspection) {
       this.addControlsToForm(this.inspectiondetailsform, visual_timber_pest_inspection_form);
+
+    } else if ((this.reportType == this.insp_type_pre_purchase_building_inspection)             //1
+      || (this.reportType == this.insp_type_pre_sale_building_inspection)                       //2
+      || (this.reportType == this.insp_type_pre_auction_building_inspection)) {                 //3
+
+      //No VISUAL TIMBER PEST INSPECTION 
+    }
+
+    if (this.reportType != this.insp_type_new_building_inspection_completion_stage) {           //If Not 12
+      this.addControlsToForm(this.inspectiondetailsform, completion_stages_form);
+    } else {
+
+      //No Furnished, smoke detector fitted, evidence of any extensions 
     }
   }
 
@@ -1551,7 +1571,7 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
   }
 
   //Save on file upload complete
-  onUploadComplete(event) {
+  onUploadComplete() {
     if (!this.formSaving) {
       this.onSave(false, true);
     } else {
@@ -1623,7 +1643,7 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
             this.formSaveMsg = '';
             this.isFormSaveErr = false;
           }, 3000);
-        }        
+        }
       });
   }
 
