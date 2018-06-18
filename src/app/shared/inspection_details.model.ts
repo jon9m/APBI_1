@@ -937,6 +937,9 @@ export class InspectionDetails {
     public '1990': string = '';
     public '1991': string = '';
     public '1992': string = '';
+    public '1993': string = '';
+    public '1994': string = '';
+    public '1995': string = '';
     public '2000': string = '';
     public '2001': string = '';
     public '2002': string = '';
