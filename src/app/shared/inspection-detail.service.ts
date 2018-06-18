@@ -27,6 +27,10 @@ export class InspectionDetailsService {
         console.log("--------------------response directly from API----------------------------");
         console.log(inspectionDetailsJson);
 
+        //Reset the form
+        console.log("before resetting inspection details form :" + JSON.stringify(this.inspectionDetails));
+        this.inspectionDetails = new InspectionDetails();
+
         //Assign all values to the modal
         Object.assign(this.inspectionDetails, inspectionDetailsJson);
     }
