@@ -199,7 +199,7 @@
               <label class="control-label" for="input-order-status">Age: </label>
               <select formControlName="age" (change)="onSave(false,true)" id="input-order-status" class="form-control">
                   <option value="-">-</option>
-                  <ng-template [ngIf]="reportType != null && insp_type_building_and_pest_inspection != null && reportType == insp_type_new_building_inspection_completion_stage" [ngIfElse]="ageElseBlock">
+                  <ng-template [ngIf]="reportType != null && insp_type_new_building_inspection_completion_stage != null && reportType == insp_type_new_building_inspection_completion_stage" [ngIfElse]="ageElseBlock">
                     <option value="New build">New build</option>
                   </ng-template>
                   <ng-template #ageElseBlock>
@@ -256,7 +256,7 @@
     </div>
   </div>
 
-  <ng-template [ngIf]="reportType != null && insp_type_building_and_pest_inspection != null && reportType != insp_type_new_building_inspection_completion_stage">
+  <ng-template [ngIf]="reportType != null && insp_type_new_building_inspection_completion_stage != null && reportType != insp_type_new_building_inspection_completion_stage">
     <div class="card">
       <div class="card-header">
         <h5 class="black mb-0"><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;<strong>Was the property furnished at time of inspection?</strong>

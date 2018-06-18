@@ -1571,7 +1571,7 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
   }
 
   //Save on file upload complete
-  onUploadComplete() {
+  onUploadComplete(event) {
     if (!this.formSaving) {
       this.onSave(false, true);
     } else {
