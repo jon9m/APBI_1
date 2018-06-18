@@ -30,6 +30,7 @@ export class InspectionDetailsService {
         //Reset the form
         console.log("before resetting inspection details form :" + JSON.stringify(this.inspectionDetails));
         this.inspectionDetails = new InspectionDetails();
+        console.log("After resetting inspection details form :" + JSON.stringify(this.inspectionDetails));
 
         //Assign all values to the modal
         Object.assign(this.inspectionDetails, inspectionDetailsJson);

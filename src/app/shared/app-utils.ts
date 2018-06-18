@@ -10,7 +10,7 @@ export class AppUtils {
             this.isDisplayed = ((sidebarWidth > 50) ? true : false);
 
             console.log("Load nav " + this.isDisplayed); //TODO
-        
+
             if (!this.isClickEventInitialized && clickElem) {
                 this.isClickEventInitialized = true;
                 clickElem.addEventListener("click", (event: Event) => {
@@ -20,6 +20,10 @@ export class AppUtils {
                 });
             }
         }
+    }
+
+    public static resetClickEventInitializedState() {
+        AppUtils.isClickEventInitialized = false;
     }
 
     getDisplay() {

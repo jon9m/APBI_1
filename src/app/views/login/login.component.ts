@@ -5,6 +5,7 @@ import { HTTPService } from '../../shared/http.service';
 import { Router } from '@angular/router';
 import { LoginResponse } from '../../shared/login.response.model';
 import { LoginService } from '../../shared/login.service';
+import { AppUtils } from '../../shared/app-utils';
 
 @Component({
   selector: 'app-dashboard',
@@ -32,6 +33,8 @@ export class LoginComponent implements OnInit {
     this.isSignningIn = true;
     this.loginError = "";
     this.loginResponse.flag = true;
+
+    AppUtils.resetClickEventInitializedState();
 
     this.httpService.login(this.loginform.value).subscribe(
       (response: Response) => {
