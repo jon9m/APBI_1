@@ -20,6 +20,21 @@ export class AppGlobal {
     public static UPLOAD_IMG_WIDTH = 800;
     public static UPLOAD_IMG_HEIGHT = 10000; //Keep aspect ratio
 
+    //ReportIDs
+    public static INSP_TYPE_PRE_PURCHASE_BUILDING_INSPECTION = 1;              //Pre-Purchase Building Inspection
+    public static INSP_TYPE_PRE_SALE_BUILDING_INSPECTION = 2;                  //Pre-Sale Building Inspection
+    public static INSP_TYPE_PRE_AUCTION_BUILDING_INSPECTION = 3;               //Pre-Auction Building Inspection
+    public static INSP_TYPE_ASBESTOS_INSPECTION = 4;                           //Asbestos Inspection
+    public static INSP_TYPE_PEST_AND_TERMITE_INSPECTION = 5;                   //Pest & Termite Inspection
+    public static INSP_TYPE_BUILDING_AND_PEST_INSPECTION = 6;                  //Building & Pest Inspection
+    public static INSP_TYPE_DILAPIDATION_INSPECTION = 7;                       //Dilapidation Inspection
+    public static INSP_TYPE_OWNER_BUILDIN_INSPECTION_137B = 8;                 //Owner Buildin Inspection 137B
+    public static INSP_TYPE_NEW_BUILDING_INSPECTION_SLAB_STAGE = 9;            //New Building Inspection - Slab Stage
+    public static INSP_TYPE_NEW_BUILDING_INSPECTION_FRAME_STAGE = 10;          //New Building Inspection - Frame Stage
+    public static INSP_TYPE_NEW_BUILDING_INSPECTION_LOCKUP_STAGE = 11;         //New Building Inspection - Lockup Stage
+    public static INSP_TYPE_NEW_BUILDING_INSPECTION_COMPLETION_STAGE = 12;     //New Building Inspection - Completion Stage
+    public static INSP_TYPE_NEW_BUILDING_INSPECTION_4_STAGES_PACKAGE = 13;     //New Building Inspection - 4 Stages Package
+
     
     //Recommendations Options
     public static TimberPest: string[] = [

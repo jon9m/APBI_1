@@ -4737,567 +4737,869 @@
       </div>
     </div>
   </div>
-  <div class="card">
-    <div class="card-header">
-      <h2 class="card-title"><strong><i class="fa fa-circle" aria-hidden="true" style="font-size: 11px;"></i>&nbsp;VISUAL TIMBER PEST INSPECTION</strong>
-      </h2>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-header">
-      <h5 class="black mb-0"><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;<strong>Timber Pest Report</strong>
-      </h5>
-    </div>
-    <div class="card-body">
-      <div id="resp-table" style="padding:0;">
-        <div id="resp-table-header">
-          <div class="table-header-cell white" style="padding-left:15px;">
-            Areas Inspected
-          </div>
-          <div class="table-header-cell white">
-          </div>
-          <div class="table-header-cell white">
-          </div>
-          <div class="table-header-cell white">
-          </div>
-          <div class="table-header-cell white">
-          </div>
-          <div class="table-header-cell white">
-          </div>
-          <div class="table-header-cell white">
-          </div>
-        </div>
-      </div>    
-  <div class="form-group" style="padding: 0px 15px 0px 15px;">
-    <label style="padding: 10px 0;">Where applicable and where there is reasonable access, the following areas are examined during our inspection:</label>
-  </div>
-  <div id="resp-table" style="padding:0;">
-    <div id="resp-table-body">
-      <div class="resp-table-row">
-        <div class="table-body-cell">
-          <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="1985" value="1" /><span class="checkbox"></span></label>
-        </div>
-        <div class="table-body-cell" style="margin-left:-40px;">
-          Interior and exterior of structures
-        </div>
-      </div>
-      <div class="resp-table-row">
-        <div class="table-body-cell">
-          <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="1986" value="1" /><span class="checkbox"></span></label>
-        </div>
-        <div class="table-body-cell">
-          Roof cavity
-        </div>
-      </div>
-      <div class="resp-table-row">
-        <div class="table-body-cell">
-          <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="1987" value="1" /><span class="checkbox"></span></label>
-        </div>
-        <div class="table-body-cell">
-          Garage or carport
-        </div>
-      </div>
-      <div class="resp-table-row">
-        <div class="table-body-cell">
-          <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="1988" value="1" /><span class="checkbox"></span></label>
-        </div>
-        <div class="table-body-cell">
-          Subfloor
-        </div>
-      </div>
-      <div class="resp-table-row">
-        <div class="table-body-cell">
-          <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="1989" value="1" /><span class="checkbox"></span></label>
-        </div>
-        <div class="table-body-cell">
-          Retaining walls and garden borders
-        </div>
-      </div>
-      <div class="resp-table-row">
-        <div class="table-body-cell">
-          <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="1990" value="1" /><span class="checkbox"></span></label>
-        </div>
-        <div class="table-body-cell">
-          Garden and storage sheds
-        </div>
-      </div>
-      <div class="resp-table-row">
-        <div class="table-body-cell">
-          <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="1991" value="1" /><span class="checkbox"></span></label>
-        </div>
-        <div class="table-body-cell">
-          Structures, fences and trees within 50m of the building within the boundaries of the property
-        </div>
-      </div>
-      <div class="resp-table-row">
-        <div class="table-body-cell">
-          <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="1992" value="1" /><span class="checkbox"></span></label>
-        </div>
-        <div class="table-body-cell">
-          Pergolas and decks
-        </div>
-      </div>      
-    </div>
-  </div>
-  <div id="resp-table" style="padding:0;">
-    <div id="resp-table-header">
-      <div class="table-header-cell white" style="padding-left:15px;">
-        Report on Areas Inspected
-      </div>
-      <div class="table-header-cell white">
-      </div>
-      <div class="table-header-cell white">
-      </div>
-      <div class="table-header-cell white">
-      </div>
-      <div class="table-header-cell white">
-      </div>
-      <div class="table-header-cell white">
-      </div>
-      <div class="table-header-cell white">
+
+  <!-- insp_type_building_and_pest_inspection -->
+  <ng-template [ngIf]="reportType != null && insp_type_building_and_pest_inspection != null && reportType == insp_type_building_and_pest_inspection">
+    <div class="card">
+      <div class="card-header">
+        <h2 class="card-title">
+          <strong>
+            <i class="fa fa-circle" aria-hidden="true" style="font-size: 11px;"></i>&nbsp;VISUAL TIMBER PEST INSPECTION</strong>
+        </h2>
       </div>
     </div>
-  </div>
-  <div class="form-group" style="padding: 0px 15px 0px 15px;">
-    <label style="padding: 10px 0;">Where applicable and where there is reasonable access, the following areas are examined during our inspection:</label>
-  </div>
-  <div id="resp-table" style="padding:0;">
-    <div id="resp-table-body">
-      <div class="resp-table-row">
-        <div class="table-body-cell">
-          <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="1985" value="1" /><span class="checkbox"></span></label>
+    <div class="card">
+      <div class="card-header">
+        <h5 class="black mb-0">
+          <i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;
+          <strong>Timber Pest Report</strong>
+        </h5>
+      </div>
+      <div class="card-body">
+        <div id="resp-table" style="padding:0;">
+          <div id="resp-table-header">
+            <div class="table-header-cell white" style="padding-left:15px;">
+              Areas Inspected
+            </div>
+            <div class="table-header-cell white">
+            </div>
+            <div class="table-header-cell white">
+            </div>
+            <div class="table-header-cell white">
+            </div>
+            <div class="table-header-cell white">
+            </div>
+            <div class="table-header-cell white">
+            </div>
+            <div class="table-header-cell white">
+            </div>
+          </div>
         </div>
-        <div class="table-body-cell" style="margin-left:-40px;">
-          Subterranean termite activity or damage
+        <div class="form-group" style="padding: 0px 15px 0px 15px;">
+          <label style="padding: 10px 0;">Where applicable and where there is reasonable access, the following areas are examined during our inspection:</label>
+        </div>
+        <div id="resp-table" style="padding:0;">
+          <div id="resp-table-body">
+            <div class="resp-table-row">
+              <div class="table-body-cell">
+                <label class="custom-checkbox" style="margin-left: 10px !important;">
+                  <input type="checkbox" (change)="onSave(false,true)" formControlName="1985" value="1" />
+                  <span class="checkbox"></span>
+                </label>
+              </div>
+              <div class="table-body-cell" style="margin-left:-40px;">
+                Interior and exterior of structures
+              </div>
+            </div>
+            <div class="resp-table-row">
+              <div class="table-body-cell">
+                <label class="custom-checkbox" style="margin-left: 10px !important;">
+                  <input type="checkbox" (change)="onSave(false,true)" formControlName="1986" value="1" />
+                  <span class="checkbox"></span>
+                </label>
+              </div>
+              <div class="table-body-cell">
+                Roof cavity
+              </div>
+            </div>
+            <div class="resp-table-row">
+              <div class="table-body-cell">
+                <label class="custom-checkbox" style="margin-left: 10px !important;">
+                  <input type="checkbox" (change)="onSave(false,true)" formControlName="1987" value="1" />
+                  <span class="checkbox"></span>
+                </label>
+              </div>
+              <div class="table-body-cell">
+                Garage or carport
+              </div>
+            </div>
+            <div class="resp-table-row">
+              <div class="table-body-cell">
+                <label class="custom-checkbox" style="margin-left: 10px !important;">
+                  <input type="checkbox" (change)="onSave(false,true)" formControlName="1988" value="1" />
+                  <span class="checkbox"></span>
+                </label>
+              </div>
+              <div class="table-body-cell">
+                Subfloor
+              </div>
+            </div>
+            <div class="resp-table-row">
+              <div class="table-body-cell">
+                <label class="custom-checkbox" style="margin-left: 10px !important;">
+                  <input type="checkbox" (change)="onSave(false,true)" formControlName="1989" value="1" />
+                  <span class="checkbox"></span>
+                </label>
+              </div>
+              <div class="table-body-cell">
+                Retaining walls and garden borders
+              </div>
+            </div>
+            <div class="resp-table-row">
+              <div class="table-body-cell">
+                <label class="custom-checkbox" style="margin-left: 10px !important;">
+                  <input type="checkbox" (change)="onSave(false,true)" formControlName="1990" value="1" />
+                  <span class="checkbox"></span>
+                </label>
+              </div>
+              <div class="table-body-cell">
+                Garden and storage sheds
+              </div>
+            </div>
+            <div class="resp-table-row">
+              <div class="table-body-cell">
+                <label class="custom-checkbox" style="margin-left: 10px !important;">
+                  <input type="checkbox" (change)="onSave(false,true)" formControlName="1991" value="1" />
+                  <span class="checkbox"></span>
+                </label>
+              </div>
+              <div class="table-body-cell">
+                Structures, fences and trees within 50m of the building within the boundaries of the property
+              </div>
+            </div>
+            <div class="resp-table-row">
+              <div class="table-body-cell">
+                <label class="custom-checkbox" style="margin-left: 10px !important;">
+                  <input type="checkbox" (change)="onSave(false,true)" formControlName="1992" value="1" />
+                  <span class="checkbox"></span>
+                </label>
+              </div>
+              <div class="table-body-cell">
+                Pergolas and decks
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="resp-table" style="padding:0;">
+          <div id="resp-table-header">
+            <div class="table-header-cell white" style="padding-left:15px;">
+              Report on Areas Inspected
+            </div>
+            <div class="table-header-cell white">
+            </div>
+            <div class="table-header-cell white">
+            </div>
+            <div class="table-header-cell white">
+            </div>
+            <div class="table-header-cell white">
+            </div>
+            <div class="table-header-cell white">
+            </div>
+            <div class="table-header-cell white">
+            </div>
+          </div>
+        </div>
+        <div class="form-group" style="padding: 0px 15px 0px 15px;">
+          <label style="padding: 10px 0;">Where applicable and where there is reasonable access, the following areas are examined during our inspection:</label>
+        </div>
+        <div id="resp-table" style="padding:0;">
+          <div id="resp-table-body">
+            <div class="resp-table-row">
+              <div class="table-body-cell">
+                <label class="custom-checkbox" style="margin-left: 10px !important;">
+                  <input type="checkbox" (change)="onSave(false,true)" formControlName="1993" value="1" />
+                  <span class="checkbox"></span>
+                </label>
+              </div>
+              <div class="table-body-cell" style="margin-left:-40px;">
+                Subterranean termite activity or damage
+              </div>
+            </div>
+            <div class="resp-table-row">
+              <div class="table-body-cell">
+                <label class="custom-checkbox" style="margin-left: 10px !important;">
+                  <input type="checkbox" (change)="onSave(false,true)" formControlName="1994" value="1" />
+                  <span class="checkbox"></span>
+                </label>
+              </div>
+              <div class="table-body-cell">
+                Borer activity
+              </div>
+            </div>
+            <div class="resp-table-row">
+              <div class="table-body-cell">
+                <label class="custom-checkbox" style="margin-left: 10px !important;">
+                  <input type="checkbox" (change)="onSave(false,true)" formControlName="1995" value="1" />
+                  <span class="checkbox"></span>
+                </label>
+              </div>
+              <div class="table-body-cell">
+                Wood decay (rot) fungi damage
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="resp-table-row">
-        <div class="table-body-cell">
-          <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="1986" value="1" /><span class="checkbox"></span></label>
-        </div>
-        <div class="table-body-cell">
-          Borer activity
+    </div>
+    <!-- Inspection Report -->
+    <div class="card">
+      <div class="card-header">
+        <h5 class="black mb-0">
+          <i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;
+          <strong>Timber Pest Inspection Report</strong>
+        </h5>
+      </div>
+      <div class="card-body">
+        <div id="resp-table" style="padding:0;">
+          <div id="resp-table-header">
+            <div class="table-header-cell white">
+              Items
+            </div>
+            <div class="table-header-cell white">
+              Condition Visually Fine
+            </div>
+            <div class="table-header-cell white">
+              Activity or Damage Advice on Item
+            </div>
+            <div class="table-header-cell white">
+              Action Recommended
+            </div>
+            <div class="table-header-cell white">
+              Major Structural Defect
+            </div>
+            <div class="table-header-cell white">
+              Unable to Inspect Due to Access
+            </div>
+            <div class="table-header-cell white">
+              Not Applicable
+            </div>
+          </div>
+          <div class="resp-table-row">
+            <div class="table-body-cell">
+              Dwelling
+            </div>
+            <div class="table-body-cell">
+              <label class="custom-checkbox" style="margin-left: 10px !important;">
+                <input type="checkbox" (change)="onSave(false,true)" formControlName="2000" value="1" />
+                <span class="checkbox"></span>
+              </label>
+            </div>
+            <div class="table-body-cell">
+              <label class="custom-checkbox" style="margin-left: 10px !important;">
+                <input type="checkbox" (change)="onSave(false,true)" formControlName="2001" value="1" />
+                <span class="checkbox"></span>
+              </label>
+            </div>
+            <div class="table-body-cell">
+              <label class="custom-checkbox" style="margin-left: 10px !important;">
+                <input type="checkbox" (change)="onSave(false,true)" formControlName="2002" value="1" />
+                <span class="checkbox"></span>
+              </label>
+            </div>
+            <div class="table-body-cell">
+              <label class="custom-checkbox" style="margin-left: 10px !important;">
+                <input type="checkbox" (change)="onSave(false,true)" formControlName="2003" value="1" />
+                <span class="checkbox"></span>
+              </label>
+            </div>
+            <div class="table-body-cell">
+              <label class="custom-checkbox" style="margin-left: 10px !important;">
+                <input type="checkbox" (change)="onSave(false,true)" formControlName="2004" value="1" />
+                <span class="checkbox"></span>
+              </label>
+            </div>
+            <div class="table-body-cell">
+              <label class="custom-checkbox" style="margin-left: 10px !important;">
+                <input type="checkbox" (change)="onSave(false,true)" formControlName="2005" value="1" />
+                <span class="checkbox"></span>
+              </label>
+            </div>
+          </div>
+          <div class="resp-table-row">
+            <div class="table-body-cell">
+              Interior
+            </div>
+            <div class="table-body-cell">
+              <label class="custom-checkbox" style="margin-left: 10px !important;">
+                <input type="checkbox" (change)="onSave(false,true)" formControlName="2006" value="1" />
+                <span class="checkbox"></span>
+              </label>
+            </div>
+            <div class="table-body-cell">
+              <label class="custom-checkbox" style="margin-left: 10px !important;">
+                <input type="checkbox" (change)="onSave(false,true)" formControlName="2007" value="1" />
+                <span class="checkbox"></span>
+              </label>
+            </div>
+            <div class="table-body-cell">
+              <label class="custom-checkbox" style="margin-left: 10px !important;">
+                <input type="checkbox" (change)="onSave(false,true)" formControlName="2008" value="1" />
+                <span class="checkbox"></span>
+              </label>
+            </div>
+            <div class="table-body-cell">
+              <label class="custom-checkbox" style="margin-left: 10px !important;">
+                <input type="checkbox" (change)="onSave(false,true)" formControlName="2009" value="1" />
+                <span class="checkbox"></span>
+              </label>
+            </div>
+            <div class="table-body-cell">
+              <label class="custom-checkbox" style="margin-left: 10px !important;">
+                <input type="checkbox" (change)="onSave(false,true)" formControlName="2010" value="1" />
+                <span class="checkbox"></span>
+              </label>
+            </div>
+            <div class="table-body-cell">
+              <label class="custom-checkbox" style="margin-left: 10px !important;">
+                <input type="checkbox" (change)="onSave(false,true)" formControlName="2011" value="1" />
+                <span class="checkbox"></span>
+              </label>
+            </div>
+          </div>
+          <div class="resp-table-row">
+            <div class="table-body-cell">
+              Windows
+            </div>
+            <div class="table-body-cell">
+              <label class="custom-checkbox" style="margin-left: 10px !important;">
+                <input type="checkbox" (change)="onSave(false,true)" formControlName="2012" value="1" />
+                <span class="checkbox"></span>
+              </label>
+            </div>
+            <div class="table-body-cell">
+              <label class="custom-checkbox" style="margin-left: 10px !important;">
+                <input type="checkbox" (change)="onSave(false,true)" formControlName="2013" value="1" />
+                <span class="checkbox"></span>
+              </label>
+            </div>
+            <div class="table-body-cell">
+              <label class="custom-checkbox" style="margin-left: 10px !important;">
+                <input type="checkbox" (change)="onSave(false,true)" formControlName="2014" value="1" />
+                <span class="checkbox"></span>
+              </label>
+            </div>
+            <div class="table-body-cell">
+              <label class="custom-checkbox" style="margin-left: 10px !important;">
+                <input type="checkbox" (change)="onSave(false,true)" formControlName="2015" value="1" />
+                <span class="checkbox"></span>
+              </label>
+            </div>
+            <div class="table-body-cell">
+              <label class="custom-checkbox" style="margin-left: 10px !important;">
+                <input type="checkbox" (change)="onSave(false,true)" formControlName="2016" value="1" />
+                <span class="checkbox"></span>
+              </label>
+            </div>
+            <div class="table-body-cell">
+              <label class="custom-checkbox" style="margin-left: 10px !important;">
+                <input type="checkbox" (change)="onSave(false,true)" formControlName="2017" value="1" />
+                <span class="checkbox"></span>
+              </label>
+            </div>
+          </div>
+          <div class="resp-table-row">
+            <div class="table-body-cell">
+              Door Frames
+            </div>
+            <div class="table-body-cell">
+              <label class="custom-checkbox" style="margin-left: 10px !important;">
+                <input type="checkbox" (change)="onSave(false,true)" formControlName="2018" value="1" />
+                <span class="checkbox"></span>
+              </label>
+            </div>
+            <div class="table-body-cell">
+              <label class="custom-checkbox" style="margin-left: 10px !important;">
+                <input type="checkbox" (change)="onSave(false,true)" formControlName="2019" value="1" />
+                <span class="checkbox"></span>
+              </label>
+            </div>
+            <div class="table-body-cell">
+              <label class="custom-checkbox" style="margin-left: 10px !important;">
+                <input type="checkbox" (change)="onSave(false,true)" formControlName="2020" value="1" />
+                <span class="checkbox"></span>
+              </label>
+            </div>
+            <div class="table-body-cell">
+              <label class="custom-checkbox" style="margin-left: 10px !important;">
+                <input type="checkbox" (change)="onSave(false,true)" formControlName="2021" value="1" />
+                <span class="checkbox"></span>
+              </label>
+            </div>
+            <div class="table-body-cell">
+              <label class="custom-checkbox" style="margin-left: 10px !important;">
+                <input type="checkbox" (change)="onSave(false,true)" formControlName="2022" value="1" />
+                <span class="checkbox"></span>
+              </label>
+            </div>
+            <div class="table-body-cell">
+              <label class="custom-checkbox" style="margin-left: 10px !important;">
+                <input type="checkbox" (change)="onSave(false,true)" formControlName="2023" value="1" />
+                <span class="checkbox"></span>
+              </label>
+            </div>
+          </div>
+          <div class="resp-table-row">
+            <div class="table-body-cell">
+              Roof Cavity
+            </div>
+            <div class="table-body-cell">
+              <label class="custom-checkbox" style="margin-left: 10px !important;">
+                <input type="checkbox" (change)="onSave(false,true)" formControlName="2024" value="1" />
+                <span class="checkbox"></span>
+              </label>
+            </div>
+            <div class="table-body-cell">
+              <label class="custom-checkbox" style="margin-left: 10px !important;">
+                <input type="checkbox" (change)="onSave(false,true)" formControlName="2025" value="1" />
+                <span class="checkbox"></span>
+              </label>
+            </div>
+            <div class="table-body-cell">
+              <label class="custom-checkbox" style="margin-left: 10px !important;">
+                <input type="checkbox" (change)="onSave(false,true)" formControlName="2026" value="1" />
+                <span class="checkbox"></span>
+              </label>
+            </div>
+            <div class="table-body-cell">
+              <label class="custom-checkbox" style="margin-left: 10px !important;">
+                <input type="checkbox" (change)="onSave(false,true)" formControlName="2027" value="1" />
+                <span class="checkbox"></span>
+              </label>
+            </div>
+            <div class="table-body-cell">
+              <label class="custom-checkbox" style="margin-left: 10px !important;">
+                <input type="checkbox" (change)="onSave(false,true)" formControlName="2028" value="1" />
+                <span class="checkbox"></span>
+              </label>
+            </div>
+            <div class="table-body-cell">
+              <label class="custom-checkbox" style="margin-left: 10px !important;">
+                <input type="checkbox" (change)="onSave(false,true)" formControlName="2029" value="1" />
+                <span class="checkbox"></span>
+              </label>
+            </div>
+          </div>
+          <div class="resp-table-row">
+            <div class="table-body-cell">
+              Sub Floor
+            </div>
+            <div class="table-body-cell">
+              <label class="custom-checkbox" style="margin-left: 10px !important;">
+                <input type="checkbox" (change)="onSave(false,true)" formControlName="2030" value="1" />
+                <span class="checkbox"></span>
+              </label>
+            </div>
+            <div class="table-body-cell">
+              <label class="custom-checkbox" style="margin-left: 10px !important;">
+                <input type="checkbox" (change)="onSave(false,true)" formControlName="2031" value="1" />
+                <span class="checkbox"></span>
+              </label>
+            </div>
+            <div class="table-body-cell">
+              <label class="custom-checkbox" style="margin-left: 10px !important;">
+                <input type="checkbox" (change)="onSave(false,true)" formControlName="2032" value="1" />
+                <span class="checkbox"></span>
+              </label>
+            </div>
+            <div class="table-body-cell">
+              <label class="custom-checkbox" style="margin-left: 10px !important;">
+                <input type="checkbox" (change)="onSave(false,true)" formControlName="2033" value="1" />
+                <span class="checkbox"></span>
+              </label>
+            </div>
+            <div class="table-body-cell">
+              <label class="custom-checkbox" style="margin-left: 10px !important;">
+                <input type="checkbox" (change)="onSave(false,true)" formControlName="2034" value="1" />
+                <span class="checkbox"></span>
+              </label>
+            </div>
+            <div class="table-body-cell">
+              <label class="custom-checkbox" style="margin-left: 10px !important;">
+                <input type="checkbox" (change)="onSave(false,true)" formControlName="2035" value="1" />
+                <span class="checkbox"></span>
+              </label>
+            </div>
+          </div>
+          <div class="resp-table-row">
+            <div class="table-body-cell">
+              Garage/Carport
+            </div>
+            <div class="table-body-cell">
+              <label class="custom-checkbox" style="margin-left: 10px !important;">
+                <input type="checkbox" (change)="onSave(false,true)" formControlName="2036" value="1" />
+                <span class="checkbox"></span>
+              </label>
+            </div>
+            <div class="table-body-cell">
+              <label class="custom-checkbox" style="margin-left: 10px !important;">
+                <input type="checkbox" (change)="onSave(false,true)" formControlName="2037" value="1" />
+                <span class="checkbox"></span>
+              </label>
+            </div>
+            <div class="table-body-cell">
+              <label class="custom-checkbox" style="margin-left: 10px !important;">
+                <input type="checkbox" (change)="onSave(false,true)" formControlName="2038" value="1" />
+                <span class="checkbox"></span>
+              </label>
+            </div>
+            <div class="table-body-cell">
+              <label class="custom-checkbox" style="margin-left: 10px !important;">
+                <input type="checkbox" (change)="onSave(false,true)" formControlName="2039" value="1" />
+                <span class="checkbox"></span>
+              </label>
+            </div>
+            <div class="table-body-cell">
+              <label class="custom-checkbox" style="margin-left: 10px !important;">
+                <input type="checkbox" (change)="onSave(false,true)" formControlName="2040" value="1" />
+                <span class="checkbox"></span>
+              </label>
+            </div>
+            <div class="table-body-cell">
+              <label class="custom-checkbox" style="margin-left: 10px !important;">
+                <input type="checkbox" (change)="onSave(false,true)" formControlName="2041" value="1" />
+                <span class="checkbox"></span>
+              </label>
+            </div>
+          </div>
+          <div class="resp-table-row">
+            <div class="table-body-cell">
+              Fence line
+            </div>
+            <div class="table-body-cell">
+              <label class="custom-checkbox" style="margin-left: 10px !important;">
+                <input type="checkbox" (change)="onSave(false,true)" formControlName="2042" value="1" />
+                <span class="checkbox"></span>
+              </label>
+            </div>
+            <div class="table-body-cell">
+              <label class="custom-checkbox" style="margin-left: 10px !important;">
+                <input type="checkbox" (change)="onSave(false,true)" formControlName="2043" value="1" />
+                <span class="checkbox"></span>
+              </label>
+            </div>
+            <div class="table-body-cell">
+              <label class="custom-checkbox" style="margin-left: 10px !important;">
+                <input type="checkbox" (change)="onSave(false,true)" formControlName="2044" value="1" />
+                <span class="checkbox"></span>
+              </label>
+            </div>
+            <div class="table-body-cell">
+              <label class="custom-checkbox" style="margin-left: 10px !important;">
+                <input type="checkbox" (change)="onSave(false,true)" formControlName="2045" value="1" />
+                <span class="checkbox"></span>
+              </label>
+            </div>
+            <div class="table-body-cell">
+              <label class="custom-checkbox" style="margin-left: 10px !important;">
+                <input type="checkbox" (change)="onSave(false,true)" formControlName="2046" value="1" />
+                <span class="checkbox"></span>
+              </label>
+            </div>
+            <div class="table-body-cell">
+              <label class="custom-checkbox" style="margin-left: 10px !important;">
+                <input type="checkbox" (change)="onSave(false,true)" formControlName="2047" value="1" />
+                <span class="checkbox"></span>
+              </label>
+            </div>
+          </div>
+          <div class="resp-table-row">
+            <div class="table-body-cell">
+              Grounds
+            </div>
+            <div class="table-body-cell">
+              <label class="custom-checkbox" style="margin-left: 10px !important;">
+                <input type="checkbox" (change)="onSave(false,true)" formControlName="2048" value="1" />
+                <span class="checkbox"></span>
+              </label>
+            </div>
+            <div class="table-body-cell">
+              <label class="custom-checkbox" style="margin-left: 10px !important;">
+                <input type="checkbox" (change)="onSave(false,true)" formControlName="2049" value="1" />
+                <span class="checkbox"></span>
+              </label>
+            </div>
+            <div class="table-body-cell">
+              <label class="custom-checkbox" style="margin-left: 10px !important;">
+                <input type="checkbox" (change)="onSave(false,true)" formControlName="2050" value="1" />
+                <span class="checkbox"></span>
+              </label>
+            </div>
+            <div class="table-body-cell">
+              <label class="custom-checkbox" style="margin-left: 10px !important;">
+                <input type="checkbox" (change)="onSave(false,true)" formControlName="2051" value="1" />
+                <span class="checkbox"></span>
+              </label>
+            </div>
+            <div class="table-body-cell">
+              <label class="custom-checkbox" style="margin-left: 10px !important;">
+                <input type="checkbox" (change)="onSave(false,true)" formControlName="2052" value="1" />
+                <span class="checkbox"></span>
+              </label>
+            </div>
+            <div class="table-body-cell">
+              <label class="custom-checkbox" style="margin-left: 10px !important;">
+                <input type="checkbox" (change)="onSave(false,true)" formControlName="2053" value="1" />
+                <span class="checkbox"></span>
+              </label>
+            </div>
+          </div>
+          <div class="resp-table-row">
+            <div class="table-body-cell">
+              Retaining Walls
+            </div>
+            <div class="table-body-cell">
+              <label class="custom-checkbox" style="margin-left: 10px !important;">
+                <input type="checkbox" (change)="onSave(false,true)" formControlName="2054" value="1" />
+                <span class="checkbox"></span>
+              </label>
+            </div>
+            <div class="table-body-cell">
+              <label class="custom-checkbox" style="margin-left: 10px !important;">
+                <input type="checkbox" (change)="onSave(false,true)" formControlName="2055" value="1" />
+                <span class="checkbox"></span>
+              </label>
+            </div>
+            <div class="table-body-cell">
+              <label class="custom-checkbox" style="margin-left: 10px !important;">
+                <input type="checkbox" (change)="onSave(false,true)" formControlName="2056" value="1" />
+                <span class="checkbox"></span>
+              </label>
+            </div>
+            <div class="table-body-cell">
+              <label class="custom-checkbox" style="margin-left: 10px !important;">
+                <input type="checkbox" (change)="onSave(false,true)" formControlName="2057" value="1" />
+                <span class="checkbox"></span>
+              </label>
+            </div>
+            <div class="table-body-cell">
+              <label class="custom-checkbox" style="margin-left: 10px !important;">
+                <input type="checkbox" (change)="onSave(false,true)" formControlName="2058" value="1" />
+                <span class="checkbox"></span>
+              </label>
+            </div>
+            <div class="table-body-cell">
+              <label class="custom-checkbox" style="margin-left: 10px !important;">
+                <input type="checkbox" (change)="onSave(false,true)" formControlName="2059" value="1" />
+                <span class="checkbox"></span>
+              </label>
+            </div>
+          </div>
+          <div class="resp-table-row">
+            <div class="table-body-cell">
+              Garden Borders
+            </div>
+            <div class="table-body-cell">
+              <label class="custom-checkbox" style="margin-left: 10px !important;">
+                <input type="checkbox" (change)="onSave(false,true)" formControlName="2060" value="1" />
+                <span class="checkbox"></span>
+              </label>
+            </div>
+            <div class="table-body-cell">
+              <label class="custom-checkbox" style="margin-left: 10px !important;">
+                <input type="checkbox" (change)="onSave(false,true)" formControlName="2061" value="1" />
+                <span class="checkbox"></span>
+              </label>
+            </div>
+            <div class="table-body-cell">
+              <label class="custom-checkbox" style="margin-left: 10px !important;">
+                <input type="checkbox" (change)="onSave(false,true)" formControlName="2062" value="1" />
+                <span class="checkbox"></span>
+              </label>
+            </div>
+            <div class="table-body-cell">
+              <label class="custom-checkbox" style="margin-left: 10px !important;">
+                <input type="checkbox" (change)="onSave(false,true)" formControlName="2063" value="1" />
+                <span class="checkbox"></span>
+              </label>
+            </div>
+            <div class="table-body-cell">
+              <label class="custom-checkbox" style="margin-left: 10px !important;">
+                <input type="checkbox" (change)="onSave(false,true)" formControlName="2064" value="1" />
+                <span class="checkbox"></span>
+              </label>
+            </div>
+            <div class="table-body-cell">
+              <label class="custom-checkbox" style="margin-left: 10px !important;">
+                <input type="checkbox" (change)="onSave(false,true)" formControlName="2065" value="1" />
+                <span class="checkbox"></span>
+              </label>
+            </div>
+          </div>
+          <div class="resp-table-row">
+            <div class="table-body-cell">
+              Pergola
+            </div>
+            <div class="table-body-cell">
+              <label class="custom-checkbox" style="margin-left: 10px !important;">
+                <input type="checkbox" (change)="onSave(false,true)" formControlName="2066" value="1" />
+                <span class="checkbox"></span>
+              </label>
+            </div>
+            <div class="table-body-cell">
+              <label class="custom-checkbox" style="margin-left: 10px !important;">
+                <input type="checkbox" (change)="onSave(false,true)" formControlName="2067" value="1" />
+                <span class="checkbox"></span>
+              </label>
+            </div>
+            <div class="table-body-cell">
+              <label class="custom-checkbox" style="margin-left: 10px !important;">
+                <input type="checkbox" (change)="onSave(false,true)" formControlName="2068" value="1" />
+                <span class="checkbox"></span>
+              </label>
+            </div>
+            <div class="table-body-cell">
+              <label class="custom-checkbox" style="margin-left: 10px !important;">
+                <input type="checkbox" (change)="onSave(false,true)" formControlName="2069" value="1" />
+                <span class="checkbox"></span>
+              </label>
+            </div>
+            <div class="table-body-cell">
+              <label class="custom-checkbox" style="margin-left: 10px !important;">
+                <input type="checkbox" (change)="onSave(false,true)" formControlName="2070" value="1" />
+                <span class="checkbox"></span>
+              </label>
+            </div>
+            <div class="table-body-cell">
+              <label class="custom-checkbox" style="margin-left: 10px !important;">
+                <input type="checkbox" (change)="onSave(false,true)" formControlName="2071" value="1" />
+                <span class="checkbox"></span>
+              </label>
+            </div>
+          </div>
+          <div class="resp-table-row">
+            <div class="table-body-cell">
+              Deck
+            </div>
+            <div class="table-body-cell">
+              <label class="custom-checkbox" style="margin-left: 10px !important;">
+                <input type="checkbox" (change)="onSave(false,true)" formControlName="2072" value="1" />
+                <span class="checkbox"></span>
+              </label>
+            </div>
+            <div class="table-body-cell">
+              <label class="custom-checkbox" style="margin-left: 10px !important;">
+                <input type="checkbox" (change)="onSave(false,true)" formControlName="2073" value="1" />
+                <span class="checkbox"></span>
+              </label>
+            </div>
+            <div class="table-body-cell">
+              <label class="custom-checkbox" style="margin-left: 10px !important;">
+                <input type="checkbox" (change)="onSave(false,true)" formControlName="2074" value="1" />
+                <span class="checkbox"></span>
+              </label>
+            </div>
+            <div class="table-body-cell">
+              <label class="custom-checkbox" style="margin-left: 10px !important;">
+                <input type="checkbox" (change)="onSave(false,true)" formControlName="2075" value="1" />
+                <span class="checkbox"></span>
+              </label>
+            </div>
+            <div class="table-body-cell">
+              <label class="custom-checkbox" style="margin-left: 10px !important;">
+                <input type="checkbox" (change)="onSave(false,true)" formControlName="2076" value="1" />
+                <span class="checkbox"></span>
+              </label>
+            </div>
+            <div class="table-body-cell">
+              <label class="custom-checkbox" style="margin-left: 10px !important;">
+                <input type="checkbox" (change)="onSave(false,true)" formControlName="2077" value="1" />
+                <span class="checkbox"></span>
+              </label>
+            </div>
+          </div>
+          <div class="resp-table-row">
+            <div class="table-body-cell">
+              Outbuildings
+            </div>
+            <div class="table-body-cell">
+              <label class="custom-checkbox" style="margin-left: 10px !important;">
+                <input type="checkbox" (change)="onSave(false,true)" formControlName="2078" value="1" />
+                <span class="checkbox"></span>
+              </label>
+            </div>
+            <div class="table-body-cell">
+              <label class="custom-checkbox" style="margin-left: 10px !important;">
+                <input type="checkbox" (change)="onSave(false,true)" formControlName="2079" value="1" />
+                <span class="checkbox"></span>
+              </label>
+            </div>
+            <div class="table-body-cell">
+              <label class="custom-checkbox" style="margin-left: 10px !important;">
+                <input type="checkbox" (change)="onSave(false,true)" formControlName="2080" value="1" />
+                <span class="checkbox"></span>
+              </label>
+            </div>
+            <div class="table-body-cell">
+              <label class="custom-checkbox" style="margin-left: 10px !important;">
+                <input type="checkbox" (change)="onSave(false,true)" formControlName="2081" value="1" />
+                <span class="checkbox"></span>
+              </label>
+            </div>
+            <div class="table-body-cell">
+              <label class="custom-checkbox" style="margin-left: 10px !important;">
+                <input type="checkbox" (change)="onSave(false,true)" formControlName="2082" value="1" />
+                <span class="checkbox"></span>
+              </label>
+            </div>
+            <div class="table-body-cell">
+              <label class="custom-checkbox" style="margin-left: 10px !important;">
+                <input type="checkbox" (change)="onSave(false,true)" formControlName="2083" value="1" />
+                <span class="checkbox"></span>
+              </label>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="resp-table-row">
-        <div class="table-body-cell">
-          <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="1987" value="1" /><span class="checkbox"></span></label>
-        </div>
-        <div class="table-body-cell">
-          Wood decay (rot) fungi damage
-        </div>
-      </div>      
     </div>
-  </div>
-  </div>
-  </div>
-  <!-- Inspection Report -->
-  <div class="card">
-    <div class="card-header">
-      <h5 class="black mb-0"><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;<strong>Timber Pest Inspection Report</strong>
-      </h5>
-    </div>
-    <div class="card-body">
-      <div id="resp-table" style="padding:0;">
-        <div id="resp-table-header">
-          <div class="table-header-cell white">
-            Items
-          </div>
-          <div class="table-header-cell white">
-            Condition Visually Fine
-          </div>
-          <div class="table-header-cell white">
-            Activity or Damage Advice on Item
-          </div>
-          <div class="table-header-cell white">
-            Action Recommended
-          </div>
-          <div class="table-header-cell white">
-            Major Structural Defect
-          </div>
-          <div class="table-header-cell white">
-            Unable to Inspect Due to Access
-          </div>
-          <div class="table-header-cell white">
-            Not Applicable
-          </div>
-        </div>
-        <div class="resp-table-row">
-          <div class="table-body-cell">
-            Dwelling
-          </div>
-          <div class="table-body-cell">
-            <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="2000" value="1"/><span class="checkbox"></span></label>
-          </div>
-          <div class="table-body-cell">
-            <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="2001" value="1"/><span class="checkbox"></span></label>
-          </div>
-          <div class="table-body-cell">
-            <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="2002" value="1"/><span class="checkbox"></span></label>
-          </div>
-          <div class="table-body-cell">
-            <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="2003" value="1"/><span class="checkbox"></span></label>
-          </div>
-          <div class="table-body-cell">
-            <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="2004" value="1"/><span class="checkbox"></span></label>
-          </div>
-          <div class="table-body-cell">
-            <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="2005" value="1"/><span class="checkbox"></span></label>
-          </div>
-        </div>
-        <div class="resp-table-row">
-          <div class="table-body-cell">
-            Interior
-          </div>
-          <div class="table-body-cell">
-            <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="2006" value="1"/><span class="checkbox"></span></label>
-          </div>
-          <div class="table-body-cell">
-            <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="2007" value="1"/><span class="checkbox"></span></label>
-          </div>
-          <div class="table-body-cell">
-            <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="2008" value="1"/><span class="checkbox"></span></label>
-          </div>
-          <div class="table-body-cell">
-            <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="2009" value="1"/><span class="checkbox"></span></label>
-          </div>
-          <div class="table-body-cell">
-            <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="2010" value="1"/><span class="checkbox"></span></label>
-          </div>
-          <div class="table-body-cell">
-            <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="2011" value="1"/><span class="checkbox"></span></label>
-          </div>
-        </div>
-        <div class="resp-table-row">
-          <div class="table-body-cell">
-            Windows
-          </div>
-          <div class="table-body-cell">
-            <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="2012" value="1"/><span class="checkbox"></span></label>
-          </div>
-          <div class="table-body-cell">
-            <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="2013" value="1"/><span class="checkbox"></span></label>
-          </div>
-          <div class="table-body-cell">
-            <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="2014" value="1"/><span class="checkbox"></span></label>
-          </div>
-          <div class="table-body-cell">
-            <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="2015" value="1"/><span class="checkbox"></span></label>
-          </div>
-          <div class="table-body-cell">
-            <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="2016" value="1"/><span class="checkbox"></span></label>
-          </div>
-          <div class="table-body-cell">
-            <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="2017" value="1"/><span class="checkbox"></span></label>
-          </div>
-        </div>
-        <div class="resp-table-row">
-          <div class="table-body-cell">
-            Door Frames
-          </div>
-          <div class="table-body-cell">
-            <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="2018" value="1"/><span class="checkbox"></span></label>
-          </div>
-          <div class="table-body-cell">
-            <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="2019" value="1"/><span class="checkbox"></span></label>
-          </div>
-          <div class="table-body-cell">
-            <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="2020" value="1"/><span class="checkbox"></span></label>
-          </div>
-          <div class="table-body-cell">
-            <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="2021" value="1"/><span class="checkbox"></span></label>
-          </div>
-          <div class="table-body-cell">
-            <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="2022" value="1"/><span class="checkbox"></span></label>
-          </div>
-          <div class="table-body-cell">
-            <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="2023" value="1"/><span class="checkbox"></span></label>
-          </div>
-        </div>
-        <div class="resp-table-row">
-          <div class="table-body-cell">
-            Roof Cavity
-          </div>
-          <div class="table-body-cell">
-            <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="2024" value="1"/><span class="checkbox"></span></label>
-          </div>
-          <div class="table-body-cell">
-            <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="2025" value="1"/><span class="checkbox"></span></label>
-          </div>
-          <div class="table-body-cell">
-            <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="2026" value="1"/><span class="checkbox"></span></label>
-          </div>
-          <div class="table-body-cell">
-            <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="2027" value="1"/><span class="checkbox"></span></label>
-          </div>
-          <div class="table-body-cell">
-            <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="2028" value="1"/><span class="checkbox"></span></label>
-          </div>
-          <div class="table-body-cell">
-            <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="2029" value="1"/><span class="checkbox"></span></label>
-          </div>
-        </div>
-        <div class="resp-table-row">
-          <div class="table-body-cell">
-            Sub Floor
-          </div>
-          <div class="table-body-cell">
-            <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="2030" value="1"/><span class="checkbox"></span></label>
-          </div>
-          <div class="table-body-cell">
-            <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="2031" value="1"/><span class="checkbox"></span></label>
-          </div>
-          <div class="table-body-cell">
-            <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="2032" value="1"/><span class="checkbox"></span></label>
-          </div>
-          <div class="table-body-cell">
-            <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="2033" value="1"/><span class="checkbox"></span></label>
-          </div>
-          <div class="table-body-cell">
-            <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="2034" value="1"/><span class="checkbox"></span></label>
-          </div>
-          <div class="table-body-cell">
-            <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="2035" value="1"/><span class="checkbox"></span></label>
-          </div>
-        </div>
-        <div class="resp-table-row">
-          <div class="table-body-cell">
-            Garage/Carport
-          </div>
-          <div class="table-body-cell">
-            <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="2036" value="1"/><span class="checkbox"></span></label>
-          </div>
-          <div class="table-body-cell">
-            <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="2037" value="1"/><span class="checkbox"></span></label>
-          </div>
-          <div class="table-body-cell">
-            <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="2038" value="1"/><span class="checkbox"></span></label>
-          </div>
-          <div class="table-body-cell">
-            <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="2039" value="1"/><span class="checkbox"></span></label>
-          </div>
-          <div class="table-body-cell">
-            <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="2040" value="1"/><span class="checkbox"></span></label>
-          </div>
-          <div class="table-body-cell">
-            <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="2041" value="1"/><span class="checkbox"></span></label>
-          </div>
-        </div>
-        <div class="resp-table-row">
-          <div class="table-body-cell">
-            Fence line
-          </div>
-          <div class="table-body-cell">
-            <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="2042" value="1"/><span class="checkbox"></span></label>
-          </div>
-          <div class="table-body-cell">
-            <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="2043" value="1"/><span class="checkbox"></span></label>
-          </div>
-          <div class="table-body-cell">
-            <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="2044" value="1"/><span class="checkbox"></span></label>
-          </div>
-          <div class="table-body-cell">
-            <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="2045" value="1"/><span class="checkbox"></span></label>
-          </div>
-          <div class="table-body-cell">
-            <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="2046" value="1"/><span class="checkbox"></span></label>
-          </div>
-          <div class="table-body-cell">
-            <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="2047" value="1"/><span class="checkbox"></span></label>
-          </div>
-        </div>
-        <div class="resp-table-row">
-          <div class="table-body-cell">
-            Grounds
-          </div>
-          <div class="table-body-cell">
-            <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="2048" value="1"/><span class="checkbox"></span></label>
-          </div>
-          <div class="table-body-cell">
-            <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="2049" value="1"/><span class="checkbox"></span></label>
-          </div>
-          <div class="table-body-cell">
-            <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="2050" value="1"/><span class="checkbox"></span></label>
-          </div>
-          <div class="table-body-cell">
-            <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="2051" value="1"/><span class="checkbox"></span></label>
-          </div>
-          <div class="table-body-cell">
-            <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="2052" value="1"/><span class="checkbox"></span></label>
-          </div>
-          <div class="table-body-cell">
-            <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="2053" value="1"/><span class="checkbox"></span></label>
-          </div>
-        </div>
-        <div class="resp-table-row">
-          <div class="table-body-cell">
-            Retaining Walls
-          </div>
-          <div class="table-body-cell">
-            <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="2054" value="1"/><span class="checkbox"></span></label>
-          </div>
-          <div class="table-body-cell">
-            <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="2055" value="1"/><span class="checkbox"></span></label>
-          </div>
-          <div class="table-body-cell">
-            <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="2056" value="1"/><span class="checkbox"></span></label>
-          </div>
-          <div class="table-body-cell">
-            <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="2057" value="1"/><span class="checkbox"></span></label>
-          </div>
-          <div class="table-body-cell">
-            <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="2058" value="1"/><span class="checkbox"></span></label>
-          </div>
-          <div class="table-body-cell">
-            <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="2059" value="1"/><span class="checkbox"></span></label>
-          </div>
-        </div>
-        <div class="resp-table-row">
-          <div class="table-body-cell">
-            Garden Borders
-          </div>
-          <div class="table-body-cell">
-            <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="2060" value="1"/><span class="checkbox"></span></label>
-          </div>
-          <div class="table-body-cell">
-            <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="2061" value="1"/><span class="checkbox"></span></label>
-          </div>
-          <div class="table-body-cell">
-            <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="2062" value="1"/><span class="checkbox"></span></label>
-          </div>
-          <div class="table-body-cell">
-            <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="2063" value="1"/><span class="checkbox"></span></label>
-          </div>
-          <div class="table-body-cell">
-            <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="2064" value="1"/><span class="checkbox"></span></label>
-          </div>
-          <div class="table-body-cell">
-            <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="2065" value="1"/><span class="checkbox"></span></label>
-          </div>
-        </div>
-        <div class="resp-table-row">
-          <div class="table-body-cell">
-            Pergola
-          </div>
-          <div class="table-body-cell">
-            <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="2066" value="1"/><span class="checkbox"></span></label>
-          </div>
-          <div class="table-body-cell">
-            <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="2067" value="1"/><span class="checkbox"></span></label>
-          </div>
-          <div class="table-body-cell">
-            <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="2068" value="1"/><span class="checkbox"></span></label>
-          </div>
-          <div class="table-body-cell">
-            <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="2069" value="1"/><span class="checkbox"></span></label>
-          </div>
-          <div class="table-body-cell">
-            <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="2070" value="1"/><span class="checkbox"></span></label>
-          </div>
-          <div class="table-body-cell">
-            <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="2071" value="1"/><span class="checkbox"></span></label>
-          </div>
-        </div>
-        <div class="resp-table-row">
-          <div class="table-body-cell">
-            Deck
-          </div>
-          <div class="table-body-cell">
-            <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="2072" value="1"/><span class="checkbox"></span></label>
-          </div>
-          <div class="table-body-cell">
-            <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="2073" value="1"/><span class="checkbox"></span></label>
-          </div>
-          <div class="table-body-cell">
-            <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="2074" value="1"/><span class="checkbox"></span></label>
-          </div>
-          <div class="table-body-cell">
-            <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="2075" value="1"/><span class="checkbox"></span></label>
-          </div>
-          <div class="table-body-cell">
-            <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="2076" value="1"/><span class="checkbox"></span></label>
-          </div>
-          <div class="table-body-cell">
-            <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="2077" value="1"/><span class="checkbox"></span></label>
-          </div>
-        </div>
-        <div class="resp-table-row">
-          <div class="table-body-cell">
-            Outbuildings
-          </div>
-          <div class="table-body-cell">
-            <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="2078" value="1"/><span class="checkbox"></span></label>
-          </div>
-          <div class="table-body-cell">
-            <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="2079" value="1"/><span class="checkbox"></span></label>
-          </div>
-          <div class="table-body-cell">
-            <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="2080" value="1"/><span class="checkbox"></span></label>
-          </div>
-          <div class="table-body-cell">
-            <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="2081" value="1"/><span class="checkbox"></span></label>
-          </div>
-          <div class="table-body-cell">
-            <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="2082" value="1"/><span class="checkbox"></span></label>
-          </div>
-          <div class="table-body-cell">
-            <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="2083" value="1"/><span class="checkbox"></span></label>
-          </div>
-        </div>        
+    <div class="card">
+      <div class="card-header">
+        <h5 class="black mb-0">
+          <strong>Timber Pest - Findings and Recommendations</strong>
+        </h5>
       </div>
-    </div>
-  </div>  
-  <div class="card">
-    <div class="card-header">
-      <h5 class="black mb-0"><strong>Timber Pest - Findings and Recommendations</strong>
-      </h5>
-    </div>
-    <div class="card-body">
-      <div id="recomendations-9">
-        <div formArrayName="timberpest_recommendations_list">
-          <div class="card" *ngFor="let recomm of getRecommendationControls(inspectiondetailsform, 'timberpest_recommendations_list'); let i=index;" [formGroupName]="i">
-            <div class="card-body">
-              <div class="pull-right"><a data-toggle="tooltip" title="" class="btn btn-default" data-original-title="Remove this recommendation"
-                  (click)="onDeleteRecommendations($event, 'timberpest_recommendations_list', i)"><i class="fa fa-times"></i></a></div>
-              <div class="row">
-                <div class="col-sm-12">
-                  <div class="form-group">
-                    <select formControlName="item" (change)="onSave(false,true)" class="form-control">
+      <div class="card-body">
+        <div id="recomendations-9">
+          <div formArrayName="timberpest_recommendations_list">
+            <div class="card" *ngFor="let recomm of getRecommendationControls(inspectiondetailsform, 'timberpest_recommendations_list'); let i=index;"
+              [formGroupName]="i">
+              <div class="card-body">
+                <div class="pull-right">
+                  <a data-toggle="tooltip" title="" class="btn btn-default" data-original-title="Remove this recommendation"
+                    (click)="onDeleteRecommendations($event, 'timberpest_recommendations_list', i)">
+                    <i class="fa fa-times"></i>
+                  </a>
+                </div>
+                <div class="row">
+                  <div class="col-sm-12">
+                    <div class="form-group">
+                      <select formControlName="item" (change)="onSave(false,true)" class="form-control">
                         <option value="Timber Pest - Findings and Recommendations">Timber Pest - Findings and Recommendations</option>
-                    </select>
+                      </select>
+                    </div>
                   </div>
-                </div>
-                <div class="col-sm-6">
-                  <div class="form-group">
-                    <select formControlName="rectype" (change)="onSave(false,true)" class="form-control">
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <select formControlName="rectype" (change)="onSave(false,true)" class="form-control">
                         <option value="-">-</option>
-                            <option value="Activity or Damage Advice on Item">Activity or Damage Advice on Item</option>
-                            <option value="Action Recommended">Action Recommended</option>
-                            <option value="Major Structural Defect">Major Structural Defect</option>
-                            <option value="Unable to Inspect Due to Access">Unable to Inspect Due to Access</option>
-                    </select>
+                        <option value="Activity or Damage Advice on Item">Activity or Damage Advice on Item</option>
+                        <option value="Action Recommended">Action Recommended</option>
+                        <option value="Major Structural Defect">Major Structural Defect</option>
+                        <option value="Unable to Inspect Due to Access">Unable to Inspect Due to Access</option>
+                      </select>
+                    </div>
                   </div>
-                </div>
-                <div class="col-sm-6">
-                  <div class="form-group">
-                    <select formControlName="recdetail" (change)="onSave(false,true)" class="form-control">
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <select formControlName="recdetail" (change)="onSave(false,true)" class="form-control">
                         <option value="-">-</option>
                         <option *ngFor="let timberPestitem of timberPest" value="{{ timberPestitem }}">{{ timberPestitem }}</option>
-                    </select>
+                      </select>
+                    </div>
                   </div>
-                </div>
-                <div class="form-group col">
-                  <label for="timberrecomme">Comments:</label>
-                  <div>
-                    <textarea id="timberrecomme" class="form-control" rows="4" max-rows="25" placeholder="Type here to expand" formControlName="comment"></textarea>
+                  <div class="form-group col">
+                    <label for="timberrecomme">Comments:</label>
+                    <div>
+                      <textarea id="timberrecomme" class="form-control" rows="4" max-rows="25" placeholder="Type here to expand" formControlName="comment"></textarea>
+                    </div>
                   </div>
-                </div>
-                <div class="col-xs-12 col-md-6">
-                  <div class="form-group">
-                    <div>                      
-                      <app-file-upload-component (uploadCompletedEmitter)="onUploadComplete($event)" [index]="i" [reportId]="reportId" [recommendationType]="'timberpest_recommendations_list'" [progress]="'rec-file-preview-timberpest'" [inspectiondetailsform]="inspectiondetailsform"></app-file-upload-component>                      
-                      <input type="hidden" formControlName="typee"/>
-                      <input type="hidden" formControlName="filename"/>
+                  <div class="col-xs-12 col-md-6">
+                    <div class="form-group">
+                      <div>
+                        <app-file-upload-component (uploadCompletedEmitter)="onUploadComplete($event)" [index]="i" [reportId]="reportId" [recommendationType]="'timberpest_recommendations_list'"
+                          [progress]="'rec-file-preview-timberpest'" [inspectiondetailsform]="inspectiondetailsform"></app-file-upload-component>
+                        <input type="hidden" formControlName="typee" />
+                        <input type="hidden" formControlName="filename" />
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -5305,314 +5607,420 @@
             </div>
           </div>
         </div>
-      </div>
-      <div>
-        <input type="button" class="pull-right btn btn-secondary" (click)="onAddRecommendations('timberpest_recommendations_list','TimberPest')" value="Add More Recommendation"/>
-      </div>
-    </div>
-  </div>  
-  <div class="card">
-    <div class="card-header">
-      <h5 class="black mb-0"><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;<strong>Areas Conducive to Timber Pest Attacks</strong>
-      </h5>
-    </div>
-    <div class="card-body">
-      <div id="resp-table" style="padding:0;">
-        <div id="resp-table-header">
-          <div class="table-header-cell white" style="padding-left:15px;">
-            Areas Conducive
-          </div>
-          <div class="table-header-cell white">
-          </div>
-          <div class="table-header-cell white">
-          </div>
-          <div class="table-header-cell white">
-          </div>
-          <div class="table-header-cell white">
-          </div>
-          <div class="table-header-cell white">
-          </div>
-          <div class="table-header-cell white">
-          </div>
+        <div>
+          <input type="button" class="pull-right btn btn-secondary" (click)="onAddRecommendations('timberpest_recommendations_list','TimberPest')"
+            value="Add More Recommendation" />
         </div>
       </div>
-      <div class="form-group" style="padding: 0px 15px 0px 15px;">
-        <label style="padding: 10px 0;">Timber Pest attacks are likely to occur if the following items are not considered and planned for:</label>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <h5 class="black mb-0">
+          <i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;
+          <strong>Areas Conducive to Timber Pest Attacks</strong>
+        </h5>
       </div>
-      <div id="resp-table" style="padding:0;">
-        <div id="resp-table-body">
-          <div class="resp-table-row">
-            <div class="table-body-cell">
-              <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="2096" value="1" /><span class="checkbox"></span></label>
+      <div class="card-body">
+        <div id="resp-table" style="padding:0;">
+          <div id="resp-table-header">
+            <div class="table-header-cell white" style="padding-left:15px;">
+              Areas Conducive
             </div>
-            <div class="table-body-cell" style="margin-left:-40px;">
-              Hot water system overflow should be directed away from building or to a drain
+            <div class="table-header-cell white">
+            </div>
+            <div class="table-header-cell white">
+            </div>
+            <div class="table-header-cell white">
+            </div>
+            <div class="table-header-cell white">
+            </div>
+            <div class="table-header-cell white">
+            </div>
+            <div class="table-header-cell white">
             </div>
           </div>
-          <div class="resp-table-row">
+        </div>
+        <div class="form-group" style="padding: 0px 15px 0px 15px;">
+          <label style="padding: 10px 0;">Timber Pest attacks are likely to occur if the following items are not considered and planned for:</label>
+        </div>
+        <div id="resp-table" style="padding:0;">
+          <div id="resp-table-body">
+            <div class="resp-table-row">
+              <div class="table-body-cell">
+                <label class="custom-checkbox" style="margin-left: 10px !important;">
+                  <input type="checkbox" (change)="onSave(false,true)" formControlName="2096" value="1" />
+                  <span class="checkbox"></span>
+                </label>
+              </div>
+              <div class="table-body-cell" style="margin-left:-40px;">
+                Hot water system overflow should be directed away from building or to a drain
+              </div>
+            </div>
+            <div class="resp-table-row">
 
-            <div class="table-body-cell">
-              <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="2097" value="1" /><span class="checkbox"></span></label>
+              <div class="table-body-cell">
+                <label class="custom-checkbox" style="margin-left: 10px !important;">
+                  <input type="checkbox" (change)="onSave(false,true)" formControlName="2097" value="1" />
+                  <span class="checkbox"></span>
+                </label>
+              </div>
+              <div class="table-body-cell">
+                External timbers in contact with the building may allow termites to enter undetected
+              </div>
             </div>
-            <div class="table-body-cell">
-              External timbers in contact with the building may allow termites to enter undetected
+            <div class="resp-table-row">
+              <div class="table-body-cell">
+                <label class="custom-checkbox" style="margin-left: 10px !important;">
+                  <input type="checkbox" (change)="onSave(false,true)" formControlName="2098" value="1" />
+                  <span class="checkbox"></span>
+                </label>
+              </div>
+              <div class="table-body-cell">
+                Landscape timbers should be removed or replaced with treated timbers
+              </div>
+            </div>
+            <div class="resp-table-row">
+              <div class="table-body-cell">
+                <label class="custom-checkbox" style="margin-left: 10px !important;">
+                  <input type="checkbox" (change)="onSave(false,true)" formControlName="2099" value="1" />
+                  <span class="checkbox"></span>
+                </label>
+              </div>
+              <div class="table-body-cell">
+                Landscape timbers should be removed or replaced with treated timbers
+              </div>
+            </div>
+            <div class="resp-table-row">
+              <div class="table-body-cell">
+                <label class="custom-checkbox" style="margin-left: 10px !important;">
+                  <input type="checkbox" (change)="onSave(false,true)" formControlName="2100" value="1" />
+                  <span class="checkbox"></span>
+                </label>
+              </div>
+              <div class="table-body-cell">
+                Weepholes in brick work need to be free from soil
+              </div>
             </div>
           </div>
-          <div class="resp-table-row">
-            <div class="table-body-cell">
-              <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="2098" value="1" /><span class="checkbox"></span></label>
-            </div>
-            <div class="table-body-cell">
-              Landscape timbers should be removed or replaced with treated timbers
-            </div>
-          </div>
-          <div class="resp-table-row">
-            <div class="table-body-cell">
-              <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="2099" value="1" /><span class="checkbox"></span></label>
-            </div>
-            <div class="table-body-cell">
-              Landscape timbers should be removed or replaced with treated timbers
-            </div>
-          </div>
-          <div class="resp-table-row">
-            <div class="table-body-cell">
-              <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="2100" value="1" /><span class="checkbox"></span></label>
-            </div>
-            <div class="table-body-cell">
-              Weepholes in brick work need to be free from soil
-            </div>
-          </div>          
         </div>
-      </div>
-      <div class="row">
-        <div class="form-group col" style="padding: 0 30px 0px 30px;">
-          <label class="control-label" for="input-subject">Note:</label>
-          <div>
-            <textarea class="form-control" rows="2" max-rows="10" formControlName="Areas_Conducive_note" placeholder="Type here to expand"></textarea>
+        <div class="row">
+          <div class="form-group col" style="padding: 0 30px 0px 30px;">
+            <label class="control-label" for="input-subject">Note:</label>
+            <div>
+              <textarea class="form-control" rows="2" max-rows="10" formControlName="Areas_Conducive_note" placeholder="Type here to expand"></textarea>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>  
-  <hr/>
-  <div class="card">
-    <div class="card-header">
-      <h5 class="black mb-0"><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;<strong>Environmental Conditions and Summary</strong>
-      </h5>
-    </div>
-    <div class="card-body">
-      <div id="resp-table" style="padding:0;">
-        <div id="resp-table-header">
-          <div class="table-header-cell white" style="padding-left:15px;">
-            Report on Drainage
-          </div>
-          <div class="table-header-cell white">
-          </div>
-          <div class="table-header-cell white">
-          </div>
-          <div class="table-header-cell white">
-          </div>
-          <div class="table-header-cell white">
-          </div>
-          <div class="table-header-cell white">
-          </div>
-          <div class="table-header-cell white">
+    <hr/>
+    <div class="card">
+      <div class="card-header">
+        <h5 class="black mb-0">
+          <i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;
+          <strong>Environmental Conditions and Summary</strong>
+        </h5>
+      </div>
+      <div class="card-body">
+        <div id="resp-table" style="padding:0;">
+          <div id="resp-table-header">
+            <div class="table-header-cell white" style="padding-left:15px;">
+              Report on Drainage
+            </div>
+            <div class="table-header-cell white">
+            </div>
+            <div class="table-header-cell white">
+            </div>
+            <div class="table-header-cell white">
+            </div>
+            <div class="table-header-cell white">
+            </div>
+            <div class="table-header-cell white">
+            </div>
+            <div class="table-header-cell white">
+            </div>
           </div>
         </div>
-      </div>
-      <div class="form-group" style="padding: 0px 15px 0px 15px;">
-        <label style="padding: 10px 0;">A visual inspection is undertaken to identify potential drainage problems:</label>
-      </div>
-      <div id="resp-table" style="padding:0;">
-        <div id="resp-table-body">
-          <div class="resp-table-row">
-            <div class="table-body-cell">
-              <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="2103" value="1" /><span class="checkbox"></span></label>
+        <div class="form-group" style="padding: 0px 15px 0px 15px;">
+          <label style="padding: 10px 0;">A visual inspection is undertaken to identify potential drainage problems:</label>
+        </div>
+        <div id="resp-table" style="padding:0;">
+          <div id="resp-table-body">
+            <div class="resp-table-row">
+              <div class="table-body-cell">
+                <label class="custom-checkbox" style="margin-left: 10px !important;">
+                  <input type="checkbox" (change)="onSave(false,true)" formControlName="2103" value="1" />
+                  <span class="checkbox"></span>
+                </label>
+              </div>
+              <div class="table-body-cell" style="margin-left:-40px;">
+                Concrete slab
+              </div>
             </div>
-            <div class="table-body-cell" style="margin-left:-40px;">
-              Concrete slab
-            </div>
-          </div>
-          <div class="resp-table-row">
+            <div class="resp-table-row">
 
-            <div class="table-body-cell">
-              <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="2104" value="1" /><span class="checkbox"></span></label>
+              <div class="table-body-cell">
+                <label class="custom-checkbox" style="margin-left: 10px !important;">
+                  <input type="checkbox" (change)="onSave(false,true)" formControlName="2104" value="1" />
+                  <span class="checkbox"></span>
+                </label>
+              </div>
+              <div class="table-body-cell">
+                Stumps
+              </div>
             </div>
-            <div class="table-body-cell">
-              Stumps
+            <div class="resp-table-row">
+              <div class="table-body-cell">
+                <label class="custom-checkbox" style="margin-left: 10px !important;">
+                  <input type="checkbox" (change)="onSave(false,true)" formControlName="2105" value="1" />
+                  <span class="checkbox"></span>
+                </label>
+              </div>
+              <div class="table-body-cell">
+                Other
+              </div>
             </div>
-          </div>
-          <div class="resp-table-row">
-            <div class="table-body-cell">
-              <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="2105" value="1" /><span class="checkbox"></span></label>
-            </div>
-            <div class="table-body-cell">
-              Other
-            </div>
-          </div>          
-        </div>
-      </div>
-      <div class="form-group" style="padding: 0px 15px 0px 15px;">
-        <label style="padding: 10px 0;"><strong>Note</strong>: Poor subfloor drainage increases the likelihood of termite attack. If drainage is considered inadequate, a plumber or other
-building expert should be consulted.</label>
-      </div>
-      <div class="row">
-        <div class="form-group col" style="padding: 0 30px 0px 30px;">
-          <label class="control-label" for="input-subject">Note:</label>
-          <div>
-            <textarea class="form-control" rows="2" max-rows="10" formControlName="Report_on_Drainage_note" placeholder="Type here to expand"></textarea>
           </div>
         </div>
-      </div>
-      <hr/>
-      <div id="resp-table" style="padding:0;">
-        <div id="resp-table-header">
-          <div class="table-header-cell white" style="padding-left:15px;">
-            Report on Ventilation
-          </div>
-          <div class="table-header-cell white">
-          </div>
-          <div class="table-header-cell white">
-          </div>
-          <div class="table-header-cell white">
-          </div>
-          <div class="table-header-cell white">
-          </div>
-          <div class="table-header-cell white">
-          </div>
-          <div class="table-header-cell white">
+        <div class="form-group" style="padding: 0px 15px 0px 15px;">
+          <label style="padding: 10px 0;">
+            <strong>Note</strong>: Poor subfloor drainage increases the likelihood of termite attack. If drainage is considered inadequate,
+            a plumber or other building expert should be consulted.</label>
+        </div>
+        <div class="row">
+          <div class="form-group col" style="padding: 0 30px 0px 30px;">
+            <label class="control-label" for="input-subject">Note:</label>
+            <div>
+              <textarea class="form-control" rows="2" max-rows="10" formControlName="Report_on_Drainage_note" placeholder="Type here to expand"></textarea>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="form-group" style="padding: 0px 15px 0px 15px;">
-        <label style="padding: 10px 0;">A visual inspection is undertaken to identify potential ventilation problems:</label>
-      </div>
-      <div id="resp-table" style="padding:0;">
-        <div id="resp-table-body">
-          <div class="resp-table-row">
-            <div class="table-body-cell">
-              <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="2108" value="1" /><span class="checkbox"></span></label>
+        <hr/>
+        <div id="resp-table" style="padding:0;">
+          <div id="resp-table-header">
+            <div class="table-header-cell white" style="padding-left:15px;">
+              Report on Ventilation
             </div>
-            <div class="table-body-cell" style="margin-left:-40px;">
-              Concrete slab
+            <div class="table-header-cell white">
+            </div>
+            <div class="table-header-cell white">
+            </div>
+            <div class="table-header-cell white">
+            </div>
+            <div class="table-header-cell white">
+            </div>
+            <div class="table-header-cell white">
+            </div>
+            <div class="table-header-cell white">
             </div>
           </div>
-          <div class="resp-table-row">
+        </div>
+        <div class="form-group" style="padding: 0px 15px 0px 15px;">
+          <label style="padding: 10px 0;">A visual inspection is undertaken to identify potential ventilation problems:</label>
+        </div>
+        <div id="resp-table" style="padding:0;">
+          <div id="resp-table-body">
+            <div class="resp-table-row">
+              <div class="table-body-cell">
+                <label class="custom-checkbox" style="margin-left: 10px !important;">
+                  <input type="checkbox" (change)="onSave(false,true)" formControlName="2108" value="1" />
+                  <span class="checkbox"></span>
+                </label>
+              </div>
+              <div class="table-body-cell" style="margin-left:-40px;">
+                Concrete slab
+              </div>
+            </div>
+            <div class="resp-table-row">
 
-            <div class="table-body-cell">
-              <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="2109" value="1" /><span class="checkbox"></span></label>
+              <div class="table-body-cell">
+                <label class="custom-checkbox" style="margin-left: 10px !important;">
+                  <input type="checkbox" (change)="onSave(false,true)" formControlName="2109" value="1" />
+                  <span class="checkbox"></span>
+                </label>
+              </div>
+              <div class="table-body-cell">
+                Stumps
+              </div>
             </div>
-            <div class="table-body-cell">
-              Stumps
+            <div class="resp-table-row">
+              <div class="table-body-cell">
+                <label class="custom-checkbox" style="margin-left: 10px !important;">
+                  <input type="checkbox" (change)="onSave(false,true)" formControlName="2110" value="1" />
+                  <span class="checkbox"></span>
+                </label>
+              </div>
+              <div class="table-body-cell">
+                Other
+              </div>
             </div>
-          </div>
-          <div class="resp-table-row">
-            <div class="table-body-cell">
-              <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="2110" value="1" /><span class="checkbox"></span></label>
-            </div>
-            <div class="table-body-cell">
-              Other
-            </div>
-          </div>          
-        </div>
-      </div>
-      <div class="form-group" style="padding: 0px 15px 0px 15px;">
-        <p style="padding: 10px 0;">
-          <strong>Note</strong>: Ventilation of the sub-floor region is important in minimising the opportunity for subterranean
-          termites to establish themselves. If found to be inadequate, remedial measures should be taken. You should explore
-          arranging the installation of high air flow vents and/or improve the cross flow of air within the subfloor, so
-          as to produce ventilation equivalent to 8400 sq mm net ventilation area per lineal metre on external and internal
-          walls.
-        </p>
-      </div>
-      <div class="row">
-        <div class="form-group col" style="padding: 0 30px 0px 30px;">
-          <label class="control-label" for="input-subject">Note:</label>
-          <div>
-            <textarea class="form-control" rows="2" max-rows="10" formControlName="Report_on_Ventilation_note" placeholder="Type here to expand"></textarea>
           </div>
         </div>
-      </div>
-      <hr/>
-      <div id="resp-table" style="padding:0;">
-        <div id="resp-table-header">
-          <div class="table-header-cell white" style="padding-left:15px;">
-            Evidence of Possible Termite Treatment
-          </div>
-          <div class="table-header-cell white">
-          </div>
-          <div class="table-header-cell white">
-          </div>
-          <div class="table-header-cell white">
-          </div>
-          <div class="table-header-cell white">
-          </div>
-          <div class="table-header-cell white">
-          </div>
-          <div class="table-header-cell white">
+        <div class="form-group" style="padding: 0px 15px 0px 15px;">
+          <p style="padding: 10px 0;">
+            <strong>Note</strong>: Ventilation of the sub-floor region is important in minimising the opportunity for subterranean
+            termites to establish themselves. If found to be inadequate, remedial measures should be taken. You should explore
+            arranging the installation of high air flow vents and/or improve the cross flow of air within the subfloor, so
+            as to produce ventilation equivalent to 8400 sq mm net ventilation area per lineal metre on external and internal
+            walls.
+          </p>
+        </div>
+        <div class="row">
+          <div class="form-group col" style="padding: 0 30px 0px 30px;">
+            <label class="control-label" for="input-subject">Note:</label>
+            <div>
+              <textarea class="form-control" rows="2" max-rows="10" formControlName="Report_on_Ventilation_note" placeholder="Type here to expand"></textarea>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="form-group" style="padding: 0px 15px 0px 15px;">
-        <label style="padding: 10px 0;">A visual inspection is undertaken to identify evidence of possible termite treatment:</label>
-      </div>
-      <div id="resp-table" style="padding:0;">
-        <div id="resp-table-body">
-          <div class="resp-table-row">
-            <div class="table-body-cell">
-              <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="2113" value="1" /><span class="checkbox"></span></label>
+        <hr/>
+        <div id="resp-table" style="padding:0;">
+          <div id="resp-table-header">
+            <div class="table-header-cell white" style="padding-left:15px;">
+              Evidence of Possible Termite Treatment
             </div>
-            <div class="table-body-cell" style="margin-left:-40px;">
-              Concrete slab
+            <div class="table-header-cell white">
+            </div>
+            <div class="table-header-cell white">
+            </div>
+            <div class="table-header-cell white">
+            </div>
+            <div class="table-header-cell white">
+            </div>
+            <div class="table-header-cell white">
+            </div>
+            <div class="table-header-cell white">
             </div>
           </div>
-          <div class="resp-table-row">
+        </div>
+        <div class="form-group" style="padding: 0px 15px 0px 15px;">
+          <label style="padding: 10px 0;">A visual inspection is undertaken to identify evidence of possible termite treatment:</label>
+        </div>
+        <div id="resp-table" style="padding:0;">
+          <div id="resp-table-body">
+            <div class="resp-table-row">
+              <div class="table-body-cell">
+                <label class="custom-checkbox" style="margin-left: 10px !important;">
+                  <input type="checkbox" (change)="onSave(false,true)" formControlName="2113" value="1" />
+                  <span class="checkbox"></span>
+                </label>
+              </div>
+              <div class="table-body-cell" style="margin-left:-40px;">
+                Concrete slab
+              </div>
+            </div>
+            <div class="resp-table-row">
 
-            <div class="table-body-cell">
-              <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="2114" value="1" /><span class="checkbox"></span></label>
+              <div class="table-body-cell">
+                <label class="custom-checkbox" style="margin-left: 10px !important;">
+                  <input type="checkbox" (change)="onSave(false,true)" formControlName="2114" value="1" />
+                  <span class="checkbox"></span>
+                </label>
+              </div>
+              <div class="table-body-cell">
+                Stumps
+              </div>
             </div>
-            <div class="table-body-cell">
-              Stumps
+            <div class="resp-table-row">
+              <div class="table-body-cell">
+                <label class="custom-checkbox" style="margin-left: 10px !important;">
+                  <input type="checkbox" (change)="onSave(false,true)" formControlName="2115" value="1" />
+                  <span class="checkbox"></span>
+                </label>
+              </div>
+              <div class="table-body-cell">
+                Other
+              </div>
             </div>
+            Evidence_note
           </div>
-          <div class="resp-table-row">
-            <div class="table-body-cell">
-              <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="2115" value="1" /><span class="checkbox"></span></label>
-            </div>
-            <div class="table-body-cell">
-              Other
-            </div>
-          </div>
-          Evidence_note
         </div>
-      </div>
-      <div class="row">
-        <div class="form-group col" style="padding: 0 30px 0px 30px;">
-          <label class="control-label" for="input-subject">Note:</label>
-          <div>
-            <textarea class="form-control" rows="2" max-rows="10" formControlName="Evidence_note" placeholder="Type here to expand"></textarea>
+        <div class="row">
+          <div class="form-group col" style="padding: 0 30px 0px 30px;">
+            <label class="control-label" for="input-subject">Note:</label>
+            <div>
+              <textarea class="form-control" rows="2" max-rows="10" formControlName="Evidence_note" placeholder="Type here to expand"></textarea>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="card">
-    <div class="card-header">
-      <h5 class="black mb-0"><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;<strong>Subterranean Termite Treatment Recommendation</strong>
-      </h5>
+    <div class="card">
+      <div class="card-header">
+        <h5 class="black mb-0">
+          <i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;
+          <strong>Subterranean Termite Treatment Recommendation</strong>
+        </h5>
+      </div>
+      <div class="card-body">
+        <div>
+          <div class="col-xs-12">
+            <div class="form-group" style="padding: 0px 15px 0px 15px;">
+              <p style="padding: 10px 0;">
+                At the time of the inspection it is our opinion that the need for a treatment, in accordance with Australian Standard 3660.1
+                to control or prevent subterranean termites from infesting and causing damage to the property is:
+            </div>
+            <div id="resp-table" style="padding:0;">
+              <div class="resp-table-row">
+                <div class="table-body-cell">
+                  <label class="custom-checkbox" style="margin-left: 10px !important;">
+                    <input type="checkbox" (change)="onSave(false,true)" formControlName="2120" value="1" />
+                    <span class="checkbox"></span>
+                  </label>
+                </div>
+                <div class="table-body-cell" style="margin-left:-40px;">
+                  High
+                </div>
+              </div>
+              <div class="resp-table-row">
+                <div class="table-body-cell">
+                  <label class="custom-checkbox" style="margin-left: 10px !important;">
+                    <input type="checkbox" (change)="onSave(false,true)" formControlName="2121" value="1" />
+                    <span class="checkbox"></span>
+                  </label>
+                </div>
+                <div class="table-body-cell">
+                  Moderate
+                </div>
+              </div>
+              <div class="resp-table-row">
+                <div class="table-body-cell">
+                  <label class="custom-checkbox" style="margin-left: 10px !important;">
+                    <input type="checkbox" (change)="onSave(false,true)" formControlName="2122" value="1" />
+                    <span class="checkbox"></span>
+                  </label>
+                </div>
+                <div class="table-body-cell">
+                  Low
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="card-body">
-      <div>
-        <div class="col-xs-12">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="black mb-0">
+          <i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;
+          <strong>Overall Degree of Risk of Timber Pest Infestation</strong>
+        </h5>
+      </div>
+      <div class="card-body">
+        <div>
           <div class="form-group" style="padding: 0px 15px 0px 15px;">
             <p style="padding: 10px 0;">
-              At the time of the inspection it is our opinion that the need for a treatment, in accordance with Australian Standard 3660.1
-              to control or prevent subterranean termites from infesting and causing damage to the property is:
+              Considering all of the relevant factors, it is our opinion that the overall degree of risk of termite infestation to the
+              property is:
+            </p>
           </div>
           <div id="resp-table" style="padding:0;">
             <div class="resp-table-row">
               <div class="table-body-cell">
-                <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="2120" value="1" /><span class="checkbox"></span></label>
+                <label class="custom-checkbox" style="margin-left: 10px !important;">
+                  <input type="checkbox" (change)="onSave(false,true)" formControlName="2123" value="1" />
+                  <span class="checkbox"></span>
+                </label>
               </div>
               <div class="table-body-cell" style="margin-left:-40px;">
                 High
@@ -5620,7 +6028,10 @@ building expert should be consulted.</label>
             </div>
             <div class="resp-table-row">
               <div class="table-body-cell">
-                <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="2121" value="1" /><span class="checkbox"></span></label>
+                <label class="custom-checkbox" style="margin-left: 10px !important;">
+                  <input type="checkbox" (change)="onSave(false,true)" formControlName="2124" value="1" />
+                  <span class="checkbox"></span>
+                </label>
               </div>
               <div class="table-body-cell">
                 Moderate
@@ -5628,7 +6039,10 @@ building expert should be consulted.</label>
             </div>
             <div class="resp-table-row">
               <div class="table-body-cell">
-                <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="2122" value="1" /><span class="checkbox"></span></label>
+                <label class="custom-checkbox" style="margin-left: 10px !important;">
+                  <input type="checkbox" (change)="onSave(false,true)" formControlName="2125" value="1" />
+                  <span class="checkbox"></span>
+                </label>
               </div>
               <div class="table-body-cell">
                 Low
@@ -5638,65 +6052,27 @@ building expert should be consulted.</label>
         </div>
       </div>
     </div>
-  </div>
-  <div class="card">
-    <div class="card-header">
-      <h5 class="black mb-0"><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;<strong>Overall Degree of Risk of Timber Pest Infestation</strong>
-      </h5>
-    </div>
-    <div class="card-body">
-      <div>
-        <div class="form-group" style="padding: 0px 15px 0px 15px;">
-          <p style="padding: 10px 0;">
-            Considering all of the relevant factors, it is our opinion that the overall degree of risk of termite infestation to the
-            property is:
-          </p>
-        </div>
-        <div id="resp-table" style="padding:0;">
-          <div class="resp-table-row">
-            <div class="table-body-cell">
-              <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="2123" value="1" /><span class="checkbox"></span></label>
-            </div>
-            <div class="table-body-cell" style="margin-left:-40px;">
-              High
-            </div>
-          </div>
-          <div class="resp-table-row">
-            <div class="table-body-cell">
-              <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="2124" value="1" /><span class="checkbox"></span></label>
-            </div>
-            <div class="table-body-cell">
-              Moderate
-            </div>
-          </div>
-          <div class="resp-table-row">
-            <div class="table-body-cell">
-              <label class="custom-checkbox" style="margin-left: 10px !important;"><input type="checkbox" (change)="onSave(false,true)" formControlName="2125" value="1" /><span class="checkbox"></span></label>
-            </div>
-            <div class="table-body-cell">
-              Low
+    <!-- REPORT SUMMARY -->
+    <div class="card">
+      <div class="card-header">
+        <h5 class="black mb-0">
+          <i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;
+          <strong>Report Summary - Overall Condition of Property</strong>
+        </h5>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="form-group col">
+            <div class="col-xs-12">
+              <textarea class="form-control" rows="10" max-rows="25" formControlName="timber_summary" placeholder="Type here to expand"></textarea>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <!-- REPORT SUMMARY -->
-  <div class="card">
-    <div class="card-header">
-      <h5 class="black mb-0"><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;<strong>Report Summary - Overall Condition of Property</strong>
-      </h5>
-    </div>
-    <div class="card-body">
-      <div class="row">
-        <div class="form-group col">
-          <div class="col-xs-12">
-            <textarea class="form-control" rows="10" max-rows="25" formControlName="timber_summary" placeholder="Type here to expand"></textarea>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+  </ng-template>
+
+
   <div class="pull-right py-2">    
     <button type="button" (click)="onSave(false, false)" form="addReportForm" data-toggle="tooltip" title="" class="btn btn-primary" data-original-title="Save" value="SAVE">
       <i *ngIf="formSaving" class="fa fa-spinner fa-spin" style="font-size:1rem"></i>&nbsp;SAVE

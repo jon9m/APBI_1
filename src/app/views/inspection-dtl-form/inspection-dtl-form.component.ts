@@ -1,14 +1,13 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { FormGroup, FormControl, FormArray, FormBuilder, AbstractControl } from "@angular/forms";
+import { FormGroup, FormControl, FormArray, FormBuilder } from "@angular/forms";
 import { InspectionDetailsService } from "../../shared/inspection-detail.service";
 import { FileUploadService } from '../../shared/fileupload.service';
-import { HttpEventType } from '@angular/common/http';
 import { Router, ActivatedRoute } from "@angular/router";
 import { HTTPService } from "../../shared/http.service";
 import { InspectionDetails } from "../../shared/inspection_details.model";
 import { AppGlobal } from '../../shared/app-global';
 import { InspectionProperty } from '../../shared/inspection-property.model';
-import { Observable, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { FileUploadProgressService } from "../../shared/fileupload-progress.service";
 
 @Component({
@@ -54,11 +53,26 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
   isFormQuickSave: boolean = false;
 
   reportId: string;
+  reportType: number;
   isFormDirty: boolean = false;
   valueChangeCheckSub: Subscription;
   addReportSub: Subscription;
 
-  constructor(private route: ActivatedRoute, private fb: FormBuilder, private inspectionDetailsService: InspectionDetailsService, private fileUploadService: FileUploadService, private router: Router, private httpService: HTTPService, private fileUploadProgressService: FileUploadProgressService) {
+  insp_type_pre_purchase_building_inspection;
+  insp_type_pre_sale_building_inspection;
+  insp_type_pre_auction_building_inspection;
+  insp_type_asbestos_inspection;
+  insp_type_pest_and_termite_inspection;
+  insp_type_building_and_pest_inspection;
+  insp_type_dilapidation_inspection;
+  insp_type_owner_buildin_inspection_137b;
+  insp_type_new_building_inspection_slab_stage;
+  insp_type_new_building_inspection_frame_stage;
+  insp_type_new_building_inspection_lockup_stage;
+  insp_type_new_building_inspection_completion_stage;
+  insp_type_new_building_inspection_4_stages_package;    
+
+  constructor(private route: ActivatedRoute, private fb: FormBuilder, private inspectionDetailsService: InspectionDetailsService, private router: Router, private httpService: HTTPService, private fileUploadProgressService: FileUploadProgressService) {
 
   }
 
@@ -66,6 +80,8 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
     if (this.inspectiondetailsform != null) {
       console.log("resetting inspection details form");
       this.inspectiondetailsform.reset(); //TODO
+    } else {
+      console.log("inspection details form is null initially");
     }
 
     this.timberPest = AppGlobal.TimberPest;
@@ -78,6 +94,20 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
     this.ensuite = AppGlobal.Ensuite;
     this.external = AppGlobal.External;
 
+    this.insp_type_pre_purchase_building_inspection = AppGlobal.INSP_TYPE_PRE_PURCHASE_BUILDING_INSPECTION;
+    this.insp_type_pre_sale_building_inspection = AppGlobal.INSP_TYPE_PRE_SALE_BUILDING_INSPECTION;
+    this.insp_type_pre_auction_building_inspection = AppGlobal.INSP_TYPE_PRE_AUCTION_BUILDING_INSPECTION;
+    this.insp_type_asbestos_inspection = AppGlobal.INSP_TYPE_ASBESTOS_INSPECTION;
+    this.insp_type_pest_and_termite_inspection = AppGlobal.INSP_TYPE_PEST_AND_TERMITE_INSPECTION;
+    this.insp_type_building_and_pest_inspection = AppGlobal.INSP_TYPE_BUILDING_AND_PEST_INSPECTION;
+    this.insp_type_dilapidation_inspection = AppGlobal.INSP_TYPE_DILAPIDATION_INSPECTION;
+    this.insp_type_owner_buildin_inspection_137b = AppGlobal.INSP_TYPE_OWNER_BUILDIN_INSPECTION_137B;
+    this.insp_type_new_building_inspection_slab_stage = AppGlobal.INSP_TYPE_NEW_BUILDING_INSPECTION_SLAB_STAGE;
+    this.insp_type_new_building_inspection_frame_stage = AppGlobal.INSP_TYPE_NEW_BUILDING_INSPECTION_FRAME_STAGE;
+    this.insp_type_new_building_inspection_lockup_stage = AppGlobal.INSP_TYPE_NEW_BUILDING_INSPECTION_LOCKUP_STAGE;
+    this.insp_type_new_building_inspection_completion_stage = AppGlobal.INSP_TYPE_NEW_BUILDING_INSPECTION_COMPLETION_STAGE;
+    this.insp_type_new_building_inspection_4_stages_package = AppGlobal.INSP_TYPE_NEW_BUILDING_INSPECTION_4_STAGES_PACKAGE; 
+
     //TODO - subscribe to form load evants - second option
     // this.inspectionDetailsService.subjectName.subscribe({
     //    (dtlModel: DtlModel) => {
@@ -88,12 +118,16 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
     this.sub = this.route.params.subscribe(params => {
       this.id = +params['id']; // (+) converts string 'id' to a number
 
-      this.initForm();
       this.inspectiondetails = this.inspectionDetailsService.getInspectionDetailsModal();
       this.inspectionProperty = this.inspectionDetailsService.getInspectionPropertyModal();
       this.reportId = this.inspectionProperty.reportId;
+      this.reportType = this.inspectionProperty.inspectionId;
 
       console.log("reportId " + this.reportId);
+      console.log("reportType " + this.reportType);
+
+      //Initialize the form
+      this.initForm();
 
       //if (this.inspectiondetails != null) {
       this.initRecommendations();
@@ -119,10 +153,10 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
 
   private subscribeToFormChanges() {
     this.valueChangeCheckSub = this.inspectiondetailsform.valueChanges.subscribe(
-      (data) => {
+      () => {
         this.isFormDirty = true;
       },
-      (error) => {
+      () => {
         this.isFormDirty = false;
       }
     );
@@ -188,7 +222,7 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
     }
 
     if ((hallways_recommendations_array != null) && (typeof hallways_recommendations_array.forEach === 'function')) {
-      hallways_recommendations_array.forEach((item, index) => {
+      hallways_recommendations_array.forEach(() => {
         (<FormArray>this.inspectiondetailsform.get('hallways_recommendations_list')).push(
           new FormGroup({
             'item': new FormControl(),
@@ -202,7 +236,7 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
       });
     }
     if ((kitchen_recommendations_array != null) && (typeof kitchen_recommendations_array.forEach === 'function')) {
-      kitchen_recommendations_array.forEach((item, index) => {
+      kitchen_recommendations_array.forEach(() => {
         (<FormArray>this.inspectiondetailsform.get('kitchen_recommendations_list')).push(
           new FormGroup({
             'item': new FormControl(),
@@ -216,7 +250,7 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
       });
     }
     if ((laundry_recommendations_array != null) && (typeof laundry_recommendations_array.forEach === 'function')) {
-      laundry_recommendations_array.forEach((item, index) => {
+      laundry_recommendations_array.forEach(() => {
         (<FormArray>this.inspectiondetailsform.get('laundry_recommendations_list')).push(
           new FormGroup({
             'item': new FormControl(),
@@ -230,7 +264,7 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
       });
     }
     if ((bedrooms_recommendations_array != null) && (typeof bedrooms_recommendations_array.forEach === 'function')) {
-      bedrooms_recommendations_array.forEach((item, index) => {
+      bedrooms_recommendations_array.forEach(() => {
         (<FormArray>this.inspectiondetailsform.get('bedrooms_recommendations_list')).push(
           new FormGroup({
             'item': new FormControl(),
@@ -244,7 +278,7 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
       });
     }
     if ((bathrooms_recommendations_array != null) && (typeof bathrooms_recommendations_array.forEach === 'function')) {
-      bathrooms_recommendations_array.forEach((item, index) => {
+      bathrooms_recommendations_array.forEach(() => {
         (<FormArray>this.inspectiondetailsform.get('bathrooms_recommendations_list')).push(
           new FormGroup({
             'item': new FormControl(),
@@ -258,7 +292,7 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
       });
     }
     if ((external_recommendations_array != null) && (typeof external_recommendations_array.forEach === 'function')) {
-      external_recommendations_array.forEach((item, index) => {
+      external_recommendations_array.forEach(() => {
         (<FormArray>this.inspectiondetailsform.get('external_recommendations_list')).push(
           new FormGroup({
             'item': new FormControl(),
@@ -272,7 +306,7 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
       });
     }
     if ((ensuite_recommendations_array != null) && (typeof ensuite_recommendations_array.forEach === 'function')) {
-      ensuite_recommendations_array.forEach((item, index) => {
+      ensuite_recommendations_array.forEach(() => {
         (<FormArray>this.inspectiondetailsform.get('ensuite_recommendations_list')).push(
           new FormGroup({
             'item': new FormControl(),
@@ -285,23 +319,150 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
         );
       });
     }
-    if ((timberpest_recommendations_array != null) && (typeof timberpest_recommendations_array.forEach === 'function')) {
-      timberpest_recommendations_array.forEach((item, index) => {
-        (<FormArray>this.inspectiondetailsform.get('timberpest_recommendations_list')).push(
-          new FormGroup({
-            'item': new FormControl(),
-            'rectype': new FormControl(),
-            'recdetail': new FormControl(),
-            'comment': new FormControl(''),
-            'typee': new FormControl(),
-            'filename': new FormControl()
-          })
-        );
-      });
+    if (this.reportType == AppGlobal.INSP_TYPE_BUILDING_AND_PEST_INSPECTION) {
+      if ((timberpest_recommendations_array != null) && (typeof timberpest_recommendations_array.forEach === 'function')) {
+        timberpest_recommendations_array.forEach(() => {
+          (<FormArray>this.inspectiondetailsform.get('timberpest_recommendations_list')).push(
+            new FormGroup({
+              'item': new FormControl(),
+              'rectype': new FormControl(),
+              'recdetail': new FormControl(),
+              'comment': new FormControl(''),
+              'typee': new FormControl(),
+              'filename': new FormControl()
+            })
+          );
+        });
+      }
     }
   }
 
   private initForm() {
+
+    let visual_timber_pest_inspection_form = {
+      '1985': '',
+      '1986': '',
+      '1987': '',
+      '1988': '',
+      '1989': '',
+      '1990': '',
+      '1991': '',
+      '1992': '',
+      '1993': '',
+      '1994': '',
+      '1995': '',
+      '2000': '',
+      '2001': '',
+      '2002': '',
+      '2003': '',
+      '2004': '',
+      '2005': '',
+      '2006': '',
+      '2007': '',
+      '2008': '',
+      '2009': '',
+      '2010': '',
+      '2011': '',
+      '2012': '',
+      '2013': '',
+      '2014': '',
+      '2015': '',
+      '2016': '',
+      '2017': '',
+      '2018': '',
+      '2019': '',
+      '2020': '',
+      '2021': '',
+      '2022': '',
+      '2023': '',
+      '2024': '',
+      '2025': '',
+      '2026': '',
+      '2027': '',
+      '2028': '',
+      '2029': '',
+      '2030': '',
+      '2031': '',
+      '2032': '',
+      '2033': '',
+      '2034': '',
+      '2035': '',
+      '2036': '',
+      '2037': '',
+      '2038': '',
+      '2039': '',
+      '2040': '',
+      '2041': '',
+      '2042': '',
+      '2043': '',
+      '2044': '',
+      '2045': '',
+      '2046': '',
+      '2047': '',
+      '2048': '',
+      '2049': '',
+      '2050': '',
+      '2051': '',
+      '2052': '',
+      '2053': '',
+      '2054': '',
+      '2055': '',
+      '2056': '',
+      '2057': '',
+      '2058': '',
+      '2059': '',
+      '2060': '',
+      '2061': '',
+      '2062': '',
+      '2063': '',
+      '2064': '',
+      '2065': '',
+      '2066': '',
+      '2067': '',
+      '2068': '',
+      '2069': '',
+      '2070': '',
+      '2071': '',
+      '2072': '',
+      '2073': '',
+      '2074': '',
+      '2075': '',
+      '2076': '',
+      '2077': '',
+      '2078': '',
+      '2079': '',
+      '2080': '',
+      '2081': '',
+      '2082': '',
+      '2083': '',
+      'timberpest_recommendations_list': [],
+      '2096': '',
+      '2097': '',
+      '2098': '',
+      '2099': '',
+      '2100': '',
+      'Areas_Conducive_note': '',
+      '2103': '',
+      '2104': '',
+      '2105': '',
+      'Report_on_Drainage_note': '',
+      '2108': '',
+      '2109': '',
+      '2110': '',
+      'Report_on_Ventilation_note': '',
+      '2113': '',
+      '2114': '',
+      '2115': '',
+      'Evidence_note': '',
+      '2120': '',
+      '2121': '',
+      '2122': '',
+      '2123': '',
+      '2124': '',
+      '2125': '',
+      'timber_summary': ''
+    };
+
     this.inspectiondetailsform = this.fb.group({
       'bookingid': '',
       'rec_count': '',
@@ -1141,6 +1302,7 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
       '1882': '',
       '1883': '',
       '1884': '',
+
       '1885': '',
       '1886': '',
       '1887': '',
@@ -1222,129 +1384,151 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
       'major_defects': '',
       'major_defects_comment': '',
       'structural_defects': '',
-      'structural_defects_comment': '',
-      '1985': '',
-      '1986': '',
-      '1987': '',
-      '1988': '',
-      '1989': '',
-      '1990': '',
-      '1991': '',
-      '1992': '',
-      '2000': '',
-      '2001': '',
-      '2002': '',
-      '2003': '',
-      '2004': '',
-      '2005': '',
-      '2006': '',
-      '2007': '',
-      '2008': '',
-      '2009': '',
-      '2010': '',
-      '2011': '',
-      '2012': '',
-      '2013': '',
-      '2014': '',
-      '2015': '',
-      '2016': '',
-      '2017': '',
-      '2018': '',
-      '2019': '',
-      '2020': '',
-      '2021': '',
-      '2022': '',
-      '2023': '',
-      '2024': '',
-      '2025': '',
-      '2026': '',
-      '2027': '',
-      '2028': '',
-      '2029': '',
-      '2030': '',
-      '2031': '',
-      '2032': '',
-      '2033': '',
-      '2034': '',
-      '2035': '',
-      '2036': '',
-      '2037': '',
-      '2038': '',
-      '2039': '',
-      '2040': '',
-      '2041': '',
-      '2042': '',
-      '2043': '',
-      '2044': '',
-      '2045': '',
-      '2046': '',
-      '2047': '',
-      '2048': '',
-      '2049': '',
-      '2050': '',
-      '2051': '',
-      '2052': '',
-      '2053': '',
-      '2054': '',
-      '2055': '',
-      '2056': '',
-      '2057': '',
-      '2058': '',
-      '2059': '',
-      '2060': '',
-      '2061': '',
-      '2062': '',
-      '2063': '',
-      '2064': '',
-      '2065': '',
-      '2066': '',
-      '2067': '',
-      '2068': '',
-      '2069': '',
-      '2070': '',
-      '2071': '',
-      '2072': '',
-      '2073': '',
-      '2074': '',
-      '2075': '',
-      '2076': '',
-      '2077': '',
-      '2078': '',
-      '2079': '',
-      '2080': '',
-      '2081': '',
-      '2082': '',
-      '2083': '',
-      'timberpest_recommendations_list': this.fb.array([]),
-      '2096': '',
-      '2097': '',
-      '2098': '',
-      '2099': '',
-      '2100': '',
-      'Areas_Conducive_note': '',
-      '2103': '',
-      '2104': '',
-      '2105': '',
-      'Report_on_Drainage_note': '',
-      '2108': '',
-      '2109': '',
-      '2110': '',
-      'Report_on_Ventilation_note': '',
-      '2113': '',
-      '2114': '',
-      '2115': '',
-      'Evidence_note': '',
-      '2120': '',
-      '2121': '',
-      '2122': '',
-      '2123': '',
-      '2124': '',
-      '2125': '',
-      'timber_summary': ''
+      'structural_defects_comment': ''
+      
+      // ,
+
+
+      // '1985': '',
+      // '1986': '',
+      // '1987': '',
+      // '1988': '',
+      // '1989': '',
+      // '1990': '',
+      // '1991': '',
+      // '1992': '',
+      // '1993': '',
+      // '1994': '',
+      // '1995': '',
+      // '2000': '',
+      // '2001': '',
+      // '2002': '',
+      // '2003': '',
+      // '2004': '',
+      // '2005': '',
+      // '2006': '',
+      // '2007': '',
+      // '2008': '',
+      // '2009': '',
+      // '2010': '',
+      // '2011': '',
+      // '2012': '',
+      // '2013': '',
+      // '2014': '',
+      // '2015': '',
+      // '2016': '',
+      // '2017': '',
+      // '2018': '',
+      // '2019': '',
+      // '2020': '',
+      // '2021': '',
+      // '2022': '',
+      // '2023': '',
+      // '2024': '',
+      // '2025': '',
+      // '2026': '',
+      // '2027': '',
+      // '2028': '',
+      // '2029': '',
+      // '2030': '',
+      // '2031': '',
+      // '2032': '',
+      // '2033': '',
+      // '2034': '',
+      // '2035': '',
+      // '2036': '',
+      // '2037': '',
+      // '2038': '',
+      // '2039': '',
+      // '2040': '',
+      // '2041': '',
+      // '2042': '',
+      // '2043': '',
+      // '2044': '',
+      // '2045': '',
+      // '2046': '',
+      // '2047': '',
+      // '2048': '',
+      // '2049': '',
+      // '2050': '',
+      // '2051': '',
+      // '2052': '',
+      // '2053': '',
+      // '2054': '',
+      // '2055': '',
+      // '2056': '',
+      // '2057': '',
+      // '2058': '',
+      // '2059': '',
+      // '2060': '',
+      // '2061': '',
+      // '2062': '',
+      // '2063': '',
+      // '2064': '',
+      // '2065': '',
+      // '2066': '',
+      // '2067': '',
+      // '2068': '',
+      // '2069': '',
+      // '2070': '',
+      // '2071': '',
+      // '2072': '',
+      // '2073': '',
+      // '2074': '',
+      // '2075': '',
+      // '2076': '',
+      // '2077': '',
+      // '2078': '',
+      // '2079': '',
+      // '2080': '',
+      // '2081': '',
+      // '2082': '',
+      // '2083': '',
+      // 'timberpest_recommendations_list': this.fb.array([]),
+      // '2096': '',
+      // '2097': '',
+      // '2098': '',
+      // '2099': '',
+      // '2100': '',
+      // 'Areas_Conducive_note': '',
+      // '2103': '',
+      // '2104': '',
+      // '2105': '',
+      // 'Report_on_Drainage_note': '',
+      // '2108': '',
+      // '2109': '',
+      // '2110': '',
+      // 'Report_on_Ventilation_note': '',
+      // '2113': '',
+      // '2114': '',
+      // '2115': '',
+      // 'Evidence_note': '',
+      // '2120': '',
+      // '2121': '',
+      // '2122': '',
+      // '2123': '',
+      // '2124': '',
+      // '2125': '',
+      // 'timber_summary': ''
     });
 
     //TODO - add fields conditionally
-    //this.inspectiondetailsform.addControl('todofield', new FormControl());
+    //this.inspectiondetailsform.addControl('todofield', new FormControl(''));
+    
+
+    if (this.reportType == this.insp_type_building_and_pest_inspection) {
+      this.addControlsToForm(this.inspectiondetailsform, visual_timber_pest_inspection_form);
+    }
+  }
+
+  addControlsToForm(form: FormGroup, controls: {}) {
+    Object.entries(controls).forEach(([key, value]) => {
+      if (value instanceof Array) {
+        form.addControl(key, new FormArray([]));
+      } else {
+        form.addControl(key, new FormControl(value));
+      }
+    });
   }
 
   getRecommendationControls(inspectiondetailsform, recommendationType) {
@@ -1367,7 +1551,7 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
   }
 
   //Save on file upload complete
-  onUploadComplete(event: string) {
+  onUploadComplete(event) {
     if (!this.formSaving) {
       this.onSave(false, true);
     } else {

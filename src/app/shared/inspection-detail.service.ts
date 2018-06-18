@@ -22,6 +22,7 @@ export class InspectionDetailsService {
         this.inspectionProperty.inspectionType = responseJSON.inspectionType;
         this.inspectionProperty.propertyAddress = responseJSON.propertyAddress;
         this.inspectionProperty.reportId = responseJSON.reportId;
+        this.inspectionProperty.inspectionId = responseJSON.inspectionId;
 
         console.log("--------------------response directly from API----------------------------");
         console.log(inspectionDetailsJson);
