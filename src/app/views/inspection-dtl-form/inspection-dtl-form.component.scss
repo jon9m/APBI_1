@@ -114,7 +114,7 @@ span.hidden-xs, span.hidden-sm, span.hidden-md, span.hidden-lg {
 	padding: 10px 17px 9px 17px;
 	line-height: 25px;
 	float: left;
-	display: inline-block;
+	display: block;
 	cursor: pointer;
 	color: #6D6D6D;
 	border-right: 1px solid #E1E1E1;
@@ -543,7 +543,6 @@ input[type="checkbox"]:checked::after, .checkbox input[type="checkbox"]:checked:
 	color: #FFF;
 	background-color: #EEE;
 	text-align: center;
-	vertical-align: middle;
 	height: auto;
 	padding-top: 20px;
 	display: block;

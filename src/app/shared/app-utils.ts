@@ -8,15 +8,10 @@ export class AppUtils {
         if (minimizerElem) {
             let sidebarWidth = minimizerElem.offsetWidth;
             this.isDisplayed = ((sidebarWidth > 50) ? true : false);
-
-            console.log("Load nav " + this.isDisplayed); //TODO
-
             if (!this.isClickEventInitialized && clickElem) {
                 this.isClickEventInitialized = true;
                 clickElem.addEventListener("click", (event: Event) => {
                     this.isDisplayed = !this.isDisplayed;
-                    console.log("this.isClickEventInitialized " + this.isClickEventInitialized);
-                    console.log("Click nav " + this.isDisplayed); //TODO
                 });
             }
         }

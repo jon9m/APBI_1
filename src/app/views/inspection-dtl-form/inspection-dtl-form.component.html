@@ -283,26 +283,28 @@
         </div><br/>
       </div>
     </div>
+  </ng-template>
 
-    <ng-template [ngIf]="reportType != null && isFormDisplay('smoke_detectors_fitted_form')">
-      <div class="card">
-        <div class="card-header">
-          <h5 class="black mb-0"><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;<strong>Were smoke detector fitted at time of inspection?</strong>
-          </h5>
-        </div>
-        <div class="card-body">
-          <div class="row form-row" style="padding: 0 15px 0 15px;">
-            <div class="col">
-              <label class="custom-radio"><input type="radio" (change)="onSave(false,true)" formControlName="smoke" value="Yes" checked><span class="radio"></span> &nbsp;Yes</label><br>
-            </div>
-            <div class="col">
-              <label class="custom-radio"><input type="radio" (change)="onSave(false,true)" formControlName="smoke" value="No"><span class="radio"></span> &nbsp;No</label><br>
-            </div>
+  <ng-template [ngIf]="reportType != null && isFormDisplay('smoke_detectors_fitted_form')">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="black mb-0"><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;<strong>Were smoke detector fitted at time of inspection?</strong>
+        </h5>
+      </div>
+      <div class="card-body">
+        <div class="row form-row" style="padding: 0 15px 0 15px;">
+          <div class="col">
+            <label class="custom-radio"><input type="radio" (change)="onSave(false,true)" formControlName="smoke" value="Yes" checked><span class="radio"></span> &nbsp;Yes</label><br>
+          </div>
+          <div class="col">
+            <label class="custom-radio"><input type="radio" (change)="onSave(false,true)" formControlName="smoke" value="No"><span class="radio"></span> &nbsp;No</label><br>
           </div>
         </div>
       </div>
-    </ng-template>
+    </div>
+  </ng-template>
 
+  <ng-template [ngIf]="reportType != null && isFormDisplay('furnished_and_extension_form')">
     <div class="card">
       <div class="card-header">
         <h5 class="black mb-0"><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;<strong>Was there evidence of any extensions at time of inspection?</strong>
@@ -491,43 +493,45 @@
         </div>
       </div>
       <hr/>
-
-      <ng-template [ngIf]="reportType != null && isFormDisplay('smoke_detectors_form')">
-        <div class="row form-row" style="padding:0 15px 0 15px;">
-          <div class="col">
-            <h4 class="card-title black" style="padding: 15px 0;"><strong>Smoke Detectors</strong>
-            </h4>
-          </div>
-          <div class="col">
-            <div>
-              <label class="custom-radio"><input type="radio" (change)="onSave(false,true)" formControlName="smoke_detectors" value="Yes" checked/><span class="radio"></span> &nbsp;Yes</label><br>
-            </div>
-          </div>
-          <div class="col">
-            <div>
-              <label class="custom-radio"><input type="radio" (change)="onSave(false,true)" formControlName="smoke_detectors" value="No"/><span class="radio"></span> &nbsp;No</label><br>
-            </div>
-          </div>
-          <div class="col">
-            <div>
-              <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="smoke_detectors-test" value="Not tested"/> <span class="checkbox"></span>&nbsp;Not tested<br></label>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="form-group col" style="padding: 0 30px 0px 30px;">
-            <label class="control-label" for="input-subject">Comment:</label>
-            <div>
-              <textarea class="form-control" rows="2" max-rows="10" formControlName="smoke_detectors_comment" placeholder="Type here to expand"></textarea>
-            </div>
-          </div>
-        </div>
-        <hr/>
-      </ng-template>
-
     </div>
   </ng-template>
-
+      
+  <ng-template [ngIf]="reportType != null && isFormDisplay('smoke_detectors_form')">
+    <div class="card">
+        <div class="card-body">
+          <div class="row form-row" style="padding:0 15px 0 15px;">
+            <div class="col">
+              <h4 class="card-title black" style="padding: 15px 0;"><strong>Smoke Detectors</strong>
+              </h4>
+            </div>
+            <div class="col">
+              <div>
+                <label class="custom-radio"><input type="radio" (change)="onSave(false,true)" formControlName="smoke_detectors" value="Yes" checked/><span class="radio"></span> &nbsp;Yes</label><br>
+              </div>
+            </div>
+            <div class="col">
+              <div>
+                <label class="custom-radio"><input type="radio" (change)="onSave(false,true)" formControlName="smoke_detectors" value="No"/><span class="radio"></span> &nbsp;No</label><br>
+              </div>
+            </div>
+            <div class="col">
+              <div>
+                <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="smoke_detectors-test" value="Not tested"/> <span class="checkbox"></span>&nbsp;Not tested<br></label>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col" style="padding: 0 30px 0px 30px;">
+              <label class="control-label" for="input-subject">Comment:</label>
+              <div>
+                <textarea class="form-control" rows="2" max-rows="10" formControlName="smoke_detectors_comment" placeholder="Type here to expand"></textarea>
+              </div>
+            </div>
+          </div>
+          <hr/>
+      </div>
+    </div>
+  </ng-template>
 
   <div class="card">
     <div class="card-header">
