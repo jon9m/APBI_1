@@ -36,7 +36,7 @@ export class InspectionDtlPopupComponent implements OnInit {
         this.router.navigate(['/inspectiondtlform', bookingidelement.value]);
       },
       (error) => {
-        this.isFormLoading = false; //TODO - error handing???
+        this.isFormLoading = false;
         console.log(error);
       }
     );

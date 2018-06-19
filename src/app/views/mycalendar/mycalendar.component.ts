@@ -84,9 +84,7 @@ export class MycalendarComponent implements OnInit, OnDestroy {
       //btnType === 'month'
       return;
     }
-
     console.log("currMonth " + currMonth + " nextMonth " + nextMonth);
-    //TODO - load calendar only if curr and next nboth exists
 
     this.calendarSubscription = this.httpService.loadCalendar({ 'start': currMonth, 'end': nextMonth }).subscribe(
       (response: Response) => {
