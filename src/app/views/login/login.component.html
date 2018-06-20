@@ -3,6 +3,9 @@
     <div class="container">
       <div class="row">
         <div class="col-md-8 mx-auto">
+          <div class="card-group p-4" style="margin-bottom: 20px;">
+            <img src="https://apbi.com.au/showImage?image=1023" style="width:100%;height:100%;">
+          </div>
           <div class="card-group">
             <div class="card p-4">
               <div class="card-body">
@@ -28,7 +31,8 @@
                   <div *ngIf="loginResponse && !loginResponse.flag" class="alert alert-danger">{{loginError}}</div>
                   <div class="row">
                     <div class="col-6">
-                      <button type="button" [disabled]="isSignningIn" class="btn btn-primary px-3" (click)="onLogin()"><i *ngIf="isSignningIn" class="fa fa-spinner fa-spin mr-1" style="font-size:1rem"></i>&nbsp;Login</button>
+                      <button type="button" [disabled]="isSignningIn" class="btn btn-primary px-3" (click)="onLogin()">
+                        <i *ngIf="isSignningIn" class="fa fa-spinner fa-spin mr-1" style="font-size:1rem"></i>&nbsp;Login</button>
                     </div>
                     <div class="col-6 text-right">
                       <button type="button" class="btn btn-link px-0">Forgot password?</button>
