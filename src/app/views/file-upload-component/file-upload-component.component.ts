@@ -94,6 +94,7 @@ export class FileUploadComponentComponent implements OnInit, OnDestroy {
 
         //For left nav - 1
         this.fileUploadProgressService.addMapItem(this.file_name, fileToUpload.name);
+        this.fileUploadProgressService.setResizeState(this.file_name, true);
 
         //file resizing
         this.resizeImageSub = this.ng2ImgMax.resizeImage(fileToUpload, AppGlobal.UPLOAD_IMG_WIDTH, AppGlobal.UPLOAD_IMG_HEIGHT).subscribe(
@@ -122,11 +123,11 @@ export class FileUploadComponentComponent implements OnInit, OnDestroy {
   isSafari() {
     if ("undefined" != typeof window.navigator && window.navigator.userAgent) {
       let name = window.navigator.userAgent.toLowerCase();
-      if (name && name.includes('safari') && 
-            !name.includes('chrome') && 
-            !name.includes('firefox') && 
-            !name.includes('msie') && 
-            !name.includes('opera')) {
+      if (name && name.includes('safari') &&
+        !name.includes('chrome') &&
+        !name.includes('firefox') &&
+        !name.includes('msie') &&
+        !name.includes('opera')) {
         return true;
       } else {
         return false;
@@ -137,6 +138,8 @@ export class FileUploadComponentComponent implements OnInit, OnDestroy {
   }
 
   private uploadCurrentFile(fileToUpload, submittedData) {
+    this.fileUploadProgressService.setResizeState(this.file_name, false);
+
     this.fileUploadSub = this.fileUploadService.fileUpload(fileToUpload, this.file_name, submittedData).subscribe(
       event => {
         this.handleProgress(event, this.index, this.recommendationType);

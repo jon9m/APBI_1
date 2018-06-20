@@ -21,6 +21,9 @@ export class FileUploadProgressService {
         (this.fileProgressMap.get(key)).progress = progress;
         (this.fileProgressMap.get(key)).progressColor = progressColor;
     }
+    public setResizeState(key: string, rstate: boolean) {
+        (this.fileProgressMap.get(key)).isImageResizing = rstate;
+    }
     getKeys() {
         return Array.from(this.fileProgressMap.keys());
     }

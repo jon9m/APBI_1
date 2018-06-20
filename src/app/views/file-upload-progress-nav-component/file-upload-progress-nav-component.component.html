@@ -5,6 +5,11 @@
         <span>{{fileInfo.realName}}</span>&nbsp;
         <span class="pull-right">{{fileInfo.progress}}%</span>
       </div>
+      <div>
+        <span *ngIf="fileInfo.isImageResizing">Resizing...</span>
+        <span *ngIf="fileInfo.progress > 0 && fileInfo.progress != 100">Uploading...</span>
+        <span *ngIf="fileInfo.progress==100">Uploaded</span>
+      </div>
       <div class="progress progressnavdivpropress">
         <div class="progress-bar progress-bar-success" [style.width.%]="fileInfo.progress" [style.background-color]="fileInfo.progressColor">
         </div>
