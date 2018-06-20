@@ -335,201 +335,202 @@
     </div>
   </ng-template>
 
-  <ng-template [ngIf]="reportType != null && isFormDisplay('services_connected_form')">
-    <div class="card">
+  <ng-template [ngIf]="reportType != null && isFormDisplay('services_connected_form') || isFormDisplay('smoke_detectors_form')">
+    <div class="card">   
       <div class="card-header">
         <h5 class="black mb-0"><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;<strong>Services connected to property</strong>
         </h5>
       </div>
-      <div class="card-body">
-        <div class="row form-row" style="padding:0 15px 0 15px;">
-          <div class="col">
-            <h4 class="card-title black" style="padding: 15px 0;"><strong>Electricity</strong>
-            </h4>
-          </div>
-          <div class="col">
-            <div>
-              <label class="custom-radio"><input type="radio" (change)="onSave(false,true)" formControlName="electricity" value="Yes" checked/><span class="radio"></span> &nbsp;Yes</label><br>
-            </div>
-          </div>
-          <div class="col">
-            <div>
-              <label class="custom-radio"><input type="radio" (change)="onSave(false,true)" formControlName="electricity" value="No"/><span class="radio"></span> &nbsp;No</label><br>
-            </div>
-          </div>
-          <div class="col">
-            <div>
-              <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="electricity-test" value="Not tested"/><span class="checkbox"></span>&nbsp;Not tested<br></label>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="form-group col" style="padding: 0 30px 0px 30px;">
-          <label class="control-label" for="input-subject">Comment:</label>
-          <div>
-            <textarea class="form-control" rows="2" max-rows="10" formControlName="electricity_comment" placeholder="Type here to expand"></textarea>
-          </div>
-        </div>
-      </div>
-      <hr/>
-      <div class="row form-row" style="padding:0 15px 0 15px;">
-        <div class="col">
-          <h4 class="card-title black" style="padding: 15px 0;"><strong>Gas</strong>
-          </h4>
-        </div>
-        <div class="col">
-          <div>
-            <label class="custom-radio"><input type="radio" (change)="onSave(false,true)" formControlName="gas" value="Yes" checked/><span class="radio"></span> &nbsp;Yes</label><br>
-          </div>
-        </div>
-        <div class="col">
-          <div>
-            <label class="custom-radio"><input type="radio" (change)="onSave(false,true)" formControlName="gas" value="No"/><span class="radio"></span> &nbsp;No</label><br>
-          </div>
-        </div>
-        <div class="col">
-          <div>
-            <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="gas-test" value="Not tested"/> <span class="checkbox"></span>&nbsp;Not tested<br></label>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="form-group col" style="padding: 0 30px 0px 30px;">
-          <label class="control-label" for="input-subject">Comment:</label>
-          <div>
-            <textarea class="form-control" rows="2" max-rows="10" formControlName="gas_comment" placeholder="Type here to expand"></textarea>
-          </div>
-        </div>
-      </div>
-      <hr/>
-      <div class="row form-row" style="padding:0 15px 0 15px;">
-        <div class="col">
-          <h4 class="card-title black" style="padding: 15px 0;"><strong>Water</strong>
-          </h4>
-        </div>
-        <div class="col">
-          <div>
-            <label class="custom-radio"><input type="radio" (change)="onSave(false,true)" formControlName="water" value="Yes" checked/><span class="radio"></span> &nbsp;Yes</label><br>
-          </div>
-        </div>
-        <div class="col">
-          <div>
-            <label class="custom-radio"><input type="radio" (change)="onSave(false,true)" formControlName="water" value="No"/><span class="radio"></span> &nbsp;No</label><br>
-          </div>
-        </div>
-        <div class="col">
-          <div>
-            <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="water-test" value="Not tested"/> <span class="checkbox"></span>&nbsp;Not tested<br></label>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="form-group col" style="padding: 0 30px 0px 30px;">
-          <label class="control-label" for="input-subject">Comment:</label>
-          <div>
-            <textarea class="form-control" rows="2" max-rows="10" formControlName="water_comment" placeholder="Type here to expand"></textarea>
-          </div>
-        </div>
-      </div>
-      <hr/>
-      <div class="row form-row" style="padding:0 15px 0 15px;">
-        <div class="col">
-          <h4 class="card-title black" style="padding: 15px 0;"><strong>Sewer</strong>
-          </h4>
-        </div>
-        <div class="col">
-          <div>
-            <label class="custom-radio"><input type="radio" (change)="onSave(false,true)" formControlName="sewer" value="Yes" checked/><span class="radio"></span> &nbsp;Yes</label><br>
-          </div>
-        </div>
-        <div class="col">
-          <div>
-            <label class="custom-radio"><input type="radio" (change)="onSave(false,true)" formControlName="sewer" value="No"/><span class="radio"></span>&nbsp;No</label><br>
-          </div>
-        </div>
-        <div class="col">
-          <div>
-            <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="sewer-test" value="Not tested"/> <span class="checkbox"></span>&nbsp;Not tested<br></label>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="form-group col" style="padding: 0 30px 0px 30px;">
-          <label class="control-label" for="input-subject">Comment:</label>
-          <div>
-            <textarea class="form-control" rows="2" max-rows="10" formControlName="sewer_comment" placeholder="Type here to expand"></textarea>
-          </div>
-        </div>
-      </div>
-      <hr/>
-      <div class="row form-row" style="padding:0 15px 0 15px;">
-        <div class="col">
-          <h4 class="card-title black" style="padding: 15px 0;"><strong>Drainage</strong>
-          </h4>
-        </div>
-        <div class="col">
-          <div>
-            <label class="custom-radio"><input type="radio" (change)="onSave(false,true)" formControlName="drainage" value="Yes" checked/><span class="radio"></span> &nbsp;Yes</label><br>
-          </div>
-        </div>
-        <div class="col">
-          <div>
-            <label class="custom-radio"><input type="radio" (change)="onSave(false,true)" formControlName="drainage" value="No"/><span class="radio"></span> &nbsp;No</label><br>
-          </div>
-        </div>
-        <div class="col">
-          <div>
-            <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="drainage-test" value="Not tested"/> <span class="checkbox"></span>&nbsp;Not tested<br></label>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="form-group col" style="padding: 0 30px 0px 30px;">
-          <label class="control-label" for="input-subject">Comment:</label>
-          <div>
-            <textarea class="form-control" rows="2" max-rows="10" formControlName="drainage_comment" placeholder="Type here to expand"></textarea>
-          </div>
-        </div>
-      </div>
-      <hr/>
-    </div>
-  </ng-template>
-      
-  <ng-template [ngIf]="reportType != null && isFormDisplay('smoke_detectors_form')">
-    <div class="card">
+      <ng-template [ngIf]="reportType != null && isFormDisplay('services_connected_form')">
         <div class="card-body">
           <div class="row form-row" style="padding:0 15px 0 15px;">
             <div class="col">
-              <h4 class="card-title black" style="padding: 15px 0;"><strong>Smoke Detectors</strong>
+              <h4 class="card-title black" style="padding: 15px 0;"><strong>Electricity</strong>
               </h4>
             </div>
             <div class="col">
               <div>
-                <label class="custom-radio"><input type="radio" (change)="onSave(false,true)" formControlName="smoke_detectors" value="Yes" checked/><span class="radio"></span> &nbsp;Yes</label><br>
+                <label class="custom-radio"><input type="radio" (change)="onSave(false,true)" formControlName="electricity" value="Yes" checked/><span class="radio"></span> &nbsp;Yes</label><br>
               </div>
             </div>
             <div class="col">
               <div>
-                <label class="custom-radio"><input type="radio" (change)="onSave(false,true)" formControlName="smoke_detectors" value="No"/><span class="radio"></span> &nbsp;No</label><br>
+                <label class="custom-radio"><input type="radio" (change)="onSave(false,true)" formControlName="electricity" value="No"/><span class="radio"></span> &nbsp;No</label><br>
               </div>
             </div>
             <div class="col">
               <div>
-                <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="smoke_detectors-test" value="Not tested"/> <span class="checkbox"></span>&nbsp;Not tested<br></label>
+                <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="electricity-test" value="Not tested"/><span class="checkbox"></span>&nbsp;Not tested<br></label>
               </div>
             </div>
           </div>
-          <div class="row">
-            <div class="form-group col" style="padding: 0 30px 0px 30px;">
-              <label class="control-label" for="input-subject">Comment:</label>
-              <div>
-                <textarea class="form-control" rows="2" max-rows="10" formControlName="smoke_detectors_comment" placeholder="Type here to expand"></textarea>
-              </div>
+        </div>
+        <div class="row">
+          <div class="form-group col" style="padding: 0 30px 0px 30px;">
+            <label class="control-label" for="input-subject">Comment:</label>
+            <div>
+              <textarea class="form-control" rows="2" max-rows="10" formControlName="electricity_comment" placeholder="Type here to expand"></textarea>
             </div>
           </div>
-          <hr/>
-      </div>
+        </div>
+        <hr/>
+        <div class="row form-row" style="padding:0 15px 0 15px;">
+          <div class="col">
+            <h4 class="card-title black" style="padding: 15px 0;"><strong>Gas</strong>
+            </h4>
+          </div>
+          <div class="col">
+            <div>
+              <label class="custom-radio"><input type="radio" (change)="onSave(false,true)" formControlName="gas" value="Yes" checked/><span class="radio"></span> &nbsp;Yes</label><br>
+            </div>
+          </div>
+          <div class="col">
+            <div>
+              <label class="custom-radio"><input type="radio" (change)="onSave(false,true)" formControlName="gas" value="No"/><span class="radio"></span> &nbsp;No</label><br>
+            </div>
+          </div>
+          <div class="col">
+            <div>
+              <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="gas-test" value="Not tested"/> <span class="checkbox"></span>&nbsp;Not tested<br></label>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col" style="padding: 0 30px 0px 30px;">
+            <label class="control-label" for="input-subject">Comment:</label>
+            <div>
+              <textarea class="form-control" rows="2" max-rows="10" formControlName="gas_comment" placeholder="Type here to expand"></textarea>
+            </div>
+          </div>
+        </div>
+        <hr/>
+        <div class="row form-row" style="padding:0 15px 0 15px;">
+          <div class="col">
+            <h4 class="card-title black" style="padding: 15px 0;"><strong>Water</strong>
+            </h4>
+          </div>
+          <div class="col">
+            <div>
+              <label class="custom-radio"><input type="radio" (change)="onSave(false,true)" formControlName="water" value="Yes" checked/><span class="radio"></span> &nbsp;Yes</label><br>
+            </div>
+          </div>
+          <div class="col">
+            <div>
+              <label class="custom-radio"><input type="radio" (change)="onSave(false,true)" formControlName="water" value="No"/><span class="radio"></span> &nbsp;No</label><br>
+            </div>
+          </div>
+          <div class="col">
+            <div>
+              <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="water-test" value="Not tested"/> <span class="checkbox"></span>&nbsp;Not tested<br></label>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col" style="padding: 0 30px 0px 30px;">
+            <label class="control-label" for="input-subject">Comment:</label>
+            <div>
+              <textarea class="form-control" rows="2" max-rows="10" formControlName="water_comment" placeholder="Type here to expand"></textarea>
+            </div>
+          </div>
+        </div>
+        <hr/>
+        <div class="row form-row" style="padding:0 15px 0 15px;">
+          <div class="col">
+            <h4 class="card-title black" style="padding: 15px 0;"><strong>Sewer</strong>
+            </h4>
+          </div>
+          <div class="col">
+            <div>
+              <label class="custom-radio"><input type="radio" (change)="onSave(false,true)" formControlName="sewer" value="Yes" checked/><span class="radio"></span> &nbsp;Yes</label><br>
+            </div>
+          </div>
+          <div class="col">
+            <div>
+              <label class="custom-radio"><input type="radio" (change)="onSave(false,true)" formControlName="sewer" value="No"/><span class="radio"></span>&nbsp;No</label><br>
+            </div>
+          </div>
+          <div class="col">
+            <div>
+              <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="sewer-test" value="Not tested"/> <span class="checkbox"></span>&nbsp;Not tested<br></label>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col" style="padding: 0 30px 0px 30px;">
+            <label class="control-label" for="input-subject">Comment:</label>
+            <div>
+              <textarea class="form-control" rows="2" max-rows="10" formControlName="sewer_comment" placeholder="Type here to expand"></textarea>
+            </div>
+          </div>
+        </div>
+        <hr/>
+        <div class="row form-row" style="padding:0 15px 0 15px;">
+          <div class="col">
+            <h4 class="card-title black" style="padding: 15px 0;"><strong>Drainage</strong>
+            </h4>
+          </div>
+          <div class="col">
+            <div>
+              <label class="custom-radio"><input type="radio" (change)="onSave(false,true)" formControlName="drainage" value="Yes" checked/><span class="radio"></span> &nbsp;Yes</label><br>
+            </div>
+          </div>
+          <div class="col">
+            <div>
+              <label class="custom-radio"><input type="radio" (change)="onSave(false,true)" formControlName="drainage" value="No"/><span class="radio"></span> &nbsp;No</label><br>
+            </div>
+          </div>
+          <div class="col">
+            <div>
+              <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="drainage-test" value="Not tested"/> <span class="checkbox"></span>&nbsp;Not tested<br></label>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col" style="padding: 0 30px 0px 30px;">
+            <label class="control-label" for="input-subject">Comment:</label>
+            <div>
+              <textarea class="form-control" rows="2" max-rows="10" formControlName="drainage_comment" placeholder="Type here to expand"></textarea>
+            </div>
+          </div>
+        </div>
+        <hr/>
+      </ng-template>
+    
+      <ng-template [ngIf]="reportType != null && isFormDisplay('smoke_detectors_form')">
+        <ng-template [ngIf]="reportType != null && !isFormDisplay('services_connected_form')">
+          <br>
+        </ng-template>
+        <div class="row form-row" style="padding:0 15px 0 15px;">
+          <div class="col">
+            <h4 class="card-title black" style="padding: 15px 0;"><strong>Smoke Detectors</strong>
+            </h4>
+          </div>
+          <div class="col">
+            <div>
+              <label class="custom-radio"><input type="radio" (change)="onSave(false,true)" formControlName="smoke_detectors" value="Yes" checked/><span class="radio"></span> &nbsp;Yes</label><br>
+            </div>
+          </div>
+          <div class="col">
+            <div>
+              <label class="custom-radio"><input type="radio" (change)="onSave(false,true)" formControlName="smoke_detectors" value="No"/><span class="radio"></span> &nbsp;No</label><br>
+            </div>
+          </div>
+          <div class="col">
+            <div>
+              <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="smoke_detectors-test" value="Not tested"/> <span class="checkbox"></span>&nbsp;Not tested<br></label>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col" style="padding: 0 30px 0px 30px;">
+            <label class="control-label" for="input-subject">Comment:</label>
+            <div>
+              <textarea class="form-control" rows="2" max-rows="10" formControlName="smoke_detectors_comment" placeholder="Type here to expand"></textarea>
+            </div>
+          </div>
+        </div>
+        <hr/>
+      </ng-template>
     </div>
   </ng-template>
 

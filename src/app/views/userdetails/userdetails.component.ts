@@ -36,7 +36,7 @@ export class UserdetailsComponent implements OnInit, AfterViewInit, OnDestroy {
     this.loginResponse = new LoginResponse();
 
     this.resizeSubscription = Observable.fromEvent(window, 'resize')
-      .debounceTime(1000)
+      .debounceTime(600)
       .subscribe((event) => {
         console.log("resizing done !!!!!");
         AppUtils.sidebarMinimizerHandler();
