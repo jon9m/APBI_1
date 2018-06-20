@@ -81,8 +81,13 @@ export class MycalendarComponent implements OnInit, OnDestroy {
       currMonth = (moment(mm).set('date', 1).add(-10, 'day')).format('YYYY-MM-DD');
       nextMonth = (moment(mm).set('date', 1).add(1, 'month').add(10, 'day')).format('YYYY-MM-DD');
     } else {
-      //btnType === 'month'
-      return;
+      if ((btnType == 'month') || (btnType == 'agendaWeek') || (btnType == 'agendaDay') || (btnType == 'listMonth')) {
+        //TODO ----- 
+        //currMonth = (moment(mm).set('date', 1).add(-10, 'day')).format('YYYY-MM-DD');
+        //nextMonth = (moment(mm).set('date', 1).add(1, 'month').add(10, 'day')).format('YYYY-MM-DD');
+      } else {
+        return;
+      }
     }
     console.log("currMonth " + currMonth + " nextMonth " + nextMonth);
 
