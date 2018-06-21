@@ -22,6 +22,7 @@ export class MycalendarComponent implements OnInit, OnDestroy {
   @ViewChild(CalendarComponent) ucCalendar: CalendarComponent;
   isCalendarLoading: boolean = false;
 
+  mm;
   events: any = [];
   private eventSubscription: Subscription;
   private calendarSubscription: Subscription;
@@ -37,9 +38,13 @@ export class MycalendarComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    var now = moment();
-    let currMonth = (now.set('date', 1).add(-10, 'day')).format('YYYY-MM-DD');
-    let nextMonth = (now.set('date', 1).add(1, 'month').add(10, 'day')).format('YYYY-MM-DD');
+    // var now = moment();
+    // let currMonth = (now.set('date', 1).add(-10, 'day')).format('YYYY-MM-DD');
+    // let nextMonth = (now.set('date', 1).add(1, 'month').add(10, 'day')).format('YYYY-MM-DD');
+
+     var currView = this.ucCalendar.fullCalendar('getView');
+    var currMonth = (currView.start).format('YYYY-MM-DD');
+    var nextMonth = (currView.end).format('YYYY-MM-DD');
 
     console.log("currMonth " + currMonth + " nextMonth " + nextMonth);
     this.isCalendarLoading = true;
@@ -66,29 +71,97 @@ export class MycalendarComponent implements OnInit, OnDestroy {
   }
 
   clickButton(evt) {
-    let btnType = evt.detail.buttonType;
-    var mm = this.ucCalendar.fullCalendar("getDate");
-    var currMonth = (moment(mm)).format('YYYY-MM-DD');
-    var nextMonth;
+    // let btnType = evt.detail.buttonType;
+    // if (this.mm == null) {
+    //   this.mm = this.ucCalendar.fullCalendar("getDate");
+    // }
 
-    if (btnType === 'next') {
-      currMonth = (moment(mm).add(-10, 'day')).format('YYYY-MM-DD');
-      nextMonth = (moment(mm).add(1, 'month').add(10, 'day')).format('YYYY-MM-DD');
-    } else if (btnType === 'prev') {
-      currMonth = (moment(mm).add(-10, 'day')).format('YYYY-MM-DD');
-      nextMonth = (moment(mm).add(1, 'month').add(10, 'day')).format('YYYY-MM-DD');
-    } else if (btnType === 'today') {
-      currMonth = (moment(mm).set('date', 1).add(-10, 'day')).format('YYYY-MM-DD');
-      nextMonth = (moment(mm).set('date', 1).add(1, 'month').add(10, 'day')).format('YYYY-MM-DD');
-    } else {
-      if ((btnType == 'month') || (btnType == 'agendaWeek') || (btnType == 'agendaDay') || (btnType == 'listMonth')) {
-        //TODO ----- 
-        //currMonth = (moment(mm).set('date', 1).add(-10, 'day')).format('YYYY-MM-DD');
-        //nextMonth = (moment(mm).set('date', 1).add(1, 'month').add(10, 'day')).format('YYYY-MM-DD');
-      } else {
-        return;
-      }
-    }
+    var currView = this.ucCalendar.fullCalendar('getView');
+    var currMonth = (currView.start).format('YYYY-MM-DD');
+    var nextMonth = (currView.end).format('YYYY-MM-DD');
+
+    // var viewType = 'month';
+    // var vievTypeObj = this.ucCalendar.fullCalendar("getView");
+    // if (vievTypeObj && vievTypeObj.name) {
+    //   viewType = vievTypeObj.name;
+    // }
+
+    // if ((btnType == 'month') || (btnType == 'agendaWeek') || (btnType == 'agendaDay') || (btnType == 'listMonth')) {
+    //   if (viewType == 'month') {
+    //     // currMonth = (moment(this.mm).add(-10, 'day')).format('YYYY-MM-DD');
+    //     nextMonth = (moment(this.mm).add(1, 'month').add(10, 'day')).format('YYYY-MM-DD');
+    //   } else if (viewType == 'agendaWeek') {
+    //     // currMonth = (moment(this.mm)).format('YYYY-MM-DD');
+    //     nextMonth = (moment(this.mm).add(1, 'week')).format('YYYY-MM-DD');
+    //   } else if (viewType == 'agendaDay') {
+    //     // currMonth = (moment(this.mm)).format('YYYY-MM-DD');
+    //     nextMonth = (moment(this.mm).add(1, 'day')).format('YYYY-MM-DD');
+    //   } else if (viewType == 'listMonth') {
+    //     // currMonth = (moment(this.mm).add(-10, 'day')).format('YYYY-MM-DD');
+    //     nextMonth = (moment(this.mm).add(1, 'month').add(10, 'day')).format('YYYY-MM-DD');
+    //   }
+    // } else {
+    //   this.mm = this.ucCalendar.fullCalendar("getDate");
+
+    //   if (btnType === 'next') {
+    //     if (viewType == 'month') {
+    //       currMonth = (moment(this.mm).add(-10, 'day')).format('YYYY-MM-DD');
+    //       nextMonth = (moment(this.mm).add(1, 'month').add(10, 'day')).format('YYYY-MM-DD');
+    //     } else if (viewType == 'agendaWeek') {
+    //       currMonth = (moment(this.mm)).format('YYYY-MM-DD');
+    //       nextMonth = (moment(this.mm).add(1, 'week')).format('YYYY-MM-DD');
+    //     } else if (viewType == 'agendaDay') {
+    //       currMonth = (moment(this.mm)).format('YYYY-MM-DD');
+    //       nextMonth = (moment(this.mm).add(1, 'day')).format('YYYY-MM-DD');
+    //     } else if (viewType == 'listMonth') {
+    //       currMonth = (moment(this.mm).add(-10, 'day')).format('YYYY-MM-DD');
+    //       nextMonth = (moment(this.mm).add(1, 'month').add(10, 'day')).format('YYYY-MM-DD');
+    //     }
+
+    //   } else if (btnType === 'prev') {
+    //     if (viewType == 'month') {
+    //       currMonth = (moment(this.mm).add(-10, 'day')).format('YYYY-MM-DD');
+    //       nextMonth = (moment(this.mm).add(1, 'month').add(10, 'day')).format('YYYY-MM-DD');
+    //     } else if (viewType == 'agendaWeek') {
+    //       currMonth = (moment(this.mm)).format('YYYY-MM-DD');
+    //       nextMonth = (moment(this.mm).add(1, 'week')).format('YYYY-MM-DD');
+    //     } else if (viewType == 'agendaDay') {
+    //       currMonth = (moment(this.mm)).format('YYYY-MM-DD');
+    //       nextMonth = (moment(this.mm).add(1, 'day')).format('YYYY-MM-DD');
+    //     } else if (viewType == 'listMonth') {
+    //       currMonth = (moment(this.mm).add(-10, 'day')).format('YYYY-MM-DD');
+    //       nextMonth = (moment(this.mm).add(1, 'month').add(10, 'day')).format('YYYY-MM-DD');
+    //     }
+
+
+
+
+
+    //   } else if (btnType === 'today') {
+    //     if (viewType == 'month') {
+    //       currMonth = (moment(this.mm).set('date', 1).add(-10, 'day')).format('YYYY-MM-DD');
+    //       nextMonth = (moment(this.mm).set('date', 1).add(1, 'month').add(10, 'day')).format('YYYY-MM-DD');
+    //     } else if (viewType == 'agendaWeek') {
+    //       currMonth = (moment(this.mm).set('date', 1)).format('YYYY-MM-DD');
+    //       nextMonth = (moment(this.mm).set('date', 1).add(1, 'week')).format('YYYY-MM-DD');
+    //     } else if (viewType == 'agendaDay') {
+    //       currMonth = (moment(this.mm).set('date', 1)).format('YYYY-MM-DD');
+    //       nextMonth = (moment(this.mm).set('date', 1).add(1, 'day')).format('YYYY-MM-DD');
+    //     } else if (viewType == 'listMonth') {
+    //       currMonth = (moment(this.mm).set('date', 1).add(-10, 'day')).format('YYYY-MM-DD');
+    //       nextMonth = (moment(this.mm).set('date', 1).add(1, 'month').add(10, 'day')).format('YYYY-MM-DD');
+    //     }
+
+
+
+
+    //   } else {
+    //     return;
+    //   }
+
+    //   this.ucCalendar.fullCalendar('gotoDate', currMonth);
+    // }
+
     console.log("currMonth " + currMonth + " nextMonth " + nextMonth);
 
     this.calendarSubscription = this.httpService.loadCalendar({ 'start': currMonth, 'end': nextMonth }).subscribe(
