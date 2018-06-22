@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, Renderer2 } from '@angular/core';
 import { AppGlobal } from '../../shared/app-global';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { HTTPService } from '../../shared/http.service';
@@ -11,22 +11,29 @@ import { AppUtils } from '../../shared/app-utils';
   selector: 'app-dashboard',
   templateUrl: 'login.component.html'
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, AfterViewInit {
 
   loginError: string = "";
   loginform: FormGroup;
   loginResponse: LoginResponse;
   isSignningIn: boolean = false;
 
-  constructor(private fb: FormBuilder, private httpService: HTTPService, private router: Router, private loginService: LoginService) { }
+  constructor(private renderer: Renderer2, private fb: FormBuilder, private httpService: HTTPService, private router: Router, private loginService: LoginService) { }
 
   ngOnInit(): void {
     this.loginResponse = new LoginResponse();
+    this.loginService.invalidateUser();
 
     this.loginform = this.fb.group({
       'username': '',
       'password': ''
     });
+  }
+
+  ngAfterViewInit(): void {
+    this.renderer.removeClass(document.body, 'header-fixed');
+    this.renderer.removeClass(document.body, 'sidebar-lg-show');
+    this.renderer.removeClass(document.body, 'sidebar-fixed');
   }
 
   onLogin() {

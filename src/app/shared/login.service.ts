@@ -24,6 +24,16 @@ export class LoginService {
         return (this.loginResponse && this.loginResponse.flag != false) && (this.loginResponse.userId != -1);
     }
 
+    invalidateUser() {
+        if (this.loginResponse) {
+            this.loginResponse.flag == false;
+            this.loginResponse.userId == -1;
+            this.loginResponse.name = '';
+            this.loginResponse.role = '';
+            this.loginResponse.message = '';
+        }
+    }
+
     logout() {
         this.loginResponse.flag == false;
         this.loginResponse.userId == -1;
