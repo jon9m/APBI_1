@@ -44,6 +44,7 @@ export class MycalendarComponent implements OnInit, OnDestroy, AfterViewInit {
   ngAfterViewInit(): void {
     var now = moment();
     let currMonth = (now.set('date', 1).add(-10, 'day')).format('YYYY-MM-DD');
+    now = moment();
     let nextMonth = (now.set('date', 1).add(1, 'month').add(10, 'day')).format('YYYY-MM-DD');
 
     console.log("currMonth " + currMonth + " nextMonth " + nextMonth);

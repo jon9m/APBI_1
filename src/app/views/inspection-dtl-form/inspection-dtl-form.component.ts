@@ -206,9 +206,9 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
         hallways_recommendations_array.forEach(() => {
           (<FormArray>this.inspectiondetailsform.get('hallways_recommendations_list')).push(
             new FormGroup({
-              'item': new FormControl(),
-              'rectype': new FormControl(),
-              'recdetail': new FormControl(),
+              'item': new FormControl('-'),
+              'rectype': new FormControl('-'),
+              'recdetail': new FormControl('-'),
               'comment': new FormControl(''),
               'typee': new FormControl(),
               'filename': new FormControl()
@@ -220,9 +220,9 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
         kitchen_recommendations_array.forEach(() => {
           (<FormArray>this.inspectiondetailsform.get('kitchen_recommendations_list')).push(
             new FormGroup({
-              'item': new FormControl(),
-              'rectype': new FormControl(),
-              'recdetail': new FormControl(),
+              'item': new FormControl('-'),
+              'rectype': new FormControl('-'),
+              'recdetail': new FormControl('-'),
               'comment': new FormControl(''),
               'typee': new FormControl(),
               'filename': new FormControl()
@@ -234,9 +234,9 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
         laundry_recommendations_array.forEach(() => {
           (<FormArray>this.inspectiondetailsform.get('laundry_recommendations_list')).push(
             new FormGroup({
-              'item': new FormControl(),
-              'rectype': new FormControl(),
-              'recdetail': new FormControl(),
+              'item': new FormControl('-'),
+              'rectype': new FormControl('-'),
+              'recdetail': new FormControl('-'),
               'comment': new FormControl(''),
               'typee': new FormControl(),
               'filename': new FormControl()
@@ -248,9 +248,9 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
         bedrooms_recommendations_array.forEach(() => {
           (<FormArray>this.inspectiondetailsform.get('bedrooms_recommendations_list')).push(
             new FormGroup({
-              'item': new FormControl(),
-              'rectype': new FormControl(),
-              'recdetail': new FormControl(),
+              'item': new FormControl('-'),
+              'rectype': new FormControl('-'),
+              'recdetail': new FormControl('-'),
               'comment': new FormControl(''),
               'typee': new FormControl(),
               'filename': new FormControl()
@@ -262,9 +262,9 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
         bathrooms_recommendations_array.forEach(() => {
           (<FormArray>this.inspectiondetailsform.get('bathrooms_recommendations_list')).push(
             new FormGroup({
-              'item': new FormControl(),
-              'rectype': new FormControl(),
-              'recdetail': new FormControl(),
+              'item': new FormControl('-'),
+              'rectype': new FormControl('-'),
+              'recdetail': new FormControl('-'),
               'comment': new FormControl(''),
               'typee': new FormControl(),
               'filename': new FormControl()
@@ -276,9 +276,9 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
         external_recommendations_array.forEach(() => {
           (<FormArray>this.inspectiondetailsform.get('external_recommendations_list')).push(
             new FormGroup({
-              'item': new FormControl(),
-              'rectype': new FormControl(),
-              'recdetail': new FormControl(),
+              'item': new FormControl('-'),
+              'rectype': new FormControl('-'),
+              'recdetail': new FormControl('-'),
               'comment': new FormControl(''),
               'typee': new FormControl(),
               'filename': new FormControl()
@@ -290,9 +290,9 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
         ensuite_recommendations_array.forEach(() => {
           (<FormArray>this.inspectiondetailsform.get('ensuite_recommendations_list')).push(
             new FormGroup({
-              'item': new FormControl(),
-              'rectype': new FormControl(),
-              'recdetail': new FormControl(),
+              'item': new FormControl('-'),
+              'rectype': new FormControl('-'),
+              'recdetail': new FormControl('-'),
               'comment': new FormControl(''),
               'typee': new FormControl(),
               'filename': new FormControl()
@@ -307,9 +307,9 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
         timberpest_recommendations_array.forEach(() => {
           (<FormArray>this.inspectiondetailsform.get('timberpest_recommendations_list')).push(
             new FormGroup({
-              'item': new FormControl(),
-              'rectype': new FormControl(),
-              'recdetail': new FormControl(),
+              'item': new FormControl('-'),
+              'rectype': new FormControl('-'),
+              'recdetail': new FormControl('-'),
               'comment': new FormControl(''),
               'typee': new FormControl(),
               'filename': new FormControl()
@@ -1522,15 +1522,58 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
     let len = new Date().getTime();
     let typeeLower = (<string>typee).toLowerCase();
     let fileName = 'rec-file-' + typeeLower + '-' + len;
+    let itemValue = this.getRecommendationItemValue(recommendationType);
 
     (<FormArray>this.inspectiondetailsform.get(recommendationType)).push(new FormGroup({
-      'item': new FormControl(),
-      'rectype': new FormControl(),
-      'recdetail': new FormControl(),
+      'item': new FormControl(itemValue),
+      'rectype': new FormControl('-'),
+      'recdetail': new FormControl('-'),
       'comment': new FormControl(''),
       'typee': new FormControl(typee),
       'filename': new FormControl(fileName)
     }));
+  }
+
+  getRecommendationItemValue(recommendationType: string) {
+    let item = '-';
+    if (recommendationType != null) {
+      switch (recommendationType) {
+        case 'hallways_recommendations_list': {
+          item = 'Hallways and General Living Spaces';
+        }
+          break;
+        case 'kitchen_recommendations_list': {
+          item = 'Kitchen';
+        }
+          break;
+        case 'laundry_recommendations_list': {
+          item = 'Laundry';
+        }
+          break;
+        case 'bedrooms_recommendations_list': {
+          item = 'Bedrooms';
+        }
+          break;
+        case 'bathrooms_recommendations_list': {
+          item = 'Bathrooms';
+        }
+          break;
+        case 'ensuite_recommendations_list': {
+          item = 'Ensuite';
+        }
+          break;
+        case 'external_recommendations_list': {
+          item = 'External';
+        }
+          break;
+        case 'timberpest_recommendations_list': {
+          item = 'Timber Pest - Findings and Recommendations';
+        }
+          break;
+      }
+    }
+
+    return item;
   }
 
   //Save on file upload complete
