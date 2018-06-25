@@ -24,6 +24,12 @@ export class FileUploadProgressService {
     public setResizeState(key: string, rstate: boolean) {
         (this.fileProgressMap.get(key)).isImageResizing = rstate;
     }
+    public setUploadError(key: string, rstate: boolean) {
+        (this.fileProgressMap.get(key)).isError = rstate;
+        if(rstate == true){
+            (this.fileProgressMap.get(key)).progress = 0;
+        }
+    }
     getKeys() {
         return Array.from(this.fileProgressMap.keys());
     }
