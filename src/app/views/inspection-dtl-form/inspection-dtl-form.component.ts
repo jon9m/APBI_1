@@ -208,7 +208,7 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
     }
 
 
-    if (this.isFormDisplay('visual_building_inspection_form')) {
+    //if (this.isFormDisplay('visual_building_inspection_form')) {
       if ((hallways_recommendations_array != null) && (typeof hallways_recommendations_array.forEach === 'function')) {
         hallways_recommendations_array.forEach(() => {
           (<FormArray>this.inspectiondetailsform.get('hallways_recommendations_list')).push(
@@ -307,9 +307,9 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
           );
         });
       }
-    }
+    //}
 
-    if (this.isFormDisplay('visual_timber_pest_inspection_form')) {
+    //if (this.isFormDisplay('visual_timber_pest_inspection_form')) {
       if ((timberpest_recommendations_array != null) && (typeof timberpest_recommendations_array.forEach === 'function')) {
         timberpest_recommendations_array.forEach(() => {
           (<FormArray>this.inspectiondetailsform.get('timberpest_recommendations_list')).push(
@@ -324,9 +324,9 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
           );
         });
       }
-    }
+    //}
 
-    if (this.isFormDisplay('dilapidation_inspection_form')) {
+    //if (this.isFormDisplay('dilapidation_inspection_form')) {
       if ((internl_recommendations_array != null) && (typeof internl_recommendations_array.forEach === 'function')) {
         internl_recommendations_array.forEach(() => {
           (<FormArray>this.inspectiondetailsform.get('internal_recommendations_list')).push(
@@ -341,7 +341,7 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
           );
         });
       }
-    }
+    //}
   }
 
   private initForm() {
