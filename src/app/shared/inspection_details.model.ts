@@ -10,6 +10,7 @@ export class InspectionDetails {
     public ensuite_recommendations_list: InspectionRecommendation[] = [];
     public external_recommendations_list: InspectionRecommendation[] = [];
     public timberpest_recommendations_list: InspectionRecommendation[] = [];
+    public internal_recommendations_list: InspectionRecommendation[] = [];
 
     public bookingid: string = '';
     public rec_count: string = '';

@@ -24,6 +24,7 @@ import { FileUploadProgressService } from "../../shared/fileupload-progress.serv
 'ensuite_recommendations_list'
 'external_recommendations_list'
 'timberpest_recommendations_list'
+'internal_recommendations_list'
  */
 
 export class InspectionDtlFormComponent implements OnInit, OnDestroy {
@@ -44,6 +45,7 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
   internal: string[] = [];
   ensuite: string[] = [];
   external: string[] = [];
+  internal_delap: string[] = [];
 
   formSaving: boolean = false;
   formSaveMsg: string = '';
@@ -85,6 +87,7 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
     this.internal = AppGlobal.Internal;
     this.ensuite = AppGlobal.Ensuite;
     this.external = AppGlobal.External;
+    this.internal_delap = AppGlobal.Internal_delap;
 
     this.insp_type_pre_purchase_building_inspection = AppGlobal.INSP_TYPE_PRE_PURCHASE_BUILDING_INSPECTION;
     this.insp_type_pre_sale_building_inspection = AppGlobal.INSP_TYPE_PRE_SALE_BUILDING_INSPECTION;
@@ -174,6 +177,7 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
     let external_recommendations_array = [];
     let ensuite_recommendations_array = [];
     let timberpest_recommendations_array = [];
+    let internl_recommendations_array = [];
 
     if (this.inspectiondetails && this.inspectiondetails.hallways_recommendations_list) {
       hallways_recommendations_array = this.inspectiondetails.hallways_recommendations_list;
@@ -198,6 +202,9 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
     }
     if (this.inspectiondetails && this.inspectiondetails.timberpest_recommendations_list) {
       timberpest_recommendations_array = this.inspectiondetails.timberpest_recommendations_list;
+    }
+    if (this.inspectiondetails && this.inspectiondetails.internal_recommendations_list) {
+      internl_recommendations_array = this.inspectiondetails.internal_recommendations_list;
     }
 
 
@@ -306,6 +313,23 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
       if ((timberpest_recommendations_array != null) && (typeof timberpest_recommendations_array.forEach === 'function')) {
         timberpest_recommendations_array.forEach(() => {
           (<FormArray>this.inspectiondetailsform.get('timberpest_recommendations_list')).push(
+            new FormGroup({
+              'item': new FormControl('-'),
+              'rectype': new FormControl('-'),
+              'recdetail': new FormControl('-'),
+              'comment': new FormControl(''),
+              'typee': new FormControl(),
+              'filename': new FormControl()
+            })
+          );
+        });
+      }
+    }
+
+    if (this.isFormDisplay('dilapidation_inspection_form')) {
+      if ((internl_recommendations_array != null) && (typeof internl_recommendations_array.forEach === 'function')) {
+        internl_recommendations_array.forEach(() => {
+          (<FormArray>this.inspectiondetailsform.get('internal_recommendations_list')).push(
             new FormGroup({
               'item': new FormControl('-'),
               'rectype': new FormControl('-'),
@@ -917,6 +941,7 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
       '1485': '',
       '1486': '',
       'bedrooms_recommendations_list': [],
+      'internal_recommendations_list': [],
       '1499': '',
       '1500': '',
       '1501': '',
@@ -1485,12 +1510,13 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
   }
 
   formsMapper = {
-    'visual_building_inspection_form': [1, 2, 3, 6, 7, 10, 11, 12],
-    'services_connected_form': [1, 2, 3, 6, 7, 10, 11, 12],
-    'smoke_detectors_form': [1, 2, 3, 5, 6, 7, 10, 11, 12],
+    'visual_building_inspection_form': [1, 2, 3, 6, 10, 11, 12],
+    'services_connected_form': [1, 2, 3, 6, 10, 11, 12],
+    'smoke_detectors_form': [1, 2, 3, 5, 6, 10, 11, 12],
     'furnished_and_extension_form': [1, 2, 3, 5, 6, 7, 10, 11],
-    'smoke_detectors_fitted_form': [1, 2, 3, 6, 7, 10, 11, 12],
-    'visual_timber_pest_inspection_form': [5, 6, 7, 10, 11],
+    'smoke_detectors_fitted_form': [1, 2, 3, 6, 10, 11, 12],
+    'visual_timber_pest_inspection_form': [5, 6, 10, 11],
+    'dilapidation_inspection_form':[7],
     'building_age': [12]
   }
 

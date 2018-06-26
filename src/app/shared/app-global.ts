@@ -15,7 +15,7 @@ export class AppGlobal {
     public static ADD_REPORT_ACTION = 'cpAddReportv2';
     public static IMG_PREVIEW_ACTION = 'cpRepImgv2';
     public static LOGIN_ACTION = 'appLogin';
-    public static USER_AVATAR_URL= AppGlobal.DOMAIN_ENDPOINT + "controlPanel/profileImage?image=";
+    public static USER_AVATAR_URL = AppGlobal.DOMAIN_ENDPOINT + "controlPanel/profileImage?image=";
 
     //Image upload width and height
     public static UPLOAD_IMG_WIDTH = 800;
@@ -36,7 +36,7 @@ export class AppGlobal {
     public static INSP_TYPE_NEW_BUILDING_INSPECTION_COMPLETION_STAGE = 12;     //New Building Inspection - Completion Stage
     public static INSP_TYPE_NEW_BUILDING_INSPECTION_4_STAGES_PACKAGE = 13;     //New Building Inspection - 4 Stages Package
 
-    
+
     //Recommendations Options
     public static TimberPest: string[] = [
         "Dwelling",
@@ -44,7 +44,7 @@ export class AppGlobal {
         "Windows",
         "Door Frames",
         "Roof Cavity",
-        "Sub Floor", 
+        "Sub Floor",
         "Garage/Carport",
         "Fence line",
         "Grounds",
@@ -210,5 +210,36 @@ export class AppGlobal {
         "Stumps",
         "Retaining Walls",
         "Garage/Car Port"
+    ];
+
+    public static Internal_delap: string[] = [
+        "Slab",
+        "Floor Height",
+        "Stumps",
+        "Bearers",
+        "Joists",
+        "Clearance",
+        "Ant Capping for brick piers/termite protection for slabs",
+        "Subfloor Ventilation",
+        "Setout",
+        "Walls",
+        "Windows",
+        "Door Openings",
+        "Plumb",
+        "Support Points",
+        "Lintels",
+        "Beams",
+        "Brackets Fixings",
+        "Bracing",
+        "Flashing",
+        "Plumbing",
+        "Electrical",
+        "Trusses/Layout",
+        "Triple L Grips",
+        "Fascia",
+        "Gutters",
+        "Collar Ties/Rafters",
+        "Roof Members",
+        "Roof Cladding"
     ];
 }
