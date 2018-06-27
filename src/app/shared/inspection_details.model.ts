@@ -12,6 +12,10 @@ export class InspectionDetails {
     public timberpest_recommendations_list: InspectionRecommendation[] = [];
     public internal_recommendations_list: InspectionRecommendation[] = [];
 
+    public framestage_slab_recommendations_list: InspectionRecommendation[] = [];
+    public walls_beams_recommendations_list: InspectionRecommendation[] = [];
+    public roof_recommendations_list: InspectionRecommendation[] = [];
+
     public bookingid: string = '';
     public rec_count: string = '';
     public type_1: string = '-';
@@ -114,6 +118,16 @@ export class InspectionDetails {
     public '1052': string = '';
     public '1053': string = '';
     public '1054': string = '';
+
+    public '1055': string = '';
+    public '1056': string = '';
+    public '1057': string = '';
+    public '1058': string = '';
+    public '1059': string = '';
+    public '1060': string = '';
+
+
+
     public '1061': string = '';
     public '1062': string = '';
     public '1063': string = '';
@@ -216,6 +230,16 @@ export class InspectionDetails {
     public '1160': string = '';
     public '1161': string = '';
     public '1162': string = '';
+
+    public '1163': string = '';
+    public '1164': string = '';
+    public '1165': string = '';
+    public '1166': string = '';
+    public '1167': string = '';
+    public '1168': string = '';
+
+
+
     public '1169': string = '';
     public '1170': string = '';
     public '1171': string = '';
@@ -1045,4 +1069,14 @@ export class InspectionDetails {
     public '2123': string = '';
     public '2124': string = '';
     public '2125': string = '';
+
+    public dwelling_type_1: string = '-';
+    public dwelling_type_2: string = '-';
+    public dwelling_additions: string = '-';
+    public dwelling_configuration: string = '-';
+    public main_construction: string = '-';
+    public footing_type: string = '-';
+
+    public plans: string = '-';
+    public plans_comment: string = '';
 }

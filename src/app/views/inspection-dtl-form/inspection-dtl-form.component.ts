@@ -25,6 +25,9 @@ import { FileUploadProgressService } from "../../shared/fileupload-progress.serv
 'external_recommendations_list'
 'timberpest_recommendations_list'
 'internal_recommendations_list'
+'framestage_slab_recommendations_list'
+'walls_beams_recommendations_list'
+'roof_recommendations_list'
  */
 
 export class InspectionDtlFormComponent implements OnInit, OnDestroy {
@@ -179,6 +182,10 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
     let timberpest_recommendations_array = [];
     let internl_recommendations_array = [];
 
+    let framestage_slab_recommendations_array = [];
+    let walls_beams_recommendations_array = [];
+    let roof_recommendations_array = [];
+
     if (this.inspectiondetails && this.inspectiondetails.hallways_recommendations_list) {
       hallways_recommendations_array = this.inspectiondetails.hallways_recommendations_list;
     }
@@ -207,6 +214,15 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
       internl_recommendations_array = this.inspectiondetails.internal_recommendations_list;
     }
 
+    if (this.inspectiondetails && this.inspectiondetails.framestage_slab_recommendations_list) {
+      framestage_slab_recommendations_array = this.inspectiondetails.framestage_slab_recommendations_list;
+    }
+    if (this.inspectiondetails && this.inspectiondetails.walls_beams_recommendations_list) {
+      walls_beams_recommendations_array = this.inspectiondetails.walls_beams_recommendations_list;
+    }
+    if (this.inspectiondetails && this.inspectiondetails.roof_recommendations_list) {
+      roof_recommendations_array = this.inspectiondetails.roof_recommendations_list;
+    }
 
     //if (this.isFormDisplay('visual_building_inspection_form')) {
       if ((hallways_recommendations_array != null) && (typeof hallways_recommendations_array.forEach === 'function')) {
@@ -342,6 +358,49 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
         });
       }
     //}
+
+    if ((framestage_slab_recommendations_array != null) && (typeof framestage_slab_recommendations_array.forEach === 'function')) {
+      framestage_slab_recommendations_array.forEach(() => {
+        (<FormArray>this.inspectiondetailsform.get('framestage_slab_recommendations_list')).push(
+          new FormGroup({
+            'item': new FormControl('-'),
+            'rectype': new FormControl('-'),
+            'recdetail': new FormControl('-'),
+            'comment': new FormControl(''),
+            'typee': new FormControl(),
+            'filename': new FormControl()
+          })
+        );
+      });
+    }
+    if ((walls_beams_recommendations_array != null) && (typeof walls_beams_recommendations_array.forEach === 'function')) {
+      walls_beams_recommendations_array.forEach(() => {
+        (<FormArray>this.inspectiondetailsform.get('walls_beams_recommendations_list')).push(
+          new FormGroup({
+            'item': new FormControl('-'),
+            'rectype': new FormControl('-'),
+            'recdetail': new FormControl('-'),
+            'comment': new FormControl(''),
+            'typee': new FormControl(),
+            'filename': new FormControl()
+          })
+        );
+      });
+    }
+    if ((roof_recommendations_array != null) && (typeof roof_recommendations_array.forEach === 'function')) {
+      roof_recommendations_array.forEach(() => {
+        (<FormArray>this.inspectiondetailsform.get('roof_recommendations_list')).push(
+          new FormGroup({
+            'item': new FormControl('-'),
+            'rectype': new FormControl('-'),
+            'recdetail': new FormControl('-'),
+            'comment': new FormControl(''),
+            'typee': new FormControl(),
+            'filename': new FormControl()
+          })
+        );
+      });
+    }
   }
 
   private initForm() {
@@ -1390,6 +1449,34 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
       'structural_defects_comment': ''
     }
 
+    let newbuilding_framestage_form = {
+      '1055': '',
+      '1056': '',
+      '1057': '',
+      '1058': '',
+      '1059': '',
+      '1060': '',
+
+      '1163': '',
+      '1164': '',
+      '1165': '',
+      '1166': '',
+      '1167': '',
+      '1168': '',
+
+      'dwelling_type_1': '',
+      'dwelling_type_2': '',
+      'dwelling_additions': '',
+      'dwelling_configuration': '',
+      'main_construction': '',
+      'footing_type': '',
+      'plans': '',
+      'plans_comment': '',
+      'framestage_slab_recommendations_list': [],
+      'walls_beams_recommendations_list': [],
+      'roof_recommendations_list': []
+    }
+
     this.inspectiondetailsform = this.fb.group({
       'bookingid': '',
       'rec_count': '',
@@ -1460,7 +1547,7 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
         this.addControlsToForm(this.inspectiondetailsform, smoke_detectors_form);
         this.addControlsToForm(this.inspectiondetailsform, furnished_and_extension_form);
         this.addControlsToForm(this.inspectiondetailsform, smoke_detectors_fitted_form);
-        this.addControlsToForm(this.inspectiondetailsform, visual_timber_pest_inspection_form);
+        this.addControlsToForm(this.inspectiondetailsform, visual_timber_pest_inspection_form); //TODO - required?????
 
       }
         break;
@@ -1474,12 +1561,9 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
         break;
       case this.insp_type_new_building_inspection_frame_stage: {        //10
         //TODO -------------------------------------
+        this.addControlsToForm(this.inspectiondetailsform, newbuilding_framestage_form);
         this.addControlsToForm(this.inspectiondetailsform, visual_building_inspection_form);
-        this.addControlsToForm(this.inspectiondetailsform, services_connected_form);
-        this.addControlsToForm(this.inspectiondetailsform, smoke_detectors_form);
-        this.addControlsToForm(this.inspectiondetailsform, furnished_and_extension_form);
-        this.addControlsToForm(this.inspectiondetailsform, smoke_detectors_fitted_form);
-        this.addControlsToForm(this.inspectiondetailsform, visual_timber_pest_inspection_form);
+
       }
         break;
       case this.insp_type_new_building_inspection_lockup_stage: {       //11
@@ -1510,14 +1594,16 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
   }
 
   formsMapper = {
-    'visual_building_inspection_form': [1, 2, 3, 6, 10, 11, 12],
-    'services_connected_form': [1, 2, 3, 6, 10, 11, 12],
-    'smoke_detectors_form': [1, 2, 3, 5, 6, 10, 11, 12],
-    'furnished_and_extension_form': [1, 2, 3, 5, 6, 7, 10, 11],
-    'smoke_detectors_fitted_form': [1, 2, 3, 6, 10, 11, 12],
-    'visual_timber_pest_inspection_form': [5, 6, 10, 11],
-    'dilapidation_inspection_form':[7],
-    'building_age': [12]
+    'visual_building_inspection_form': [1, 2, 3, 6, 11, 12],
+    'services_connected_form': [1, 2, 3, 6, 11, 12],
+    'smoke_detectors_form': [1, 2, 3, 5, 6, 11, 12],
+    'furnished_and_extension_form': [1, 2, 3, 5, 6, 7, 11],
+    'smoke_detectors_fitted_form': [1, 2, 3, 6, 11],
+    'visual_timber_pest_inspection_form': [5, 6, 11],
+    'dilapidation_inspection_form': [7],
+    'building_age': [12],
+    'new_building_frame_stage_form': [10],
+    'pest_termite_form': [5]
   }
 
   isFormDisplay(formSection) {
