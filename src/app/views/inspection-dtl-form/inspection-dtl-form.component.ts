@@ -28,6 +28,7 @@ import { FileUploadProgressService } from "../../shared/fileupload-progress.serv
 'framestage_slab_recommendations_list'
 'walls_beams_recommendations_list'
 'roof_recommendations_list'
+'completion_recommendations_list'
  */
 
 export class InspectionDtlFormComponent implements OnInit, OnDestroy {
@@ -185,6 +186,7 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
     let framestage_slab_recommendations_array = [];
     let walls_beams_recommendations_array = [];
     let roof_recommendations_array = [];
+    let completion_recommendations_array = [];
 
     if (this.inspectiondetails && this.inspectiondetails.hallways_recommendations_list) {
       hallways_recommendations_array = this.inspectiondetails.hallways_recommendations_list;
@@ -222,6 +224,9 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
     }
     if (this.inspectiondetails && this.inspectiondetails.roof_recommendations_list) {
       roof_recommendations_array = this.inspectiondetails.roof_recommendations_list;
+    }
+    if (this.inspectiondetails && this.inspectiondetails.completion_recommendations_list) {
+      completion_recommendations_array = this.inspectiondetails.completion_recommendations_list;
     }
 
     //if (this.isFormDisplay('visual_building_inspection_form')) {
@@ -390,6 +395,20 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
     if ((roof_recommendations_array != null) && (typeof roof_recommendations_array.forEach === 'function')) {
       roof_recommendations_array.forEach(() => {
         (<FormArray>this.inspectiondetailsform.get('roof_recommendations_list')).push(
+          new FormGroup({
+            'item': new FormControl('-'),
+            'rectype': new FormControl('-'),
+            'recdetail': new FormControl('-'),
+            'comment': new FormControl(''),
+            'typee': new FormControl(),
+            'filename': new FormControl()
+          })
+        );
+      });
+    }
+    if ((completion_recommendations_array != null) && (typeof completion_recommendations_array.forEach === 'function')) {
+      completion_recommendations_array.forEach(() => {
+        (<FormArray>this.inspectiondetailsform.get('completion_recommendations_list')).push(
           new FormGroup({
             'item': new FormControl('-'),
             'rectype': new FormControl('-'),

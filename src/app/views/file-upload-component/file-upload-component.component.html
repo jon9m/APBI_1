@@ -1,5 +1,5 @@
 <span class="btn btn-success fileinput-button"><i class="glyphicon glyphicon-plus"></i><span>Select file...</span>
-<input type="file" (change)="onFileChange($event)" (click)="resetAll()" accept="image/*" capture="camera" />
+<input type="file" (change)="onFileChange($event)" (click)="resetAll($event)" accept="image/*" capture="camera" multiple/>
 </span><br><br>
 <div class="progress mb-1">
   <div class="progress-bar progress-bar-success" [style.width.%]="uploadProgress" [style.background-color]="rgbString">

@@ -182,8 +182,9 @@ export class FileUploadComponentComponent implements OnInit, OnDestroy {
     }
   }
 
-  resetAll() {
+  resetAll(event) {
     this.uploadProgress = 0;
+    event.target.value = '';
   }
 
   setRgbString() {
