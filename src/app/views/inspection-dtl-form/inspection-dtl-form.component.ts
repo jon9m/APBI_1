@@ -1477,6 +1477,23 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
       'roof_recommendations_list': []
     }
 
+    let newbuilding_completion_form = {
+      '1055': '',
+      '1056': '',
+      '1057': '',
+      '1058': '',
+      '1059': '',
+      '1060': '',
+      'external_walling': '',
+      'internal_walling': '',
+      'dwelling_configuration': '',
+      'windows': '',
+      'roof': '',
+      'year_built': '',
+      'footing_type': '',
+      'completion_recommendations_list': []
+    }
+
     this.inspectiondetailsform = this.fb.group({
       'bookingid': '',
       'rec_count': '',
@@ -1569,11 +1586,7 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
       case this.insp_type_new_building_inspection_lockup_stage: {       //11
         //TODO -------------------------------------
         this.addControlsToForm(this.inspectiondetailsform, visual_building_inspection_form);
-        this.addControlsToForm(this.inspectiondetailsform, services_connected_form);
-        this.addControlsToForm(this.inspectiondetailsform, smoke_detectors_form);
-        this.addControlsToForm(this.inspectiondetailsform, furnished_and_extension_form);
-        this.addControlsToForm(this.inspectiondetailsform, smoke_detectors_fitted_form);
-        this.addControlsToForm(this.inspectiondetailsform, visual_timber_pest_inspection_form);
+        this.addControlsToForm(this.inspectiondetailsform, newbuilding_completion_form);
       }
         break;
       case this.insp_type_new_building_inspection_completion_stage: {   //12
@@ -1594,16 +1607,17 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
   }
 
   formsMapper = {
-    'visual_building_inspection_form': [1, 2, 3, 6, 11, 12],
-    'services_connected_form': [1, 2, 3, 6, 11, 12],
-    'smoke_detectors_form': [1, 2, 3, 5, 6, 11, 12],
-    'furnished_and_extension_form': [1, 2, 3, 5, 6, 7, 11],
-    'smoke_detectors_fitted_form': [1, 2, 3, 6, 11],
-    'visual_timber_pest_inspection_form': [5, 6, 11],
+    'visual_building_inspection_form': [1, 2, 3, 6, 12],
+    'services_connected_form': [1, 2, 3, 6, 12],
+    'smoke_detectors_form': [1, 2, 3, 5, 6, 12],
+    'furnished_and_extension_form': [1, 2, 3, 5, 6, 7],
+    'smoke_detectors_fitted_form': [1, 2, 3, 6],
+    'visual_timber_pest_inspection_form': [5, 6],
     'dilapidation_inspection_form': [7],
     'building_age': [12],
     'new_building_frame_stage_form': [10],
-    'pest_termite_form': [5]
+    'pest_termite_form': [5],
+    'new_building_completion_stage_form': [11]
   }
 
   isFormDisplay(formSection) {

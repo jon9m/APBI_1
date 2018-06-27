@@ -16,6 +16,8 @@ export class InspectionDetails {
     public walls_beams_recommendations_list: InspectionRecommendation[] = [];
     public roof_recommendations_list: InspectionRecommendation[] = [];
 
+    public completion_recommendations_list: InspectionRecommendation[] = [];
+
     public bookingid: string = '';
     public rec_count: string = '';
     public type_1: string = '-';
@@ -1079,4 +1081,9 @@ export class InspectionDetails {
 
     public plans: string = '-';
     public plans_comment: string = '';
+
+    public external_walling = '-';
+    public internal_walling = '-';
+    public windows = '-';
+    public year_built = '';
 }
