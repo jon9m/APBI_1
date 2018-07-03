@@ -17,7 +17,6 @@ export class FileUploadProgressService {
         this.fileProgressMap.clear();
     }
     public updateProgress(key: string, progress: number, progressColor: string) {
-        console.log("Progress for key -" + key + "......" + progress);
         (this.fileProgressMap.get(key)).progress = progress;
         (this.fileProgressMap.get(key)).progressColor = progressColor;
     }

@@ -44,8 +44,6 @@ export class HTTPService {
     }
 
     addReport(postObj) {
-        console.log("before post - postObj " + JSON.stringify(postObj));
-
         let currURL = this.addReportUrl + "?time=" + new Date().getTime();
         return this.http.post(currURL, postObj, this.httpOptions);
     }

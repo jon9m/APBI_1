@@ -81,4 +81,5 @@ a:not([href]):not([tabindex]) {
   -ms-flex: 1; /* IE 10 */
   flex: 2.5;
   overflow-y: auto;
+  overflow-x: hidden;
 }

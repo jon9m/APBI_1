@@ -50,7 +50,6 @@ export class DefaultLayoutComponent implements OnInit, OnDestroy, AfterViewInit 
           statusElem.textContent = "Successful connection to the server!";
         },
         (error) => {
-          console.log("CPLive error " + error.message);
           this.appServeiceLoadStatusService.clearCalendarLoadStatus();
           this.renderer.removeClass(statusElem, 'alert-success');
           this.renderer.addClass(statusElem, 'alert-danger');
@@ -66,7 +65,6 @@ export class DefaultLayoutComponent implements OnInit, OnDestroy, AfterViewInit 
         (<HTMLElement>appsidemenutoggler[0]).style.display = 'none';
       }
     } catch (e) {
-      console.log(e);
     }
 
     // AppUtils.sidebarMinimizerHandler(this.isDisplayed);

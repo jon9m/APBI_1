@@ -28,7 +28,6 @@ export class UserdetailsComponent implements OnInit, AfterViewInit, OnDestroy {
   // }
   @HostListener('window:orientationchange', ['$event'])
   onorientationchange(event) {
-    console.log("orientation");
     AppUtils.sidebarMinimizerHandler();
   }
 
@@ -38,7 +37,6 @@ export class UserdetailsComponent implements OnInit, AfterViewInit, OnDestroy {
     this.resizeSubscription = Observable.fromEvent(window, 'resize')
       .debounceTime(600)
       .subscribe((event) => {
-        console.log("resizing done !!!!!");
         AppUtils.sidebarMinimizerHandler();
       });
   }

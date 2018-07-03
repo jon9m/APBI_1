@@ -22,6 +22,6 @@ export class FileUploadProgressNavComponentComponent implements OnInit {
   }
 
   scrollToPosition(elemName) {
-    console.log("scroll!!");
+
   }
 }

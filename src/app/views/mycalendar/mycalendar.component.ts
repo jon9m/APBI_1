@@ -47,7 +47,6 @@ export class MycalendarComponent implements OnInit, OnDestroy, AfterViewInit {
     now = moment();
     let nextMonth = (now.set('date', 1).add(1, 'month').add(10, 'day')).format('YYYY-MM-DD');
 
-    console.log("currMonth " + currMonth + " nextMonth " + nextMonth);
     this.isCalendarLoading = true;
 
     this.eventSubscription = this.httpService.loadCalendar({ 'start': currMonth, 'end': nextMonth }).subscribe(
@@ -65,7 +64,6 @@ export class MycalendarComponent implements OnInit, OnDestroy, AfterViewInit {
         this.appServeiceLoadStatusService.setCalendarLoadStatus();
         this.isCalendarLoading = false;
       }, (error) => {
-        console.log(error);
         this.appServeiceLoadStatusService.clearCalendarLoadStatus();
         this.isCalendarLoading = false;
       });
@@ -76,22 +74,17 @@ export class MycalendarComponent implements OnInit, OnDestroy, AfterViewInit {
     var currMonth = (currView.start).format('YYYY-MM-DD');
     var nextMonth = (currView.end).format('YYYY-MM-DD');
 
-    console.log("currMonth " + currMonth + " nextMonth " + nextMonth);
-
     this.calendarSubscription = this.httpService.loadCalendar({ 'start': currMonth, 'end': nextMonth }).subscribe(
       (response: Response) => {
-        console.log(response);
         this.appServeiceLoadStatusService.setCalendarLoadStatus();
         this.events = response;
       },
       (error) => {
         this.appServeiceLoadStatusService.clearCalendarLoadStatus();
-        console.log(error);
       });
   }
 
   eventClick(evt) {
-    console.log(evt.detail.event.id);
     let inspdtlpreviewcontent: HTMLElement = document.getElementById('inspectiondtlcontent') as HTMLElement;
     let element: HTMLElement = document.getElementById('modalbutton') as HTMLElement;
     let bookingidelement: HTMLInputElement = document.getElementById('previewbookingid') as HTMLInputElement;
@@ -110,6 +103,6 @@ export class MycalendarComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   updateEvent(evt) {
-    console.log(evt);
+
   }
 }

@@ -71,13 +71,11 @@ export class FileUploadComponentComponent implements OnInit, OnDestroy {
 
   onFileChange(event) {
     this.uploadProgress = 0;
-    //console.log((<FormGroup>(<FormArray>this.inspectiondetailsform.get(recommendationType)).at(index)).controls['filename'].value);  //controlName
 
     if (this.fileName) {
       this.file_name = this.fileName;
     } else {
       this.file_name = this.getFileName();
-      console.log(this.file_name);
     }
 
     let bookingId = this.inspectiondetailsform.get('bookingid').value;
@@ -97,24 +95,18 @@ export class FileUploadComponentComponent implements OnInit, OnDestroy {
         this.fileUploadProgressService.addMapItem(this.file_name, fileToUpload.name);
         this.fileUploadProgressService.setResizeState(this.file_name, true);
 
-        console.log("resizing starts......");
-
         this.ng2PicaService.resize([fileToUpload], AppGlobal.UPLOAD_IMG_WIDTH, AppGlobal.UPLOAD_IMG_HEIGHT, true).subscribe(
           (result) => {
-            console.log("resizing done......");
             //For safari
             if (this.isSafari()) {
-              console.log("Image resizing successful for Browser " + window.navigator.userAgent);
               var the_blob = new Blob([result]);
               this.uploadCurrentFile(the_blob, submittedData);
             } else {
               fileToUpload = new File([result], result.name);
-              console.log("Image resizing successful");
               this.uploadCurrentFile(fileToUpload, submittedData);
             }
           },
           (error) => {
-            console.log('Image resizing failed, using original image', error);
             this.uploadCurrentFile(fileToUpload, submittedData);
           }
         );
@@ -170,7 +162,6 @@ export class FileUploadComponentComponent implements OnInit, OnDestroy {
       },
       error => {
         this.fileUploadProgressService.setUploadError(this.file_name, true);
-        console.log("Server error " + error); //TODO - error handle
       });
   }
 

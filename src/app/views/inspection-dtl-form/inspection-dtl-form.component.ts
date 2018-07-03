@@ -152,7 +152,6 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
   private formChangeChecker() {
     setInterval(() => {
       if (this.isFormDirty) {
-        console.log("Form dirty and saving !!!!! ");
         this.onSave(false, true);
       }
     }, 5000);
@@ -1742,8 +1741,6 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
   }
 
   onSave(isExit, isQuickSave) {
-    console.log("this.inspectiondetailsform.value");
-    console.log(this.inspectiondetailsform.value);
     this.formSaveMsg = '';
     this.isFormSaveErr = false;
     this.isFormQuickSave = isQuickSave;
@@ -1755,7 +1752,6 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
     this.formSaving = true;
     this.addReportSub = this.httpService.addReport(this.inspectiondetailsform.value).subscribe(
       (response: Response) => {
-        console.log(response);  //TODO
         this.formSaveMsg = response['message'];
         this.formSaveMsgType = response['type'];
 
@@ -1780,7 +1776,6 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
       },
       (error) => {
         this.formSaveMsg = error['message'];
-        console.log(error);  //TODO
         this.isFormDirty = false;
         this.formSaving = false;
         this.isFormSaveErr = true;

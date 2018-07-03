@@ -37,7 +37,6 @@ export class InspectionDtlPopupComponent implements OnInit {
       },
       (error) => {
         this.isFormLoading = false;
-        console.log(error);
       }
     );
   }
