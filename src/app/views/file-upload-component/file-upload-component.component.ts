@@ -6,6 +6,7 @@ import { AppGlobal } from '../../shared/app-global';
 import { Ng2ImgMaxService } from 'ng2-img-max';
 import { Subscription } from "rxjs/Subscription";
 import { FileUploadProgressService } from "../../shared/fileupload-progress.service";
+import { Ng2PicaService } from 'ng2-pica';
 
 @Component({
   selector: 'app-file-upload-component',
@@ -49,7 +50,7 @@ export class FileUploadComponentComponent implements OnInit, OnDestroy {
 
   currInputElemProgress: any;
 
-  constructor(private fileUploadService: FileUploadService, private ng2ImgMax: Ng2ImgMaxService, private fileUploadProgressService: FileUploadProgressService) {
+  constructor(private fileUploadService: FileUploadService, private ng2ImgMax: Ng2ImgMaxService, private fileUploadProgressService: FileUploadProgressService, private ng2PicaService: Ng2PicaService) {
 
   }
 
@@ -96,9 +97,11 @@ export class FileUploadComponentComponent implements OnInit, OnDestroy {
         this.fileUploadProgressService.addMapItem(this.file_name, fileToUpload.name);
         this.fileUploadProgressService.setResizeState(this.file_name, true);
 
-        //file resizing
-        this.resizeImageSub = this.ng2ImgMax.resizeImage(fileToUpload, AppGlobal.UPLOAD_IMG_WIDTH, AppGlobal.UPLOAD_IMG_HEIGHT).subscribe(
+        console.log("resizing starts......");
+
+        this.ng2PicaService.resize([fileToUpload], AppGlobal.UPLOAD_IMG_WIDTH, AppGlobal.UPLOAD_IMG_HEIGHT, true).subscribe(
           (result) => {
+            console.log("resizing done......");
             //For safari
             if (this.isSafari()) {
               console.log("Image resizing successful for Browser " + window.navigator.userAgent);
@@ -115,6 +118,26 @@ export class FileUploadComponentComponent implements OnInit, OnDestroy {
             this.uploadCurrentFile(fileToUpload, submittedData);
           }
         );
+
+        //file resizing
+        // this.resizeImageSub = this.ng2ImgMax.resizeImage(fileToUpload, AppGlobal.UPLOAD_IMG_WIDTH, AppGlobal.UPLOAD_IMG_HEIGHT).subscribe(
+        //   (result) => {
+        //     //For safari
+        //     if (this.isSafari()) {
+        //       console.log("Image resizing successful for Browser " + window.navigator.userAgent);
+        //       var the_blob = new Blob([result]);
+        //       this.uploadCurrentFile(the_blob, submittedData);
+        //     } else {
+        //       fileToUpload = new File([result], result.name);
+        //       console.log("Image resizing successful");
+        //       this.uploadCurrentFile(fileToUpload, submittedData);
+        //     }
+        //   },
+        //   (error) => {
+        //     console.log('Image resizing failed, using original image', error);
+        //     this.uploadCurrentFile(fileToUpload, submittedData);
+        //   }
+        // );
         //file resizing ends
       };
     }
