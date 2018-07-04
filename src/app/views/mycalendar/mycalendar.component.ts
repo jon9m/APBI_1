@@ -1,44 +1,69 @@
-import { Component, OnInit, ViewChild, ElementRef, OnDestroy, Renderer2, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild, OnDestroy, AfterViewInit, AfterViewChecked } from '@angular/core';
 import { CalendarComponent } from 'ng-fullcalendar';
 import { Options } from "fullcalendar";
-import { ModalDirective } from 'ngx-bootstrap/modal';
-import { InspectionDtlPopupComponent } from "./inspection-dtl-popup/inspection-dtl-popup.component";
 
 import * as moment from 'moment';
 import { HTTPService } from "../../shared/http.service";
-import { HttpHeaders } from "@angular/common/http";
 import { Subscription } from "rxjs/Subscription";
-import { Router, NavigationEnd, ActivatedRouteSnapshot } from '@angular/router';
+import { NavigationStart, Router } from '@angular/router';
 import { AppServeiceLoadStatusService } from "../../shared/app-service-load-status.service";
+import { Observable } from 'rxjs/Observable';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-mycalendar',
   templateUrl: './mycalendar.component.html',
   styleUrls: ['./mycalendar.component.scss']
 })
-export class MycalendarComponent implements OnInit, OnDestroy, AfterViewInit {
+export class MycalendarComponent implements OnInit, OnDestroy, AfterViewInit, AfterViewChecked {
 
   calendarOptions: Options;
   @ViewChild(CalendarComponent) ucCalendar: CalendarComponent;
   isCalendarLoading: boolean = false;
+  isCalendarEventsListnerInit = false;
 
   mm;
   events: any = [];
   private eventSubscription: Subscription;
   private calendarSubscription: Subscription;
   private previewSubscription: Subscription;
+  private navStartObservable: Observable<NavigationStart>;
+  private navStartSubscription: Subscription;
 
-  constructor(private router: Router, private httpService: HTTPService, private renderer: Renderer2, private appServeiceLoadStatusService: AppServeiceLoadStatusService) { }
+  constructor(private httpService: HTTPService, private appServeiceLoadStatusService: AppServeiceLoadStatusService, private router: Router) {
+    this.navStartObservable = this.router.events.pipe(
+      filter(evt => evt instanceof NavigationStart)
+    ) as Observable<NavigationStart>;
+  }
 
   ngOnDestroy(): void {
     if (this.previewSubscription) { this.previewSubscription.unsubscribe(); }
     if (this.calendarSubscription) { this.calendarSubscription.unsubscribe(); }
     if (this.eventSubscription) { this.eventSubscription.unsubscribe(); }
+    if (this.navStartSubscription) { this.navStartSubscription.unsubscribe(); }
     this.events = [];
   }
 
   ngOnInit() {
+    this.navStartSubscription = this.navStartObservable.subscribe(evt => {
+      if ((evt.url) && (evt.url.indexOf('mycalendar') != -1)) {
+        this.isCalendarEventsListnerInit = false;
+      }
+    });
+  }
 
+  ngAfterViewChecked() {
+    if (!this.isCalendarEventsListnerInit) {
+        if (this.ucCalendar && this.ucCalendar.fullCalendar) {
+          try {
+            this.ucCalendar.fullCalendar("rerenderEvents");
+            this.isCalendarEventsListnerInit = true;
+          } catch (e) {
+            this.isCalendarEventsListnerInit = false;
+            //console.log(e);
+          }
+        }
+    }
   }
 
   ngAfterViewInit(): void {
@@ -63,13 +88,13 @@ export class MycalendarComponent implements OnInit, OnDestroy, AfterViewInit {
         };
         this.appServeiceLoadStatusService.setCalendarLoadStatus();
         this.isCalendarLoading = false;
-      }, (error) => {
+      }, () => {
         this.appServeiceLoadStatusService.clearCalendarLoadStatus();
         this.isCalendarLoading = false;
       });
   }
 
-  clickButton(evt) {
+  clickButton() {
     var currView = this.ucCalendar.fullCalendar('getView');
     var currMonth = (currView.start).format('YYYY-MM-DD');
     var nextMonth = (currView.end).format('YYYY-MM-DD');
@@ -79,7 +104,7 @@ export class MycalendarComponent implements OnInit, OnDestroy, AfterViewInit {
         this.appServeiceLoadStatusService.setCalendarLoadStatus();
         this.events = response;
       },
-      (error) => {
+      () => {
         this.appServeiceLoadStatusService.clearCalendarLoadStatus();
       });
   }
@@ -95,14 +120,14 @@ export class MycalendarComponent implements OnInit, OnDestroy, AfterViewInit {
       (response) => {
         inspdtlpreviewcontent.innerHTML = response.toString();
       },
-      (error) => {
+      () => {
         inspdtlpreviewcontent.innerHTML = '<div class="p-3 alert alert-danger m-1">Error during loading details!</div>';
       });
 
     element.click();
   }
 
-  updateEvent(evt) {
+  updateEvent() {
 
   }
 }
