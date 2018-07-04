@@ -8,6 +8,10 @@ import { Subscription } from "rxjs/Subscription";
 import { FileUploadProgressService } from "../../shared/fileupload-progress.service";
 import { Ng2PicaService } from 'ng2-pica';
 
+
+
+import * as Compress from 'Compress.js';
+
 @Component({
   selector: 'app-file-upload-component',
   templateUrl: './file-upload-component.component.html',
@@ -95,21 +99,44 @@ export class FileUploadComponentComponent implements OnInit, OnDestroy {
         this.fileUploadProgressService.addMapItem(this.file_name, fileToUpload.name);
         this.fileUploadProgressService.setResizeState(this.file_name, true);
 
-        this.ng2PicaService.resize([fileToUpload], AppGlobal.UPLOAD_IMG_WIDTH, AppGlobal.UPLOAD_IMG_HEIGHT, true).subscribe(
-          (result) => {
-            //For safari
-            if (this.isSafari()) {
-              var the_blob = new Blob([result]);
-              this.uploadCurrentFile(the_blob, submittedData);
-            } else {
-              fileToUpload = new File([result], result.name);
-              this.uploadCurrentFile(fileToUpload, submittedData);
-            }
-          },
-          (error) => {
+
+        const compress = new Compress();
+        //console.log("compress " + compress);
+
+        const files = [fileToUpload];
+        compress.compress(files, {
+          size: 4, // the max size in MB, defaults to 2MB
+          quality: .75, // the quality of the image, max is 1,
+          maxWidth: 800, // the max width of the output image, defaults to 1920px
+          maxHeight: 1920, // the max height of the output image, defaults to 1920px
+          resize: true, // defaults to true, set false if you do not want to resize the image width and height
+        }).then((data) => {
+          // returns an array of compressed images
+          const img1 = data[0]
+          const base64str = img1.data
+          const imgExt = img1.ext
+          const file = Compress.convertBase64ToFile(base64str, imgExt)
+          this.uploadCurrentFile(file, submittedData);
+        }).catch(err => {
+            console.log('Image resizing failed, using original image', err);
             this.uploadCurrentFile(fileToUpload, submittedData);
-          }
-        );
+        });
+
+        // this.ng2PicaService.resize([fileToUpload], AppGlobal.UPLOAD_IMG_WIDTH, AppGlobal.UPLOAD_IMG_HEIGHT, true).subscribe(
+        //   (result) => {
+        //     //For safari
+        //     if (this.isSafari()) {
+        //       var the_blob = new Blob([result]);
+        //       this.uploadCurrentFile(the_blob, submittedData);
+        //     } else {
+        //       fileToUpload = new File([result], result.name);
+        //       this.uploadCurrentFile(fileToUpload, submittedData);
+        //     }
+        //   },
+        //   (error) => {
+        //     this.uploadCurrentFile(fileToUpload, submittedData);
+        //   }
+        // );
 
         //file resizing
         // this.resizeImageSub = this.ng2ImgMax.resizeImage(fileToUpload, AppGlobal.UPLOAD_IMG_WIDTH, AppGlobal.UPLOAD_IMG_HEIGHT).subscribe(

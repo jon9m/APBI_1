@@ -25,7 +25,9 @@
         "scss/style.scss"
       ],
       "scripts": [
-        "../node_modules/blueimp-canvas-to-blob/js/canvas-to-blob.js"
+        "../node_modules/blueimp-canvas-to-blob/js/canvas-to-blob.js",
+        "../node_modules/compress.js/build/compress.js",
+        "../node_modules/pica/dist/pica.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {
