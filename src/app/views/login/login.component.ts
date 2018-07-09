@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { LoginResponse } from '../../shared/login.response.model';
 import { LoginService } from '../../shared/login.service';
 import { AppUtils } from '../../shared/app-utils';
+import { AppServeiceLoadStatusService } from '../../shared/app-service-load-status.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -18,7 +19,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
   loginResponse: LoginResponse;
   isSignningIn: boolean = false;
 
-  constructor(private renderer: Renderer2, private fb: FormBuilder, private httpService: HTTPService, private router: Router, private loginService: LoginService) { }
+  constructor(private renderer: Renderer2, private fb: FormBuilder, private httpService: HTTPService, private router: Router, private loginService: LoginService, private appServeiceLoadStatusService :AppServeiceLoadStatusService) { }
 
   ngOnInit(): void {
     this.loginResponse = new LoginResponse();
@@ -42,6 +43,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
     this.loginResponse.flag = true;
 
     AppUtils.resetClickEventInitializedState();
+    this.appServeiceLoadStatusService.clearCalendarLoadStatus();
 
     this.httpService.login(this.loginform.value).subscribe(
       (response: Response) => {
