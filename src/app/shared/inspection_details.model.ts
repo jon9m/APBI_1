@@ -17,6 +17,7 @@ export class InspectionDetails {
     public roof_recommendations_list: InspectionRecommendation[] = [];
 
     public completion_recommendations_list: InspectionRecommendation[] = [];
+    public completion_recommendations_internal_list: InspectionRecommendation[] = [];
 
     public bookingid: string = '';
     public rec_count: string = '';
@@ -308,6 +309,15 @@ export class InspectionDetails {
     public '1232': string = '';
     public '1233': string = '';
     public '1234': string = '';
+
+    public '1235': string = '';
+    public '1236': string = '';
+    public '1237': string = '';
+    public '1238': string = '';
+    public '1239': string = '';
+    public '1240': string = '';
+
+
     public '1253': string = '';
     public '1254': string = '';
     public '1255': string = '';

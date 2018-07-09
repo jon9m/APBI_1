@@ -29,6 +29,7 @@ import { FileUploadProgressService } from "../../shared/fileupload-progress.serv
 'walls_beams_recommendations_list'
 'roof_recommendations_list'
 'completion_recommendations_list'
+'completion_recommendations_internal_list'
  */
 
 export class InspectionDtlFormComponent implements OnInit, OnDestroy {
@@ -186,6 +187,7 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
     let walls_beams_recommendations_array = [];
     let roof_recommendations_array = [];
     let completion_recommendations_array = [];
+    let completion_recommendations_internal_array = [];
 
     if (this.inspectiondetails && this.inspectiondetails.hallways_recommendations_list) {
       hallways_recommendations_array = this.inspectiondetails.hallways_recommendations_list;
@@ -226,6 +228,9 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
     }
     if (this.inspectiondetails && this.inspectiondetails.completion_recommendations_list) {
       completion_recommendations_array = this.inspectiondetails.completion_recommendations_list;
+    }
+    if (this.inspectiondetails && this.inspectiondetails.completion_recommendations_internal_list) {
+      completion_recommendations_internal_array = this.inspectiondetails.completion_recommendations_internal_list;
     }
 
     //if (this.isFormDisplay('visual_building_inspection_form')) {
@@ -408,6 +413,20 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
     if ((completion_recommendations_array != null) && (typeof completion_recommendations_array.forEach === 'function')) {
       completion_recommendations_array.forEach(() => {
         (<FormArray>this.inspectiondetailsform.get('completion_recommendations_list')).push(
+          new FormGroup({
+            'item': new FormControl('-'),
+            'rectype': new FormControl('-'),
+            'recdetail': new FormControl('-'),
+            'comment': new FormControl(''),
+            'typee': new FormControl(),
+            'filename': new FormControl()
+          })
+        );
+      });
+    }
+    if ((completion_recommendations_internal_array != null) && (typeof completion_recommendations_internal_array.forEach === 'function')) {
+      completion_recommendations_internal_array.forEach(() => {
+        (<FormArray>this.inspectiondetailsform.get('completion_recommendations_internal_list')).push(
           new FormGroup({
             'item': new FormControl('-'),
             'rectype': new FormControl('-'),
@@ -1475,6 +1494,13 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
       '1059': '',
       '1060': '',
 
+      '1235': '',
+      '1236': '',
+      '1237': '',
+      '1238': '',
+      '1239': '',
+      '1240': '',
+
       '1163': '',
       '1164': '',
       '1165': '',
@@ -1509,7 +1535,8 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
       'roof': '',
       'year_built': '',
       'footing_type': '',
-      'completion_recommendations_list': []
+      'completion_recommendations_list': [],
+      'completion_recommendations_internal_list': []
     }
 
     this.inspectiondetailsform = this.fb.group({
@@ -1712,6 +1739,18 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
           break;
         case 'timberpest_recommendations_list': {
           item = 'Timber Pest - Findings and Recommendations';
+        }
+          break;
+        case 'framestage_slab_recommendations_list': {
+          item = 'Sub Floor/Slab';
+        }
+          break;
+        case 'completion_recommendations_list': {
+          item = 'External';
+        }
+          break;
+        case 'completion_recommendations_internal_list': {
+          item = '-';
         }
           break;
       }
