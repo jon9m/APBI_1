@@ -515,14 +515,6 @@
               </select>
             </div>
           </div>
-          <div class="col-sm-12">
-            <div class="form-group">
-              <label class="control-label" for="input-subject">Year Built:</label>
-              <div>
-                <textarea class="form-control" rows="4" max-rows="25" formControlName="year_built" placeholder="Type here to expand"></textarea>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </div>
@@ -1193,6 +1185,7 @@
                       <div class="form-group">
                         <select formControlName="rectype" (change)="onSave(false,true)" class="form-control">
                             <option value="-">-</option>
+                                <option value="Condition Visually Fine">Condition Visually Fine</option>
                                 <option value="General Advice on Item">General Advice on Item</option>
                                 <option value="Repair Recommended">Repair Recommended</option>
                                 <option value="Major Structural Defect">Major Structural Defect</option>
@@ -1204,7 +1197,7 @@
                       <div class="form-group">
                         <select formControlName="recdetail" (change)="onSave(false,true)" class="form-control">
                             <option value="-">-</option>
-                            <option *ngFor="let internalitem of internal_delap" value="{{ internalitem }}">{{ internalitem }}</option>
+                            <option *ngFor="let internalitem of frameStage_subfloor_slab" value="{{ internalitem }}">{{ internalitem }}</option>
                         </select>
                       </div>
                     </div>
@@ -1696,6 +1689,7 @@
                       <div class="form-group">
                         <select formControlName="rectype" (change)="onSave(false,true)" class="form-control">
                             <option value="-">-</option>
+                                <option value="Condition Visually Fine">Condition Visually Fine</option>
                                 <option value="General Advice on Item">General Advice on Item</option>
                                 <option value="Repair Recommended">Repair Recommended</option>
                                 <option value="Major Structural Defect">Major Structural Defect</option>
@@ -1707,7 +1701,7 @@
                       <div class="form-group">
                         <select formControlName="recdetail" (change)="onSave(false,true)" class="form-control">
                             <option value="-">-</option>
-                            <option *ngFor="let internalitem of internal_delap" value="{{ internalitem }}">{{ internalitem }}</option>
+                            <option *ngFor="let internalitem of frameStage_walls_beams" value="{{ internalitem }}">{{ internalitem }}</option>
                         </select>
                       </div>
                     </div>
@@ -2112,13 +2106,7 @@
                       <div class="form-group">
                         <select formControlName="item" (change)="onSave(false,true)" class="form-control">
                             <option value="-">-</option>
-                            <option value="Hallways and General Living Spaces">Hallways and General Living Spaces</option>
-                            <option value="Kitchen">Kitchen</option>
-                            <option value="Laundry">Laundry</option>
-                            <option value="Bedrooms">Bedrooms</option>
-                            <option value="Bathrooms">Bathrooms</option>
-                            <option value="Ensuite">Ensuite</option>
-                            <option value="External">External</option>
+                            <option value="Roof">Roof</option>
                         </select>
                       </div>
                     </div>
@@ -2126,6 +2114,7 @@
                       <div class="form-group">
                         <select formControlName="rectype" (change)="onSave(false,true)" class="form-control">
                             <option value="-">-</option>
+                                <option value="Condition Visually Fine">Condition Visually Fine</option>
                                 <option value="General Advice on Item">General Advice on Item</option>
                                 <option value="Repair Recommended">Repair Recommended</option>
                                 <option value="Major Structural Defect">Major Structural Defect</option>
@@ -2137,7 +2126,7 @@
                       <div class="form-group">
                         <select formControlName="recdetail" (change)="onSave(false,true)" class="form-control">
                             <option value="-">-</option>
-                            <option *ngFor="let internalitem of internal_delap" value="{{ internalitem }}">{{ internalitem }}</option>
+                            <option *ngFor="let internalitem of frameStage_roof" value="{{ internalitem }}">{{ internalitem }}</option>
                         </select>
                       </div>
                     </div>
@@ -2466,22 +2455,16 @@
         </div>
         <div class="card-body">
           <div id="recomendations-14">
-            <div formArrayName="completion_recommendations_list">
-              <div class="card" *ngFor="let recomm of getRecommendationControls(inspectiondetailsform, 'completion_recommendations_list'); let i=index;" [formGroupName]="i">
+            <div formArrayName="lockup_recommendations_list">
+              <div class="card" *ngFor="let recomm of getRecommendationControls(inspectiondetailsform, 'lockup_recommendations_list'); let i=index;" [formGroupName]="i">
                 <div class="card-body">
                   <div class="pull-right"><a data-toggle="tooltip" title="" class="btn btn-default" data-original-title="Remove this recommendation"
-                      (click)="onDeleteRecommendations($event, 'completion_recommendations_list', i)"><i class="fa fa-times"></i></a></div>
+                      (click)="onDeleteRecommendations($event, 'lockup_recommendations_list', i)"><i class="fa fa-times"></i></a></div>
                   <div class="row">
                     <div class="col-sm-12">
                       <div class="form-group">
                         <select formControlName="item" (change)="onSave(false,true)" class="form-control">
                             <option value="-">-</option>
-                            <option value="Hallways and General Living Spaces">Hallways and General Living Spaces</option>
-                            <option value="Kitchen">Kitchen</option>
-                            <option value="Laundry">Laundry</option>
-                            <option value="Bedrooms">Bedrooms</option>
-                            <option value="Bathrooms">Bathrooms</option>
-                            <option value="Ensuite">Ensuite</option>
                             <option value="External">External</option>
                         </select>
                       </div>
@@ -2490,6 +2473,7 @@
                       <div class="form-group">
                         <select formControlName="rectype" (change)="onSave(false,true)" class="form-control">
                             <option value="-">-</option>
+                                <option value="Condition Visually Fine">Condition Visually Fine</option>
                                 <option value="General Advice on Item">General Advice on Item</option>
                                 <option value="Repair Recommended">Repair Recommended</option>
                                 <option value="Major Structural Defect">Major Structural Defect</option>
@@ -2501,7 +2485,7 @@
                       <div class="form-group">
                         <select formControlName="recdetail" (change)="onSave(false,true)" class="form-control">
                             <option value="-">-</option>
-                            <option *ngFor="let internalitem of internal_delap" value="{{ internalitem }}">{{ internalitem }}</option>
+                            <option *ngFor="let internalitem of lockup_external" value="{{ internalitem }}">{{ internalitem }}</option>
                         </select>
                       </div>
                     </div>
@@ -2514,7 +2498,7 @@
                     <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
                       <div class="form-group">
                         <div>
-                          <app-file-upload-component (uploadCompletedEmitter)="onUploadComplete($event)" [index]="i" [reportId]="reportId" [recommendationType]="'completion_recommendations_list'" [progress]="'rec-file-preview-completion'" [inspectiondetailsform]="inspectiondetailsform"></app-file-upload-component>                      
+                          <app-file-upload-component (uploadCompletedEmitter)="onUploadComplete($event)" [index]="i" [reportId]="reportId" [recommendationType]="'lockup_recommendations_list'" [progress]="'rec-file-preview-lockup'" [inspectiondetailsform]="inspectiondetailsform"></app-file-upload-component>                      
                           <input type="hidden" formControlName="typee"/>
                           <input type="hidden" formControlName="filename"/>
                         </div>
@@ -2526,7 +2510,7 @@
             </div>
           </div>
           <div>
-            <input type="button" (click)="onAddRecommendations('completion_recommendations_list','Completion')" class="pull-right btn btn-secondary" value="Add More Recommendation"/>
+            <input type="button" (click)="onAddRecommendations('lockup_recommendations_list','Lockup')" class="pull-right btn btn-secondary" value="Add More Recommendation"/>
           </div>
         </div>
       </div>
@@ -2715,23 +2699,17 @@
           </div>
           <div class="card-body">
             <div id="recomendations-14">
-              <div formArrayName="completion_recommendations_internal_list">
-                <div class="card" *ngFor="let recomm of getRecommendationControls(inspectiondetailsform, 'completion_recommendations_internal_list'); let i=index;" [formGroupName]="i">
+              <div formArrayName="lockup_recommendations_internal_list">
+                <div class="card" *ngFor="let recomm of getRecommendationControls(inspectiondetailsform, 'lockup_recommendations_internal_list'); let i=index;" [formGroupName]="i">
                   <div class="card-body">
                     <div class="pull-right"><a data-toggle="tooltip" title="" class="btn btn-default" data-original-title="Remove this recommendation"
-                        (click)="onDeleteRecommendations($event, 'completion_recommendations_internal_list', i)"><i class="fa fa-times"></i></a></div>
+                        (click)="onDeleteRecommendations($event, 'lockup_recommendations_internal_list', i)"><i class="fa fa-times"></i></a></div>
                     <div class="row">
                       <div class="col-sm-12">
                         <div class="form-group">
                           <select formControlName="item" (change)="onSave(false,true)" class="form-control">
                               <option value="-">-</option>
-                              <option value="Hallways and General Living Spaces">Hallways and General Living Spaces</option>
-                              <option value="Kitchen">Kitchen</option>
-                              <option value="Laundry">Laundry</option>
-                              <option value="Bedrooms">Bedrooms</option>
-                              <option value="Bathrooms">Bathrooms</option>
-                              <option value="Ensuite">Ensuite</option>
-                              <option value="External">External</option>
+                              <option value="Internal">Internal</option>
                           </select>
                         </div>
                       </div>
@@ -2739,6 +2717,7 @@
                         <div class="form-group">
                           <select formControlName="rectype" (change)="onSave(false,true)" class="form-control">
                               <option value="-">-</option>
+                                  <option value="Condition Visually Fine">Condition Visually Fine</option>
                                   <option value="General Advice on Item">General Advice on Item</option>
                                   <option value="Repair Recommended">Repair Recommended</option>
                                   <option value="Major Structural Defect">Major Structural Defect</option>
@@ -2750,7 +2729,7 @@
                         <div class="form-group">
                           <select formControlName="recdetail" (change)="onSave(false,true)" class="form-control">
                               <option value="-">-</option>
-                              <option *ngFor="let internalitem of internal_delap" value="{{ internalitem }}">{{ internalitem }}</option>
+                              <option *ngFor="let internalitem of lockup_internal" value="{{ internalitem }}">{{ internalitem }}</option>
                           </select>
                         </div>
                       </div>
@@ -2763,7 +2742,7 @@
                       <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
                         <div class="form-group">
                           <div>
-                            <app-file-upload-component (uploadCompletedEmitter)="onUploadComplete($event)" [index]="i" [reportId]="reportId" [recommendationType]="'completion_recommendations_internal_list'" [progress]="'rec-file-preview-completion'" [inspectiondetailsform]="inspectiondetailsform"></app-file-upload-component>                      
+                            <app-file-upload-component (uploadCompletedEmitter)="onUploadComplete($event)" [index]="i" [reportId]="reportId" [recommendationType]="'lockup_recommendations_internal_list'" [progress]="'rec-file-preview-lockupinternal'" [inspectiondetailsform]="inspectiondetailsform"></app-file-upload-component>                      
                             <input type="hidden" formControlName="typee"/>
                             <input type="hidden" formControlName="filename"/>
                           </div>
@@ -2775,7 +2754,7 @@
               </div>
             </div>
             <div>
-              <input type="button" (click)="onAddRecommendations('completion_recommendations_internal_list','Completion')" class="pull-right btn btn-secondary" value="Add More Recommendation"/>
+              <input type="button" (click)="onAddRecommendations('lockup_recommendations_internal_list','Lockupinternal')" class="pull-right btn btn-secondary" value="Add More Recommendation"/>
             </div>
           </div>
         </div>
@@ -6153,7 +6132,7 @@
                 General Advice on Item
               </div>
               <div class="table-header-cell white">
-                Repair Recommended
+                Damage Advice on Item
               </div>
               <div class="table-header-cell white">
                 Major Structural Defect
@@ -6854,12 +6833,6 @@
                       <div class="form-group">
                         <select formControlName="item" (change)="onSave(false,true)" class="form-control">
                             <option value="-">-</option>
-                            <option value="Hallways and General Living Spaces">Hallways and General Living Spaces</option>
-                            <option value="Kitchen">Kitchen</option>
-                            <option value="Laundry">Laundry</option>
-                            <option value="Bedrooms">Bedrooms</option>
-                            <option value="Bathrooms">Bathrooms</option>
-                            <option value="Ensuite">Ensuite</option>
                             <option value="External">External</option>
                         </select>
                       </div>
@@ -6868,10 +6841,11 @@
                       <div class="form-group">
                         <select formControlName="rectype" (change)="onSave(false,true)" class="form-control">
                             <option value="-">-</option>
-                                <option value="General Advice on Item">General Advice on Item</option>
-                                <option value="Repair Recommended">Repair Recommended</option>
-                                <option value="Major Structural Defect">Major Structural Defect</option>
-                                <option value="Unable to Inspect Due to Access">Unable to Inspect Due to Access</option>
+                            <option value="Condition Visually Fine">Condition Visually Fine</option>
+                            <option value="General Advice on Item">General Advice on Item</option>
+                            <option value="Damage Advice on Item">Damage Advice on Item</option>
+                            <option value="Major Structural Defect">Major Structural Defect</option>
+                            <option value="Unable to Inspect Due to Access">Unable to Inspect Due to Access</option>
                         </select>
                       </div>
                     </div>
@@ -7010,6 +6984,29 @@
                 </div>
                 <div class="table-body-cell">
                   <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1516" value="1"/><span class="checkbox"></span></label>
+                </div>
+              </div>
+              <div class="resp-table-row">
+                <div class="table-body-cell">
+                  Dining Room
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1577" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1578" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1579" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1580" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1581" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1582" value="1"/><span class="checkbox"></span></label>
                 </div>
               </div>
               <div class="resp-table-row">
@@ -7242,29 +7239,6 @@
                   <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1576" value="1"/><span class="checkbox"></span></label>
                 </div>
               </div>
-              <div class="resp-table-row">
-                <div class="table-body-cell">
-                  Dining Room
-                </div>
-                <div class="table-body-cell">
-                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1577" value="1"/><span class="checkbox"></span></label>
-                </div>
-                <div class="table-body-cell">
-                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1578" value="1"/><span class="checkbox"></span></label>
-                </div>
-                <div class="table-body-cell">
-                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1579" value="1"/><span class="checkbox"></span></label>
-                </div>
-                <div class="table-body-cell">
-                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1580" value="1"/><span class="checkbox"></span></label>
-                </div>
-                <div class="table-body-cell">
-                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1581" value="1"/><span class="checkbox"></span></label>
-                </div>
-                <div class="table-body-cell">
-                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1582" value="1"/><span class="checkbox"></span></label>
-                </div>
-              </div>
               <!-- <div class="resp-table-row">
                 <div class="table-body-cell">
                   Doors
@@ -7355,13 +7329,7 @@
                       <div class="form-group">
                         <select formControlName="item" (change)="onSave(false,true)" class="form-control">
                             <option value="-">-</option>
-                            <option value="Hallways and General Living Spaces">Hallways and General Living Spaces</option>
-                            <option value="Kitchen">Kitchen</option>
-                            <option value="Laundry">Laundry</option>
-                            <option value="Bedrooms">Bedrooms</option>
-                            <option value="Bathrooms">Bathrooms</option>
-                            <option value="Ensuite">Ensuite</option>
-                            <option value="External">External</option>
+                            <option value="Internal">Internal</option>
                         </select>
                       </div>
                     </div>
@@ -7369,10 +7337,11 @@
                       <div class="form-group">
                         <select formControlName="rectype" (change)="onSave(false,true)" class="form-control">
                             <option value="-">-</option>
-                                <option value="General Advice on Item">General Advice on Item</option>
-                                <option value="Repair Recommended">Repair Recommended</option>
-                                <option value="Major Structural Defect">Major Structural Defect</option>
-                                <option value="Unable to Inspect Due to Access">Unable to Inspect Due to Access</option>
+                            <option value="Condition Visually Fine">Condition Visually Fine</option>
+                            <option value="General Advice on Item">General Advice on Item</option>
+                            <option value="Damage Advice on Item">Damage Advice on Item</option>
+                            <option value="Major Structural Defect">Major Structural Defect</option>
+                            <option value="Unable to Inspect Due to Access">Unable to Inspect Due to Access</option>
                         </select>
                       </div>
                     </div>

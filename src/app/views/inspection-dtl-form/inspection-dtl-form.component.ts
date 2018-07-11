@@ -28,8 +28,8 @@ import { FileUploadProgressService } from "../../shared/fileupload-progress.serv
 'framestage_slab_recommendations_list'
 'walls_beams_recommendations_list'
 'roof_recommendations_list'
-'completion_recommendations_list'
-'completion_recommendations_internal_list'
+'lockup_recommendations_list'
+'lockup_recommendations_internal_list'
  */
 
 export class InspectionDtlFormComponent implements OnInit, OnDestroy {
@@ -51,6 +51,11 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
   ensuite: string[] = [];
   external: string[] = [];
   internal_delap: string[] = [];
+  frameStage_subfloor_slab: string[] = [];
+  frameStage_walls_beams: string[] = [];
+  frameStage_roof: string[] = [];
+  lockup_external: string[] = [];
+  lockup_internal: string[] = [];
 
   formSaving: boolean = false;
   formSaveMsg: string = '';
@@ -93,6 +98,11 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
     this.ensuite = AppGlobal.Ensuite;
     this.external = AppGlobal.External;
     this.internal_delap = AppGlobal.Internal_delap;
+    this.frameStage_subfloor_slab = AppGlobal.FrameStage_subfloor_slab;
+    this.frameStage_walls_beams = AppGlobal.FrameStage_walls_beams;
+    this.frameStage_roof = AppGlobal.FrameStage_roof;
+    this.lockup_external = AppGlobal.Lockup_external;
+    this.lockup_internal = AppGlobal.Lockup_internal;
 
     this.insp_type_pre_purchase_building_inspection = AppGlobal.INSP_TYPE_PRE_PURCHASE_BUILDING_INSPECTION;
     this.insp_type_pre_sale_building_inspection = AppGlobal.INSP_TYPE_PRE_SALE_BUILDING_INSPECTION;
@@ -186,8 +196,8 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
     let framestage_slab_recommendations_array = [];
     let walls_beams_recommendations_array = [];
     let roof_recommendations_array = [];
-    let completion_recommendations_array = [];
-    let completion_recommendations_internal_array = [];
+    let lockup_recommendations_array = [];
+    let lockup_recommendations_internal_array = [];
 
     if (this.inspectiondetails && this.inspectiondetails.hallways_recommendations_list) {
       hallways_recommendations_array = this.inspectiondetails.hallways_recommendations_list;
@@ -226,11 +236,11 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
     if (this.inspectiondetails && this.inspectiondetails.roof_recommendations_list) {
       roof_recommendations_array = this.inspectiondetails.roof_recommendations_list;
     }
-    if (this.inspectiondetails && this.inspectiondetails.completion_recommendations_list) {
-      completion_recommendations_array = this.inspectiondetails.completion_recommendations_list;
+    if (this.inspectiondetails && this.inspectiondetails.lockup_recommendations_list) {
+      lockup_recommendations_array = this.inspectiondetails.lockup_recommendations_list;
     }
-    if (this.inspectiondetails && this.inspectiondetails.completion_recommendations_internal_list) {
-      completion_recommendations_internal_array = this.inspectiondetails.completion_recommendations_internal_list;
+    if (this.inspectiondetails && this.inspectiondetails.lockup_recommendations_internal_list) {
+      lockup_recommendations_internal_array = this.inspectiondetails.lockup_recommendations_internal_list;
     }
 
     //if (this.isFormDisplay('visual_building_inspection_form')) {
@@ -410,9 +420,9 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
         );
       });
     }
-    if ((completion_recommendations_array != null) && (typeof completion_recommendations_array.forEach === 'function')) {
-      completion_recommendations_array.forEach(() => {
-        (<FormArray>this.inspectiondetailsform.get('completion_recommendations_list')).push(
+    if ((lockup_recommendations_array != null) && (typeof lockup_recommendations_array.forEach === 'function')) {
+      lockup_recommendations_array.forEach(() => {
+        (<FormArray>this.inspectiondetailsform.get('lockup_recommendations_list')).push(
           new FormGroup({
             'item': new FormControl('-'),
             'rectype': new FormControl('-'),
@@ -424,9 +434,9 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
         );
       });
     }
-    if ((completion_recommendations_internal_array != null) && (typeof completion_recommendations_internal_array.forEach === 'function')) {
-      completion_recommendations_internal_array.forEach(() => {
-        (<FormArray>this.inspectiondetailsform.get('completion_recommendations_internal_list')).push(
+    if ((lockup_recommendations_internal_array != null) && (typeof lockup_recommendations_internal_array.forEach === 'function')) {
+      lockup_recommendations_internal_array.forEach(() => {
+        (<FormArray>this.inspectiondetailsform.get('lockup_recommendations_internal_list')).push(
           new FormGroup({
             'item': new FormControl('-'),
             'rectype': new FormControl('-'),
@@ -1535,8 +1545,8 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
       'roof': '',
       'year_built': '',
       'footing_type': '',
-      'completion_recommendations_list': [],
-      'completion_recommendations_internal_list': []
+      'lockup_recommendations_list': [],
+      'lockup_recommendations_internal_list': []
     }
 
     this.inspectiondetailsform = this.fb.group({
@@ -1737,6 +1747,10 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
           item = 'External';
         }
           break;
+        case 'internal_recommendations_list': {
+          item = 'Internal';
+        }
+          break;
         case 'timberpest_recommendations_list': {
           item = 'Timber Pest - Findings and Recommendations';
         }
@@ -1745,12 +1759,16 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
           item = 'Sub Floor/Slab';
         }
           break;
-        case 'completion_recommendations_list': {
+        case 'lockup_recommendations_list': {
           item = 'External';
         }
           break;
-        case 'completion_recommendations_internal_list': {
-          item = '-';
+        case 'lockup_recommendations_internal_list': {
+          item = 'Internal';
+        }
+          break;
+        case 'roof_recommendations_list': {
+          item = 'Roof';
         }
           break;
       }

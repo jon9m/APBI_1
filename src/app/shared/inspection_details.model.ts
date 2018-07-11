@@ -16,8 +16,8 @@ export class InspectionDetails {
     public walls_beams_recommendations_list: InspectionRecommendation[] = [];
     public roof_recommendations_list: InspectionRecommendation[] = [];
 
-    public completion_recommendations_list: InspectionRecommendation[] = [];
-    public completion_recommendations_internal_list: InspectionRecommendation[] = [];
+    public lockup_recommendations_list: InspectionRecommendation[] = [];
+    public lockup_recommendations_internal_list: InspectionRecommendation[] = [];
 
     public bookingid: string = '';
     public rec_count: string = '';

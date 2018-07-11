@@ -1,9 +1,9 @@
 export class AppGlobal {
     // public static API_ENDPOINT = 'https://apbi.com.au/inspector-app/';
-    // public static API_ENDPOINT = 'http://34.251.200.88:8080/inspector-app/';
+    public static API_ENDPOINT = 'http://34.251.200.88:8080/inspector-app/';
     // public static API_ENDPOINT = 'http://localhost:8080/inspector-app/';
 
-    public static API_ENDPOINT = 'https://apbi.com.au/inspector-app/';
+    // public static API_ENDPOINT = 'https://apbi.com.au/inspector-app/';
     public static DOMAIN_ENDPOINT = 'https://apbi.com.au/';
 
 
@@ -213,6 +213,23 @@ export class AppGlobal {
     ];
 
     public static Internal_delap: string[] = [
+        "Entry/Hallway",
+        "Lounge Room",
+        "Family Room",
+        "Dining Room",
+        "Kitchen",
+        "Bedroom 1",
+        "Bedroom 2",
+        "Bedroom 3",
+        "Bedroom 4",
+        "Bathrooms",
+        "Ensuite",
+        "Laundry",
+        "Stairs",
+        "Handrails"
+    ];
+
+    public static FrameStage_subfloor_slab: string[] = [
         "Slab",
         "Floor Height",
         "Stumps",
@@ -221,6 +238,10 @@ export class AppGlobal {
         "Clearance",
         "Ant Capping for brick piers/termite protection for slabs",
         "Subfloor Ventilation",
+        "Footings"
+    ];
+
+    public static FrameStage_walls_beams: string[] = [
         "Setout",
         "Walls",
         "Windows",
@@ -229,17 +250,85 @@ export class AppGlobal {
         "Support Points",
         "Lintels",
         "Beams",
+        "Joists",
         "Brackets Fixings",
         "Bracing",
         "Flashing",
         "Plumbing",
         "Electrical",
+        "Tie Down Straps",
+        "Weep Holes",
+        "Cavity Columns"
+    ];
+
+    public static FrameStage_roof: string[] = [
         "Trusses/Layout",
+        "Bracing",
+        "Brackets Fixings",
+        "Support Points",
+        "Joists",
         "Triple L Grips",
         "Fascia",
         "Gutters",
         "Collar Ties/Rafters",
         "Roof Members",
-        "Roof Cladding"
+        "Roof Cladding",
+        "Underpurlins",
+        "Roof Beams",
+        "Strapping"
     ];
+
+    public static Lockup_external: string[] = [
+        "Roof",
+        "External Walls",
+        "Windows",
+        "Doors",
+        "Fascia",
+        "Gutters",
+        "Downpipes",
+        "Eaves",
+        "Flashings",
+        "Driveways and Paths",
+        "Balcony"
+    ];
+
+    public static Lockup_internal: string[] = [
+        "Internal Walls",
+        "Ceilings",
+        "Waterproofing",
+        "Insulation",
+        "Plumbing",
+        "Electrical"
+    ];
+
+    // public static Internal_delap: string[] = [
+    //     "Slab",
+    //     "Floor Height",
+    //     "Stumps",
+    //     "Bearers",
+    //     "Joists",
+    //     "Clearance",
+    //     "Ant Capping for brick piers/termite protection for slabs",
+    //     "Subfloor Ventilation",
+    //     "Setout",
+    //     "Walls",
+    //     "Windows",
+    //     "Door Openings",
+    //     "Plumb",
+    //     "Support Points",
+    //     "Lintels",
+    //     "Beams",
+    //     "Brackets Fixings",
+    //     "Bracing",
+    //     "Flashing",
+    //     "Plumbing",
+    //     "Electrical",
+    //     "Trusses/Layout",
+    //     "Triple L Grips",
+    //     "Fascia",
+    //     "Gutters",
+    //     "Collar Ties/Rafters",
+    //     "Roof Members",
+    //     "Roof Cladding"
+    // ];
 }
