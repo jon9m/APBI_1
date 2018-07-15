@@ -1675,13 +1675,7 @@
                       <div class="form-group">
                         <select formControlName="item" (change)="onSave(false,true)" class="form-control">
                             <option value="-">-</option>
-                            <option value="Hallways and General Living Spaces">Hallways and General Living Spaces</option>
-                            <option value="Kitchen">Kitchen</option>
-                            <option value="Laundry">Laundry</option>
-                            <option value="Bedrooms">Bedrooms</option>
-                            <option value="Bathrooms">Bathrooms</option>
-                            <option value="Ensuite">Ensuite</option>
-                            <option value="External">External</option>
+                            <option value="Walls and Structural Beams">Walls and Structural Beams</option>
                         </select>
                       </div>
                     </div>
@@ -2396,52 +2390,6 @@
                 </div>
                 <div class="table-body-cell">
                   <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1102" value="1"/><span class="checkbox"></span></label>
-                </div>
-              </div>
-              <div class="resp-table-row">
-                <div class="table-body-cell">
-                  Driveways and Paths
-                </div>
-                <div class="table-body-cell">
-                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1103" value="1"/><span class="checkbox"></span></label>
-                </div>
-                <div class="table-body-cell">
-                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1104" value="1"/><span class="checkbox"></span></label>
-                </div>
-                <div class="table-body-cell">
-                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1105" value="1"/><span class="checkbox"></span></label>
-                </div>
-                <div class="table-body-cell">
-                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1106" value="1"/><span class="checkbox"></span></label>
-                </div>
-                <div class="table-body-cell">
-                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1107" value="1"/><span class="checkbox"></span></label>
-                </div>
-                <div class="table-body-cell">
-                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1108" value="1"/><span class="checkbox"></span></label>
-                </div>
-              </div>
-              <div class="resp-table-row">
-                <div class="table-body-cell">
-                  Balcony
-                </div>
-                <div class="table-body-cell">
-                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1109" value="1"/><span class="checkbox"></span></label>
-                </div>
-                <div class="table-body-cell">
-                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1110" value="1"/><span class="checkbox"></span></label>
-                </div>
-                <div class="table-body-cell">
-                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1111" value="1"/><span class="checkbox"></span></label>
-                </div>
-                <div class="table-body-cell">
-                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1112" value="1"/><span class="checkbox"></span></label>
-                </div>
-                <div class="table-body-cell">
-                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1113" value="1"/><span class="checkbox"></span></label>
-                </div>
-                <div class="table-body-cell">
-                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1114" value="1"/><span class="checkbox"></span></label>
                 </div>
               </div>
             </div>
@@ -6114,7 +6062,7 @@
       </div>
     </ng-template>
 
-    <ng-template [ngIf]="reportType != null && (isFormDisplay('visual_building_inspection_form') || isFormDisplay('dilapidation_inspection_form'))">
+    <ng-template [ngIf]="reportType != null && isFormDisplay('dilapidation_inspection_form')">
       <div class="card">
         <div class="card-header">
           <h5 class="black mb-0"><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;<strong>External</strong></h5>
@@ -6884,6 +6832,775 @@
       </div>  
     </ng-template>
 
+    <ng-template [ngIf]="reportType != null && isFormDisplay('visual_building_inspection_form')">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="black mb-0"><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;<strong>External</strong></h5>
+        </div>
+        <div class="card-body">
+          <div id="resp-table" style="padding: 0 15px 10px 15px;">
+            <div id="resp-table-header">
+              <div class="table-header-cell white">
+                Items
+              </div>
+              <div class="table-header-cell white">
+                Condition Visually Fine
+              </div>
+              <div class="table-header-cell white">
+                General Advice on Item
+              </div>
+              <div class="table-header-cell white">
+                Repair Recommended
+              </div>
+              <div class="table-header-cell white">
+                Major Structural Defect
+              </div>
+              <div class="table-header-cell white">
+                Unable to Inspect Due to Access
+              </div>
+              <div class="table-header-cell white">
+                Not Applicable
+              </div>
+            </div>
+            <div id="resp-table-body">
+              <div class="resp-table-row">
+                <div class="table-body-cell">
+                  Driveways and Paths
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1787" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1788" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1789" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1790" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1791" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1792" value="1"/><span class="checkbox"></span></label>
+                </div>
+              </div>
+              <div class="resp-table-row">
+                <div class="table-body-cell">
+                  Walls
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1793" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1794" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1795" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1796" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1797" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1798" value="1"/><span class="checkbox"></span></label>
+                </div>
+              </div>
+              <div class="resp-table-row">
+                <div class="table-body-cell">
+                  Expansion joints
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1799" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1800" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1801" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1802" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1803" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1804" value="1"/><span class="checkbox"></span></label>
+                </div>
+              </div>
+              <div class="resp-table-row">
+                <div class="table-body-cell">
+                  Windows
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1805" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1806" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1807" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1808" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1809" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1810" value="1"/><span class="checkbox"></span></label>
+                </div>
+              </div>
+              <div class="resp-table-row">
+                <div class="table-body-cell">
+                  Window Placement
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1811" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1812" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1813" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1814" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1815" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1816" value="1"/><span class="checkbox"></span></label>
+                </div>
+              </div>
+              <div class="resp-table-row">
+                <div class="table-body-cell">
+                  Doors
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1817" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1818" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1819" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1820" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1821" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1822" value="1"/><span class="checkbox"></span></label>
+                </div>
+              </div>
+              <div class="resp-table-row">
+                <div class="table-body-cell">
+                  Fascia
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1823" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1824" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1825" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1826" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1827" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1828" value="1"/><span class="checkbox"></span></label>
+                </div>
+              </div>
+              <div class="resp-table-row">
+                <div class="table-body-cell">
+                  Eaves
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1829" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1830" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1831" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1832" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1833" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1834" value="1"/><span class="checkbox"></span></label>
+                </div>
+              </div>
+              <div class="resp-table-row">
+                <div class="table-body-cell">
+                  Flashings
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1835" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1836" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1837" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1838" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1839" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1840" value="1"/><span class="checkbox"></span></label>
+                </div>
+              </div>
+              <div class="resp-table-row">
+                <div class="table-body-cell">
+                  Roof
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1841" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1842" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1843" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1844" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1845" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1846" value="1"/><span class="checkbox"></span></label>
+                </div>
+              </div>
+              <div class="resp-table-row">
+                <div class="table-body-cell">
+                  Skylights
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1847" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1848" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1849" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1850" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1851" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1852" value="1"/><span class="checkbox"></span></label>
+                </div>
+              </div>
+              <div class="resp-table-row">
+                <div class="table-body-cell">
+                  Vents
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1853" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1854" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1855" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1856" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1857" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1858" value="1"/><span class="checkbox"></span></label>
+                </div>
+              </div>
+              <div class="resp-table-row">
+                <div class="table-body-cell">
+                  Valleys
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1859" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1860" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1861" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1862" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1863" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1864" value="1"/><span class="checkbox"></span></label>
+                </div>
+              </div>
+              <div class="resp-table-row">
+                <div class="table-body-cell">
+                  Down Pipes
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1865" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1866" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1867" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1868" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1869" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1870" value="1"/><span class="checkbox"></span></label>
+                </div>
+              </div>
+              <div class="resp-table-row">
+                <div class="table-body-cell">
+                  Drainage
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1871" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1872" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1873" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1874" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1875" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1876" value="1"/><span class="checkbox"></span></label>
+                </div>
+              </div>
+              <div class="resp-table-row">
+                <div class="table-body-cell">
+                  Pointing
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1877" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1878" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1879" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1880" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1881" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1882" value="1"/><span class="checkbox"></span></label>
+                </div>
+              </div>
+              <div class="resp-table-row">
+                <div class="table-body-cell">
+                  Gutters
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1883" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1884" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1885" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1886" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1887" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1888" value="1"/><span class="checkbox"></span></label>
+                </div>
+              </div>
+              <div class="resp-table-row">
+                <div class="table-body-cell">
+                  Chimney
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1889" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1890" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1891" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1892" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1893" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1894" value="1"/><span class="checkbox"></span></label>
+                </div>
+              </div>
+              <div class="resp-table-row">
+                <div class="table-body-cell">
+                  Sub Floor Ventilation
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1895" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1896" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1897" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1898" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1899" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1900" value="1"/><span class="checkbox"></span></label>
+                </div>
+              </div>
+              <div class="resp-table-row">
+                <div class="table-body-cell">
+                  Deck
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1901" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1902" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1903" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1904" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1905" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1906" value="1"/><span class="checkbox"></span></label>
+                </div>
+              </div>
+              <div class="resp-table-row">
+                <div class="table-body-cell">
+                  Pergola
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1907" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1908" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1909" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1910" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1911" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1912" value="1"/><span class="checkbox"></span></label>
+                </div>
+              </div>
+              <div class="resp-table-row">
+                <div class="table-body-cell">
+                  Porch
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1913" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1914" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1915" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1916" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1917" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1918" value="1"/><span class="checkbox"></span></label>
+                </div>
+              </div>
+              <div class="resp-table-row">
+                <div class="table-body-cell">
+                  Balcony
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1919" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1920" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1921" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1922" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1923" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1924" value="1"/><span class="checkbox"></span></label>
+                </div>
+              </div>
+              <div class="resp-table-row">
+                <div class="table-body-cell">
+                  Steps
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1925" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1926" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1927" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1928" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1929" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1930" value="1"/><span class="checkbox"></span></label>
+                </div>
+              </div>
+              <div class="resp-table-row">
+                <div class="table-body-cell">
+                  Handrails
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1931" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1932" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1933" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1934" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1935" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1936" value="1"/><span class="checkbox"></span></label>
+                </div>
+              </div>
+              <div class="resp-table-row">
+                <div class="table-body-cell">
+                  Roof Space
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1937" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1938" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1939" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1940" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1941" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1942" value="1"/><span class="checkbox"></span></label>
+                </div>
+              </div>
+              <div class="resp-table-row">
+                <div class="table-body-cell">
+                  Stumps
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1943" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1944" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1945" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1946" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1947" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1948" value="1"/><span class="checkbox"></span></label>
+                </div>
+              </div>
+              <div class="resp-table-row">
+                <div class="table-body-cell">
+                  Retaining Walls
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1949" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1950" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1951" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1952" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1953" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1954" value="1"/><span class="checkbox"></span></label>
+                </div>
+              </div>
+              <div class="resp-table-row">
+                <div class="table-body-cell">
+                  Garage/Car Port
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1955" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1956" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1957" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1958" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1959" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1960" value="1"/><span class="checkbox"></span></label>
+                </div>
+              </div>          
+            </div>
+          </div>
+        </div>
+      </div>  
+      <div class="card">
+        <div class="card-header">
+          <h5 class="black mb-0"><strong>External of House - Findings and Recommendations</strong>
+          </h5>
+        </div>
+        <div class="card-body">
+          <div id="recomendations-7">
+            <div formArrayName="external_recommendations_list">
+              <div class="card" *ngFor="let recomm of getRecommendationControls(inspectiondetailsform, 'external_recommendations_list'); let i=index;" [formGroupName]="i">
+                <div class="card-body">
+                  <div class="pull-right"><a data-toggle="tooltip" title="" class="btn btn-default" data-original-title="Remove this recommendation"
+                      (click)="onDeleteRecommendations($event, 'external_recommendations_list', i)"><i class="fa fa-times"></i></a></div>
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <div class="form-group">
+                        <select formControlName="item" (change)="onSave(false,true)" class="form-control">
+                            <option value="-">-</option>
+                            <option value="External">External</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <select formControlName="rectype" (change)="onSave(false,true)" class="form-control">
+                            <option value="-">-</option>
+                            <option value="Condition Visually Fine">Condition Visually Fine</option>
+                            <option value="General Advice on Item">General Advice on Item</option>
+                            <option value="Repair Recommended">Repair Recommended</option>
+                            <option value="Major Structural Defect">Major Structural Defect</option>
+                            <option value="Unable to Inspect Due to Access">Unable to Inspect Due to Access</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <select formControlName="recdetail" (change)="onSave(false,true)" class="form-control">
+                            <option value="-">-</option>
+                            <option *ngFor="let externalitem of external" value="{{ externalitem }}">{{ externalitem }}</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="form-group col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                      <label for="externalrecomme">Comments:</label>
+                      <div>
+                        <textarea id="externalrecomme" class="form-control" rows="4" max-rows="25" placeholder="Type here to expand" formControlName="comment"></textarea>
+                      </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                      <div class="form-group">
+                        <div>                      
+                          <app-file-upload-component (uploadCompletedEmitter)="onUploadComplete($event)" [index]="i" [reportId]="reportId" [recommendationType]="'external_recommendations_list'" [progress]="'rec-file-preview-external'" [inspectiondetailsform]="inspectiondetailsform"></app-file-upload-component>                      
+                          <input type="hidden" formControlName="typee"/>
+                          <input type="hidden" formControlName="filename"/>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <input type="button" class="pull-right btn btn-secondary" (click)="onAddRecommendations('external_recommendations_list','External')" value="Add More Recommendation"/>
+          </div>
+        </div>
+      </div>  
+    </ng-template>
 <!-- DILAPIDATION -->
     <ng-template [ngIf]="reportType != null && isFormDisplay('dilapidation_inspection_form')">
       <div class="card">

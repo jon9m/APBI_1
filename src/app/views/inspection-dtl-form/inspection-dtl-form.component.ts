@@ -1771,6 +1771,10 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
           item = 'Roof';
         }
           break;
+        case 'walls_beams_recommendations_list': {
+          item = 'Walls and Structural Beams';
+        }
+          break;
       }
     }
 
