@@ -19,6 +19,7 @@ export class InspectionDetails {
     public lockup_recommendations_list: InspectionRecommendation[] = [];
     public lockup_recommendations_internal_list: InspectionRecommendation[] = [];
     public new_slab_recommendations_list: InspectionRecommendation[] = [];
+    public preslab_services_recommendations_list: InspectionRecommendation[] = [];
 
     public bookingid: string = '';
     public rec_count: string = '';

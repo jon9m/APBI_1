@@ -252,6 +252,9 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
     if (this.inspectiondetails && this.inspectiondetails.new_slab_recommendations_list) {
       new_slab_recommendations_array = this.inspectiondetails.new_slab_recommendations_list;
     }
+    if (this.inspectiondetails && this.inspectiondetails.preslab_services_recommendations_list) {
+      new_slab_services_recommendations_array = this.inspectiondetails.preslab_services_recommendations_list;
+    }
 
     //if (this.isFormDisplay('visual_building_inspection_form')) {
       if ((hallways_recommendations_array != null) && (typeof hallways_recommendations_array.forEach === 'function')) {
