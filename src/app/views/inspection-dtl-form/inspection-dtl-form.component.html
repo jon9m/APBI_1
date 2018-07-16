@@ -33,7 +33,7 @@
 
 
 
-  <ng-template [ngIf]="reportType != null && (isFormDisplay('visual_building_inspection_form') || isFormDisplay('pest_termite_form') || isFormDisplay('dilapidation_inspection_form')) && !isFormDisplay('new_building_frame_stage_form')">
+  <ng-template [ngIf]="reportType != null && (isFormDisplay('visual_building_inspection_form') || isFormDisplay('pest_termite_form') || isFormDisplay('dilapidation_inspection_form')) && !isFormDisplay('new_building_frame_stage_form') && !isFormDisplay('new_building_slab_stage_form')">
     <div class="card">
       <div class="card-header">
         <h5 class="black mb-0"><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;<strong>Brief description of the building and other structures on the property:</strong>
@@ -233,8 +233,8 @@
 
 
 
-  <!-- --------------------Form 10--------------------- -->
-  <ng-template [ngIf]="reportType != null && isFormDisplay('new_building_frame_stage_form')">
+  <!-- --------------------Form 10 / Form 9--------------------- -->
+  <ng-template [ngIf]="reportType != null && (isFormDisplay('new_building_frame_stage_form') || isFormDisplay('new_building_slab_stage_form'))">
     <div class="card">
       <div class="card-header">
         <h5 class="black mb-0">
@@ -356,7 +356,7 @@
       </div>
     </div>
   </ng-template>
-  <!-- ----------------Form 10 ends------------------------- -->
+  <!-- ----------------Form 10 / Form 9 ends------------------------- -->
 
 
   <!-- --------------------Form 11--------------------- -->
@@ -540,8 +540,8 @@
     </div>
   </div>
 
-<!-- ---------------Form 10 2----------------------------- -->
-  <ng-template [ngIf]="reportType != null && isFormDisplay('new_building_frame_stage_form')">
+<!-- ---------------Form 10 2/ Form 9 2----------------------------- -->
+  <ng-template [ngIf]="reportType != null && (isFormDisplay('new_building_frame_stage_form') || isFormDisplay('new_building_slab_stage_form'))">
     <div class="card">
       <div class="card-header">
         <h5 class="black mb-0"><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;<strong>Were architectural plans or structural engineering plans provided at inspection?</strong>
@@ -571,7 +571,7 @@
       </div>
     </div>
   </ng-template>
-<!-- ---------------Form 10 - 2 ends---------------------- -->
+<!-- ---------------Form 10 - 2/ Form 9 2 ends---------------------- -->
 
 
   <div class="card">
@@ -899,7 +899,7 @@
   </div>
 
 
-  <ng-template [ngIf]="reportType != null && (isFormDisplay('visual_building_inspection_form') || isFormDisplay('dilapidation_inspection_form') || isFormDisplay('new_building_frame_stage_form') || isFormDisplay('new_building_completion_stage_form'))">
+  <ng-template [ngIf]="reportType != null && (isFormDisplay('visual_building_inspection_form') || isFormDisplay('dilapidation_inspection_form') || isFormDisplay('new_building_frame_stage_form') || isFormDisplay('new_building_slab_stage_form') || isFormDisplay('new_building_completion_stage_form'))">
       <div class="card">
         <div class="card-header">
           <h2 class="card-title"><strong><i class="fa fa-circle" aria-hidden="true" style="font-size: 11px;"></i>&nbsp;VISUAL BUILDING INSPECTION</strong>
@@ -2151,6 +2151,568 @@
       </div>
     </ng-template>
     <!-- --------------------Form 10 inspection check list ends------------------------- --> 
+
+    <!-- --------------------Form 9 inspection check list------------------------------ --> 
+    <ng-template [ngIf]="reportType != null && isFormDisplay('new_building_slab_stage_form')">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="black mb-0"><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;<strong>Pre-slab inspection checklist</strong>
+          </h5>
+        </div>
+        <div class="card-body">
+          <div id="resp-table" style="padding: 0 15px 10px 15px;">
+            <div id="resp-table-header">
+              <div class="table-header-cell white">
+                Items
+              </div>
+              <div class="table-header-cell white">
+                Condition Visually Fine
+              </div>
+              <div class="table-header-cell white">
+                General Advice on Item
+              </div>
+              <div class="table-header-cell white">
+                Repair Recommended
+              </div>
+              <div class="table-header-cell white">
+                Major Structural Defect
+              </div>
+              <div class="table-header-cell white">
+                Unable to Inspect Due to Access
+              </div>
+              <div class="table-header-cell white">
+                Not Applicable
+              </div>
+            </div>
+            <div id="resp-table-body">
+              <div class="resp-table-row">
+                <div class="table-body-cell">
+                  Build Orientation
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1001" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1002" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1003" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1004" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1005" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1006" value="1"/><span class="checkbox"></span></label>
+                </div>
+              </div>
+              <div class="resp-table-row">
+                <div class="table-body-cell">
+                  Site Gradient
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1007" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1008" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1009" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1010" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1011" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1012" value="1"/><span class="checkbox"></span></label>
+                </div>
+              </div>
+              <div class="resp-table-row">
+                <div class="table-body-cell">
+                  General Soil Type
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1013" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1014" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1015" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1016" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1017" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1018" value="1"/><span class="checkbox"></span></label>
+                </div>
+              </div>
+              <div class="resp-table-row">
+                <div class="table-body-cell">
+                  Footings
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1019" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1020" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1021" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1022" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1023" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1024" value="1"/><span class="checkbox"></span></label>
+                </div>
+              </div>
+              <div class="resp-table-row">
+                <div class="table-body-cell">
+                  Piers
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1025" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1026" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1027" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1028" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1029" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1030" value="1"/><span class="checkbox"></span></label>
+                </div>
+              </div>
+              <div class="resp-table-row">
+                <div class="table-body-cell">
+                  Damp-proofing Membrane
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1031" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1032" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1033" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1034" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1035" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1036" value="1"/><span class="checkbox"></span></label>
+                </div>
+              </div>
+              <div class="resp-table-row">
+                <div class="table-body-cell">
+                  Steel Placement & Fixing
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1037" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1038" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1039" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1040" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1041" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1042" value="1"/><span class="checkbox"></span></label>
+                </div>
+              </div>
+              <div class="resp-table-row">
+                <div class="table-body-cell">
+                  Steel Sizing/Lapping
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1043" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1044" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1045" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1046" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1047" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1048" value="1"/><span class="checkbox"></span></label>
+                </div>
+              </div>
+              <div class="resp-table-row">
+                <div class="table-body-cell">
+                  Trench Mesh & Steel Reinforcing
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1049" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1050" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1051" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1052" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1053" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1054" value="1"/><span class="checkbox"></span></label>
+                </div>
+              </div>
+              <div class="resp-table-row">
+                <div class="table-body-cell">
+                  Termite Protection/Barrier
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1199" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1200" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1201" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1202" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1203" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1204" value="1"/><span class="checkbox"></span></label>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <h5 class="black mb-0"><strong>Pre-Slab - Findings and Recommendations</strong>
+          </h5>
+        </div>
+        <div class="card-body">
+          <div id="recomendations-11">
+            <div formArrayName="new_slab_recommendations_list">
+              <div class="card" *ngFor="let recomm of getRecommendationControls(inspectiondetailsform, 'new_slab_recommendations_list'); let i=index;" [formGroupName]="i">
+                <div class="card-body">
+                  <div class="pull-right"><a data-toggle="tooltip" title="" class="btn btn-default" data-original-title="Remove this recommendation"
+                      (click)="onDeleteRecommendations($event, 'new_slab_recommendations_list', i)"><i class="fa fa-times"></i></a></div>
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <div class="form-group">
+                        <select formControlName="item" (change)="onSave(false,true)" class="form-control">
+                            <option value="-">-</option>
+                            <option value="Pre-Slab">Pre-Slab</option>
+                            <!-- <option value="Hallways and General Living Spaces">Hallways and General Living Spaces</option>
+                            <option value="Kitchen">Kitchen</option>
+                            <option value="Laundry">Laundry</option>
+                            <option value="Bedrooms">Bedrooms</option>
+                            <option value="Bathrooms">Bathrooms</option>
+                            <option value="Ensuite">Ensuite</option>
+                            <option value="External">External</option> -->
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <select formControlName="rectype" (change)="onSave(false,true)" class="form-control">
+                            <option value="-">-</option>
+                                <option value="Condition Visually Fine">Condition Visually Fine</option>
+                                <option value="General Advice on Item">General Advice on Item</option>
+                                <option value="Repair Recommended">Repair Recommended</option>
+                                <option value="Major Structural Defect">Major Structural Defect</option>
+                                <option value="Unable to Inspect Due to Access">Unable to Inspect Due to Access</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <select formControlName="recdetail" (change)="onSave(false,true)" class="form-control">
+                            <option value="-">-</option>
+                            <option *ngFor="let internalitem of pre_slab" value="{{ internalitem }}">{{ internalitem }}</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="form-group col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                      <label for="hallwayrecomcomment">Comments:</label>
+                      <div>
+                        <textarea id="hallwayrecomcomment" class="form-control" rows="4" max-rows="25" placeholder="Type here to expand" formControlName="comment"></textarea>
+                      </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                      <div class="form-group">
+                        <div>
+                          <app-file-upload-component (uploadCompletedEmitter)="onUploadComplete($event)" [index]="i" [reportId]="reportId" [recommendationType]="'new_slab_recommendations_list'" [progress]="'rec-file-preview-new-slab'" [inspectiondetailsform]="inspectiondetailsform"></app-file-upload-component>                      
+                          <input type="hidden" formControlName="typee"/>
+                          <input type="hidden" formControlName="filename"/>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <input type="button" (click)="onAddRecommendations('new_slab_recommendations_list','NewSlab')" class="pull-right btn btn-secondary" value="Add More Recommendation"/>
+          </div>
+        </div>
+      </div>
+  
+      <div class="card">
+        <div class="card-header">
+          <h5 class="black mb-0"><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;<strong>Services inspection checklist</strong>
+          </h5>
+        </div>
+        <div class="card-body">
+          <div id="resp-table" style="padding: 0 15px 10px 15px;">
+            <div id="resp-table-header">
+              <div class="table-header-cell white">
+                Items
+              </div>
+              <div class="table-header-cell white">
+                Condition Visually Fine
+              </div>
+              <div class="table-header-cell white">
+                General Advice on Item
+              </div>
+              <div class="table-header-cell white">
+                Repair Recommended
+              </div>
+              <div class="table-header-cell white">
+                Major Structural Defect
+              </div>
+              <div class="table-header-cell white">
+                Unable to Inspect Due to Access
+              </div>
+              <div class="table-header-cell white">
+                Not Applicable
+              </div>
+            </div>
+            <div id="resp-table-body">
+              
+              <div class="resp-table-row">
+                <div class="table-body-cell">
+                  Drainage
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1055" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1056" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1057" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1058" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1059" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1060" value="1"/><span class="checkbox"></span></label>
+                </div>
+              </div>
+              <div class="resp-table-row">
+                <div class="table-body-cell">
+                  Plumbing
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1061" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1062" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1063" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1064" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1065" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1066" value="1"/><span class="checkbox"></span></label>
+                </div>
+              </div>
+              <div class="resp-table-row">
+                <div class="table-body-cell">
+                  Electrical
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1067" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1068" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1069" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1070" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1071" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1072" value="1"/><span class="checkbox"></span></label>
+                </div>
+              </div>
+              <div class="resp-table-row">
+                <div class="table-body-cell">
+                  Electrical Meter Box
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1073" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1074" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1075" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1076" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1077" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1078" value="1"/><span class="checkbox"></span></label>
+                </div>
+              </div>
+              <div class="resp-table-row">
+                <div class="table-body-cell">
+                  Storm Water Pipe System
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1079" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1080" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1081" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1082" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1083" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1084" value="1"/><span class="checkbox"></span></label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>  
+      <div class="card">
+        <div class="card-header">
+          <h5 class="black mb-0"><strong>Services - Findings and Recommendations</strong>
+          </h5>
+        </div>
+        <div class="card-body">
+          <div id="recomendations-12">
+            <div formArrayName="preslab_services_recommendations_list">
+              <div class="card" *ngFor="let recomm of getRecommendationControls(inspectiondetailsform, 'preslab_services_recommendations_list'); let i=index;" [formGroupName]="i">
+                <div class="card-body">
+                  <div class="pull-right"><a data-toggle="tooltip" title="" class="btn btn-default" data-original-title="Remove this recommendation"
+                      (click)="onDeleteRecommendations($event, 'preslab_services_recommendations_list', i)"><i class="fa fa-times"></i></a></div>
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <div class="form-group">
+                        <select formControlName="item" (change)="onSave(false,true)" class="form-control">
+                            <option value="-">-</option>
+                            <option value="Services">Services</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <select formControlName="rectype" (change)="onSave(false,true)" class="form-control">
+                            <option value="-">-</option>
+                                <option value="Condition Visually Fine">Condition Visually Fine</option>
+                                <option value="General Advice on Item">General Advice on Item</option>
+                                <option value="Repair Recommended">Repair Recommended</option>
+                                <option value="Major Structural Defect">Major Structural Defect</option>
+                                <option value="Unable to Inspect Due to Access">Unable to Inspect Due to Access</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <select formControlName="recdetail" (change)="onSave(false,true)" class="form-control">
+                            <option value="-">-</option>
+                            <option *ngFor="let internalitem of pre_slab_services" value="{{ internalitem }}">{{ internalitem }}</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="form-group col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                      <label for="hallwayrecomcomment">Comments:</label>
+                      <div>
+                        <textarea id="hallwayrecomcomment" class="form-control" rows="4" max-rows="25" placeholder="Type here to expand" formControlName="comment"></textarea>
+                      </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                      <div class="form-group">
+                        <div>
+                          <app-file-upload-component (uploadCompletedEmitter)="onUploadComplete($event)" [index]="i" [reportId]="reportId" [recommendationType]="'preslab_services_recommendations_list'" [progress]="'rec-file-preview-preslab_services'" [inspectiondetailsform]="inspectiondetailsform"></app-file-upload-component>                      
+                          <input type="hidden" formControlName="typee"/>
+                          <input type="hidden" formControlName="filename"/>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <input type="button" (click)="onAddRecommendations('preslab_services_recommendations_list','PreSlabServices')" class="pull-right btn btn-secondary" value="Add More Recommendation"/>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+    <!-- --------------------Form 9 inspection check list ends------------------------- --> 
 
     <!-- --------------------Form 11 inspection check list------------------------------ -->
     <ng-template [ngIf]="reportType != null && isFormDisplay('new_building_completion_stage_form')">
@@ -8098,7 +8660,7 @@
     </ng-template>
 <!-- DILAPIDATION ENDS -->
 
-    <ng-template [ngIf]="reportType != null && (isFormDisplay('visual_building_inspection_form') || isFormDisplay('dilapidation_inspection_form') || isFormDisplay('new_building_frame_stage_form') || isFormDisplay('new_building_completion_stage_form'))">
+    <ng-template [ngIf]="reportType != null && (isFormDisplay('visual_building_inspection_form') || isFormDisplay('dilapidation_inspection_form') || isFormDisplay('new_building_frame_stage_form') || isFormDisplay('new_building_slab_stage_form') || isFormDisplay('new_building_completion_stage_form'))">
       <div class="card">
         <div class="card-header">
           <h5 class="black mb-0"><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;<strong>Report Summary - Overall Condition of Property</strong>

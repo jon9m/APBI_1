@@ -1,9 +1,9 @@
 export class AppGlobal {
     // public static API_ENDPOINT = 'https://apbi.com.au/inspector-app/';
-    // public static API_ENDPOINT = 'http://34.251.200.88:8080/inspector-app/';
+    public static API_ENDPOINT = 'http://34.251.200.88:8080/inspector-app/';
     // public static API_ENDPOINT = 'http://localhost:8080/inspector-app/';
 
-    public static API_ENDPOINT = 'https://apbi.com.au/inspector-app/';
+    // public static API_ENDPOINT = 'https://apbi.com.au/inspector-app/';
     public static DOMAIN_ENDPOINT = 'https://apbi.com.au/';
 
 
@@ -297,6 +297,27 @@ export class AppGlobal {
         "Insulation",
         "Plumbing",
         "Electrical"
+    ];
+
+    public static Pre_slab: string[] = [
+        "Build Orientation",
+        "Site Gradient",
+        "General Soil Type",
+        "Footings",
+        "Piers",
+        "Damp-proofing Membrane",
+        "Steel Placement & Fixing",
+        "Steel Sizing/Lapping",
+        "Trench Mesh & Steel Reinforcing",
+        "Termite Protection/Barrier"
+    ];
+
+    public static Pre_slab_services: string[] = [
+        "Drainage",
+        "Plumbing",
+        "Electrical",
+        "Electrical Meter Box",
+        "Storm Water Pipe System"
     ];
 
     // public static Internal_delap: string[] = [

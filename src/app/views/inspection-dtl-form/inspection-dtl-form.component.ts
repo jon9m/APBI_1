@@ -30,6 +30,7 @@ import { FileUploadProgressService } from "../../shared/fileupload-progress.serv
 'roof_recommendations_list'
 'lockup_recommendations_list'
 'lockup_recommendations_internal_list'
+'new_slab_recommendations_list'
  */
 
 export class InspectionDtlFormComponent implements OnInit, OnDestroy {
@@ -56,6 +57,8 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
   frameStage_roof: string[] = [];
   lockup_external: string[] = [];
   lockup_internal: string[] = [];
+  pre_slab: string[] = [];
+  pre_slab_services: string[] = [];
 
   formSaving: boolean = false;
   formSaveMsg: string = '';
@@ -103,6 +106,8 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
     this.frameStage_roof = AppGlobal.FrameStage_roof;
     this.lockup_external = AppGlobal.Lockup_external;
     this.lockup_internal = AppGlobal.Lockup_internal;
+    this.pre_slab = AppGlobal.Pre_slab;
+    this.pre_slab_services = AppGlobal.Pre_slab_services;
 
     this.insp_type_pre_purchase_building_inspection = AppGlobal.INSP_TYPE_PRE_PURCHASE_BUILDING_INSPECTION;
     this.insp_type_pre_sale_building_inspection = AppGlobal.INSP_TYPE_PRE_SALE_BUILDING_INSPECTION;
@@ -198,6 +203,8 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
     let roof_recommendations_array = [];
     let lockup_recommendations_array = [];
     let lockup_recommendations_internal_array = [];
+    let new_slab_recommendations_array = [];
+    let new_slab_services_recommendations_array = [];
 
     if (this.inspectiondetails && this.inspectiondetails.hallways_recommendations_list) {
       hallways_recommendations_array = this.inspectiondetails.hallways_recommendations_list;
@@ -241,6 +248,9 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
     }
     if (this.inspectiondetails && this.inspectiondetails.lockup_recommendations_internal_list) {
       lockup_recommendations_internal_array = this.inspectiondetails.lockup_recommendations_internal_list;
+    }
+    if (this.inspectiondetails && this.inspectiondetails.new_slab_recommendations_list) {
+      new_slab_recommendations_array = this.inspectiondetails.new_slab_recommendations_list;
     }
 
     //if (this.isFormDisplay('visual_building_inspection_form')) {
@@ -437,6 +447,35 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
     if ((lockup_recommendations_internal_array != null) && (typeof lockup_recommendations_internal_array.forEach === 'function')) {
       lockup_recommendations_internal_array.forEach(() => {
         (<FormArray>this.inspectiondetailsform.get('lockup_recommendations_internal_list')).push(
+          new FormGroup({
+            'item': new FormControl('-'),
+            'rectype': new FormControl('-'),
+            'recdetail': new FormControl('-'),
+            'comment': new FormControl(''),
+            'typee': new FormControl(),
+            'filename': new FormControl()
+          })
+        );
+      });
+    }
+    if ((new_slab_recommendations_array != null) && (typeof new_slab_recommendations_array.forEach === 'function')) {
+      new_slab_recommendations_array.forEach(() => {
+        (<FormArray>this.inspectiondetailsform.get('new_slab_recommendations_list')).push(
+          new FormGroup({
+            'item': new FormControl('-'),
+            'rectype': new FormControl('-'),
+            'recdetail': new FormControl('-'),
+            'comment': new FormControl(''),
+            'typee': new FormControl(),
+            'filename': new FormControl()
+          })
+        );
+      });
+    }
+
+    if ((new_slab_services_recommendations_array != null) && (typeof new_slab_services_recommendations_array.forEach === 'function')) {
+      new_slab_services_recommendations_array.forEach(() => {
+        (<FormArray>this.inspectiondetailsform.get('preslab_services_recommendations_list')).push(
           new FormGroup({
             'item': new FormControl('-'),
             'rectype': new FormControl('-'),
@@ -1531,6 +1570,26 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
       'roof_recommendations_list': []
     }
 
+    let newbuilding_slabstage_form = {
+      '1055': '',
+      '1056': '',
+      '1057': '',
+      '1058': '',
+      '1059': '',
+      '1060': '',
+
+      'dwelling_type_1': '',
+      'dwelling_type_2': '',
+      'dwelling_additions': '',
+      'dwelling_configuration': '',
+      'main_construction': '',
+      'footing_type': '',
+      'plans': '',
+      'plans_comment': '',
+      'new_slab_recommendations_list': [],
+      'preslab_services_recommendations_list': []
+    }
+
     let newbuilding_completion_form = {
       '1055': '',
       '1056': '',
@@ -1628,18 +1687,18 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
       }
         break;
       case this.insp_type_new_building_inspection_slab_stage: {         //9
-        //Not available!!!
+        this.addControlsToForm(this.inspectiondetailsform, newbuilding_slabstage_form);
+        this.addControlsToForm(this.inspectiondetailsform, visual_building_inspection_form);
+
       }
         break;
       case this.insp_type_new_building_inspection_frame_stage: {        //10
-        //TODO -------------------------------------
         this.addControlsToForm(this.inspectiondetailsform, newbuilding_framestage_form);
         this.addControlsToForm(this.inspectiondetailsform, visual_building_inspection_form);
 
       }
         break;
       case this.insp_type_new_building_inspection_lockup_stage: {       //11
-        //TODO -------------------------------------
         this.addControlsToForm(this.inspectiondetailsform, visual_building_inspection_form);
         this.addControlsToForm(this.inspectiondetailsform, newbuilding_completion_form);
       }
@@ -1670,6 +1729,7 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
     'visual_timber_pest_inspection_form': [5, 6],
     'dilapidation_inspection_form': [7],
     'building_age': [12],
+    'new_building_slab_stage_form': [9],
     'new_building_frame_stage_form': [10],
     'pest_termite_form': [5],
     'new_building_completion_stage_form': [11]
@@ -1773,6 +1833,14 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
           break;
         case 'walls_beams_recommendations_list': {
           item = 'Walls and Structural Beams';
+        }
+          break;
+        case 'new_slab_recommendations_list': {
+          item = 'Pre-Slab';
+        }
+          break;
+        case 'preslab_services_recommendations_list': {
+          item = 'Services';
         }
           break;
       }
