@@ -44,6 +44,7 @@ import { AppServeiceLoadStatusService } from "./shared/app-service-load-status.s
 import { Ng2ImgMaxModule } from 'ng2-img-max';
 import { FileUploadProgressService } from "./shared/fileupload-progress.service";
 import { FileUploadProgressNavComponentComponent } from './views/file-upload-progress-nav-component/file-upload-progress-nav-component.component';
+import { LogoutComponent } from './views/logout/logout.component';
 
 @NgModule({
   imports: [
@@ -67,7 +68,8 @@ import { FileUploadProgressNavComponentComponent } from './views/file-upload-pro
     LoginComponent,
     RegisterComponent,
     UserdetailsComponent,
-    FileUploadProgressNavComponentComponent
+    FileUploadProgressNavComponentComponent,
+    LogoutComponent
   ],
   providers: [
     {

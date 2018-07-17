@@ -35,8 +35,10 @@ export class LoginService {
     }
 
     logout() {
-        this.loginResponse.flag == false;
-        this.loginResponse.userId == -1;
+        if (this.loginResponse) {
+            this.loginResponse.flag == false;
+            this.loginResponse.userId == -1;
+        }
 
         this.router.navigate(['/login']);
     }

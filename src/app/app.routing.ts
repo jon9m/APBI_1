@@ -8,6 +8,7 @@ import { LoginComponent } from './views/login/login.component';
 import { RegisterComponent } from './views/register/register.component';
 import { CustomPreloadStrategy } from "./shared/customPreloadStrategy";
 import { AuthGuard } from './shared/auth-guard.service';
+import { LogoutComponent } from './views/logout/logout.component';
 
 export const routes: Routes = [
   {
@@ -20,6 +21,13 @@ export const routes: Routes = [
     component: LoginComponent,
     data: {
       title: 'Login Page'
+    }
+  },
+  {
+    path: 'logout',
+    component: LogoutComponent,
+    data: {
+      title: 'Logout Page'
     }
   },
   {
