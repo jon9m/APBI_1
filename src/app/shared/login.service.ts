@@ -26,8 +26,8 @@ export class LoginService {
 
     invalidateUser() {
         if (this.loginResponse) {
-            this.loginResponse.flag == false;
-            this.loginResponse.userId == -1;
+            this.loginResponse.flag = false;
+            this.loginResponse.userId = -1;
             this.loginResponse.name = '';
             this.loginResponse.role = '';
             this.loginResponse.message = '';
@@ -36,8 +36,8 @@ export class LoginService {
 
     logout() {
         if (this.loginResponse) {
-            this.loginResponse.flag == false;
-            this.loginResponse.userId == -1;
+            this.loginResponse.flag = false;
+            this.loginResponse.userId = -1;
         }
 
         this.router.navigate(['/login']);
