@@ -7,7 +7,6 @@ import { CommonModule } from "@angular/common";
 import { ModalModule } from "ngx-bootstrap/modal";
 
 import { InspectionDtlPopupComponent } from './inspection-dtl-popup/inspection-dtl-popup.component';
-import { RouteReuseStrategy } from "@angular/router";
 
 @NgModule({
     imports: [

@@ -73,7 +73,10 @@
           <a class="btn" href="#"><i class="icon-settings"></i> &nbsp;Settings</a>
         </div>
       </li>-->
+
       <li class="breadcrumb-menu">
+        <app-calendar-search *ngIf="calendarDisplaying"></app-calendar-search>
+
         <div class="btn-group">
           <a class="btn" [routerLink]="['/logout']">Logout&nbsp;<i class="icon-logout"></i></a>
         </div>

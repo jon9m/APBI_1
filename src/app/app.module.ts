@@ -45,6 +45,7 @@ import { Ng2ImgMaxModule } from 'ng2-img-max';
 import { FileUploadProgressService } from "./shared/fileupload-progress.service";
 import { FileUploadProgressNavComponentComponent } from './views/file-upload-progress-nav-component/file-upload-progress-nav-component.component';
 import { LogoutComponent } from './views/logout/logout.component';
+import { CalendarSearchComponent } from './views/mycalendar/calendar-search/calendar-search.component';
 
 @NgModule({
   imports: [
@@ -69,7 +70,8 @@ import { LogoutComponent } from './views/logout/logout.component';
     RegisterComponent,
     UserdetailsComponent,
     FileUploadProgressNavComponentComponent,
-    LogoutComponent
+    LogoutComponent,
+    CalendarSearchComponent
   ],
   providers: [
     {

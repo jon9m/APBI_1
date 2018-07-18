@@ -24,6 +24,8 @@ export class DefaultLayoutComponent implements OnInit, OnDestroy, AfterViewInit 
   private changes: MutationObserver;
   public element: HTMLElement = document.body;
 
+  public calendarDisplaying = false;
+
   constructor(private httpService: HTTPService, private renderer: Renderer2, private appServeiceLoadStatusService: AppServeiceLoadStatusService, public fileUploadProgressService: FileUploadProgressService) {
     this.alive = true;
     this.interval = 5000;
@@ -38,6 +40,7 @@ export class DefaultLayoutComponent implements OnInit, OnDestroy, AfterViewInit 
   }
 
   private subscription: Subscription;
+  private calDisplaySubscription: Subscription;
 
   ngOnInit() {
     let statusElem = this.serverStatusElem.nativeElement;
@@ -56,6 +59,11 @@ export class DefaultLayoutComponent implements OnInit, OnDestroy, AfterViewInit 
           statusElem.textContent = "Unable to connect to the server! please check your network connection.";
         });
     });
+
+    this.calDisplaySubscription = this.appServeiceLoadStatusService.calendarDisplaySubject.subscribe((status: boolean) => {
+      console.log("cal display status " + status);
+      this.calendarDisplaying = status;
+    });
   }
 
   ngAfterViewInit(): void {
@@ -73,5 +81,8 @@ export class DefaultLayoutComponent implements OnInit, OnDestroy, AfterViewInit 
   ngOnDestroy() {
     this.alive = false; // switches your TimerObservable off
     this.subscription.unsubscribe();
+    if (this.calDisplaySubscription) {
+      this.calDisplaySubscription.unsubscribe();
+    }
   }
 }

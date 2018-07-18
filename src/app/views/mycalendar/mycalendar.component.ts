@@ -21,11 +21,17 @@ export class MycalendarComponent implements OnInit, OnDestroy, AfterViewInit, Af
   @ViewChild(CalendarComponent) ucCalendar: CalendarComponent;
   isCalendarLoading: boolean = false;
   isCalendarEventsListnerInit = false;
+  isCalendarLoadedOnce = false;
+  calendarSearchText: string = '';
+
+  currClientEvents: any = [];
 
   mm;
   events: any = [];
   private eventSubscription: Subscription;
   private calendarSubscription: Subscription;
+  private calendarDisplaySubscription: Subscription;
+  private calendarSearchSubscription: Subscription;
   private previewSubscription: Subscription;
   private navStartObservable: Observable<NavigationStart>;
   private navStartSubscription: Subscription;
@@ -39,30 +45,85 @@ export class MycalendarComponent implements OnInit, OnDestroy, AfterViewInit, Af
   ngOnDestroy(): void {
     if (this.previewSubscription) { this.previewSubscription.unsubscribe(); }
     if (this.calendarSubscription) { this.calendarSubscription.unsubscribe(); }
+    if (this.calendarDisplaySubscription) { this.calendarDisplaySubscription.unsubscribe(); }
     if (this.eventSubscription) { this.eventSubscription.unsubscribe(); }
     if (this.navStartSubscription) { this.navStartSubscription.unsubscribe(); }
+    if (this.calendarSearchSubscription) { this.calendarSearchSubscription.unsubscribe(); }
     this.events = [];
   }
 
   ngOnInit() {
+    if (!this.isCalendarLoadedOnce) {
+      this.isCalendarLoadedOnce = true;
+      this.appServeiceLoadStatusService.setCalendarDisplayStatus();
+    }
     this.navStartSubscription = this.navStartObservable.subscribe(evt => {
       if ((evt.url) && (evt.url.indexOf('mycalendar') != -1)) {
+
+        console.log("calendar view checked, search text set to empty and load");
+        this.calendarSearchText = '';
+        this.loadFullcalendarForEvents(this.calendarSearchText);
+
         this.isCalendarEventsListnerInit = false;
+        this.appServeiceLoadStatusService.setCalendarDisplayStatus();
+      } else {
+        this.appServeiceLoadStatusService.clearCalendarDisplayStatus();
       }
+    });
+
+    this.calendarSearchSubscription = this.appServeiceLoadStatusService.calendarSearchSubject.subscribe(searchText => {
+      this.loadFullcalendarForEvents(searchText);
     });
   }
 
+  loadFullcalendarForEvents(searchText) {
+    if (this.ucCalendar && this.ucCalendar.fullCalendar) {
+      try {
+        this.calendarSearchText = searchText;
+        this.events = this.getCalendarEvents(this.calendarSearchText);
+      } catch (e) {
+        console.log(e);
+      }
+    }
+  }
+
+  getCalendarEvents(filter: string) {
+    var events = new Array();
+    if ((filter == null) || (filter.trim() == '')) {
+      events = this.currClientEvents;
+    } else {
+      events = this.getEventsByFilter(filter);
+    }
+    return events;
+  }
+
+  getEventsByFilter(filter: string) {
+    var allevents = new Array();
+    var filterevents = new Array();
+    allevents = this.getCalendarEvents(null);
+    for (var j in allevents) {
+      if ((allevents[j].title) && ((String)(allevents[j].title)).toLowerCase().indexOf(filter.toLowerCase()) >= 0) {
+        filterevents.push(allevents[j]);
+      }
+    }
+    return filterevents;
+  }
+
   ngAfterViewChecked() {
+    this.reRenderFullCalendar();
+  }
+
+  reRenderFullCalendar() {
     if (!this.isCalendarEventsListnerInit) {
-        if (this.ucCalendar && this.ucCalendar.fullCalendar) {
-          try {
-            this.ucCalendar.fullCalendar("rerenderEvents");
-            this.isCalendarEventsListnerInit = true;
-          } catch (e) {
-            this.isCalendarEventsListnerInit = false;
-            //console.log(e);
-          }
+      if (this.ucCalendar && this.ucCalendar.fullCalendar) {
+        try {
+          this.ucCalendar.fullCalendar("rerenderEvents");
+          this.isCalendarEventsListnerInit = true;
+        } catch (e) {
+          this.isCalendarEventsListnerInit = false;
+          //console.log(e);
         }
+      }
     }
   }
 
@@ -73,6 +134,7 @@ export class MycalendarComponent implements OnInit, OnDestroy, AfterViewInit, Af
     let nextMonth = (now.set('date', 1).add(1, 'month').add(10, 'day')).format('YYYY-MM-DD');
 
     this.isCalendarLoading = true;
+    this.calendarSearchText = '';
 
     this.eventSubscription = this.httpService.loadCalendar({ 'start': currMonth, 'end': nextMonth }).subscribe(
       (data) => {
@@ -88,6 +150,7 @@ export class MycalendarComponent implements OnInit, OnDestroy, AfterViewInit, Af
         };
         this.appServeiceLoadStatusService.setCalendarLoadStatus();
         this.isCalendarLoading = false;
+        this.currClientEvents = JSON.parse(JSON.stringify(data));
       }, () => {
         this.appServeiceLoadStatusService.clearCalendarLoadStatus();
         this.isCalendarLoading = false;
@@ -99,10 +162,14 @@ export class MycalendarComponent implements OnInit, OnDestroy, AfterViewInit, Af
     var currMonth = (currView.start).format('YYYY-MM-DD');
     var nextMonth = (currView.end).format('YYYY-MM-DD');
 
+    this.events = [];
+    this.currClientEvents = [];
+
     this.calendarSubscription = this.httpService.loadCalendar({ 'start': currMonth, 'end': nextMonth }).subscribe(
       (response: Response) => {
         this.appServeiceLoadStatusService.setCalendarLoadStatus();
         this.events = response;
+        this.currClientEvents = JSON.parse(JSON.stringify(response));
       },
       () => {
         this.appServeiceLoadStatusService.clearCalendarLoadStatus();
