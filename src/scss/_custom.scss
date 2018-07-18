@@ -88,6 +88,18 @@ a:not([href]):not([tabindex]) {
   pointer-events: none;
 }
 
+.breadcrumb{
+  padding: 0.5rem 1rem;
+}
+
+.breadcrumb-menu{
+  height: 1.6rem;
+}
+
+.breadcrumb-item{
+  line-height: 1.5rem;
+}
+
 .breadcrumb-item a{
   pointer-events: none;
   color: #73818f;

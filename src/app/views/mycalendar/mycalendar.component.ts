@@ -166,11 +166,13 @@ export class MycalendarComponent implements OnInit, OnDestroy, AfterViewInit, Af
     this.calendarSubscription = this.httpService.loadCalendar({ 'start': currMonth, 'end': nextMonth }).subscribe(
       (response: Response) => {
         this.appServeiceLoadStatusService.setCalendarLoadStatus();
-        this.events = response;
+        //this.events = response;
         this.currClientEvents = JSON.parse(JSON.stringify(response));
 
         if (this.calendarSearchText && this.calendarSearchText.trim() !== '') {
           this.loadFullcalendarForEvents(this.calendarSearchText);
+        } else {
+          this.events = response;
         }
       },
       () => {
