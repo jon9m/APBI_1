@@ -170,7 +170,7 @@ export class MycalendarComponent implements OnInit, OnDestroy, AfterViewInit, Af
         this.currClientEvents = JSON.parse(JSON.stringify(response));
 
         if (this.calendarSearchText && this.calendarSearchText.trim() !== '') {
-          this.getCalendarEvents(this.calendarSearchText);
+          this.loadFullcalendarForEvents(this.calendarSearchText);
         }
       },
       () => {
