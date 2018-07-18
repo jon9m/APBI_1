@@ -59,8 +59,6 @@ export class MycalendarComponent implements OnInit, OnDestroy, AfterViewInit, Af
     }
     this.navStartSubscription = this.navStartObservable.subscribe(evt => {
       if ((evt.url) && (evt.url.indexOf('mycalendar') != -1)) {
-
-        console.log("calendar view checked, search text set to empty and load");
         this.calendarSearchText = '';
         this.loadFullcalendarForEvents(this.calendarSearchText);
 
@@ -170,6 +168,10 @@ export class MycalendarComponent implements OnInit, OnDestroy, AfterViewInit, Af
         this.appServeiceLoadStatusService.setCalendarLoadStatus();
         this.events = response;
         this.currClientEvents = JSON.parse(JSON.stringify(response));
+
+        if (this.calendarSearchText && this.calendarSearchText.trim() !== '') {
+          this.getCalendarEvents(this.calendarSearchText);
+        }
       },
       () => {
         this.appServeiceLoadStatusService.clearCalendarLoadStatus();

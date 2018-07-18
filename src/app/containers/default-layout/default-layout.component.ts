@@ -61,7 +61,6 @@ export class DefaultLayoutComponent implements OnInit, OnDestroy, AfterViewInit 
     });
 
     this.calDisplaySubscription = this.appServeiceLoadStatusService.calendarDisplaySubject.subscribe((status: boolean) => {
-      console.log("cal display status " + status);
       this.calendarDisplaying = status;
     });
   }
