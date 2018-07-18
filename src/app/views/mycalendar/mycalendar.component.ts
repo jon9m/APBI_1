@@ -160,7 +160,7 @@ export class MycalendarComponent implements OnInit, OnDestroy, AfterViewInit, Af
     var currMonth = (currView.start).format('YYYY-MM-DD');
     var nextMonth = (currView.end).format('YYYY-MM-DD');
 
-    this.events = [];
+    //this.events = [];
     this.currClientEvents = [];
 
     this.calendarSubscription = this.httpService.loadCalendar({ 'start': currMonth, 'end': nextMonth }).subscribe(
