@@ -74,7 +74,7 @@ export class MycalendarComponent implements OnInit, OnDestroy, AfterViewInit, Af
     });
   }
 
-  loadFullcalendarForEvents(searchText) {
+  loadFullcalendarForEvents = (searchText) => {
     if (this.ucCalendar && this.ucCalendar.fullCalendar) {
       try {
         this.calendarSearchText = searchText;
@@ -85,8 +85,8 @@ export class MycalendarComponent implements OnInit, OnDestroy, AfterViewInit, Af
     }
   }
 
-  getCalendarEvents(filter: string) {
-    var events = new Array();
+  getCalendarEvents = (filter: string) => {
+    let events = new Array();
     if ((filter == null) || (filter.trim() == '')) {
       events = this.currClientEvents;
     } else {
@@ -96,9 +96,8 @@ export class MycalendarComponent implements OnInit, OnDestroy, AfterViewInit, Af
   }
 
   getEventsByFilter(filter: string) {
-    var allevents = new Array();
-    var filterevents = new Array();
-    allevents = this.getCalendarEvents(null);
+    let filterevents = new Array();
+    let allevents = this.currClientEvents;
     for (var j in allevents) {
       if ((allevents[j].title) && ((String)(allevents[j].title)).toLowerCase().indexOf(filter.toLowerCase()) >= 0) {
         filterevents.push(allevents[j]);
@@ -111,7 +110,7 @@ export class MycalendarComponent implements OnInit, OnDestroy, AfterViewInit, Af
     this.reRenderFullCalendar();
   }
 
-  reRenderFullCalendar() {
+  reRenderFullCalendar = () => {
     if (!this.isCalendarEventsListnerInit) {
       if (this.ucCalendar && this.ucCalendar.fullCalendar) {
         try {
@@ -161,18 +160,17 @@ export class MycalendarComponent implements OnInit, OnDestroy, AfterViewInit, Af
     var nextMonth = (currView.end).format('YYYY-MM-DD');
 
     //this.events = [];
-    this.currClientEvents = [];
+    //this.currClientEvents = [];
+    this.ucCalendar.fullCalendar("removeEvents");
 
     this.calendarSubscription = this.httpService.loadCalendar({ 'start': currMonth, 'end': nextMonth }).subscribe(
       (response: Response) => {
         this.appServeiceLoadStatusService.setCalendarLoadStatus();
-        //this.events = response;
-        this.currClientEvents = JSON.parse(JSON.stringify(response));
+        this.events = response;
 
+        this.currClientEvents = JSON.parse(JSON.stringify(response));
         if (this.calendarSearchText && this.calendarSearchText.trim() !== '') {
           this.loadFullcalendarForEvents(this.calendarSearchText);
-        } else {
-          this.events = response;
         }
       },
       () => {
