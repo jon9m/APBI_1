@@ -19,15 +19,12 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "../node_modules/flag-icon-css/css/flag-icon.css",
         "../node_modules/font-awesome/css/font-awesome.css",
         "../node_modules/simple-line-icons/css/simple-line-icons.css",
         "scss/style.scss"
       ],
       "scripts": [
-        "../node_modules/blueimp-canvas-to-blob/js/canvas-to-blob.js",
-        "../node_modules/compress.js/build/compress.js",
-        "../node_modules/pica/dist/pica.js"
+        "../node_modules/compress.js/build/compress.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {
