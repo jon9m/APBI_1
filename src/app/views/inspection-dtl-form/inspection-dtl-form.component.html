@@ -293,20 +293,26 @@
               </select>
             </div>
           </div>
-          <div class="col-sm-12">
-            <div class="form-group">
-              <label class="control-label" for="input-order-status">Dwelling Configuration:</label>
-              <select formControlName="bathrooms" (change)="onSave(false,true)" id="input-order-status" class="form-control">
-                <option value="-">-</option>
-                <option value="Single Storey">Single Storey</option>
-                <option value="Two Storey">Two Storey</option>
-                <option value="Split Level">Split Level</option>
-                <option value="Multistorey">Multistorey</option>
-                <option value="Highset">Highset</option>
-                <option value="Other">Other</option>
-              </select>
+
+          <!-- --------------------Form 10 --------------------- -->
+          <ng-template [ngIf]="reportType != null && isFormDisplay('new_building_frame_stage_form')">
+            <div class="col-sm-12">
+              <div class="form-group">
+                <label class="control-label" for="input-order-status">Dwelling Configuration:</label>
+                <select formControlName="bathrooms" (change)="onSave(false,true)" id="input-order-status" class="form-control">
+                  <option value="-">-</option>
+                  <option value="Single Storey">Single Storey</option>
+                  <option value="Two Storey">Two Storey</option>
+                  <option value="Split Level">Split Level</option>
+                  <option value="Multistorey">Multistorey</option>
+                  <option value="Highset">Highset</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
             </div>
-          </div>
+          </ng-template>
+          <!-- --------------------Form 10 Ends --------------------- -->
+
           <div class="col-sm-12">
             <div class="form-group">
               <label class="car-park" for="input-order-status">Piers:</label>
@@ -1185,11 +1191,11 @@
                       <div class="form-group">
                         <select formControlName="rectype" (change)="onSave(false,true)" class="form-control">
                             <option value="-">-</option>
-                                <option value="Condition Visually Fine">Condition Visually Fine</option>
-                                <option value="General Advice on Item">General Advice on Item</option>
-                                <option value="Repair Recommended">Repair Recommended</option>
-                                <option value="Major Structural Defect">Major Structural Defect</option>
-                                <option value="Unable to Inspect Due to Access">Unable to Inspect Due to Access</option>
+                            <option value="Condition Visually Fine">Condition Visually Fine</option>
+                            <option value="General Advice on Item">General Advice on Item</option>
+                            <option value="Repair Recommended">Repair Recommended</option>
+                            <option value="Major Structural Defect">Major Structural Defect</option>
+                            <option value="Unable to Inspect Due to Access">Unable to Inspect Due to Access</option>
                         </select>
                       </div>
                     </div>
@@ -1683,11 +1689,11 @@
                       <div class="form-group">
                         <select formControlName="rectype" (change)="onSave(false,true)" class="form-control">
                             <option value="-">-</option>
-                                <option value="Condition Visually Fine">Condition Visually Fine</option>
-                                <option value="General Advice on Item">General Advice on Item</option>
-                                <option value="Repair Recommended">Repair Recommended</option>
-                                <option value="Major Structural Defect">Major Structural Defect</option>
-                                <option value="Unable to Inspect Due to Access">Unable to Inspect Due to Access</option>
+                            <option value="Condition Visually Fine">Condition Visually Fine</option>
+                            <option value="General Advice on Item">General Advice on Item</option>
+                            <option value="Repair Recommended">Repair Recommended</option>
+                            <option value="Major Structural Defect">Major Structural Defect</option>
+                            <option value="Unable to Inspect Due to Access">Unable to Inspect Due to Access</option>
                         </select>
                       </div>
                     </div>
@@ -2108,11 +2114,11 @@
                       <div class="form-group">
                         <select formControlName="rectype" (change)="onSave(false,true)" class="form-control">
                             <option value="-">-</option>
-                                <option value="Condition Visually Fine">Condition Visually Fine</option>
-                                <option value="General Advice on Item">General Advice on Item</option>
-                                <option value="Repair Recommended">Repair Recommended</option>
-                                <option value="Major Structural Defect">Major Structural Defect</option>
-                                <option value="Unable to Inspect Due to Access">Unable to Inspect Due to Access</option>
+                            <option value="Condition Visually Fine">Condition Visually Fine</option>
+                            <option value="General Advice on Item">General Advice on Item</option>
+                            <option value="Repair Recommended">Repair Recommended</option>
+                            <option value="Major Structural Defect">Major Structural Defect</option>
+                            <option value="Unable to Inspect Due to Access">Unable to Inspect Due to Access</option>
                         </select>
                       </div>
                     </div>
@@ -2392,30 +2398,6 @@
                   <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1054" value="1"/><span class="checkbox"></span></label>
                 </div>
               </div>
-              <div class="resp-table-row">
-                <div class="table-body-cell">
-                  Termite Protection/Barrier
-                </div>
-                <div class="table-body-cell">
-                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1199" value="1"/><span class="checkbox"></span></label>
-                </div>
-                <div class="table-body-cell">
-                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1200" value="1"/><span class="checkbox"></span></label>
-                </div>
-                <div class="table-body-cell">
-                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1201" value="1"/><span class="checkbox"></span></label>
-                </div>
-                <div class="table-body-cell">
-                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1202" value="1"/><span class="checkbox"></span></label>
-                </div>
-                <div class="table-body-cell">
-                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1203" value="1"/><span class="checkbox"></span></label>
-                </div>
-                <div class="table-body-cell">
-                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1204" value="1"/><span class="checkbox"></span></label>
-                </div>
-              </div>
-              
             </div>
           </div>
         </div>
@@ -2452,11 +2434,11 @@
                       <div class="form-group">
                         <select formControlName="rectype" (change)="onSave(false,true)" class="form-control">
                             <option value="-">-</option>
-                                <option value="Condition Visually Fine">Condition Visually Fine</option>
-                                <option value="General Advice on Item">General Advice on Item</option>
-                                <option value="Repair Recommended">Repair Recommended</option>
-                                <option value="Major Structural Defect">Major Structural Defect</option>
-                                <option value="Unable to Inspect Due to Access">Unable to Inspect Due to Access</option>
+                            <option value="Condition Visually Fine">Condition Visually Fine</option>
+                            <option value="General Advice on Item">General Advice on Item</option>
+                            <option value="Repair Recommended">Repair Recommended</option>
+                            <option value="Major Structural Defect">Major Structural Defect</option>
+                            <option value="Unable to Inspect Due to Access">Unable to Inspect Due to Access</option>
                         </select>
                       </div>
                     </div>
@@ -2641,6 +2623,29 @@
                   <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1084" value="1"/><span class="checkbox"></span></label>
                 </div>
               </div>
+              <div class="resp-table-row">
+                <div class="table-body-cell">
+                  Termite Protection/Barrier
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1199" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1200" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1201" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1202" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1203" value="1"/><span class="checkbox"></span></label>
+                </div>
+                <div class="table-body-cell">
+                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1204" value="1"/><span class="checkbox"></span></label>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -2670,11 +2675,11 @@
                       <div class="form-group">
                         <select formControlName="rectype" (change)="onSave(false,true)" class="form-control">
                             <option value="-">-</option>
-                                <option value="Condition Visually Fine">Condition Visually Fine</option>
-                                <option value="General Advice on Item">General Advice on Item</option>
-                                <option value="Repair Recommended">Repair Recommended</option>
-                                <option value="Major Structural Defect">Major Structural Defect</option>
-                                <option value="Unable to Inspect Due to Access">Unable to Inspect Due to Access</option>
+                            <option value="Condition Visually Fine">Condition Visually Fine</option>
+                            <option value="General Advice on Item">General Advice on Item</option>
+                            <option value="Repair Recommended">Repair Recommended</option>
+                            <option value="Major Structural Defect">Major Structural Defect</option>
+                            <option value="Unable to Inspect Due to Access">Unable to Inspect Due to Access</option>
                         </select>
                       </div>
                     </div>
@@ -2983,11 +2988,11 @@
                       <div class="form-group">
                         <select formControlName="rectype" (change)="onSave(false,true)" class="form-control">
                             <option value="-">-</option>
-                                <option value="Condition Visually Fine">Condition Visually Fine</option>
-                                <option value="General Advice on Item">General Advice on Item</option>
-                                <option value="Repair Recommended">Repair Recommended</option>
-                                <option value="Major Structural Defect">Major Structural Defect</option>
-                                <option value="Unable to Inspect Due to Access">Unable to Inspect Due to Access</option>
+                            <option value="Condition Visually Fine">Condition Visually Fine</option>
+                            <option value="General Advice on Item">General Advice on Item</option>
+                            <option value="Repair Recommended">Repair Recommended</option>
+                            <option value="Major Structural Defect">Major Structural Defect</option>
+                            <option value="Unable to Inspect Due to Access">Unable to Inspect Due to Access</option>
                         </select>
                       </div>
                     </div>
@@ -3227,11 +3232,11 @@
                         <div class="form-group">
                           <select formControlName="rectype" (change)="onSave(false,true)" class="form-control">
                               <option value="-">-</option>
-                                  <option value="Condition Visually Fine">Condition Visually Fine</option>
-                                  <option value="General Advice on Item">General Advice on Item</option>
-                                  <option value="Repair Recommended">Repair Recommended</option>
-                                  <option value="Major Structural Defect">Major Structural Defect</option>
-                                  <option value="Unable to Inspect Due to Access">Unable to Inspect Due to Access</option>
+                              <option value="Condition Visually Fine">Condition Visually Fine</option>
+                              <option value="General Advice on Item">General Advice on Item</option>
+                              <option value="Repair Recommended">Repair Recommended</option>
+                              <option value="Major Structural Defect">Major Structural Defect</option>
+                              <option value="Unable to Inspect Due to Access">Unable to Inspect Due to Access</option>
                           </select>
                         </div>
                       </div>
@@ -3568,10 +3573,11 @@
                       <div class="form-group">
                         <select formControlName="rectype" (change)="onSave(false,true)" class="form-control">
                             <option value="-">-</option>
-                                <option value="General Advice on Item">General Advice on Item</option>
-                                <option value="Repair Recommended">Repair Recommended</option>
-                                <option value="Major Structural Defect">Major Structural Defect</option>
-                                <option value="Unable to Inspect Due to Access">Unable to Inspect Due to Access</option>
+                            <option value="Condition Visually Fine">Condition Visually Fine</option>
+                            <option value="General Advice on Item">General Advice on Item</option>
+                            <option value="Repair Recommended">Repair Recommended</option>
+                            <option value="Major Structural Defect">Major Structural Defect</option>
+                            <option value="Unable to Inspect Due to Access">Unable to Inspect Due to Access</option>
                         </select>
                       </div>
                     </div>
@@ -4065,10 +4071,11 @@
                       <div class="form-group">
                         <select formControlName="rectype" (change)="onSave(false,true)" class="form-control">
                             <option value="-">-</option>
-                                <option value="General Advice on Item">General Advice on Item</option>
-                                <option value="Repair Recommended">Repair Recommended</option>
-                                <option value="Major Structural Defect">Major Structural Defect</option>
-                                <option value="Unable to Inspect Due to Access">Unable to Inspect Due to Access</option>
+                            <option value="Condition Visually Fine">Condition Visually Fine</option>
+                            <option value="General Advice on Item">General Advice on Item</option>
+                            <option value="Repair Recommended">Repair Recommended</option>
+                            <option value="Major Structural Defect">Major Structural Defect</option>
+                            <option value="Unable to Inspect Due to Access">Unable to Inspect Due to Access</option>
                         </select>
                       </div>
                     </div>
@@ -4423,10 +4430,11 @@
                       <div class="form-group">
                         <select formControlName="rectype" (change)="onSave(false,true)" class="form-control">
                             <option value="-">-</option>
-                                <option value="General Advice on Item">General Advice on Item</option>
-                                <option value="Repair Recommended">Repair Recommended</option>
-                                <option value="Major Structural Defect">Major Structural Defect</option>
-                                <option value="Unable to Inspect Due to Access">Unable to Inspect Due to Access</option>
+                            <option value="Condition Visually Fine">Condition Visually Fine</option>
+                            <option value="General Advice on Item">General Advice on Item</option>
+                            <option value="Repair Recommended">Repair Recommended</option>
+                            <option value="Major Structural Defect">Major Structural Defect</option>
+                            <option value="Unable to Inspect Due to Access">Unable to Inspect Due to Access</option>
                         </select>
                       </div>
                     </div>
@@ -5358,10 +5366,11 @@
                       <div class="form-group">
                         <select formControlName="rectype" (change)="onSave(false,true)" class="form-control">
                             <option value="-">-</option>
-                                <option value="General Advice on Item">General Advice on Item</option>
-                                <option value="Repair Recommended">Repair Recommended</option>
-                                <option value="Major Structural Defect">Major Structural Defect</option>
-                                <option value="Unable to Inspect Due to Access">Unable to Inspect Due to Access</option>
+                            <option value="Condition Visually Fine">Condition Visually Fine</option>
+                            <option value="General Advice on Item">General Advice on Item</option>
+                            <option value="Repair Recommended">Repair Recommended</option>
+                            <option value="Major Structural Defect">Major Structural Defect</option>
+                            <option value="Unable to Inspect Due to Access">Unable to Inspect Due to Access</option>
                         </select>
                       </div>
                     </div>
@@ -5970,10 +5979,11 @@
                       <div class="form-group">
                         <select formControlName="rectype" (change)="onSave(false,true)" class="form-control">
                             <option value="-">-</option>
-                                <option value="General Advice on Item">General Advice on Item</option>
-                                <option value="Repair Recommended">Repair Recommended</option>
-                                <option value="Major Structural Defect">Major Structural Defect</option>
-                                <option value="Unable to Inspect Due to Access">Unable to Inspect Due to Access</option>
+                            <option value="Condition Visually Fine">Condition Visually Fine</option>
+                            <option value="General Advice on Item">General Advice on Item</option>
+                            <option value="Repair Recommended">Repair Recommended</option>
+                            <option value="Major Structural Defect">Major Structural Defect</option>
+                            <option value="Unable to Inspect Due to Access">Unable to Inspect Due to Access</option>
                         </select>
                       </div>
                     </div>
@@ -6582,10 +6592,11 @@
                       <div class="form-group">
                         <select formControlName="rectype" (change)="onSave(false,true)" class="form-control">
                             <option value="-">-</option>
-                                <option value="General Advice on Item">General Advice on Item</option>
-                                <option value="Repair Recommended">Repair Recommended</option>
-                                <option value="Major Structural Defect">Major Structural Defect</option>
-                                <option value="Unable to Inspect Due to Access">Unable to Inspect Due to Access</option>
+                            <option value="Condition Visually Fine">Condition Visually Fine</option>
+                            <option value="General Advice on Item">General Advice on Item</option>
+                            <option value="Repair Recommended">Repair Recommended</option>
+                            <option value="Major Structural Defect">Major Structural Defect</option>
+                            <option value="Unable to Inspect Due to Access">Unable to Inspect Due to Access</option>
                         </select>
                       </div>
                     </div>
