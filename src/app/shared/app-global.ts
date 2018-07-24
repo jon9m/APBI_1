@@ -308,8 +308,7 @@ export class AppGlobal {
         "Damp-proofing Membrane",
         "Steel Placement & Fixing",
         "Steel Sizing/Lapping",
-        "Trench Mesh & Steel Reinforcing",
-        "Termite Protection/Barrier"
+        "Trench Mesh & Steel Reinforcing"
     ];
 
     public static Pre_slab_services: string[] = [
@@ -317,7 +316,8 @@ export class AppGlobal {
         "Plumbing",
         "Electrical",
         "Electrical Meter Box",
-        "Storm Water Pipe System"
+        "Storm Water Pipe System",
+        "Termite Protection/Barrier"
     ];
 
     // public static Internal_delap: string[] = [
