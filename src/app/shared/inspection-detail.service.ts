@@ -9,9 +9,15 @@ export class InspectionDetailsService {
 
     private inspectionProperty: InspectionProperty;
     private inspectionDetails: InspectionDetails;
+    public formVersionForceSaveSubject = new Subject<{ isSaveExit: boolean, isQuickSave: boolean }>();
 
+    private isSaveAndExit: boolean;
+    private isQuickSave: boolean;
 
     constructor() {
+        this.isSaveAndExit = false;
+        this.isQuickSave = false;
+
         this.inspectionProperty = new InspectionProperty();
         this.inspectionDetails = new InspectionDetails();
     }
@@ -37,5 +43,22 @@ export class InspectionDetailsService {
 
     getInspectionPropertyModal() {
         return this.inspectionProperty;
+    }
+
+    public setInspectionDetailsSetForceSave() {
+        this.formVersionForceSaveSubject.next({ isSaveExit: this.isSaveAndExit, isQuickSave: this.isQuickSave });
+    }
+
+    public getSaveAndExit() {
+        return this.isSaveAndExit;
+    }
+
+    public getQuickSave(val) {
+        return this.isQuickSave;
+    }
+
+    public setSaveTypes(isSaveExit, isQuickSave) {
+        this.isSaveAndExit = isSaveExit;
+        this.isQuickSave = isQuickSave;
     }
 }
