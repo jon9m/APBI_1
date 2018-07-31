@@ -2,6 +2,8 @@ import { InspectionRecommendation } from "./inspection-recommendation.model";
 
 export class InspectionDetails {
 
+    public fversion: string = '';
+
     public hallways_recommendations_list: InspectionRecommendation[] = [];
     public kitchen_recommendations_list: InspectionRecommendation[] = [];
     public laundry_recommendations_list: InspectionRecommendation[] = [];

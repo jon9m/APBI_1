@@ -7,6 +7,7 @@
 </div>
 <form [formGroup]="inspectiondetailsform">
   <input id="bookingid" type="hidden" formControlName="bookingid" />
+  <input id="fversion" type="hidden" formControlName="fversion" />
   <input id="rec_count" type="hidden" formControlName="rec_count" value="max_rec" />
   <div class="page-header">
     <div class="container-fluid p-0">
@@ -44,7 +45,7 @@
             <div class="col-sm-6">
               <div class="form-group">
                 <label class="control-label" for="input-order-status">Type:</label>
-                <select formControlName="type_1" (change)="onSave(false,true)" (change)="onSave(false,true)" id="input-order-status" class="form-control">
+                <select formControlName="type_1" (change)="onSave(false,true)" id="input-order-status" class="form-control">
                     <option value="-">-</option>
                     <option value="Domestic">Domestic</option>
                     <option value="Commercial">Commercial</option>
@@ -63,7 +64,7 @@
             <div class="col-sm-6">
               <div class="form-group">
                 <label class="control-label" for="input-order-status">Type:</label>
-                <select formControlName="type_2" (change)="onSave(false,true)" (change)="onSave(false,true)" id="input-order-status" class="form-control">
+                <select formControlName="type_2" (change)="onSave(false,true)" id="input-order-status" class="form-control">
                     <option value="-">-</option>
                     <option value="Domestic">Domestic</option>
                     <option value="Commercial">Commercial</option>
@@ -246,7 +247,7 @@
           <div class="col-sm-6">
             <div class="form-group">
               <label class="control-label" for="input-order-status">Dwelling Type:</label>
-              <select formControlName="type_1" (change)="onSave(false,true)" (change)="onSave(false,true)" id="input-order-status" class="form-control">
+              <select formControlName="type_1" (change)="onSave(false,true)" id="input-order-status" class="form-control">
                 <option value="-">-</option>
                 <option value="Domestic">Domestic</option>
                 <option value="Commercial">Commercial</option>
@@ -265,7 +266,7 @@
           <div class="col-sm-6">
             <div class="form-group">
               <label class="control-label" for="input-order-status">Dwelling Type:</label>
-              <select formControlName="type_2" (change)="onSave(false,true)" (change)="onSave(false,true)" id="input-order-status" class="form-control">
+              <select formControlName="type_2" (change)="onSave(false,true)" id="input-order-status" class="form-control">
                 <option value="-">-</option>
                 <option value="Domestic">Domestic</option>
                 <option value="Commercial">Commercial</option>
@@ -378,7 +379,7 @@
           <div class="col-sm-6">
             <div class="form-group">
               <label class="control-label" for="input-order-status">Dwelling Type:</label>
-              <select formControlName="type_1" (change)="onSave(false,true)" (change)="onSave(false,true)" id="input-order-status" class="form-control">
+              <select formControlName="type_1" (change)="onSave(false,true)" id="input-order-status" class="form-control">
                 <option value="-">-</option>
                 <option value="Domestic">Domestic</option>
                 <option value="Commercial">Commercial</option>
@@ -397,7 +398,7 @@
           <div class="col-sm-6">
             <div class="form-group">
               <label class="control-label" for="input-order-status">Dwelling Type:</label>
-              <select formControlName="type_2" (change)="onSave(false,true)" (change)="onSave(false,true)" id="input-order-status" class="form-control">
+              <select formControlName="type_2" (change)="onSave(false,true)" id="input-order-status" class="form-control">
                 <option value="-">-</option>
                 <option value="Domestic">Domestic</option>
                 <option value="Commercial">Commercial</option>

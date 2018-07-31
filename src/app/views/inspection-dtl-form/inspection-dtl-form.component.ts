@@ -1621,6 +1621,7 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
     }
 
     this.inspectiondetailsform = this.fb.group({
+      'fversion': '',
       'bookingid': '',
       'rec_count': '',
       'type_1': '',
@@ -1888,6 +1889,9 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
   }
 
   onSave(isExit, isQuickSave) {
+
+    console.log("calling onsave ****");
+
     this.formSaveMsg = '';
     this.isFormSaveErr = false;
     this.isFormQuickSave = isQuickSave;
@@ -1901,6 +1905,11 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
       (response: Response) => {
         if (response['forcesave'] != null && response['forcesave'] == 'true') {
           this.inspectionDetailsService.setSaveTypes(isExit, isQuickSave);
+          this.isFormDirty = false;
+          this.formSaving = false;
+          this.isFormSaveErr = false;
+          this.formSaveMsg = '';
+
           this.showForceSaveWindow();
         } else {
           this.formSaveMsg = response['message'];

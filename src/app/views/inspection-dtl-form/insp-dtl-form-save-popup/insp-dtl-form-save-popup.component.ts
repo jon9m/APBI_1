@@ -18,23 +18,19 @@ export class InspDtlFormSavePopupComponent implements OnInit, OnDestroy {
   constructor(private httpSevice: HTTPService, private inspectionDetailsService: InspectionDetailsService, private router: Router) { }
 
   ngOnInit() {
-
   }
 
   ngOnDestroy(): void {
-
   }
 
   saveForm() {
-    alert("Save form");
-
+    console.log("Save form");
     this.inspectionDetailsService.setInspectionDetailsSetForceSave();
     this.closePopup();
   }
 
   reloadForm() {
-    alert("Reload form");
-
+    console.log("Reload form");
     this.loadForm();
   }
 

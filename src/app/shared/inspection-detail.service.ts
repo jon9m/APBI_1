@@ -1,4 +1,3 @@
-import { Http } from '@angular/http';
 import { Injectable } from "@angular/core";
 import { Subject } from "rxjs/Subject";
 import { InspectionDetails } from "./inspection_details.model";
@@ -53,7 +52,7 @@ export class InspectionDetailsService {
         return this.isSaveAndExit;
     }
 
-    public getQuickSave(val) {
+    public getQuickSave() {
         return this.isQuickSave;
     }
 
