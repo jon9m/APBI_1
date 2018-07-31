@@ -1883,15 +1883,10 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
 
   showForceSaveWindow() {
     let element: HTMLElement = document.getElementById('forceSaveWarningButton') as HTMLElement;
-    //let bookingidelement: HTMLInputElement = document.getElementById('previewbookingid') as HTMLInputElement;
-
     element.click();
   }
 
   onSave(isExit, isQuickSave) {
-
-    console.log("calling onsave ****");
-
     this.formSaveMsg = '';
     this.isFormSaveErr = false;
     this.isFormQuickSave = isQuickSave;
