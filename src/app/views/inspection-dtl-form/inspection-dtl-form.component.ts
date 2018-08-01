@@ -1898,7 +1898,7 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
     this.formSaving = true;
     this.addReportSub = this.httpService.addReport(this.inspectiondetailsform.value).subscribe(
       (response: Response) => {
-        if (response['forcesave'] != null && response['forcesave'] == 'true') {
+        if (response['forcesave'] && response['forcesave'] == 'true') {
           this.inspectionDetailsService.setSaveTypes(isExit, isQuickSave);
           this.isFormDirty = false;
           this.formSaving = false;
@@ -1907,6 +1907,8 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
 
           this.showForceSaveWindow();
         } else {
+          this.inspectiondetailsform.patchValue({'fversion' : response['fversion']});
+
           this.formSaveMsg = response['message'];
           this.formSaveMsgType = response['type'];
 
