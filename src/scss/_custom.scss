@@ -104,3 +104,12 @@ a:not([href]):not([tabindex]) {
   pointer-events: none;
   color: #73818f;
 }
+
+.breadcrumb-fixed{
+  position: fixed;
+  z-index: 300;
+}
+
+#pagecontentview{
+  margin-top: 60px;
+}

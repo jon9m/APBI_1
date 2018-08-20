@@ -29,6 +29,7 @@ export class UserdetailsComponent implements OnInit, AfterViewInit, OnDestroy {
   @HostListener('window:orientationchange', ['$event'])
   onorientationchange(event) {
     AppUtils.sidebarMinimizerHandler();
+    AppUtils.breadcrumbWidthHandler(false, false);
   }
 
   constructor(private loginService: LoginService) {
@@ -38,6 +39,7 @@ export class UserdetailsComponent implements OnInit, AfterViewInit, OnDestroy {
       .debounceTime(600)
       .subscribe((event) => {
         AppUtils.sidebarMinimizerHandler();
+        AppUtils.breadcrumbWidthHandler(false, true);
       });
   }
 
@@ -53,6 +55,8 @@ export class UserdetailsComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngAfterViewInit(): void {
     AppUtils.sidebarMinimizerHandler();
+    AppUtils.navbarTogglerhandler();
+    AppUtils.breadcrumbWidthHandler(true, false);
   }
 
   getDisplayed() {
