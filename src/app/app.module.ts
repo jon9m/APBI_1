@@ -46,6 +46,7 @@ import { FileUploadProgressService } from "./shared/fileupload-progress.service"
 import { FileUploadProgressNavComponentComponent } from './views/file-upload-progress-nav-component/file-upload-progress-nav-component.component';
 import { LogoutComponent } from './views/logout/logout.component';
 import { CalendarSearchComponent } from './views/mycalendar/calendar-search/calendar-search.component';
+import { TabIndexComponent } from './views/inspection-dtl-form/tab-index/tab-index.component';
 
 @NgModule({
   imports: [
@@ -71,7 +72,8 @@ import { CalendarSearchComponent } from './views/mycalendar/calendar-search/cale
     UserdetailsComponent,
     FileUploadProgressNavComponentComponent,
     LogoutComponent,
-    CalendarSearchComponent
+    CalendarSearchComponent,
+    TabIndexComponent
   ],
   providers: [
     {

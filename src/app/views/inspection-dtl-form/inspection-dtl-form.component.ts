@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChildren, QueryList, AfterViewInit } from '@angular/core';
 import { FormGroup, FormControl, FormArray, FormBuilder } from "@angular/forms";
 import { InspectionDetailsService } from "../../shared/inspection-detail.service";
 import { Router, ActivatedRoute } from "@angular/router";
@@ -8,6 +8,8 @@ import { AppGlobal } from '../../shared/app-global';
 import { InspectionProperty } from '../../shared/inspection-property.model';
 import { Subscription } from 'rxjs';
 import { FileUploadProgressService } from "../../shared/fileupload-progress.service";
+import { AppServeiceLoadStatusService } from '../../shared/app-service-load-status.service';
+import { TabIndexDirective } from '../../shared/TabIndexModule/tabItem.directive';
 
 @Component({
   selector: 'app-inspection-dtl-form',
@@ -33,7 +35,7 @@ import { FileUploadProgressService } from "../../shared/fileupload-progress.serv
 'new_slab_recommendations_list'
  */
 
-export class InspectionDtlFormComponent implements OnInit, OnDestroy {
+export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewInit {
 
   inspectionProperty: InspectionProperty;
   inspectiondetails: InspectionDetails;
@@ -88,7 +90,19 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
   insp_type_new_building_inspection_completion_stage;
   insp_type_new_building_inspection_4_stages_package;
 
-  constructor(private route: ActivatedRoute, private fb: FormBuilder, private inspectionDetailsService: InspectionDetailsService, private router: Router, private httpService: HTTPService, private fileUploadProgressService: FileUploadProgressService) {
+
+  @ViewChildren(TabIndexDirective) tabs : QueryList<TabIndexDirective>;
+
+  ngAfterViewInit(): void {
+    this.appServeiceLoadStatusService.setTabQueryList(this.tabs);
+  }
+
+  constructor(private route: ActivatedRoute, 
+    private fb: FormBuilder, 
+    private inspectionDetailsService: InspectionDetailsService, 
+    private router: Router, private httpService: HTTPService, 
+    private fileUploadProgressService: FileUploadProgressService, 
+    private appServeiceLoadStatusService :AppServeiceLoadStatusService) {
 
   }
 
@@ -158,6 +172,8 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
     });
 
     this.fileUploadProgressService.clearMap();
+
+    this.appServeiceLoadStatusService.setInspDtlFormLoadStatus();
   }
 
   private subscribeToFormChanges() {
@@ -194,6 +210,7 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy {
     }
 
     this.fileUploadProgressService.clearMap();
+    this.appServeiceLoadStatusService.clearInspDtlFormLoadStatus();
   }
 
   public initRecommendations() {

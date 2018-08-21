@@ -8,15 +8,18 @@ import { FileUploadComponentComponent } from "../file-upload-component/file-uplo
 import { RefreshGuard } from "./refresh-guard.service";
 import { InspDtlFormSavePopupComponent } from './insp-dtl-form-save-popup/insp-dtl-form-save-popup.component';
 import { ModalModule } from "ngx-bootstrap/modal";
+import { TabIndexModule } from '../../shared/TabIndexModule/tabIndex.module';
 
 @NgModule({
   imports: [
     CommonModule,
     InspectionDetailsFormRoutingModule,
     ReactiveFormsModule,
+    TabIndexModule,
     ModalModule.forRoot()
   ],
   declarations: [InspectionDtlFormComponent, FileUploadComponentComponent, InspDtlFormSavePopupComponent],
-  providers: [FileUploadService, RefreshGuard]
+  providers: [FileUploadService, RefreshGuard],
+  exports: []
 })
 export class InspectionDtlFormModule { }

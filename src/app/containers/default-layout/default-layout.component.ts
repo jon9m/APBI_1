@@ -25,6 +25,7 @@ export class DefaultLayoutComponent implements OnInit, OnDestroy, AfterViewInit 
   public element: HTMLElement = document.body;
 
   public calendarDisplaying = false;
+  public inspDtlDisplaying = false;
 
   constructor(private httpService: HTTPService, private renderer: Renderer2, private appServeiceLoadStatusService: AppServeiceLoadStatusService, public fileUploadProgressService: FileUploadProgressService) {
     this.alive = true;
@@ -41,6 +42,7 @@ export class DefaultLayoutComponent implements OnInit, OnDestroy, AfterViewInit 
 
   private subscription: Subscription;
   private calDisplaySubscription: Subscription;
+  private inspDtlFormDisplaySubscription: Subscription;
 
   ngOnInit() {
     let statusElem = this.serverStatusElem.nativeElement;
@@ -63,6 +65,10 @@ export class DefaultLayoutComponent implements OnInit, OnDestroy, AfterViewInit 
     this.calDisplaySubscription = this.appServeiceLoadStatusService.calendarDisplaySubject.subscribe((status: boolean) => {
       this.calendarDisplaying = status;
     });
+
+    this.inspDtlFormDisplaySubscription = this.appServeiceLoadStatusService.inspDtlFormDisplaySubject.subscribe((status: boolean) => {
+      this.inspDtlDisplaying = status;
+    });
   }
 
   ngAfterViewInit(): void {
@@ -82,6 +88,9 @@ export class DefaultLayoutComponent implements OnInit, OnDestroy, AfterViewInit 
     this.subscription.unsubscribe();
     if (this.calDisplaySubscription) {
       this.calDisplaySubscription.unsubscribe();
+    }
+    if (this.inspDtlFormDisplaySubscription) {
+      this.inspDtlFormDisplaySubscription.unsubscribe();
     }
   }
 }

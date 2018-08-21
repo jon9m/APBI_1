@@ -35,7 +35,7 @@
 
 
   <ng-template [ngIf]="reportType != null && (isFormDisplay('visual_building_inspection_form') || isFormDisplay('pest_termite_form') || isFormDisplay('dilapidation_inspection_form')) && !isFormDisplay('new_building_frame_stage_form') && !isFormDisplay('new_building_slab_stage_form')">
-    <div class="card">
+    <div class="card" [tabIndexItem]="'Brief description of the building'">
       <div class="card-header">
         <h5 class="black mb-0"><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;<strong>Brief description of the building and other structures on the property:</strong>
         </h5>
@@ -236,7 +236,7 @@
 
   <!-- --------------------Form 10 / Form 9--------------------- -->
   <ng-template [ngIf]="reportType != null && (isFormDisplay('new_building_frame_stage_form') || isFormDisplay('new_building_slab_stage_form'))">
-    <div class="card">
+    <div class="card" [tabIndexItem]="'Brief description of the building'">
       <div class="card-header">
         <h5 class="black mb-0">
           <i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;<strong>Brief description of the building and other structures on the property:</strong>
@@ -368,7 +368,7 @@
 
   <!-- --------------------Form 11--------------------- -->
   <ng-template [ngIf]="reportType != null && isFormDisplay('new_building_completion_stage_form')">
-    <div class="card">
+    <div class="card" [tabIndexItem]="'Brief description of the building'">
       <div class="card-header">
         <h5 class="black mb-0">
           <i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;<strong>Brief description of the building and other structures on the property:</strong>
@@ -529,7 +529,7 @@
     <!-- ----------------Form 11 ends------------------------- -->
 
 
-  <div class="card">
+  <div class="card" [tabIndexItem]="'Upload image of property'">
     <div class="card-header">
       <h5 class="black mb-0"><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;<strong>Upload image of property:</strong>
       </h5>
@@ -549,7 +549,7 @@
 
 <!-- ---------------Form 10 2/ Form 9 2----------------------------- -->
   <ng-template [ngIf]="reportType != null && (isFormDisplay('new_building_frame_stage_form') || isFormDisplay('new_building_slab_stage_form'))">
-    <div class="card">
+    <div class="card" [tabIndexItem]="'Architectural plans or structural engineering plans'">
       <div class="card-header">
         <h5 class="black mb-0"><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;<strong>Were architectural plans or structural engineering plans provided at inspection?</strong>
         </h5>
@@ -581,7 +581,7 @@
 <!-- ---------------Form 10 - 2/ Form 9 2 ends---------------------- -->
 
 
-  <div class="card">
+  <div class="card" [tabIndexItem]="'Weather at time of inspection'">
     <div class="card-header">
       <h5 class="black mb-0"><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;<strong>Weather at time of inspection?</strong>
       </h5>
@@ -599,7 +599,7 @@
   </div>
 
   <ng-template [ngIf]="reportType != null && isFormDisplay('furnished_and_extension_form')">
-    <div class="card">
+    <div class="card" [tabIndexItem]="'Was the property furnished at time of inspection'">
       <div class="card-header">
         <h5 class="black mb-0"><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;<strong>Was the property furnished at time of inspection?</strong>
         </h5>
@@ -628,7 +628,7 @@
   </ng-template>
 
   <ng-template [ngIf]="reportType != null && isFormDisplay('smoke_detectors_fitted_form')">
-    <div class="card">
+    <div class="card" [tabIndexItem]="'Were smoke detector fitted at time of inspection'">
       <div class="card-header">
         <h5 class="black mb-0"><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;<strong>Were smoke detector fitted at time of inspection?</strong>
         </h5>
@@ -647,7 +647,7 @@
   </ng-template>
 
   <ng-template [ngIf]="reportType != null && isFormDisplay('furnished_and_extension_form')">
-    <div class="card">
+    <div class="card" [tabIndexItem]="'Was there evidence of any extensions at time of inspection'">
       <div class="card-header">
         <h5 class="black mb-0"><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;<strong>Was there evidence of any extensions at time of inspection?</strong>
         </h5>
@@ -678,7 +678,7 @@
   </ng-template>
 
   <ng-template [ngIf]="reportType != null && isFormDisplay('services_connected_form') || isFormDisplay('smoke_detectors_form')">
-    <div class="card">   
+    <div class="card" [tabIndexItem]="'Services connected to property'">   
       <div class="card-header">
         <h5 class="black mb-0"><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;<strong>Services connected to property</strong>
         </h5>
@@ -876,7 +876,7 @@
     </div>
   </ng-template>
 
-  <div class="card">
+  <div class="card" [tabIndexItem]="'Reasonable Access to the property at time of inspection'">
     <div class="card-header">
       <h5 class="black mb-0"><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;<strong>Reasonable Access to the property at time of inspection?</strong>
       </h5>
@@ -907,7 +907,7 @@
 
 
   <ng-template [ngIf]="reportType != null && (isFormDisplay('visual_building_inspection_form') || isFormDisplay('dilapidation_inspection_form') || isFormDisplay('new_building_frame_stage_form') || isFormDisplay('new_building_slab_stage_form') || isFormDisplay('new_building_completion_stage_form'))">
-      <div class="card">
+      <div class="card" [tabIndexItem]="'VISUAL BUILDING INSPECTION'">
         <div class="card-header">
           <h2 class="card-title"><strong><i class="fa fa-circle" aria-hidden="true" style="font-size: 11px;"></i>&nbsp;VISUAL BUILDING INSPECTION</strong>
           </h2>
@@ -918,7 +918,7 @@
 
       <!-- --------------------Form 10 inspection check list------------------------------ -->
     <ng-template [ngIf]="reportType != null && isFormDisplay('new_building_frame_stage_form')">
-      <div class="card">
+      <div class="card" [tabIndexItem]="'Sub Floor/Slab inspection checklist'">
         <div class="card-header">
           <h5 class="black mb-0"><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;<strong>Sub Floor/Slab inspection checklist</strong>
           </h5>
@@ -1160,7 +1160,7 @@
           </div>
         </div>
       </div>
-      <div class="card">
+      <div class="card" [tabIndexItem]="'Sub Floor/Slab - Findings and Recommendations'">
         <div class="card-header">
           <h5 class="black mb-0"><strong>Sub Floor/Slab - Findings and Recommendations</strong>
           </h5>
@@ -1234,7 +1234,7 @@
         </div>
       </div>
   
-      <div class="card">
+      <div class="card" [tabIndexItem]="'Walls and Structural Beams inspection checklist'">
         <div class="card-header">
           <h5 class="black mb-0"><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;<strong>Walls and Structural Beams inspection checklist</strong>
           </h5>
@@ -1665,7 +1665,7 @@
           </div>
         </div>
       </div>  
-      <div class="card">
+      <div class="card" [tabIndexItem]="'Walls and Structural Beams - Findings and Recommendations'">
         <div class="card-header">
           <h5 class="black mb-0"><strong>Walls and Structural Beams - Findings and Recommendations</strong>
           </h5>
@@ -1731,7 +1731,7 @@
           </div>
         </div>
       </div>  
-      <div class="card">
+      <div class="card" [tabIndexItem]="'Roof inspection checklist'">
         <div class="card-header">
           <h5 class="black mb-0"><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;<strong>Roof inspection checklist</strong>
           </h5>
@@ -2090,7 +2090,7 @@
           </div>
         </div>
       </div>  
-      <div class="card">
+      <div class="card" [tabIndexItem]="'Roof - Findings and Recommendations'">
         <div class="card-header">
           <h5 class="black mb-0"><strong>Roof - Findings and Recommendations</strong>
           </h5>
@@ -2161,7 +2161,7 @@
 
     <!-- --------------------Form 9 inspection check list------------------------------ --> 
     <ng-template [ngIf]="reportType != null && isFormDisplay('new_building_slab_stage_form')">
-      <div class="card">
+      <div class="card" [tabIndexItem]="'Pre-slab inspection checklist'">
         <div class="card-header">
           <h5 class="black mb-0"><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;<strong>Pre-slab inspection checklist</strong>
           </h5>
@@ -2403,7 +2403,7 @@
           </div>
         </div>
       </div>
-      <div class="card">
+      <div class="card" [tabIndexItem]="'Pre-Slab - Findings and Recommendations'">
         <div class="card-header">
           <h5 class="black mb-0"><strong>Pre-Slab - Findings and Recommendations</strong>
           </h5>
@@ -2477,7 +2477,7 @@
         </div>
       </div>
   
-      <div class="card">
+      <div class="card" [tabIndexItem]="'Services inspection checklist'">
         <div class="card-header">
           <h5 class="black mb-0"><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;<strong>Services inspection checklist</strong>
           </h5>
@@ -2651,7 +2651,7 @@
           </div>
         </div>
       </div>  
-      <div class="card">
+      <div class="card" [tabIndexItem]="'Services - Findings and Recommendations'">
         <div class="card-header">
           <h5 class="black mb-0"><strong>Services - Findings and Recommendations</strong>
           </h5>
@@ -2722,7 +2722,7 @@
 
     <!-- --------------------Form 11 inspection check list------------------------------ -->
     <ng-template [ngIf]="reportType != null && isFormDisplay('new_building_completion_stage_form')">
-      <div class="card">
+      <div class="card" [tabIndexItem]="'External of house inspection checklist'">
         <div class="card-header">
           <h5 class="black mb-0"><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;<strong>External of house inspection checklist</strong>
           </h5>
@@ -2964,7 +2964,7 @@
           </div>
         </div>
       </div>
-      <div class="card">
+      <div class="card" [tabIndexItem]="'Inspection Findings and Recommendations'">
         <div class="card-header">
           <h5 class="black mb-0"><strong>Inspection Findings and Recommendations</strong>
           </h5>
@@ -3035,7 +3035,7 @@
 
 
 
-      <div class="card">
+      <div class="card" [tabIndexItem]="'Internal of house inspection checklist'">
           <div class="card-header">
             <h5 class="black mb-0"><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;<strong>Internal of house inspection checklist</strong>
             </h5>
@@ -3208,7 +3208,7 @@
             </div>
           </div>
         </div>  
-        <div class="card">
+        <div class="card" [tabIndexItem]="'Inspection Findings and Recommendations'">
           <div class="card-header">
             <h5 class="black mb-0"><strong>Inspection Findings and Recommendations</strong>
             </h5>
@@ -3278,7 +3278,7 @@
     <!-- --------------------Form 11 inspection check list ends------------------------- -->
       
     <ng-template [ngIf]="reportType != null && isFormDisplay('visual_building_inspection_form')">
-      <div class="card">
+      <div class="card" [tabIndexItem]="'Hallways and General Living Spaces'">
         <div class="card-header">
           <h5 class="black mb-0"><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;<strong>Hallways and General Living Spaces</strong>
           </h5>
@@ -3543,7 +3543,7 @@
           </div>
         </div>
       </div>
-      <div class="card">
+      <div class="card" [tabIndexItem]="'Hallways and General Living Spaces - Findings and Recommendations'">
         <div class="card-header">
           <h5 class="black mb-0"><strong>Hallways and General Living Spaces - Findings and Recommendations</strong>
           </h5>
@@ -3615,7 +3615,7 @@
           </div>
         </div>
       </div>
-      <div class="card">
+      <div class="card" [tabIndexItem]="'Kitchen'">
         <div class="card-header">
           <h5 class="black mb-0"><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;<strong>Kitchen</strong>
           </h5>
@@ -4041,7 +4041,7 @@
           </div>
         </div>
       </div>  
-      <div class="card">
+      <div class="card" [tabIndexItem]="'Kitchen - Findings and Recommendations'">
         <div class="card-header">
           <h5 class="black mb-0"><strong>Kitchen - Findings and Recommendations</strong>
           </h5>
@@ -4114,7 +4114,7 @@
           </div>
         </div>
       </div>  
-      <div class="card">
+      <div class="card" [tabIndexItem]="'Laundry'">
         <div class="card-header">
           <h5 class="black mb-0"><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;<strong>Laundry</strong>
           </h5>
@@ -4400,7 +4400,7 @@
           </div>
         </div>
       </div>  
-      <div class="card">
+      <div class="card" [tabIndexItem]="'Laundry - Findings and Recommendations'">
         <div class="card-header">
           <h5 class="black mb-0"><strong>Laundry - Findings and Recommendations</strong>
           </h5>
@@ -4473,7 +4473,7 @@
         </div>
       </div>  
       <!-- BEDROOMS -->
-      <div class="card">
+      <div class="card" [tabIndexItem]="'Bedrooms'">
         <div class="card-header">
           <h5 class="black mb-0"><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;<strong>Bedrooms</strong>
           </h5>
@@ -5336,7 +5336,7 @@
           </div>
         </div>
       </div>  
-      <div class="card">
+      <div class="card" [tabIndexItem]="'Bedrooms - Findings and Recommendations'">
         <div class="card-header">
           <h5 class="black mb-0"><strong>Bedrooms - Findings and Recommendations</strong>
           </h5>
@@ -5408,7 +5408,7 @@
           </div>
         </div>
       </div>  
-      <div class="card">
+      <div class="card" [tabIndexItem]="'Bathrooms'">
         <div class="card-header">
           <h5 class="black mb-0"><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;<strong>Bathrooms</strong>
           </h5>
@@ -5949,7 +5949,7 @@
           </div>
         </div>
       </div>  
-      <div class="card">
+      <div class="card" [tabIndexItem]="'Bathrooms - Findings and Recommendations'">
         <div class="card-header">
           <h5 class="black mb-0"><strong>Bathrooms - Findings and Recommendations</strong>
           </h5>
@@ -6022,7 +6022,7 @@
         </div>
       </div>  
       <!-- ENSUITE -->
-      <div class="card">
+      <div class="card" [tabIndexItem]="'Ensuite'">
         <div class="card-header">
           <h5 class="black mb-0"><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;<strong>Ensuite</strong>
           </h5>
@@ -6563,7 +6563,7 @@
           </div>
         </div>
       </div>  
-      <div class="card">
+      <div class="card" [tabIndexItem]="'Ensuite - Findings and Recommendations'">
         <div class="card-header">
           <h5 class="black mb-0"><strong>Ensuite - Findings and Recommendations</strong></h5>
         </div>
@@ -6637,7 +6637,7 @@
     </ng-template>
 
     <ng-template [ngIf]="reportType != null && isFormDisplay('dilapidation_inspection_form')">
-      <div class="card">
+      <div class="card" [tabIndexItem]="'External'">
         <div class="card-header">
           <h5 class="black mb-0"><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;<strong>External</strong></h5>
         </div>
@@ -7338,7 +7338,7 @@
           </div>
         </div>
       </div>  
-      <div class="card">
+      <div class="card" [tabIndexItem]="'External of House - Findings and Recommendations'">
         <div class="card-header">
           <h5 class="black mb-0"><strong>External of House - Findings and Recommendations</strong>
           </h5>
@@ -7407,7 +7407,7 @@
     </ng-template>
 
     <ng-template [ngIf]="reportType != null && isFormDisplay('visual_building_inspection_form')">
-      <div class="card">
+      <div class="card" [tabIndexItem]="'External'">
         <div class="card-header">
           <h5 class="black mb-0"><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;<strong>External</strong></h5>
         </div>
@@ -8108,7 +8108,7 @@
           </div>
         </div>
       </div>  
-      <div class="card">
+      <div class="card" [tabIndexItem]="'External of House - Findings and Recommendations'">
         <div class="card-header">
           <h5 class="black mb-0"><strong>External of House - Findings and Recommendations</strong>
           </h5>
@@ -8177,7 +8177,7 @@
     </ng-template>
 <!-- DILAPIDATION -->
     <ng-template [ngIf]="reportType != null && isFormDisplay('dilapidation_inspection_form')">
-      <div class="card">
+      <div class="card" [tabIndexItem]="'Internal of House'">
         <div class="card-header">
           <h5 class="black mb-0"><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;<strong>Internal of House</strong>
           </h5>
@@ -8603,7 +8603,7 @@
           </div>
         </div>
       </div>  
-      <div class="card">
+      <div class="card" [tabIndexItem]="'Internal of House - Findings and Recommendations'">
         <div class="card-header">
           <h5 class="black mb-0"><strong>Internal of House - Findings and Recommendations</strong>
           </h5>
@@ -8673,7 +8673,7 @@
 <!-- DILAPIDATION ENDS -->
 
     <ng-template [ngIf]="reportType != null && (isFormDisplay('visual_building_inspection_form') || isFormDisplay('dilapidation_inspection_form') || isFormDisplay('new_building_frame_stage_form') || isFormDisplay('new_building_slab_stage_form') || isFormDisplay('new_building_completion_stage_form'))">
-      <div class="card">
+      <div class="card" [tabIndexItem]="'Report Summary - Overall Condition of Property'">
         <div class="card-header">
           <h5 class="black mb-0"><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;<strong>Report Summary - Overall Condition of Property</strong>
           </h5>
@@ -8688,7 +8688,7 @@
           </div>
         </div>
       </div> 
-      <div class="card">
+      <div class="card" [tabIndexItem]="'Major Defects noted'">
         <div class="card-header">
           <h5 class="black mb-0"><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;<strong>Major Defects noted</strong>
           </h5>
@@ -8716,7 +8716,7 @@
           </div>
         </div>
       </div>
-      <div class="card">
+      <div class="card" [tabIndexItem]="'Serious Structural Defects noted'">
         <div class="card-header">
           <h5 class="black mb-0"><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;<strong>Serious Structural Defects noted</strong>
           </h5>
@@ -8749,7 +8749,7 @@
 
   <!-- insp_type_building_and_pest_inspection -->
   <ng-template [ngIf]="reportType != null && isFormDisplay('visual_timber_pest_inspection_form')">
-    <div class="card">
+    <div class="card" [tabIndexItem]="'VISUAL TIMBER PEST INSPECTION'">
       <div class="card-header">
         <h2 class="card-title">
           <strong>
@@ -8941,7 +8941,7 @@
       </div>
     </div>
     <!-- Inspection Report -->
-    <div class="card">
+    <div class="card" [tabIndexItem]="'Timber Pest Inspection Report'">
       <div class="card-header">
         <h5 class="black mb-0">
           <i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;
@@ -9550,7 +9550,7 @@
         </div>
       </div>
     </div>
-    <div class="card">
+    <div class="card" [tabIndexItem]="'Timber Pest - Findings and Recommendations'">
       <div class="card-header">
         <h5 class="black mb-0">
           <strong>Timber Pest - Findings and Recommendations</strong>
@@ -9623,7 +9623,7 @@
         </div>
       </div>
     </div>
-    <div class="card">
+    <div class="card" [tabIndexItem]="'Areas Conducive to Timber Pest Attacks'">
       <div class="card-header">
         <h5 class="black mb-0">
           <i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;
@@ -9724,7 +9724,7 @@
       </div>
     </div>
     <hr/>
-    <div class="card">
+    <div class="card" [tabIndexItem]="'Environmental Conditions and Summary'">
       <div class="card-header">
         <h5 class="black mb-0">
           <i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;
@@ -9955,7 +9955,7 @@
         </div>
       </div>
     </div>
-    <div class="card">
+    <div class="card" [tabIndexItem]="'Subterranean Termite Treatment Recommendation'">
       <div class="card-header">
         <h5 class="black mb-0">
           <i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;
@@ -10009,7 +10009,7 @@
         </div>
       </div>
     </div>
-    <div class="card">
+    <div class="card" [tabIndexItem]="'Overall Degree of Risk of Timber Pest Infestation'">
       <div class="card-header">
         <h5 class="black mb-0">
           <i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;
@@ -10063,7 +10063,7 @@
       </div>
     </div>
     <!-- REPORT SUMMARY -->
-    <div class="card">
+    <div class="card" [tabIndexItem]="'Report Summary - Overall Condition of Property'">
       <div class="card-header">
         <h5 class="black mb-0">
           <i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;
