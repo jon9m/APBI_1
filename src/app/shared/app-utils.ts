@@ -42,7 +42,6 @@ export class AppUtils {
     //Breadcrumb bar width handler
 
     public static breadcrumbWidthHandler(init, resize) {
-        console.log('breadcrumbWidthHandler');
         var contentviewElem = <HTMLElement>document.querySelector('#pagecontentview');
         var breadcrumbElem = <HTMLElement>document.querySelector('.breadcrumb');
 
