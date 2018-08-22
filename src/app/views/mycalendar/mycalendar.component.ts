@@ -9,6 +9,7 @@ import { NavigationStart, Router } from '@angular/router';
 import { AppServeiceLoadStatusService } from "../../shared/app-service-load-status.service";
 import { Observable } from 'rxjs/Observable';
 import { filter } from 'rxjs/operators';
+import { AppUtils } from '../../shared/app-utils';
 
 @Component({
   selector: 'app-mycalendar',
@@ -152,6 +153,8 @@ export class MycalendarComponent implements OnInit, OnDestroy, AfterViewInit, Af
         this.appServeiceLoadStatusService.clearCalendarLoadStatus();
         this.isCalendarLoading = false;
       });
+
+      AppUtils.breadcrumbWidthHandler(true, false);
   }
 
   clickButton() {

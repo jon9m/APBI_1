@@ -10,6 +10,7 @@ import { Subscription } from 'rxjs';
 import { FileUploadProgressService } from "../../shared/fileupload-progress.service";
 import { AppServeiceLoadStatusService } from '../../shared/app-service-load-status.service';
 import { TabIndexDirective } from '../../shared/TabIndexModule/tabItem.directive';
+import { AppUtils } from '../../shared/app-utils';
 
 @Component({
   selector: 'app-inspection-dtl-form',
@@ -95,6 +96,7 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
 
   ngAfterViewInit(): void {
     this.appServeiceLoadStatusService.setTabQueryList(this.tabs);
+    AppUtils.breadcrumbWidthHandler(true, false);    
   }
 
   constructor(private route: ActivatedRoute, 

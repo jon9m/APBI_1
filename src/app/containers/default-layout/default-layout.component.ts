@@ -6,6 +6,7 @@ import 'rxjs/add/operator/takeWhile';
 import { Subscription } from "rxjs/Subscription";
 import { AppServeiceLoadStatusService } from "../../shared/app-service-load-status.service";
 import { FileUploadProgressService } from "../../shared/fileupload-progress.service";
+import { AppUtils } from '../../shared/app-utils';
 
 @Component({
   selector: 'app-dashboard',
@@ -80,6 +81,7 @@ export class DefaultLayoutComponent implements OnInit, OnDestroy, AfterViewInit 
     } catch (e) {
     }
 
+    AppUtils.breadcrumbWidthHandler(true, false);
     // AppUtils.sidebarMinimizerHandler(this.isDisplayed);
   }
 

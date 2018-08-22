@@ -1,13 +1,16 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { getStyle, hexToRgba } from '@coreui/coreui/js/src/utilities/';
-import { CustomTooltips } from '@coreui/coreui-plugin-chartjs-custom-tooltips/js/';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { AppUtils } from '../../shared/app-utils';
 
 @Component({
   templateUrl: 'dashboard.component.html'
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit, AfterViewInit {
+
   ngOnInit(): void {
 
+  }
+
+  ngAfterViewInit(): void {
+    AppUtils.breadcrumbWidthHandler(true, false);
   }
 }

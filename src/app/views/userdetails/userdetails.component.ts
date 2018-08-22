@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, AfterViewInit, HostListener, OnDestroy } from '@angular/core';
+import { Component, OnInit, AfterViewInit, HostListener, OnDestroy } from '@angular/core';
 import { LoginResponse } from '../../shared/login.response.model';
 import { LoginService } from '../../shared/login.service';
 import { AppGlobal } from '../../shared/app-global';
@@ -27,7 +27,7 @@ export class UserdetailsComponent implements OnInit, AfterViewInit, OnDestroy {
   //   }, 500);
   // }
   @HostListener('window:orientationchange', ['$event'])
-  onorientationchange(event) {
+  onorientationchange() {
     AppUtils.sidebarMinimizerHandler();
     AppUtils.breadcrumbWidthHandler(false, false);
   }
@@ -37,10 +37,10 @@ export class UserdetailsComponent implements OnInit, AfterViewInit, OnDestroy {
 
     this.resizeSubscription = Observable.fromEvent(window, 'resize')
       .debounceTime(600)
-      .subscribe((event) => {
-        AppUtils.sidebarMinimizerHandler();
-        AppUtils.breadcrumbWidthHandler(false, true);
-      });
+      .subscribe(() => {
+          AppUtils.sidebarMinimizerHandler();
+          AppUtils.breadcrumbWidthHandler(false, true);
+        });
   }
 
   ngOnInit() {
